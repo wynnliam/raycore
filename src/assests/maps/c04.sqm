@@ -1,0 +1,1704 @@
+# Liam Wynn, 1/20/2019, Raycaster
+
+# Metadata about the map.
+properties {
+	# String
+	name = "Bellington Estate";
+	# String - 0 will denote "NULL"
+	sky_tex = "./src/assests/textures/skybox/sky04.bmp";
+}
+
+# Player spawn.
+thing {
+	type = "0";
+	x = "224";
+	y = "128";
+	rot = "270";
+
+	anim_class = "0";
+	sprite_sheet = "0";
+}
+
+# Connects Entrance to Estate Interior
+component {
+	x = "6";
+	y = "5";
+	w = "1";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/garden/floor.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "6";
+	y = "5";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+component {
+	x = "3";
+	y = "11";
+	w = "2";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/garden/floor.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "3";
+	y = "11";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+# Entrance Area
+
+# Doorway
+component {
+	x = "3";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/garden/wall2.bmp";
+	tex_1 = "0";
+}
+
+# Walkways
+component {
+	x = "3";
+	y = "1";
+	w = "1";
+	h = "9";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/garden/floor.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "4";
+	y = "5";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/garden/floor.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "3";
+	y = "10";
+	w = "2";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/garden/floor.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "5";
+	y = "5";
+	w = "1";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/garden/floor.bmp";
+	tex_1 = "0";
+}
+
+# Ground
+component {
+	x = "1";
+	y = "1";
+	w = "5";
+	h = "10";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/grass/grass1.bmp";
+	tex_1 = "0";
+}
+
+# Walls
+# Northmost wall
+component {
+	x = "0";
+	y = "0";
+	w = "7";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/garden/wall.bmp";
+	tex_1 = "0";
+}
+
+# Southernmost wall
+component {
+	x = "0";
+	y = "11";
+	w = "7";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/garden/wall.bmp";
+	tex_1 = "0";
+}
+
+# Eastmost wall
+component {
+	x = "6";
+	y = "1";
+	w = "1";
+	h = "10";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/garden/wall.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "1";
+	w = "1";
+	h = "10";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/garden/wall.bmp";
+	tex_1 = "0";
+}
+
+# Things in the enterance
+thing {
+	type = "1";
+	x = "315";
+	y = "205";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/outdoor/bench.bmp";
+}
+
+thing {
+	type = "1";
+	x = "128";
+	y = "160";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/bush1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "128";
+	y = "288";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/bush1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "128";
+	y = "416";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/bush1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "128";
+	y = "544";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/bush1.bmp";
+}
+
+# Palm tree
+thing {
+	type = "1";
+	x = "288";
+	y = "544";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/palm_tree1.bmp";
+}
+
+# Orchards
+thing {
+	type = "1";
+	x = "128";
+	y = "224";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/orchard_tree1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "128";
+	y = "352";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/orchard_tree1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "128";
+	y = "480";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/orchard_tree1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "288";
+	y = "288";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/orchard_tree1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "288";
+	y = "480";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/orchard_tree1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "160";
+	y = "672";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/orchard_tree1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "352";
+	y = "672";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/orchard_tree1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "352";
+	y = "160";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/orchard_tree1.bmp";
+}
+# ESTATE INTERIOR
+
+# Connects Hall 1 with Hall 2
+# Carpeting
+component {
+	x = "10";
+	y = "11";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/carpet2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+component {
+	x = "8";
+	y = "11";
+	w = "6";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+# Hall 1
+
+# Carpeting
+component {
+	x = "10";
+	y = "3";
+	w = "2";
+	h = "8";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/carpet2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+component {
+	x = "10";
+	y = "13";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/carpet2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+# Flooring
+component {
+	x = "8";
+	y = "1";
+	w = "6";
+	h = "10";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+# Serpent Mound Art Piece
+component {
+	x = "10";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/estate_art/paintings/serpent_mound1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "11";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/estate_art/paintings/serpent_mound2.bmp";
+	tex_1 = "0";
+}
+
+# Mrs. Bellington
+component {
+	x = "14";
+	y = "4";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/estate_art/paintings/mrs_bellington.bmp";
+	tex_1 = "0";
+}
+
+# 10000 Years Later
+component {
+	x = "14";
+	y = "6";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/estate_art/paintings/10000_years_later_1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "14";
+	y = "7";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/estate_art/paintings/10000_years_later_2.bmp";
+	tex_1 = "0";
+}
+
+# Scene In Sieges
+component {
+	x = "14";
+	y = "9";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/estate_art/paintings/scene_in_sieges.bmp";
+	tex_1 = "0";
+}
+
+# Northmost wall
+component {
+	x = "7";
+	y = "0";
+	w = "8";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall2.bmp";
+	tex_1 = "0";
+}
+
+# Southern most wall
+component {
+	x = "7";
+	y = "11";
+	w = "8";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall2.bmp";
+	tex_1 = "0";
+}
+
+# Eastmost wall
+component {
+	x = "14";
+	y = "1";
+	w = "1";
+	h = "10";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall2.bmp";
+	tex_1 = "0";
+}
+
+# Westernmost wall
+component {
+	x = "7";
+	y = "1";
+	w = "1";
+	h = "10";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall2.bmp";
+	tex_1 = "0";
+}
+
+# Decorative vase
+thing {
+	type = "1";
+	x = "544";
+	y = "640";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/vase.bmp";
+}
+
+# Connects Hall 2 With Artifact Room
+component {
+	x = "17";
+	y = "11";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+# Connects Hall 2 With Garden
+component {
+	x = "6";
+	y = "19";
+	w = "2";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/garden/floor.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "6";
+	y = "18";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+component {
+	x = "14";
+	y = "19";
+	w = "2";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/garden/floor.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "14";
+	y = "18";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+# Hall 2
+
+# Sultan's Portrait
+component {
+	x = "21";
+	y = "15";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/estate_art/paintings/sultans_portrait.bmp";
+	tex_1 = "0";
+}
+
+# Mesas
+component {
+	x = "10";
+	y = "18";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/estate_art/paintings/mesas_1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "11";
+	y = "18";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/estate_art/paintings/mesas_2.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "15";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/estate_art/paintings/road_in_sieges.bmp";
+	tex_1 = "0";
+}
+
+# Carpeting
+component {
+	x = "3";
+	y = "15";
+	w = "16";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/carpet2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+# Flooring
+component {
+	x = "1";
+	y = "13";
+	w = "20";
+	h = "5";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+# Northmost Wall
+component {
+	x = "0";
+	y = "18";
+	w = "22";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall2.bmp";
+	tex_1 = "0";
+}
+
+# Southmost Wall
+component {
+	x = "0";
+	y = "12";
+	w = "22";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall2.bmp";
+	tex_1 = "0";
+}
+
+# Eastmost wall
+component {
+	x = "21";
+	y = "13";
+	w = "1";
+	h = "5";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall2.bmp";
+	tex_1 = "0";
+}
+
+# Westernmost wall
+component {
+	x = "0";
+	y = "13";
+	w = "1";
+	h = "5";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall2.bmp";
+	tex_1 = "0";
+}
+
+# Decorative plants
+thing {
+	type = "1";
+	x = "224";
+	y = "1120";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/flowers_1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1184";
+	y = "1120";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/flowers_2.bmp";
+}
+
+# Interior Hall Pillars
+thing {
+	type = "1";
+	x = "544";
+	y = "864";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/pillar.bmp";
+}
+
+thing {
+	type = "1";
+	x = "864";
+	y = "864";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/pillar.bmp";
+}
+
+thing {
+	type = "1";
+	x = "544";
+	y = "288";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/pillar.bmp";
+}
+
+thing {
+	type = "1";
+	x = "544";
+	y = "480";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/pillar.bmp";
+}
+
+thing {
+	type = "1";
+	x = "160";
+	y = "864";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/pillar.bmp";
+}
+
+thing {
+	type = "1";
+	x = "352";
+	y = "864";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/pillar.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1056";
+	y = "864";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/pillar.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1248";
+	y = "864";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/pillar.bmp";
+}
+
+thing {
+	type = "1";
+	x = "352";
+	y = "1120";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/pillar.bmp";
+}
+
+thing {
+	type = "1";
+	x = "544";
+	y = "1120";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/pillar.bmp";
+}
+
+thing {
+	type = "1";
+	x = "864";
+	y = "1120";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/pillar.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1056";
+	y = "1120";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/interior_decorations/pillar.bmp";
+}
+# Room for Artifacts
+# Flooring
+component {
+	x = "16";
+	y = "1";
+	w = "5";
+	h = "10";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor2.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling2.bmp";
+}
+
+# Northmost Wall
+component {
+	x = "15";
+	y = "0";
+	w = "7";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall3.bmp";
+	tex_1 = "0";
+}
+
+# Southmost Wall
+component {
+	x = "15";
+	y = "11";
+	w = "7";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall3.bmp";
+	tex_1 = "0";
+}
+
+# Eastmost Wall
+component {
+	x = "21";
+	y = "1";
+	w = "1";
+	h = "10";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall3.bmp";
+	tex_1 = "0";
+}
+
+# Westernmost Wall
+component {
+	x = "15";
+	y = "1";
+	w = "1";
+	h = "10";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall3.bmp";
+	tex_1 = "0";
+}
+
+# Artifacts
+thing {
+	type = "1";
+	x = "1184";
+	y = "224";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/artifact/dragon_skull/dragon_skull.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1184";
+	y = "384";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/artifact/gem/gem.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1184";
+	y = "608";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/artifact/grungors_monument/grungors_monument.bmp";
+}
+
+# Connects Garden with Cellar
+component {
+	x = "19";
+	y = "28";
+	w = "2";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/cellar/cellar_floor.bmp";
+	tex_1 = "./src/assests/textures/cellar/cellar_celing.bmp";
+}
+
+component {
+	x = "19";
+	y = "27";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/garden/floor.bmp";
+	tex_1 = "0";
+}
+
+# Garden
+
+# Gazeebo
+# Pillars
+component {
+	x = "2";
+	y = "21";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/gazeebo/pillar.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "2";
+	y = "25";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/gazeebo/pillar.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "5";
+	y = "21";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/gazeebo/pillar.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "5";
+	y = "25";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/gazeebo/pillar.bmp";
+	tex_1 = "0";
+}
+
+# Curtain Wall
+component {
+	x = "2";
+	y = "22";
+	w = "1";
+	h = "3";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/gazeebo/curtain.bmp";
+	tex_1 = "0";
+}
+
+# Cover
+component {
+	x = "5";
+	y = "22";
+	w = "1";
+	h = "3";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/gazeebo/floor.bmp";
+	tex_1 = "./src/assests/textures/gazeebo/floor.bmp";
+}
+
+component {
+	x = "3";
+	y = "21";
+	w = "2";
+	h = "5";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/gazeebo/floor.bmp";
+	tex_1 = "./src/assests/textures/gazeebo/floor.bmp";
+}
+
+# Gazeebo things
+thing {
+	type = "1";
+	x = "286";
+	y = "1506";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/gazeebo/table.bmp";
+}
+
+thing {
+	type = "1";
+	x = "269";
+	y = "1459";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/gazeebo/chair_1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "265";
+	y = "1564";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/gazeebo/chair_1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "213";
+	y = "1439";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/gazeebo/table_2.bmp";
+}
+
+thing {
+	type = "1";
+	x = "317";
+	y = "1483";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/gazeebo/ornament_1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "215";
+	y = "1581";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/gazeebo/chest.bmp";
+}
+
+# Flooring
+component {
+	x = "7";
+	y = "21";
+	w = "12";
+	h = "5";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/grass/grass1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "1";
+	y = "20";
+	w = "20";
+	h = "7";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/garden/floor.bmp";
+	tex_1 = "0";
+}
+
+# Northmost Wall
+component {
+	x = "0";
+	y = "19";
+	w = "22";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/garden/wall.bmp";
+	tex_1 = "0";
+}
+
+# Southernmost Wall
+component {
+	x = "0";
+	y = "27";
+	w = "22";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/garden/wall.bmp";
+	tex_1 = "0";
+}
+
+# Eastmost Wall
+component {
+	x = "21";
+	y = "20";
+	w = "1";
+	h = "7";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/garden/wall.bmp";
+	tex_1 = "0";
+}
+
+# Westernmost Wall
+component {
+	x = "0";
+	y = "20";
+	w = "1";
+	h = "7";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/garden/wall.bmp";
+	tex_1 = "0";
+}
+
+# Things in the Garden
+thing {
+	type = "1";
+	x = "544";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree3.bmp";
+}
+
+thing {
+	type = "1";
+	x = "608";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/garden_column.bmp";
+}
+
+thing {
+	type = "1";
+	x = "672";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree3.bmp";
+}
+
+thing {
+	type = "1";
+	x = "736";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/garden_column.bmp";
+}
+
+thing {
+	type = "1";
+	x = "800";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree3.bmp";
+}
+
+thing {
+	type = "1";
+	x = "864";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/garden_column.bmp";
+}
+
+thing {
+	type = "1";
+	x = "928";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree3.bmp";
+}
+
+thing {
+	type = "1";
+	x = "992";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/garden_column.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1056";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree3.bmp";
+}
+
+thing {
+	type = "1";
+	x = "544";
+	y = "1632";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree3.bmp";
+}
+
+thing {
+	type = "1";
+	x = "608";
+	y = "1632";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/garden_column.bmp";
+}
+
+thing {
+	type = "1";
+	x = "672";
+	y = "1632";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree3.bmp";
+}
+
+thing {
+	type = "1";
+	x = "736";
+	y = "1632";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/garden_column.bmp";
+}
+
+thing {
+	type = "1";
+	x = "800";
+	y = "1632";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree3.bmp";
+}
+
+thing {
+	type = "1";
+	x = "864";
+	y = "1632";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/garden_column.bmp";
+}
+
+thing {
+	type = "1";
+	x = "928";
+	y = "1632";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree3.bmp";
+}
+
+thing {
+	type = "1";
+	x = "992";
+	y = "1632";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/garden_column.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1056";
+	y = "1632";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree3.bmp";
+}
+
+thing {
+	type = "1";
+	x = "564";
+	y = "1443";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/flowers1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "550";
+	y = "1583";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/flowers2.bmp";
+}
+
+thing {
+	type = "1";
+	x = "732";
+	y = "1555";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/flowers3.bmp";
+}
+
+thing {
+	type = "1";
+	x = "804";
+	y = "1451";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/flowers4.bmp";
+}
+
+thing {
+	type = "1";
+	x = "724";
+	y = "1446";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/flowers5.bmp";
+}
+
+thing {
+	type = "1";
+	x = "644";
+	y = "1501";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/flowers6.bmp";
+}
+
+thing {
+	type = "1";
+	x = "544";
+	y = "1312";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/potted_plant.bmp";
+}
+
+thing {
+	type = "1";
+	x = "704";
+	y = "1312";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/potted_plant.bmp";
+}
+
+thing {
+	type = "1";
+	x = "864";
+	y = "1312";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/potted_plant.bmp";
+}
+
+thing {
+	type = "1";
+	x = "544";
+	y = "1696";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/potted_plant.bmp";
+}
+
+thing {
+	type = "1";
+	x = "704";
+	y = "1696";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/potted_plant.bmp";
+}
+
+thing {
+	type = "1";
+	x = "864";
+	y = "1696";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/potted_plant.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1248";
+	y = "1440";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/potted_plant.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1248";
+	y = "1568";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/potted_plant.bmp";
+}
+
+thing {
+	type = "1";
+	x = "928";
+	y = "1504";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/bigtree.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1120";
+	y = "1504";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/outdoor/tent.bmp";
+}
+
+# Cellar
+
+# Flooring
+component {
+	x = "13";
+	y = "29";
+	w = "8";
+	h = "6";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/cellar/cellar_floor.bmp";
+	tex_1 = "./src/assests/textures/cellar/cellar_celing.bmp";
+}
+
+# Northmost Wall
+component {
+	x = "12";
+	y = "28";
+	w = "10";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/cellar/cellar_wall.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "18";
+	y = "35";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/cellar/shelf_1.bmp";
+	tex_1 = "0";
+}
+
+# Southernmost Wall
+component {
+	x = "12";
+	y = "35";
+	w = "10";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/cellar/cellar_wall.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "21";
+	y = "33";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/cellar/shelf_2.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "21";
+	y = "31";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/cellar/shelf_3.bmp";
+	tex_1 = "0";
+}
+
+# Eastmost Wall
+component {
+	x = "21";
+	y = "29";
+	w = "1";
+	h = "6";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/cellar/cellar_wall.bmp";
+	tex_1 = "0";
+}
+
+# Westernmost Wall
+component {
+	x = "12";
+	y = "29";
+	w = "1";
+	h = "6";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/cellar/cellar_wall.bmp";
+	tex_1 = "0";
+}
+
+# Barrels
+thing {
+	type = "1";
+	x = "886";
+	y = "2171";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/barrels/barrel_2.bmp";
+}
+
+thing {
+	type = "1";
+	x = "882";
+	y = "2009";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/barrels/barrel_2.bmp";
+}
+
+thing {
+	type = "1";
+	x = "942";
+	y = "2147";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/barrels/barrel_1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "927";
+	y = "1944";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/barrels/barrel_2.bmp";
+}
+
+thing {
+	type = "1";
+	x = "910";
+	y = "2095";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/barrels/barrel_1.bmp";
+}
+
+
+thing {
+	type = "1";
+	x = "871";
+	y = "1908";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/barrels/barrel_2.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1047";
+	y = "1913";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/barrels/barrel_2.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1017";
+	y = "1988";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/barrels/barrel_2.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1049";
+	y = "2044";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/barrels/barrel_1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1067";
+	y = "2188";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/barrels/barrel_2.bmp";
+}

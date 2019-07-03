@@ -1,0 +1,111 @@
+# Liam Wynn, 7/10/2018, Raycaster
+# This is a demo map.'
+
+# Metadata about the map.
+properties {
+	# String
+	name = "demo world";
+	# String - 0 will denote "NULL"
+	sky_tex = "./src/assests/textures/skybox/demo_sky.bmp";
+}
+
+component {
+	x = "5";
+	y = "3";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/generated/honeycomb.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "1";
+	y = "1";
+	w = "8";
+	h = "5";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/test/floor.bmp";
+	tex_1 = "./src/assests/textures/test/ceiling.bmp";
+}
+
+component {
+	x = "1";
+	y = "0";
+	w = "8";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/generated/scales.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "1";
+	y = "6";
+	w = "8";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/generated/scales.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "1";
+	w = "1";
+	h = "5";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/generated/brick.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "9";
+	y = "1";
+	w = "2";
+	h = "5";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/generated/brick.bmp";
+	tex_1 = "0";
+}
+
+# Type 0 - player spawn.
+thing {
+	type = "0";
+	x = "128";
+	y = "64";
+	rot = "90";
+
+	anim_class = "0";
+	sprite_sheet = "0";
+}
+
+# Type 1 - Generic prop
+#thing {
+#	type = "1";
+#	x = "128";
+#	y = "256";
+#	rot = "0";
+#
+#	# TODO: Make animation data into a seperate property.
+#	# anim_class 2 - animation with orientation and many frames.
+#	anim_class = "2";
+#	sprite_sheet = "./src/assests/sprites/guard.bmp";
+#}
+
+thing {
+	type = "1";
+
+	x = "190";
+	y = "128";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/statue.bmp";
+}

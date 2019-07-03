@@ -1,0 +1,2915 @@
+# Liam Wynn, 8/6/2018, Raycaster
+
+# Metadata about the map.
+properties {
+	# String
+	name = "Francisco Leopold Art Gallery";
+	# String - 0 will denote "NULL"
+	sky_tex = "./src/assests/textures/skybox/sky01.bmp";
+
+	#use_fog = "1";
+	#fog_r = "255";
+	#fog_g = "0";
+	#fog_b = "0";
+}
+
+# Player spawn.
+thing {
+	type = "0";
+	x = "2712";
+	y = "1048";
+	rot = "90";
+
+	anim_class = "0";
+	sprite_sheet = "0";
+}
+
+# NORTH WING
+# The detail components for the room.
+
+# Note that the way we read in components forces us
+# to define the details first.
+
+# The carpeting for the main floor.
+component {
+	x = "3";
+	y = "3";
+	w = "18";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/carpet1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# The paintings for the North Wing
+component {
+	x = "2";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art3a.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "3";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art3b.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "5";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art7a.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "6";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art7b.bmp";
+	tex_1 = "0";
+} 
+
+component {
+	x = "8";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art9a.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "9";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art9b.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "11";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art16a.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "12";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art16b.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "14";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art20a.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "15";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art20b.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "17";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art44.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "18";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art45.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "20";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art47a.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "21";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/north_wing/art47b.bmp";
+	tex_1 = "0";
+}
+
+# CORE ROOM
+# The floor of the North Wing Room.
+component {
+	x = "1";
+	y = "1";
+	w = "22";
+	h = "6";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# The north wall of the North Wing Room.
+component {
+	x = "0";
+	y = "0";
+	w = "24";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+# The sourthern wall of the North Wing Room
+component {
+	x = "0";
+	y = "7";
+	w = "4";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "6";
+	y = "7";
+	w = "7";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "15";
+	y = "7";
+	w = "9";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+# The west wall of the North Wing Room.
+component {
+	x = "0";
+	y = "1";
+	w = "1";
+	h = "6";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+# The east wall of the North Wing Room.
+component {
+	x = "23";
+	y = "1";
+	w = "1";
+	h = "2";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "23";
+	y = "5";
+	w = "1";
+	h = "2";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+# Props for the North Wing.
+thing {
+	type = "1";
+
+	x = "288";
+	y = "96";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "480";
+	y = "96";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "672";
+	y = "96";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "864";
+	y = "96";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1056";
+	y = "96";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1248";
+	y = "96";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1440";
+	y = "160";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1440";
+	y = "352";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "96";
+	y = "160";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "96";
+	y = "352";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+}
+
+# Connects the North Wing to the Lower Wing
+component {
+	x = "4";
+	y = "7";
+	w = "2";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+
+# LOWER WING
+# A large area with several paintings
+
+# Details
+# Paintings
+component {
+	x = "0";
+	y = "9";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art10.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "11";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art11.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "13";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art13.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "15";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art14.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "17";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art15.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "19";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art17.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "21";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art18.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "23";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art19.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "25";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "27";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art21.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "29";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art22.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "31";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art23.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "33";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art24.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "35";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art25.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "37";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art26.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "39";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art28.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "41";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art29.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "43";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art2.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "45";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art30.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "47";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art31.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "49";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art32.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "51";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art33.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "2";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art34.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "4";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art35.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "6";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art36.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "8";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art38.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "10";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art39.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "12";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art40.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "14";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art41.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "16";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art42.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "18";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art43.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "20";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art46.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "22";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art48.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "24";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art49.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "26";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art4.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "28";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art50.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "30";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art51.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "32";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art52.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "34";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art53.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "36";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art54.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "38";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art55.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "40";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art56.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "42";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art57.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "44";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art58.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "46";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art59.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "48";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art5.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "50";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art60.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "52";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art61.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "54";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art6.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "56";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/art8.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "58";
+	y = "53";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/ctm1.bmp";
+	tex_1 = "0";
+}
+
+# Carpeting
+component {
+	x = "3";
+	y = "10";
+	w = "4";
+	h = "41";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/carpet1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+component {
+	x = "7";
+	y = "47";
+	w = "51";
+	h = "4";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/carpet1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# CORE ROOM
+component {
+	x = "1";
+	y = "8";
+	w = "8";
+	h = "45";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# The south wall.
+component {
+	x = "1";
+	y = "53";
+	w = "59";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+# The west wall.
+component {
+	x = "0";
+	y = "8";
+	w = "1";
+	h = "45";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+# The east wall.
+component {
+	x = "9";
+	y = "8";
+	w = "1";
+	h = "12";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "9";
+	y = "22";
+	w = "1";
+	h = "12";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "9";
+	y = "36";
+	w = "1";
+	h = "9";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+# EXTENSION OF LOWER WING
+
+# Flooring
+component {
+	x = "9";
+	y = "45";
+	w = "51";
+	h = "8";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# Topmost wall of the extension
+component {
+	x = "10";
+	y = "44";
+	w = "12";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "24";
+	y = "44";
+	w = "14";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "40";
+	y = "44";
+	w = "30";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+# Eastmost wall of the extension
+component {
+	x = "60";
+	y = "44";
+	w = "1";
+	h = "9";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+# Things for the lower wing
+thing {
+	type = "1";
+
+	x = "96";
+	y = "672";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "800";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "928";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "1056";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "1184";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "1312";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "1440";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "1568";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "1696";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "1696";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "1824";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "1952";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "2080";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "2208";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "2336";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "2464";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "2592";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "2720";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "2848";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "2976";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "3104";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "3232";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "96";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "224";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "352";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "480";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "608";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "736";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "864";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "992";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "1120";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "1248";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "1376";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "1504";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "1632";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "1760";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "1888";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "2016";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "2144";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "2272";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "2400";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "2528";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "2656";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "2784";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "2912";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "3040";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "3168";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "3296";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "3424";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "3552";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "3680";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+thing {
+	type = "1";
+
+	x = "3808";
+	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+}
+
+# Connects Palace Lower Wing to Courtyard.
+component {
+	x = "9";
+	y = "20";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+component {
+	x = "9";
+	y = "34";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+component {
+	x = "22";
+	y = "43";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+component {
+	x = "38";
+	y = "43";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# Connects the North Wing to the courtyard.
+component {
+	x = "13";
+	y = "7";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# COURTYARD
+
+# Walls surrounding courtyard.
+# West Wall
+component {
+	x = "10";
+	y = "8";
+	w = "1";
+	h = "12";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "10";
+	y = "22";
+	w = "1";
+	h = "12";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "10";
+	y = "36";
+	w = "1";
+	h = "8";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_1 = "0";
+}
+
+# South Wall
+component {
+	x = "10";
+	y = "43";
+	w = "12";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "24";
+	y = "43";
+	w = "14";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "40";
+	y = "43";
+	w = "30";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_1 = "0";
+}
+
+# North wall
+component {
+	x = "11";
+	y = "8";
+	w = "22";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "35";
+	y = "8";
+	w = "10";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "45";
+	y = "8";
+	w = "15";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/stone1.bmp";
+	tex_1 = "0";
+}
+
+# East wall
+component {
+	x = "51";
+	y = "22";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/stone2.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "51";
+	y = "8";
+	w = "1";
+	h = "36";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/stone1.bmp";
+	tex_1 = "0";
+}
+
+# Courtyard
+
+# Covered area surounding the courtyard
+# North
+component {
+	x = "11";
+	y = "9";
+	w = "34";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# West
+component {
+	x = "11";
+	y = "11";
+	w = "2";
+	h = "30";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# South
+component {
+	x = "11";
+	y = "41";
+	w = "49";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# Area under the fountain
+component {
+	x = "30";
+	y = "21";
+	w = "3";
+	h = "3";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+# Cobblestone paths leading to fountain
+# Northward -- towards main room
+component {
+	x = "31";
+	y = "11";
+	w = "1";
+	h = "10";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+# Westward -- towards lower wing
+component {
+	x = "13";
+	y = "22";
+	w = "17";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+# Southward -- towards extension of lower wing
+component {
+	x = "31";
+	y = "24";
+	w = "1";
+	h = "17";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+# Eastward -- Towards the gate
+component {
+	x = "33";
+	y = "21";
+	w = "18";
+	h = "3";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+# Area under the statue
+component {
+	x = "41";
+	y = "15";
+	w = "3";
+	h = "3";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "42";
+	y = "18";
+	w = "1";
+	h = "3";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "20";
+	y = "31";
+	w = "3";
+	h = "3";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "21";
+	y = "23";
+	w = "1";
+	h = "8";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+# The grass of the courtyard itself.
+component {
+	x = "11";
+	y = "9";
+	w = "50";
+	h = "34";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/grass/grass1.bmp";
+	tex_1 = "0";
+}
+
+# Things in the courtyard
+# Statues
+thing {
+	type = "1";
+
+	x = "2716";
+	y = "1052";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/statue.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1376";
+	y = "2080";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/st_michael_statue.bmp";
+}
+
+# Trees
+thing {
+	type = "1";
+
+	x = "2112";
+	y = "1312";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2240";
+	y = "1312";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2368";
+	y = "1312";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2496";
+	y = "1312";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2642";
+	y = "1312";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2784";
+	y = "1312";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2912";
+	y = "1312";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "3040";
+	y = "1312";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2112";
+	y = "1568";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2240";
+	y = "1568";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2368";
+	y = "1568";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2496";
+	y = "1568";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2642";
+	y = "1568";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2784";
+	y = "1568";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2912";
+	y = "1568";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "3040";
+	y = "1568";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "864";
+	y = "1504";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "992";
+	y = "1504";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1120";
+	y = "1504";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1248";
+	y = "1504";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "864";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "992";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1120";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1248";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1440";
+	y = "1504";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1568";
+	y = "1504";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1696";
+	y = "1504";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1824";
+	y = "1504";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1440";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1568";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1696";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1824";
+	y = "1376";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "1568";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "1696";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "1824";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "1952";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "2080";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "2208";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "2336";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "2464";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2080";
+	y = "1696";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2080";
+	y = "1824";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2080";
+	y = "1952";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2080";
+	y = "2080";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2080";
+	y = "2208";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2080";
+	y = "2336";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2080";
+	y = "2464";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "736";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "864";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "992";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "1120";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1952";
+	y = "1248";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2080";
+	y = "736";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2080";
+	y = "864";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2080";
+	y = "992";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2080";
+	y = "1120";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2080";
+	y = "1248";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+}
+
+# Connects the Main Room to the North Wing
+component {
+	x = "23";
+	y = "3";
+	w = "1";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# The Main Room
+# Carpet
+component {
+	x = "26";
+	y = "3";
+	w = "16";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/carpet1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# Floor
+component {
+	x = "24";
+	y = "1";
+	w = "20";
+	h = "6";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+# Imperial City Mural
+component {
+	x = "30";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/imperial_city/m00.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "31";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/imperial_city/m01.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "32";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/imperial_city/m02.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "33";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/imperial_city/m03.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "34";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/imperial_city/m04.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "35";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/imperial_city/m05.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "36";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/imperial_city/m06.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "37";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/art/imperial_city/m07.bmp";
+	tex_1 = "0";
+}
+
+# Vases for Main Room
+thing {
+	type = "1";
+
+	x = "2464";
+	y = "96";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1888";
+	y = "96";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+}
+
+# Columns
+thing {
+	type = "1";
+
+	x = "1568";
+	y = "416";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "1568";
+	y = "96";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2784";
+	y = "96";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "2784";
+	y = "416";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+}
+
+# North Wall
+component {
+	x = "24";
+	y = "0";
+	w = "21";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+# South Wall
+component {
+	x = "24";
+	y = "7";
+	w = "9";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "35";
+	y = "7";
+	w = "10";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+# East Wall
+component {
+	x = "44";
+	y = "1";
+	w = "1";
+	h = "6";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_1 = "0";
+}
+
+# Connects the Main room to Courtyard.
+component {
+	x = "33";
+	y = "7";
+	w = "2";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
+	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+}
+
+component {
+	x = "33";
+	y = "8";
+	w = "2";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/grass/grass1.bmp";
+	tex_1 = "0";
+}

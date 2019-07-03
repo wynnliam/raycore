@@ -1,0 +1,492 @@
+# Liam Wynn, 12/11/2018, Raycaster
+
+# Metadata about the map.
+properties {
+	# String
+	name = "Cloud Top Respite";
+	# String - 0 will denote "NULL"
+	sky_tex = "./src/assests/textures/skybox/sky02.bmp";
+}
+
+# Player spawn.
+thing {
+	type = "0";
+	x = "1707";
+	y = "550";
+	rot = "170";
+
+	anim_class = "0";
+	sprite_sheet = "0";
+}
+
+### MAIN ROOM ###
+
+# Details
+# Pillars in the main room
+component {
+	x = "11";
+	y = "2";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_01.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "11";
+	y = "5";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_01.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "11";
+	y = "8";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_01.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "11";
+	y = "11";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_01.bmp";
+	tex_1 = "0";
+}
+
+# Flooring
+component {
+	x = "9";
+	y = "2";
+	w = "1";
+	h = "10";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/temple_floor_2.bmp";
+	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+}
+
+component {
+	x = "13";
+	y = "2";
+	w = "1";
+	h = "10";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/temple_floor_2.bmp";
+	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+}
+
+component {
+	x = "8";
+	y = "1";
+	w = "7";
+	h = "12";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/temple_floor_1.bmp";
+	tex_1 = "./src/assests/textures/ceiling/temple_ceil_01.bmp";
+}
+
+component {
+	x = "16";
+	y = "8";
+	w = "3";
+	h = "4";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/pebbles.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "15";
+	y = "7";
+	w = "5";
+	h = "6";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/temple_floor_1.bmp";
+	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+}
+
+# Walls
+component {
+	x = "7";
+	y = "0";
+	w = "9";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_wall.bmp";
+	tex_1 = "0";
+}
+ 
+component {
+	x = "15";
+	y = "1";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_wall.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "15";
+	y = "4";
+	w = "1";
+	h = "2";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_wall.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "15";
+	y = "6";
+	w = "6";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_wall_02.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "20";
+	y = "7";
+	w = "1";
+	h = "6";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_wall_02.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "15";
+	y = "13";
+	w = "3";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_wall_02.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "7";
+	y = "13";
+	w = "14";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_wall.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "7";
+	y = "1";
+	w = "1";
+	h = "5";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_wall.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "7";
+	y = "8";
+	w = "1";
+	h = "5";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_wall.bmp";
+	tex_1 = "0";
+}
+
+# Things in the main room
+thing {
+	type = "1";
+	x = "1120";
+	y = "640";
+	rot = "90";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/sculptures/king_rock.bmp";
+}
+
+thing {
+	type = "1";
+	x = "992";
+	y = "800";
+	rot = "90";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/pillar_0.bmp";
+}
+
+thing {
+	type = "1";
+	x = "992";
+	y = "480";
+	rot = "90";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/pillar_1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1248";
+	y = "480";
+	rot = "90";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/pillar_2.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1248";
+	y = "800";
+	rot = "90";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/columns/pillar_3.bmp";
+}
+
+### Doorways between main room and rock garden ###
+component {
+	x = "15";
+	y = "2";
+	w = "1";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/temple_floor_1.bmp";
+	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+}
+
+### ROCK GARDEN ###
+
+# Flooring
+component {
+	x = "16";
+	y = "1";
+	w = "9";
+	h = "5";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/sand/sand_01.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "21";
+	y = "6";
+	w = "7";
+	h = "7";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/sand/sand_01.bmp";
+	tex_1 = "0";
+}
+
+# Walls
+component {
+	x = "16";
+	y = "0";
+	w = "10";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/wooden_wall_01.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "25";
+	y = "1";
+	w = "1";
+	h = "4";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/wooden_wall_01.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "25";
+	y = "5";
+	w = "4";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/wooden_wall_01.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "28";
+	y = "6";
+	w = "1";
+	h = "7";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/wooden_wall_01.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "21";
+	y = "13";
+	w = "8";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/wooden_wall_01.bmp";
+	tex_1 = "0";
+}
+
+# Things in the rock garden
+thing {
+	type = "1";
+	x = "1413";
+	y = "739";
+	rot = "90";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/sculptures/rock_mound_1.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1490";
+	y = "166";
+	rot = "90";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/sculptures/rock_mound_2.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1160";
+	y = "318";
+	rot = "90";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/sculptures/rock_mound_3.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1393";
+	y = "338";
+	rot = "90";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/sculptures/statue_1.bmp";
+}
+### Doorways between main room and MAIN main room ###
+component {
+	x = "7";
+	y = "6";
+	w = "1";
+	h = "2";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/temple_floor_1.bmp";
+	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+}
+
+### MAIN MAIN ROOM ###
+
+# Flooring
+
+# Capreting
+component {
+	x = "2";
+	y = "5";
+	w = "4";
+	h = "4";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/temple_floor_2.bmp";
+	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+}
+
+component {
+	x = "1";
+	y = "4";
+	w = "6";
+	h = "6";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/floor/temple_floor_1.bmp";
+	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+}
+
+# Walls
+component {
+	x = "0";
+	y = "3";
+	w = "7";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_wall_03.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "4";
+	w = "1";
+	h = "6";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_wall_03.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "10";
+	w = "7";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/wall/temple_wall_03.bmp";
+	tex_1 = "0";
+}
+
+# Things in Main Main room
+thing {
+	type = "1";
+	x = "224";
+	y = "448";
+	rot = "90";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/pots/big_pot.bmp";
+}

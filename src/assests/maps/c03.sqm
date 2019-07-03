@@ -1,0 +1,580 @@
+# Liam Wynn, 1/4/2019, Raycaster
+
+# Metadata about the map.
+properties {
+	# String
+	name = "Squanto's Respite";
+	# String - 0 will denote "NULL"
+	sky_tex = "./src/assests/textures/skybox/sky03.bmp";
+}
+
+# Player spawn.
+thing {
+	type = "0";
+	x = "256";
+	y = "512";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "0";
+}
+
+# Bounding box
+component {
+	x = "1";
+	y = "1";
+	w = "22";
+	h = "38";
+
+	is_floor_ciel = "1";
+	tex_0 = "./src/assests/textures/sand/sand_02.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "0";
+	w = "24";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/rock/rock_wall.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "23";
+	y = "1";
+	w = "1";
+	h = "38";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/rock/rock_wall.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "39";
+	w = "24";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/rock/rock_wall.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "1";
+	w = "1";
+	h = "38";
+
+	is_floor_ciel = "0";
+	tex_0 = "./src/assests/textures/rock/rock_wall.bmp";
+	tex_1 = "0";
+}
+
+# FEASOG
+thing {
+	type = "1";
+	x = "736";
+	y = "1184";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/feasog/feasog_00.bmp";
+}
+
+thing {
+	type = "1";
+	x = "672";
+	y = "1248";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/feasog/feasog_01.bmp";
+}
+
+thing {
+	type = "1";
+	x = "672";
+	y = "1120";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/feasog/feasog_02.bmp";
+}
+
+# OTHER ROCK CARVINGS
+thing {
+	type = "1";
+	x = "1163";
+	y = "322";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_00.bmp";
+}
+
+thing {
+	type = "1";
+	x = "825";
+	y = "582";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_01.bmp";
+}
+
+thing {
+	type = "1";
+	x = "961";
+	y = "820";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_02.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1151";
+	y = "1428";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_03.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1011";
+	y = "1876";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_04.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1289";
+	y = "2276";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_05.bmp";
+}
+
+thing {
+	type = "1";
+	x = "295";
+	y = "2388";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_06.bmp";
+}
+
+thing {
+	type = "1";
+	x = "361";
+	y = "1978";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_07.bmp";
+}
+
+thing {
+	type = "1";
+	x = "425";
+	y = "1498";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_08.bmp";
+}
+
+thing {
+	type = "1";
+	x = "289";
+	y = "988";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_09.bmp";
+}
+
+thing {
+	type = "1";
+	x = "712";
+	y = "377";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_10.bmp";
+}
+
+thing {
+	type = "1";
+	x = "360";
+	y = "311";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_11.bmp";
+}
+
+thing {
+	type = "1";
+	x = "921";
+	y = "923";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_12.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1027";
+	y = "1771";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_13.bmp";
+}
+
+thing {
+	type = "1";
+	x = "195";
+	y = "1875";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/rock_carvings/carving_14.bmp";
+}
+
+# GRASS SHRUBS
+thing {
+	type = "1";
+	x = "592";
+	y = "533";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shrub00.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1250";
+	y = "815";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shrub01.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1068";
+	y = "1205";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shrub02.bmp";
+}
+
+thing {
+	type = "1";
+	x = "626";
+	y = "1545";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shrub03.bmp";
+}
+
+thing {
+	type = "1";
+	x = "869";
+	y = "1869";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shrub04.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1321";
+	y = "1910";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb05.bmp";
+}
+
+thing {
+	type = "1";
+	x = "809";
+	y = "1707";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb06.bmp";
+}
+
+thing {
+	type = "1";
+	x = "169";
+	y = "1747";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb07.bmp";
+}
+
+thing {
+	type = "1";
+	x = "175";
+	y = "2232";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb08.bmp";
+}
+
+thing {
+	type = "1";
+	x = "625";
+	y = "2082";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb09.bmp";
+}
+
+thing {
+	type = "1";
+	x = "625";
+	y = "1378";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb10.bmp";
+}
+
+thing {
+	type = "1";
+	x = "335";
+	y = "622";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb11.bmp";
+}
+
+thing {
+	type = "1";
+	x = "623";
+	y = "238";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb12.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1073";
+	y = "178";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb13.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1385";
+	y = "394";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb14.bmp";
+}
+
+thing {
+	type = "1";
+	x = "880";
+	y = "128";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb15.bmp";
+}
+
+thing {
+	type = "1";
+	x = "528";
+	y = "2440";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb16.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1073";
+	y = "940";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb17.bmp";
+}
+
+thing {
+	type = "1";
+	x = "594";
+	y = "1950";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb07.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1183";
+	y = "1064";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shrub01.bmp";
+}
+
+thing {
+	type = "1";
+	x = "134";
+	y = "2410";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb09.bmp";
+}
+
+thing {
+	type = "1";
+	x = "963";
+	y = "404";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb11.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1032";
+	y = "2249";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shrub05.bmp";
+}
+
+thing {
+	type = "1";
+	x = "519";
+	y = "548";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shrub04.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1371";
+	y = "1764";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shurb03.bmp";
+}
+
+thing {
+	type = "1";
+	x = "138";
+	y = "1372";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/grass/type_0/grass_shrub01.bmp";
+}
+
+# BUSH SHRUBS
+thing {
+	type = "1";
+	x = "423";
+	y = "1293";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/bush/type_0/bush_shrub01.bmp";
+}
+
+thing {
+	type = "1";
+	x = "909";
+	y = "2049";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/bush/type_0/bush_shrub02.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1371";
+	y = "971";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/bush/type_0/bush_shrub03.bmp";
+}
+
+thing {
+	type = "1";
+	x = "701";
+	y = "167";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/bush/type_0/bush_shrub04.bmp";
+}
+
+thing {
+	type = "1";
+	x = "158";
+	y = "657";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/bush/type_0/bush_shrub02.bmp";
+}
+
+thing {
+	type = "1";
+	x = "511";
+	y = "1485";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./src/assests/sprites/foliage/bush/type_0/bush_shrub03.bmp";
+}
