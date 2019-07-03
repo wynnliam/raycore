@@ -15,7 +15,7 @@ char** map_lookup_table;
 unsigned int map_lookup_table_size = 0;
 
 int initialize_map_lookup_table() {
-	FILE* load_conf = fopen("./src/assests/maps/load.conf", "r");
+	FILE* load_conf = fopen("./assests/maps/load.conf", "r");
 	// For reading values into
 	char buffer[1000];
 
