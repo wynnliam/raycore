@@ -5,7 +5,7 @@ properties {
 	# String
 	name = "Montclair Pass";
 	# String - 0 will denote "NULL"
-	sky_tex = "./src/assests/textures/skybox/sky05.bmp";
+	sky_tex = "./assests/textures/skybox/sky05.bmp";
 }
 
 # Player spawn.
@@ -28,7 +28,7 @@ component {
 	h = "20";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/blend/grass_to_mud_blend_1.bmp";
+	tex_0 = "./assests/textures/blend/grass_to_mud_blend_1.bmp";
 	tex_1 = "0";
 }
 
@@ -39,7 +39,7 @@ component {
 	h = "20";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/mud/mud1.bmp";
+	tex_0 = "./assests/textures/mud/mud1.bmp";
 	tex_1 = "0";
 }
 
@@ -51,7 +51,7 @@ component {
 	h = "20";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/water/stream_water_01.bmp";
+	tex_0 = "./assests/textures/water/stream_water_01.bmp";
 	tex_1 = "0";
 }
 
@@ -62,7 +62,7 @@ component {
 	h = "8";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/blend/grass_to_sand_blend_1.bmp";
+	tex_0 = "./assests/textures/blend/grass_to_sand_blend_1.bmp";
 	tex_1 = "0";
 }
 
@@ -74,7 +74,7 @@ component {
 	h = "20";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/grass/grass2.bmp";
+	tex_0 = "./assests/textures/grass/grass2.bmp";
 	tex_1 = "0";
 }
 
@@ -86,7 +86,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -98,7 +98,7 @@ component {
 	h = "20";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -110,7 +110,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -122,7 +122,7 @@ component {
 	h = "7";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -134,7 +134,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_1/grass_00.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_1/grass_00.bmp";
 }
 
 thing {
@@ -144,7 +144,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_1/grass_01.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_1/grass_01.bmp";
 }
 
 thing {
@@ -154,7 +154,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_1/grass_02.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_1/grass_02.bmp";
 }
 
 thing {
@@ -164,7 +164,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_1/grass_03.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_1/grass_03.bmp";
 }
 
 thing {
@@ -174,7 +174,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_1/grass_04.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_1/grass_04.bmp";
 }
 
 thing {
@@ -184,7 +184,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_1/grass_05.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_1/grass_05.bmp";
 }
 
 thing {
@@ -194,7 +194,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_1/grass_06.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_1/grass_06.bmp";
 }
 
 thing {
@@ -204,7 +204,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_1/grass_01.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_1/grass_01.bmp";
 }
 
 thing {
@@ -214,7 +214,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_1/grass_04.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_1/grass_04.bmp";
 }
 
 thing {
@@ -224,7 +224,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_1/grass_06.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_1/grass_06.bmp";
 }
 
 thing {
@@ -234,7 +234,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_1/water_bush_00.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_1/water_bush_00.bmp";
 }
 
 thing {
@@ -244,7 +244,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_1/water_bush_01.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_1/water_bush_01.bmp";
 }
 
 thing {
@@ -254,7 +254,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_1/water_bush_02.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_1/water_bush_02.bmp";
 }
 
 thing {
@@ -264,7 +264,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_1/water_bush_00.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_1/water_bush_00.bmp";
 }
 
 thing {
@@ -274,7 +274,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_1/water_bush_01.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_1/water_bush_01.bmp";
 }
 
 thing {
@@ -284,7 +284,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_1/water_bush_02.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_1/water_bush_02.bmp";
 }
 
 thing {
@@ -294,7 +294,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_00.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_00.bmp";
 }
 
 thing {
@@ -304,7 +304,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_01.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_01.bmp";
 }
 
 thing {
@@ -314,7 +314,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_02.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_02.bmp";
 }
 
 thing {
@@ -324,7 +324,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_03.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_03.bmp";
 }
 
 thing {
@@ -334,7 +334,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_04.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_04.bmp";
 }
 
 thing {
@@ -344,7 +344,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_05.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_05.bmp";
 }
 
 thing {
@@ -354,7 +354,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_06.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_06.bmp";
 }
 
 thing {
@@ -364,7 +364,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_00.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_00.bmp";
 }
 
 thing {
@@ -374,7 +374,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_01.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_01.bmp";
 }
 
 thing {
@@ -384,7 +384,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_02.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_02.bmp";
 }
 
 thing {
@@ -394,7 +394,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_03.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_03.bmp";
 }
 
 thing {
@@ -404,7 +404,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_04.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_04.bmp";
 }
 
 thing {
@@ -414,7 +414,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_05.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_05.bmp";
 }
 
 thing {
@@ -424,7 +424,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_06.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_06.bmp";
 }
 
 thing {
@@ -434,7 +434,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_2/grass_00.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_2/grass_00.bmp";
 }
 
 thing {
@@ -444,7 +444,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_3/grass_00.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_3/grass_00.bmp";
 }
 
 thing {
@@ -454,7 +454,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_3/grass_01.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_3/grass_01.bmp";
 }
 
 thing {
@@ -464,7 +464,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_3/grass_02.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_3/grass_02.bmp";
 }
 
 thing {
@@ -474,7 +474,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_3/grass_03.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_3/grass_03.bmp";
 }
 
 thing {
@@ -484,7 +484,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_3/grass_04.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_3/grass_04.bmp";
 }
 
 thing {
@@ -494,7 +494,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_3/grass_05.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_3/grass_05.bmp";
 }
 
 thing {
@@ -504,7 +504,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_3/grass_00.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_3/grass_00.bmp";
 }
 
 thing {
@@ -514,7 +514,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_3/grass_01.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_3/grass_01.bmp";
 }
 
 thing {
@@ -524,7 +524,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_3/grass_02.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_3/grass_02.bmp";
 }
 
 thing {
@@ -534,7 +534,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_3/grass_03.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_3/grass_03.bmp";
 }
 
 thing {
@@ -544,7 +544,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_3/grass_04.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_3/grass_04.bmp";
 }
 
 thing {
@@ -554,7 +554,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_3/grass_05.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_3/grass_05.bmp";
 }
 
 thing {
@@ -564,7 +564,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree4.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree4.bmp";
 }
 
 thing {
@@ -574,7 +574,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree4.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree4.bmp";
 }
 
 thing {
@@ -584,7 +584,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree4.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree4.bmp";
 }
 
 thing {
@@ -594,7 +594,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree4.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree4.bmp";
 }
 
 thing {
@@ -604,7 +604,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree4.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree4.bmp";
 }
 
 thing {
@@ -614,7 +614,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree4.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree4.bmp";
 }
 
 thing {
@@ -624,7 +624,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree4.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree4.bmp";
 }
 
 thing {
@@ -634,7 +634,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree4.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree4.bmp";
 }
 
 thing {
@@ -644,7 +644,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree4.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree4.bmp";
 }
 
 thing {
@@ -654,7 +654,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree4.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree4.bmp";
 }
 
 thing {
@@ -664,7 +664,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree4.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree4.bmp";
 }
 
 
@@ -675,7 +675,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree5.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree5.bmp";
 }
 
 thing {
@@ -685,7 +685,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree5.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree5.bmp";
 }
 
 thing {
@@ -695,7 +695,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree5.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree5.bmp";
 }
 
 thing {
@@ -705,7 +705,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree5.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree5.bmp";
 }
 
 thing {
@@ -715,7 +715,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree5.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree5.bmp";
 }
 
 thing {
@@ -725,7 +725,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree5.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree5.bmp";
 }
 
 thing {
@@ -735,7 +735,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree5.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree5.bmp";
 }
 
 thing {
@@ -745,7 +745,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree5.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree5.bmp";
 }
 
 thing {
@@ -755,7 +755,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree5.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree5.bmp";
 }
 
 thing {
@@ -765,7 +765,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree5.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree5.bmp";
 }
 
 thing {
@@ -775,7 +775,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree5.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree5.bmp";
 }
 
 thing {
@@ -785,7 +785,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree5.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree5.bmp";
 }
 
 thing {
@@ -795,7 +795,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_2/large_bush.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_2/large_bush.bmp";
 }
 
 thing {
@@ -805,7 +805,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_2/large_bush.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_2/large_bush.bmp";
 }
 
 thing {
@@ -815,7 +815,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_2/large_bush.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_2/large_bush.bmp";
 }
 thing {
 	type = "1";
@@ -824,7 +824,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_2/large_bush.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_2/large_bush.bmp";
 }
 
 thing {
@@ -834,7 +834,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_2/large_bush.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_2/large_bush.bmp";
 }
 
 thing {
@@ -844,7 +844,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_4/wild_flower_white.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_4/wild_flower_white.bmp";
 }
 
 thing {
@@ -854,7 +854,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_4/wild_flower_white.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_4/wild_flower_white.bmp";
 }
 
 thing {
@@ -864,7 +864,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_4/wild_flower_white.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_4/wild_flower_white.bmp";
 }
 
 thing {
@@ -874,7 +874,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_4/wild_flower_white.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_4/wild_flower_white.bmp";
 }
 
 thing {
@@ -884,7 +884,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/grass/type_4/wild_flower_white.bmp";
+	sprite_sheet = "./assests/sprites/foliage/grass/type_4/wild_flower_white.bmp";
 }
 
 thing {
@@ -894,7 +894,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/rock_formation/rock_formation_1.bmp";
+	sprite_sheet = "./assests/sprites/rock_formation/rock_formation_1.bmp";
 }
 
 thing {
@@ -904,7 +904,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/sculptures/cross_1.bmp";
+	sprite_sheet = "./assests/sprites/sculptures/cross_1.bmp";
 }
 # Floor Area 2
 component {
@@ -914,7 +914,7 @@ component {
 	h = "15";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/sand/grey_sand_02.bmp";
+	tex_0 = "./assests/textures/sand/grey_sand_02.bmp";
 	tex_1 = "0";
 }
 
@@ -926,7 +926,7 @@ component {
 	h = "6";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -938,7 +938,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -950,7 +950,7 @@ component {
 	h = "15";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -962,7 +962,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -974,7 +974,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -985,7 +985,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -996,7 +996,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_3/desert_bush_1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_1.bmp";
 }
 
 thing {
@@ -1006,7 +1006,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_3/desert_bush_2.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_2.bmp";
 }
 
 thing {
@@ -1016,7 +1016,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_3/desert_bush_2.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_2.bmp";
 }
 
 thing {
@@ -1026,7 +1026,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_3/desert_bush_2.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_2.bmp";
 }
 
 thing {
@@ -1036,7 +1036,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_3/desert_bush_2.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_2.bmp";
 }
 
 thing {
@@ -1046,7 +1046,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
 }
 
 thing {
@@ -1056,7 +1056,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
 }
 
 thing {
@@ -1066,7 +1066,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
 }
 
 thing {
@@ -1076,7 +1076,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
 }
 
 thing {
@@ -1086,7 +1086,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
 }
 
 thing {
@@ -1096,7 +1096,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/desert_tree.bmp";
+	sprite_sheet = "./assests/sprites/foliage/desert_tree.bmp";
 }
 
 thing {
@@ -1106,7 +1106,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/desert_tree.bmp";
+	sprite_sheet = "./assests/sprites/foliage/desert_tree.bmp";
 }
 
 thing {
@@ -1116,7 +1116,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/desert_tree.bmp";
+	sprite_sheet = "./assests/sprites/foliage/desert_tree.bmp";
 }
 
 thing {
@@ -1126,7 +1126,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/rock_formation/rock/type_0/desert_rock_1a.bmp";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1a.bmp";
 }
 
 thing {
@@ -1136,7 +1136,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/rock_formation/rock/type_0/desert_rock_1b.bmp";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1b.bmp";
 }
 
 thing {
@@ -1146,7 +1146,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/rock_formation/rock/type_0/desert_rock_1c.bmp";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1c.bmp";
 }
 
 thing {
@@ -1156,7 +1156,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/rock_formation/rock/type_0/desert_rock_2a.bmp";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_2a.bmp";
 }
 
 thing {
@@ -1166,7 +1166,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/rock_formation/rock/type_0/desert_rock_2b.bmp";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_2b.bmp";
 }
 
 thing {
@@ -1176,7 +1176,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/rock_formation/rock/type_0/desert_rock_2c.bmp";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_2c.bmp";
 }
 
 thing {
@@ -1186,7 +1186,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/rock_formation/rock/type_0/desert_rock_3a.bmp";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_3a.bmp";
 }
 
 thing {
@@ -1196,7 +1196,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/rock_formation/rock/type_0/desert_rock_1a.bmp";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1a.bmp";
 }
 
 thing {
@@ -1206,7 +1206,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/rock_formation/rock/type_0/desert_rock_1b.bmp";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1b.bmp";
 }
 
 thing {
@@ -1216,7 +1216,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/rock_formation/rock/type_0/desert_rock_1c.bmp";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1c.bmp";
 }
 
 thing {
@@ -1226,7 +1226,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/flower/type_0/desert_flower_1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_0/desert_flower_1.bmp";
 }
 
 thing {
@@ -1236,7 +1236,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/flower/type_0/desert_flower_1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_0/desert_flower_1.bmp";
 }
 
 thing {
@@ -1246,7 +1246,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/flower/type_0/desert_flower_1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_0/desert_flower_1.bmp";
 }
 
 thing {
@@ -1256,7 +1256,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/flower/type_0/desert_flower_1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_0/desert_flower_1.bmp";
 }
 
 thing {
@@ -1266,7 +1266,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/flower/type_1/cactus_1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_1.bmp";
 }
 
 thing {
@@ -1276,7 +1276,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/flower/type_1/cactus_2.bmp";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_2.bmp";
 }
 
 thing {
@@ -1286,7 +1286,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/flower/type_1/cactus_3.bmp";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_3.bmp";
 }
 
 thing {
@@ -1296,7 +1296,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/flower/type_1/cactus_1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_1.bmp";
 }
 
 thing {
@@ -1306,7 +1306,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/flower/type_1/cactus_2.bmp";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_2.bmp";
 }
 # Cave Flooring
 component {
@@ -1316,8 +1316,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/sand/grey_sand_03.bmp";
-	tex_1 = "./src/assests/textures/sand/grey_sand_03.bmp";
+	tex_0 = "./assests/textures/sand/grey_sand_03.bmp";
+	tex_1 = "./assests/textures/sand/grey_sand_03.bmp";
 }
 
 # Cave Walls
@@ -1328,7 +1328,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -1339,7 +1339,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -1351,8 +1351,8 @@ component {
 	h = "1";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/sand/grey_sand_01.bmp";
-	tex_1 = "./src/assests/textures/sand/grey_sand_01.bmp";
+	tex_0 = "./assests/textures/sand/grey_sand_01.bmp";
+	tex_1 = "./assests/textures/sand/grey_sand_01.bmp";
 }
 
 # Hideout Interior
@@ -1363,8 +1363,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/sand/grey_sand_01.bmp";
-	tex_1 = "./src/assests/textures/sand/grey_sand_01.bmp";
+	tex_0 = "./assests/textures/sand/grey_sand_01.bmp";
+	tex_1 = "./assests/textures/sand/grey_sand_01.bmp";
 }
 
 component {
@@ -1374,8 +1374,8 @@ component {
 	h = "5";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/sand/grey_sand_01.bmp";
-	tex_1 = "./src/assests/textures/sand/grey_sand_01.bmp";
+	tex_0 = "./assests/textures/sand/grey_sand_01.bmp";
+	tex_1 = "./assests/textures/sand/grey_sand_01.bmp";
 }
 
 # Walls of Hideout
@@ -1386,7 +1386,7 @@ component {
 	h = "4";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/hideout_wall.bmp";
+	tex_0 = "./assests/textures/rock/hideout_wall.bmp";
 	tex_1 = "0";
 }
 
@@ -1397,7 +1397,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/hideout_wall.bmp";
+	tex_0 = "./assests/textures/rock/hideout_wall.bmp";
 	tex_1 = "0";
 }
 
@@ -1408,7 +1408,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/hideout_wall.bmp";
+	tex_0 = "./assests/textures/rock/hideout_wall.bmp";
 	tex_1 = "0";
 }
 
@@ -1420,7 +1420,7 @@ component {
 	h = "4";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/sand/grey_sand_02.bmp";
+	tex_0 = "./assests/textures/sand/grey_sand_02.bmp";
 	tex_1 = "0";
 }
 
@@ -1431,7 +1431,7 @@ component {
 	h = "7";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/sand/grey_sand_01.bmp";
+	tex_0 = "./assests/textures/sand/grey_sand_01.bmp";
 	tex_1 = "0";
 }
 
@@ -1445,7 +1445,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/flags/flag_1.bmp";
+	tex_0 = "./assests/textures/flags/flag_1.bmp";
 	tex_1 = "0";
 }
 
@@ -1456,7 +1456,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/flags/flag_2.bmp";
+	tex_0 = "./assests/textures/flags/flag_2.bmp";
 	tex_1 = "0";
 }
 
@@ -1467,7 +1467,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/flags/flag_3.bmp";
+	tex_0 = "./assests/textures/flags/flag_3.bmp";
 	tex_1 = "0";
 }
 
@@ -1478,7 +1478,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/flags/flag_4.bmp";
+	tex_0 = "./assests/textures/flags/flag_4.bmp";
 	tex_1 = "0";
 }
 
@@ -1489,7 +1489,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/flags/flag_5.bmp";
+	tex_0 = "./assests/textures/flags/flag_5.bmp";
 	tex_1 = "0";
 }
 
@@ -1500,7 +1500,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/flags/flag_6.bmp";
+	tex_0 = "./assests/textures/flags/flag_6.bmp";
 	tex_1 = "0";
 }
 
@@ -1511,7 +1511,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/hideout_wall.bmp";
+	tex_0 = "./assests/textures/rock/hideout_wall.bmp";
 	tex_1 = "0";
 }
 
@@ -1523,7 +1523,7 @@ component {
 	h = "2";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/hideout_wall.bmp";
+	tex_0 = "./assests/textures/rock/hideout_wall.bmp";
 	tex_1 = "0";
 }
 
@@ -1534,7 +1534,7 @@ component {
 	h = "5";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -1546,7 +1546,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/hideout_wall.bmp";
+	tex_0 = "./assests/textures/rock/hideout_wall.bmp";
 	tex_1 = "0";
 }
 
@@ -1557,7 +1557,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/canyon_wall_01.bmp";
+	tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -1569,7 +1569,7 @@ component {
 	h = "7";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/rock/hideout_wall.bmp";
+	tex_0 = "./assests/textures/rock/hideout_wall.bmp";
 	tex_1 = "0";
 }
 
@@ -1580,7 +1580,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/totem_poles/totem.bmp";
+	sprite_sheet = "./assests/sprites/totem_poles/totem.bmp";
 }
 
 thing {
@@ -1590,7 +1590,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/totem_poles/totem_2.bmp";
+	sprite_sheet = "./assests/sprites/totem_poles/totem_2.bmp";
 }
 
 thing {
@@ -1600,7 +1600,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/pots/clay_pot_1.bmp";
+	sprite_sheet = "./assests/sprites/pots/clay_pot_1.bmp";
 }
 
 thing {
@@ -1610,7 +1610,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/pots/clay_pot_1.bmp";
+	sprite_sheet = "./assests/sprites/pots/clay_pot_1.bmp";
 }
 
 thing {
@@ -1620,7 +1620,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/pots/clay_pot_1.bmp";
+	sprite_sheet = "./assests/sprites/pots/clay_pot_1.bmp";
 }
 
 thing {
@@ -1630,7 +1630,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/pots/clay_pot_1.bmp";
+	sprite_sheet = "./assests/sprites/pots/clay_pot_1.bmp";
 }
 
 thing {
@@ -1640,7 +1640,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/pots/clay_pot_1.bmp";
+	sprite_sheet = "./assests/sprites/pots/clay_pot_1.bmp";
 }
 
 thing {
@@ -1650,7 +1650,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/pots/clay_pot_1.bmp";
+	sprite_sheet = "./assests/sprites/pots/clay_pot_1.bmp";
 }
 
 thing {
@@ -1660,7 +1660,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/pots/clay_pot_1.bmp";
+	sprite_sheet = "./assests/sprites/pots/clay_pot_1.bmp";
 }
 
 thing {
@@ -1670,7 +1670,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/pots/clay_pot_1.bmp";
+	sprite_sheet = "./assests/sprites/pots/clay_pot_1.bmp";
 }
 
 thing {
@@ -1680,7 +1680,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/pots/clay_pot_1.bmp";
+	sprite_sheet = "./assests/sprites/pots/clay_pot_1.bmp";
 }
 ## Bounding Area -- Without this, the parser shits itself
 ## Floor
@@ -1691,7 +1691,7 @@ thing {
 #	h = "29";
 #
 #	is_floor_ciel = "1";
-#	tex_0 = "./src/assests/textures/measure/measure_01.bmp";
+#	tex_0 = "./assests/textures/measure/measure_01.bmp";
 #	tex_1 = "0";
 #}
 #
@@ -1703,7 +1703,7 @@ thing {
 #	h = "1";
 #
 #	is_floor_ciel = "0";
-#	tex_0 = "./src/assests/textures/measure/measure_01.bmp";
+#	tex_0 = "./assests/textures/measure/measure_01.bmp";
 #	tex_1 = "0";
 #}
 #
@@ -1715,7 +1715,7 @@ thing {
 #	h = "29";
 #
 #	is_floor_ciel = "0";
-#	tex_0 = "./src/assests/textures/measure/measure_02.bmp";
+#	tex_0 = "./assests/textures/measure/measure_02.bmp";
 #	tex_1 = "0";
 #}
 #
@@ -1727,7 +1727,7 @@ thing {
 #	h = "1";
 #
 #	is_floor_ciel = "0";
-#	tex_0 = "./src/assests/textures/measure/measure_01.bmp";
+#	tex_0 = "./assests/textures/measure/measure_01.bmp";
 #	tex_1 = "0";
 #}
 #
@@ -1739,6 +1739,6 @@ thing {
 #	h = "29";
 #
 #	is_floor_ciel = "0";
-#	tex_0 = "./src/assests/textures/measure/measure_02.bmp";
+#	tex_0 = "./assests/textures/measure/measure_02.bmp";
 #	tex_1 = "0";
 #}

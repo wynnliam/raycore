@@ -5,7 +5,7 @@ properties {
 	# String
 	name = "Cloud Top Respite";
 	# String - 0 will denote "NULL"
-	sky_tex = "./src/assests/textures/skybox/sky02.bmp";
+	sky_tex = "./assests/textures/skybox/sky02.bmp";
 }
 
 # Player spawn.
@@ -30,7 +30,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_01.bmp";
+	tex_0 = "./assests/textures/wall/temple_01.bmp";
 	tex_1 = "0";
 }
 
@@ -41,7 +41,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_01.bmp";
+	tex_0 = "./assests/textures/wall/temple_01.bmp";
 	tex_1 = "0";
 }
 
@@ -52,7 +52,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_01.bmp";
+	tex_0 = "./assests/textures/wall/temple_01.bmp";
 	tex_1 = "0";
 }
 
@@ -63,7 +63,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_01.bmp";
+	tex_0 = "./assests/textures/wall/temple_01.bmp";
 	tex_1 = "0";
 }
 
@@ -75,8 +75,8 @@ component {
 	h = "10";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/temple_floor_2.bmp";
-	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+	tex_0 = "./assests/textures/floor/temple_floor_2.bmp";
+	tex_1 = "./assests/textures/ceiling/temple_ceil_02.bmp";
 }
 
 component {
@@ -86,8 +86,8 @@ component {
 	h = "10";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/temple_floor_2.bmp";
-	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+	tex_0 = "./assests/textures/floor/temple_floor_2.bmp";
+	tex_1 = "./assests/textures/ceiling/temple_ceil_02.bmp";
 }
 
 component {
@@ -97,8 +97,8 @@ component {
 	h = "12";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/temple_floor_1.bmp";
-	tex_1 = "./src/assests/textures/ceiling/temple_ceil_01.bmp";
+	tex_0 = "./assests/textures/floor/temple_floor_1.bmp";
+	tex_1 = "./assests/textures/ceiling/temple_ceil_01.bmp";
 }
 
 component {
@@ -108,7 +108,7 @@ component {
 	h = "4";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/pebbles.bmp";
+	tex_0 = "./assests/textures/floor/pebbles.bmp";
 	tex_1 = "0";
 }
 
@@ -119,8 +119,8 @@ component {
 	h = "6";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/temple_floor_1.bmp";
-	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+	tex_0 = "./assests/textures/floor/temple_floor_1.bmp";
+	tex_1 = "./assests/textures/ceiling/temple_ceil_02.bmp";
 }
 
 # Walls
@@ -131,7 +131,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_wall.bmp";
+	tex_0 = "./assests/textures/wall/temple_wall.bmp";
 	tex_1 = "0";
 }
  
@@ -142,7 +142,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_wall.bmp";
+	tex_0 = "./assests/textures/wall/temple_wall.bmp";
 	tex_1 = "0";
 }
 
@@ -153,7 +153,7 @@ component {
 	h = "2";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_wall.bmp";
+	tex_0 = "./assests/textures/wall/temple_wall.bmp";
 	tex_1 = "0";
 }
 
@@ -164,7 +164,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_wall_02.bmp";
+	tex_0 = "./assests/textures/wall/temple_wall_02.bmp";
 	tex_1 = "0";
 }
 
@@ -175,7 +175,7 @@ component {
 	h = "6";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_wall_02.bmp";
+	tex_0 = "./assests/textures/wall/temple_wall_02.bmp";
 	tex_1 = "0";
 }
 
@@ -186,7 +186,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_wall_02.bmp";
+	tex_0 = "./assests/textures/wall/temple_wall_02.bmp";
 	tex_1 = "0";
 }
 
@@ -197,7 +197,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_wall.bmp";
+	tex_0 = "./assests/textures/wall/temple_wall.bmp";
 	tex_1 = "0";
 }
 
@@ -208,7 +208,7 @@ component {
 	h = "5";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_wall.bmp";
+	tex_0 = "./assests/textures/wall/temple_wall.bmp";
 	tex_1 = "0";
 }
 
@@ -219,7 +219,7 @@ component {
 	h = "5";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_wall.bmp";
+	tex_0 = "./assests/textures/wall/temple_wall.bmp";
 	tex_1 = "0";
 }
 
@@ -231,7 +231,7 @@ thing {
 	rot = "90";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/sculptures/king_rock.bmp";
+	sprite_sheet = "./assests/sprites/sculptures/king_rock.bmp";
 }
 
 thing {
@@ -241,7 +241,7 @@ thing {
 	rot = "90";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/pillar_0.bmp";
+	sprite_sheet = "./assests/sprites/columns/pillar_0.bmp";
 }
 
 thing {
@@ -251,7 +251,7 @@ thing {
 	rot = "90";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/pillar_1.bmp";
+	sprite_sheet = "./assests/sprites/columns/pillar_1.bmp";
 }
 
 thing {
@@ -261,7 +261,7 @@ thing {
 	rot = "90";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/pillar_2.bmp";
+	sprite_sheet = "./assests/sprites/columns/pillar_2.bmp";
 }
 
 thing {
@@ -271,7 +271,7 @@ thing {
 	rot = "90";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/pillar_3.bmp";
+	sprite_sheet = "./assests/sprites/columns/pillar_3.bmp";
 }
 
 ### Doorways between main room and rock garden ###
@@ -282,8 +282,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/temple_floor_1.bmp";
-	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+	tex_0 = "./assests/textures/floor/temple_floor_1.bmp";
+	tex_1 = "./assests/textures/ceiling/temple_ceil_02.bmp";
 }
 
 ### ROCK GARDEN ###
@@ -296,7 +296,7 @@ component {
 	h = "5";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/sand/sand_01.bmp";
+	tex_0 = "./assests/textures/sand/sand_01.bmp";
 	tex_1 = "0";
 }
 
@@ -307,7 +307,7 @@ component {
 	h = "7";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/sand/sand_01.bmp";
+	tex_0 = "./assests/textures/sand/sand_01.bmp";
 	tex_1 = "0";
 }
 
@@ -319,7 +319,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/wooden_wall_01.bmp";
+	tex_0 = "./assests/textures/wall/wooden_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -330,7 +330,7 @@ component {
 	h = "4";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/wooden_wall_01.bmp";
+	tex_0 = "./assests/textures/wall/wooden_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -341,7 +341,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/wooden_wall_01.bmp";
+	tex_0 = "./assests/textures/wall/wooden_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -352,7 +352,7 @@ component {
 	h = "7";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/wooden_wall_01.bmp";
+	tex_0 = "./assests/textures/wall/wooden_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -363,7 +363,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/wooden_wall_01.bmp";
+	tex_0 = "./assests/textures/wall/wooden_wall_01.bmp";
 	tex_1 = "0";
 }
 
@@ -375,7 +375,7 @@ thing {
 	rot = "90";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/sculptures/rock_mound_1.bmp";
+	sprite_sheet = "./assests/sprites/sculptures/rock_mound_1.bmp";
 }
 
 thing {
@@ -385,7 +385,7 @@ thing {
 	rot = "90";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/sculptures/rock_mound_2.bmp";
+	sprite_sheet = "./assests/sprites/sculptures/rock_mound_2.bmp";
 }
 
 thing {
@@ -395,7 +395,7 @@ thing {
 	rot = "90";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/sculptures/rock_mound_3.bmp";
+	sprite_sheet = "./assests/sprites/sculptures/rock_mound_3.bmp";
 }
 
 thing {
@@ -405,7 +405,7 @@ thing {
 	rot = "90";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/sculptures/statue_1.bmp";
+	sprite_sheet = "./assests/sprites/sculptures/statue_1.bmp";
 }
 ### Doorways between main room and MAIN main room ###
 component {
@@ -415,8 +415,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/temple_floor_1.bmp";
-	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+	tex_0 = "./assests/textures/floor/temple_floor_1.bmp";
+	tex_1 = "./assests/textures/ceiling/temple_ceil_02.bmp";
 }
 
 ### MAIN MAIN ROOM ###
@@ -431,8 +431,8 @@ component {
 	h = "4";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/temple_floor_2.bmp";
-	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+	tex_0 = "./assests/textures/floor/temple_floor_2.bmp";
+	tex_1 = "./assests/textures/ceiling/temple_ceil_02.bmp";
 }
 
 component {
@@ -442,8 +442,8 @@ component {
 	h = "6";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/temple_floor_1.bmp";
-	tex_1 = "./src/assests/textures/ceiling/temple_ceil_02.bmp";
+	tex_0 = "./assests/textures/floor/temple_floor_1.bmp";
+	tex_1 = "./assests/textures/ceiling/temple_ceil_02.bmp";
 }
 
 # Walls
@@ -454,7 +454,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_wall_03.bmp";
+	tex_0 = "./assests/textures/wall/temple_wall_03.bmp";
 	tex_1 = "0";
 }
 
@@ -465,7 +465,7 @@ component {
 	h = "6";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_wall_03.bmp";
+	tex_0 = "./assests/textures/wall/temple_wall_03.bmp";
 	tex_1 = "0";
 }
 
@@ -476,7 +476,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/temple_wall_03.bmp";
+	tex_0 = "./assests/textures/wall/temple_wall_03.bmp";
 	tex_1 = "0";
 }
 
@@ -488,5 +488,5 @@ thing {
 	rot = "90";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/pots/big_pot.bmp";
+	sprite_sheet = "./assests/sprites/pots/big_pot.bmp";
 }

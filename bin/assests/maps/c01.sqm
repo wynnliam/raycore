@@ -5,7 +5,7 @@ properties {
 	# String
 	name = "Francisco Leopold Art Gallery";
 	# String - 0 will denote "NULL"
-	sky_tex = "./src/assests/textures/skybox/sky01.bmp";
+	sky_tex = "./assests/textures/skybox/sky01.bmp";
 
 	#use_fog = "1";
 	#fog_r = "255";
@@ -38,8 +38,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/carpet1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/carpet1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # The paintings for the North Wing
@@ -50,7 +50,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art3a.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art3a.bmp";
 	tex_1 = "0";
 }
 
@@ -61,7 +61,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art3b.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art3b.bmp";
 	tex_1 = "0";
 }
 
@@ -72,7 +72,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art7a.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art7a.bmp";
 	tex_1 = "0";
 }
 
@@ -83,7 +83,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art7b.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art7b.bmp";
 	tex_1 = "0";
 } 
 
@@ -94,7 +94,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art9a.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art9a.bmp";
 	tex_1 = "0";
 }
 
@@ -105,7 +105,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art9b.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art9b.bmp";
 	tex_1 = "0";
 }
 
@@ -116,7 +116,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art16a.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art16a.bmp";
 	tex_1 = "0";
 }
 
@@ -127,7 +127,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art16b.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art16b.bmp";
 	tex_1 = "0";
 }
 
@@ -138,7 +138,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art20a.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art20a.bmp";
 	tex_1 = "0";
 }
 
@@ -149,7 +149,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art20b.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art20b.bmp";
 	tex_1 = "0";
 }
 
@@ -160,7 +160,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art44.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art44.bmp";
 	tex_1 = "0";
 }
 
@@ -171,7 +171,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art45.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art45.bmp";
 	tex_1 = "0";
 }
 
@@ -182,7 +182,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art47a.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art47a.bmp";
 	tex_1 = "0";
 }
 
@@ -193,7 +193,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/north_wing/art47b.bmp";
+	tex_0 = "./assests/textures/art/north_wing/art47b.bmp";
 	tex_1 = "0";
 }
 
@@ -206,8 +206,8 @@ component {
 	h = "6";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/floor1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # The north wall of the North Wing Room.
@@ -218,7 +218,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -230,7 +230,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -241,7 +241,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -252,7 +252,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -264,7 +264,7 @@ component {
 	h = "6";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -276,7 +276,7 @@ component {
 	h = "2";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -287,7 +287,7 @@ component {
 	h = "2";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -300,7 +300,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 
 thing {
@@ -311,7 +311,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 
 thing {
@@ -322,7 +322,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 
 thing {
@@ -333,7 +333,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 
 thing {
@@ -344,7 +344,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 
 thing {
@@ -355,7 +355,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 
 thing {
@@ -366,7 +366,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+	sprite_sheet = "./assests/sprites/columns/column1.bmp";
 }
 
 thing {
@@ -377,7 +377,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+	sprite_sheet = "./assests/sprites/columns/column1.bmp";
 }
 
 thing {
@@ -388,7 +388,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+	sprite_sheet = "./assests/sprites/columns/column1.bmp";
 }
 
 thing {
@@ -399,7 +399,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+	sprite_sheet = "./assests/sprites/columns/column1.bmp";
 }
 
 # Connects the North Wing to the Lower Wing
@@ -410,8 +410,8 @@ component {
 	h = "1";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/floor1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 
@@ -427,7 +427,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art10.bmp";
+	tex_0 = "./assests/textures/art/art10.bmp";
 	tex_1 = "0";
 }
 
@@ -438,7 +438,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art11.bmp";
+	tex_0 = "./assests/textures/art/art11.bmp";
 	tex_1 = "0";
 }
 
@@ -449,7 +449,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art13.bmp";
+	tex_0 = "./assests/textures/art/art13.bmp";
 	tex_1 = "0";
 }
 
@@ -460,7 +460,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art14.bmp";
+	tex_0 = "./assests/textures/art/art14.bmp";
 	tex_1 = "0";
 }
 
@@ -471,7 +471,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art15.bmp";
+	tex_0 = "./assests/textures/art/art15.bmp";
 	tex_1 = "0";
 }
 
@@ -482,7 +482,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art17.bmp";
+	tex_0 = "./assests/textures/art/art17.bmp";
 	tex_1 = "0";
 }
 
@@ -493,7 +493,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art18.bmp";
+	tex_0 = "./assests/textures/art/art18.bmp";
 	tex_1 = "0";
 }
 
@@ -504,7 +504,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art19.bmp";
+	tex_0 = "./assests/textures/art/art19.bmp";
 	tex_1 = "0";
 }
 
@@ -515,7 +515,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art1.bmp";
+	tex_0 = "./assests/textures/art/art1.bmp";
 	tex_1 = "0";
 }
 
@@ -526,7 +526,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art21.bmp";
+	tex_0 = "./assests/textures/art/art21.bmp";
 	tex_1 = "0";
 }
 
@@ -537,7 +537,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art22.bmp";
+	tex_0 = "./assests/textures/art/art22.bmp";
 	tex_1 = "0";
 }
 
@@ -548,7 +548,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art23.bmp";
+	tex_0 = "./assests/textures/art/art23.bmp";
 	tex_1 = "0";
 }
 
@@ -559,7 +559,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art24.bmp";
+	tex_0 = "./assests/textures/art/art24.bmp";
 	tex_1 = "0";
 }
 
@@ -570,7 +570,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art25.bmp";
+	tex_0 = "./assests/textures/art/art25.bmp";
 	tex_1 = "0";
 }
 
@@ -581,7 +581,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art26.bmp";
+	tex_0 = "./assests/textures/art/art26.bmp";
 	tex_1 = "0";
 }
 
@@ -592,7 +592,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art28.bmp";
+	tex_0 = "./assests/textures/art/art28.bmp";
 	tex_1 = "0";
 }
 
@@ -603,7 +603,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art29.bmp";
+	tex_0 = "./assests/textures/art/art29.bmp";
 	tex_1 = "0";
 }
 
@@ -614,7 +614,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art2.bmp";
+	tex_0 = "./assests/textures/art/art2.bmp";
 	tex_1 = "0";
 }
 
@@ -625,7 +625,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art30.bmp";
+	tex_0 = "./assests/textures/art/art30.bmp";
 	tex_1 = "0";
 }
 
@@ -636,7 +636,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art31.bmp";
+	tex_0 = "./assests/textures/art/art31.bmp";
 	tex_1 = "0";
 }
 
@@ -647,7 +647,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art32.bmp";
+	tex_0 = "./assests/textures/art/art32.bmp";
 	tex_1 = "0";
 }
 
@@ -658,7 +658,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art33.bmp";
+	tex_0 = "./assests/textures/art/art33.bmp";
 	tex_1 = "0";
 }
 
@@ -669,7 +669,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art34.bmp";
+	tex_0 = "./assests/textures/art/art34.bmp";
 	tex_1 = "0";
 }
 
@@ -680,7 +680,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art35.bmp";
+	tex_0 = "./assests/textures/art/art35.bmp";
 	tex_1 = "0";
 }
 
@@ -691,7 +691,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art36.bmp";
+	tex_0 = "./assests/textures/art/art36.bmp";
 	tex_1 = "0";
 }
 
@@ -702,7 +702,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art38.bmp";
+	tex_0 = "./assests/textures/art/art38.bmp";
 	tex_1 = "0";
 }
 
@@ -713,7 +713,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art39.bmp";
+	tex_0 = "./assests/textures/art/art39.bmp";
 	tex_1 = "0";
 }
 
@@ -724,7 +724,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art40.bmp";
+	tex_0 = "./assests/textures/art/art40.bmp";
 	tex_1 = "0";
 }
 
@@ -735,7 +735,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art41.bmp";
+	tex_0 = "./assests/textures/art/art41.bmp";
 	tex_1 = "0";
 }
 
@@ -746,7 +746,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art42.bmp";
+	tex_0 = "./assests/textures/art/art42.bmp";
 	tex_1 = "0";
 }
 
@@ -757,7 +757,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art43.bmp";
+	tex_0 = "./assests/textures/art/art43.bmp";
 	tex_1 = "0";
 }
 
@@ -768,7 +768,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art46.bmp";
+	tex_0 = "./assests/textures/art/art46.bmp";
 	tex_1 = "0";
 }
 
@@ -779,7 +779,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art48.bmp";
+	tex_0 = "./assests/textures/art/art48.bmp";
 	tex_1 = "0";
 }
 
@@ -790,7 +790,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art49.bmp";
+	tex_0 = "./assests/textures/art/art49.bmp";
 	tex_1 = "0";
 }
 
@@ -801,7 +801,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art4.bmp";
+	tex_0 = "./assests/textures/art/art4.bmp";
 	tex_1 = "0";
 }
 
@@ -812,7 +812,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art50.bmp";
+	tex_0 = "./assests/textures/art/art50.bmp";
 	tex_1 = "0";
 }
 
@@ -823,7 +823,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art51.bmp";
+	tex_0 = "./assests/textures/art/art51.bmp";
 	tex_1 = "0";
 }
 
@@ -834,7 +834,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art52.bmp";
+	tex_0 = "./assests/textures/art/art52.bmp";
 	tex_1 = "0";
 }
 
@@ -845,7 +845,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art53.bmp";
+	tex_0 = "./assests/textures/art/art53.bmp";
 	tex_1 = "0";
 }
 
@@ -856,7 +856,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art54.bmp";
+	tex_0 = "./assests/textures/art/art54.bmp";
 	tex_1 = "0";
 }
 
@@ -867,7 +867,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art55.bmp";
+	tex_0 = "./assests/textures/art/art55.bmp";
 	tex_1 = "0";
 }
 
@@ -878,7 +878,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art56.bmp";
+	tex_0 = "./assests/textures/art/art56.bmp";
 	tex_1 = "0";
 }
 
@@ -889,7 +889,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art57.bmp";
+	tex_0 = "./assests/textures/art/art57.bmp";
 	tex_1 = "0";
 }
 
@@ -900,7 +900,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art58.bmp";
+	tex_0 = "./assests/textures/art/art58.bmp";
 	tex_1 = "0";
 }
 
@@ -911,7 +911,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art59.bmp";
+	tex_0 = "./assests/textures/art/art59.bmp";
 	tex_1 = "0";
 }
 
@@ -922,7 +922,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art5.bmp";
+	tex_0 = "./assests/textures/art/art5.bmp";
 	tex_1 = "0";
 }
 
@@ -933,7 +933,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art60.bmp";
+	tex_0 = "./assests/textures/art/art60.bmp";
 	tex_1 = "0";
 }
 
@@ -944,7 +944,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art61.bmp";
+	tex_0 = "./assests/textures/art/art61.bmp";
 	tex_1 = "0";
 }
 
@@ -955,7 +955,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art6.bmp";
+	tex_0 = "./assests/textures/art/art6.bmp";
 	tex_1 = "0";
 }
 
@@ -966,7 +966,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/art8.bmp";
+	tex_0 = "./assests/textures/art/art8.bmp";
 	tex_1 = "0";
 }
 
@@ -977,7 +977,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/ctm1.bmp";
+	tex_0 = "./assests/textures/art/ctm1.bmp";
 	tex_1 = "0";
 }
 
@@ -989,8 +989,8 @@ component {
 	h = "41";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/carpet1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/carpet1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 component {
@@ -1000,8 +1000,8 @@ component {
 	h = "4";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/carpet1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/carpet1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # CORE ROOM
@@ -1012,8 +1012,8 @@ component {
 	h = "45";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/floor1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # The south wall.
@@ -1024,7 +1024,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -1036,7 +1036,7 @@ component {
 	h = "45";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -1048,7 +1048,7 @@ component {
 	h = "12";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -1059,7 +1059,7 @@ component {
 	h = "12";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -1070,7 +1070,7 @@ component {
 	h = "9";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -1084,8 +1084,8 @@ component {
 	h = "8";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/floor1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # Topmost wall of the extension
@@ -1096,7 +1096,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -1107,7 +1107,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -1118,7 +1118,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -1130,7 +1130,7 @@ component {
 	h = "9";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -1143,7 +1143,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1153,7 +1153,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1163,7 +1163,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1173,7 +1173,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1183,7 +1183,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1193,7 +1193,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1203,7 +1203,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1213,7 +1213,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1223,7 +1223,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1233,7 +1233,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1243,7 +1243,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1253,7 +1253,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1263,7 +1263,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1273,7 +1273,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1283,7 +1283,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1293,7 +1293,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1303,7 +1303,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1313,7 +1313,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1323,7 +1323,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1333,7 +1333,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1343,7 +1343,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1353,7 +1353,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1363,7 +1363,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+	sprite_sheet = "./assests/sprites/columns/column1.bmp";
 }
 thing {
 	type = "1";
@@ -1373,7 +1373,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1383,7 +1383,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1393,7 +1393,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1403,7 +1403,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1413,7 +1413,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1423,7 +1423,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1433,7 +1433,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1443,7 +1443,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1453,7 +1453,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1463,7 +1463,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1473,7 +1473,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1483,7 +1483,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1493,7 +1493,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1503,7 +1503,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1513,7 +1513,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1523,7 +1523,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1533,7 +1533,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1543,7 +1543,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1553,7 +1553,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1563,7 +1563,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1573,7 +1573,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1583,7 +1583,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1593,7 +1593,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1603,7 +1603,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1613,7 +1613,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1623,7 +1623,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1633,7 +1633,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1643,7 +1643,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 thing {
 	type = "1";
@@ -1653,7 +1653,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+	sprite_sheet = "./assests/sprites/columns/column1.bmp";
 }
 
 # Connects Palace Lower Wing to Courtyard.
@@ -1664,8 +1664,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/floor1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 component {
@@ -1675,8 +1675,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/floor1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 component {
@@ -1686,8 +1686,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/floor1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 component {
@@ -1697,8 +1697,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/floor1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # Connects the North Wing to the courtyard.
@@ -1709,8 +1709,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/floor1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # COURTYARD
@@ -1724,7 +1724,7 @@ component {
 	h = "12";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_0 = "./assests/textures/baroque/ext1.bmp";
 	tex_1 = "0";
 }
 
@@ -1735,7 +1735,7 @@ component {
 	h = "12";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_0 = "./assests/textures/baroque/ext1.bmp";
 	tex_1 = "0";
 }
 
@@ -1746,7 +1746,7 @@ component {
 	h = "8";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_0 = "./assests/textures/baroque/ext1.bmp";
 	tex_1 = "0";
 }
 
@@ -1758,7 +1758,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_0 = "./assests/textures/baroque/ext1.bmp";
 	tex_1 = "0";
 }
 
@@ -1769,7 +1769,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_0 = "./assests/textures/baroque/ext1.bmp";
 	tex_1 = "0";
 }
 
@@ -1780,7 +1780,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_0 = "./assests/textures/baroque/ext1.bmp";
 	tex_1 = "0";
 }
 
@@ -1792,7 +1792,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_0 = "./assests/textures/baroque/ext1.bmp";
 	tex_1 = "0";
 }
 
@@ -1803,7 +1803,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/ext1.bmp";
+	tex_0 = "./assests/textures/baroque/ext1.bmp";
 	tex_1 = "0";
 }
 
@@ -1814,7 +1814,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/stone1.bmp";
+	tex_0 = "./assests/textures/wall/stone1.bmp";
 	tex_1 = "0";
 }
 
@@ -1826,7 +1826,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/stone2.bmp";
+	tex_0 = "./assests/textures/wall/stone2.bmp";
 	tex_1 = "0";
 }
 
@@ -1837,7 +1837,7 @@ component {
 	h = "36";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/wall/stone1.bmp";
+	tex_0 = "./assests/textures/wall/stone1.bmp";
 	tex_1 = "0";
 }
 
@@ -1852,8 +1852,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # West
@@ -1864,8 +1864,8 @@ component {
 	h = "30";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # South
@@ -1876,8 +1876,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # Area under the fountain
@@ -1888,7 +1888,7 @@ component {
 	h = "3";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
 	tex_1 = "0";
 }
 
@@ -1901,7 +1901,7 @@ component {
 	h = "10";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
 	tex_1 = "0";
 }
 
@@ -1913,7 +1913,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
 	tex_1 = "0";
 }
 
@@ -1925,7 +1925,7 @@ component {
 	h = "17";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
 	tex_1 = "0";
 }
 
@@ -1937,7 +1937,7 @@ component {
 	h = "3";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
 	tex_1 = "0";
 }
 
@@ -1949,7 +1949,7 @@ component {
 	h = "3";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
 	tex_1 = "0";
 }
 
@@ -1960,7 +1960,7 @@ component {
 	h = "3";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
 	tex_1 = "0";
 }
 
@@ -1971,7 +1971,7 @@ component {
 	h = "3";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
 	tex_1 = "0";
 }
 
@@ -1982,7 +1982,7 @@ component {
 	h = "8";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/floor/cobblestone1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
 	tex_1 = "0";
 }
 
@@ -1994,7 +1994,7 @@ component {
 	h = "34";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/grass/grass1.bmp";
+	tex_0 = "./assests/textures/grass/grass1.bmp";
 	tex_1 = "0";
 }
 
@@ -2008,7 +2008,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/statue.bmp";
+	sprite_sheet = "./assests/sprites/statue.bmp";
 }
 
 thing {
@@ -2019,7 +2019,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/st_michael_statue.bmp";
+	sprite_sheet = "./assests/sprites/st_michael_statue.bmp";
 }
 
 # Trees
@@ -2031,7 +2031,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2042,7 +2042,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2053,7 +2053,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2064,7 +2064,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2075,7 +2075,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2086,7 +2086,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2097,7 +2097,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2108,7 +2108,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2119,7 +2119,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2130,7 +2130,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2141,7 +2141,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2152,7 +2152,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2163,7 +2163,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2174,7 +2174,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2185,7 +2185,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2196,7 +2196,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2207,7 +2207,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2218,7 +2218,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2229,7 +2229,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2240,7 +2240,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2251,7 +2251,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2262,7 +2262,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2273,7 +2273,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2284,7 +2284,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2295,7 +2295,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2306,7 +2306,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2317,7 +2317,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2328,7 +2328,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2339,7 +2339,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2350,7 +2350,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2361,7 +2361,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2372,7 +2372,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2383,7 +2383,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2394,7 +2394,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2405,7 +2405,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2416,7 +2416,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2427,7 +2427,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2438,7 +2438,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2449,7 +2449,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2460,7 +2460,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2471,7 +2471,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2482,7 +2482,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2493,7 +2493,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2504,7 +2504,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2515,7 +2515,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2526,7 +2526,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2537,7 +2537,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2548,7 +2548,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2559,7 +2559,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2570,7 +2570,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2581,7 +2581,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2592,7 +2592,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2603,7 +2603,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2614,7 +2614,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2625,7 +2625,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2636,7 +2636,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 thing {
@@ -2647,7 +2647,7 @@ thing {
 	rot = "0";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/foliage/tree1.bmp";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
 }
 
 # Connects the Main Room to the North Wing
@@ -2658,8 +2658,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/floor1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # The Main Room
@@ -2671,8 +2671,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/carpet1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/carpet1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # Floor
@@ -2683,8 +2683,8 @@ component {
 	h = "6";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/floor1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 # Imperial City Mural
@@ -2695,7 +2695,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/imperial_city/m00.bmp";
+	tex_0 = "./assests/textures/art/imperial_city/m00.bmp";
 	tex_1 = "0";
 }
 
@@ -2706,7 +2706,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/imperial_city/m01.bmp";
+	tex_0 = "./assests/textures/art/imperial_city/m01.bmp";
 	tex_1 = "0";
 }
 
@@ -2717,7 +2717,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/imperial_city/m02.bmp";
+	tex_0 = "./assests/textures/art/imperial_city/m02.bmp";
 	tex_1 = "0";
 }
 
@@ -2728,7 +2728,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/imperial_city/m03.bmp";
+	tex_0 = "./assests/textures/art/imperial_city/m03.bmp";
 	tex_1 = "0";
 }
 
@@ -2739,7 +2739,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/imperial_city/m04.bmp";
+	tex_0 = "./assests/textures/art/imperial_city/m04.bmp";
 	tex_1 = "0";
 }
 
@@ -2750,7 +2750,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/imperial_city/m05.bmp";
+	tex_0 = "./assests/textures/art/imperial_city/m05.bmp";
 	tex_1 = "0";
 }
 
@@ -2761,7 +2761,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/imperial_city/m06.bmp";
+	tex_0 = "./assests/textures/art/imperial_city/m06.bmp";
 	tex_1 = "0";
 }
 
@@ -2772,7 +2772,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/art/imperial_city/m07.bmp";
+	tex_0 = "./assests/textures/art/imperial_city/m07.bmp";
 	tex_1 = "0";
 }
 
@@ -2785,7 +2785,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 
 thing {
@@ -2796,7 +2796,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/vases/vase1.bmp";
+	sprite_sheet = "./assests/sprites/vases/vase1.bmp";
 }
 
 # Columns
@@ -2808,7 +2808,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+	sprite_sheet = "./assests/sprites/columns/column1.bmp";
 }
 
 thing {
@@ -2819,7 +2819,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+	sprite_sheet = "./assests/sprites/columns/column1.bmp";
 }
 
 thing {
@@ -2830,7 +2830,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+	sprite_sheet = "./assests/sprites/columns/column1.bmp";
 }
 
 thing {
@@ -2841,7 +2841,7 @@ thing {
 	rot = "72";
 
 	anim_class = "0";
-	sprite_sheet = "./src/assests/sprites/columns/column1.bmp";
+	sprite_sheet = "./assests/sprites/columns/column1.bmp";
 }
 
 # North Wall
@@ -2852,7 +2852,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -2864,7 +2864,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -2875,7 +2875,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -2887,7 +2887,7 @@ component {
 	h = "6";
 
 	is_floor_ciel = "0";
-	tex_0 = "./src/assests/textures/baroque/wall1.bmp";
+	tex_0 = "./assests/textures/baroque/wall1.bmp";
 	tex_1 = "0";
 }
 
@@ -2899,8 +2899,8 @@ component {
 	h = "2";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/baroque/floor1.bmp";
-	tex_1 = "./src/assests/textures/baroque/ceiling1.bmp";
+	tex_0 = "./assests/textures/baroque/floor1.bmp";
+	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
 }
 
 component {
@@ -2910,6 +2910,6 @@ component {
 	h = "1";
 
 	is_floor_ciel = "1";
-	tex_0 = "./src/assests/textures/grass/grass1.bmp";
+	tex_0 = "./assests/textures/grass/grass1.bmp";
 	tex_1 = "0";
 }
