@@ -11,7 +11,19 @@ to simulate 3D environments. It was most famously used in the game
 Wolfenstein 3D by iD Software in the early 90's.
 
 ## How do I run raycore?
-Please see Issue Summary
+To run raycore, you need to have SDL2 (Simple Direct Media Layer) installed.
+
+Once you've got that installed, make sure you are in the root of the project.
+When you are there, run the command
+
+```make all```
+
+Provided there are no errors, you should be able to navigate to the `bin/` folder.
+Then run
+
+```./raycore.out```
+
+You should now be able to run the application!
 
 # Issue Summary
 Please navigate to the [Issue tab](https://github.com/wynnliam/raycore/issues) for the
