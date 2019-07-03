@@ -1,6 +1,6 @@
 // Liam Wynn, 5/11/2018, CS410p: Full Stack Web Development
 
-#include <emscripten.h>
+//#include <emscripten.h>
 #include <stdio.h>
 
 #include "loop_handling.h"
@@ -51,7 +51,7 @@ int main() {
 	//do_loop(renderer);
 
 	// Actually sets the rendering loop.
-	emscripten_set_main_loop_arg(loop, &ctx, fps_count, run_infinite);
+	//emscripten_set_main_loop_arg(loop, &ctx, fps_count, run_infinite);
 
 	clean_up();
 
