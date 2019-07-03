@@ -12,7 +12,7 @@
 #include <SDL2/SDL.h>
 
 #include "animation.h"
-#include "./parse/parser.h"
+#include "./map_loading/parse/parser.h"
 
 #define MAP_W	20
 #define MAP_H	10
