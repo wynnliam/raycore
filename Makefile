@@ -12,4 +12,4 @@ all: $(SRC)
 	$(CMP) $(FLG) $(SRC) -o $(OUT) $(LIB)
 
 clean:
-	rm public/raycaster.*
+	rm $(OUT)
