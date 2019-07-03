@@ -545,8 +545,6 @@ void clean_thing(struct thingdef* to_clean) {
 	if(!to_clean)
 		return;
 
-	unsigned int j;
-
 	if(to_clean->surf) {
 		SDL_FreeSurface(to_clean->surf);
 		to_clean->surf = NULL;
