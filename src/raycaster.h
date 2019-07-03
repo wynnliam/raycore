@@ -1,4 +1,4 @@
-// Liam Wynn, 5/13/2018, CS410p: Full Stack Web Development
+// Liam Wynn, 5/13/2018, Raycore
 
 /*
 	Contains every function, parameter, and so on for performing

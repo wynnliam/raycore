@@ -1,4 +1,4 @@
-// Liam Wynn, 5/12/2018, CS410p: Full Stack Web Development
+// Liam Wynn, 5/12/2018, Raycore
 
 /*
 	Defines the properties of a basic map. For now, this data

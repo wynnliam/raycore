@@ -1,4 +1,4 @@
-// Liam Wynn, 7/28/2018, CS410p: Full Stack Web Development
+// Liam Wynn, 7/28/2018, Raycore
 
 #include "map.h"
 

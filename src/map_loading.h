@@ -1,4 +1,4 @@
-// Liam Wynn, 4/17/2019, Spaceman
+// Liam Wynn, 4/17/2019, Raycore
 
 #ifndef MAP_LOADING
 #define MAP_LOADING

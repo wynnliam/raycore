@@ -1,4 +1,4 @@
-// Liam Wynn, 4/17/2019, Spaceman
+// Liam Wynn, 4/17/2019, Raycore
 
 // TODO: Clean up:
 // Loading (if num levels is 0)

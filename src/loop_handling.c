@@ -1,4 +1,4 @@
-// Liam Wynn, 5/11/2018, CS410p: Full Stack Web Development
+// Liam Wynn, 5/11/2018, Raycore
 
 #include "loop_handling.h"
 #include "raycaster.h"

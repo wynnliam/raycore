@@ -1,4 +1,4 @@
-// Liam Wynn, 6/26/2018, CS410p: Full Stack Web Development
+// Liam Wynn, 6/26/2018, Raycore
 
 /*
 	Defines data structures and procedures relating to

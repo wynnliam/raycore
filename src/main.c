@@ -1,4 +1,4 @@
-// Liam Wynn, 5/11/2018, CS410p: Full Stack Web Development
+// Liam Wynn, 5/11/2018, Raycore
 
 //#include <emscripten.h>
 #include <stdio.h>
