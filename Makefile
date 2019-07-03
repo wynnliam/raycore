@@ -4,7 +4,9 @@ LIB= -lm -lSDL2
 OUT= ./bin/raycore.out
 
 SRC= ./src/*.c \
-	 ./src/parse/*.c
+     ./src/map/*.c \
+     ./src/map/map_loading/*.c \
+     ./src/map/map_loading/parse/*.c
 
 .PHONY: clean
 
