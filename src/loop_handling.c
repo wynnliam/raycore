@@ -2,8 +2,8 @@
 
 #include "loop_handling.h"
 #include "raycaster.h"
-#include "map_loading.h"
-#include "./parse/parser.h"
+#include "./map/map_loading/map_loading.h"
+#include "./map/map_loading/parse/parser.h"
 
 #include <stdio.h>
 

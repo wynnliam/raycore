@@ -5,7 +5,7 @@
 	the raycast algorithm.
 */
 
-#include "map.h"
+#include "./map/map.h"
 
 #ifndef RAYCASTER
 #define RAYCASTER
