@@ -1,7 +1,7 @@
 // Liam Wynn, 5/11/2018, Raycore
 
 #include "loop_handling.h"
-#include "raycaster.h"
+#include "./rendering/raycaster.h"
 #include "./map/map_loading/map_loading.h"
 #include "./map/map_loading/parse/parser.h"
 

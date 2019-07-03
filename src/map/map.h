@@ -11,7 +11,7 @@
 
 #include <SDL2/SDL.h>
 
-#include "../animation.h"
+#include "../animation/animation.h"
 #include "./map_loading/parse/parser.h"
 
 #define MAP_W	20
