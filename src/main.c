@@ -48,7 +48,7 @@ int main() {
 	initialize(renderer);
 
 	// Now run the loop.
-	//do_loop(renderer);
+	do_loop(renderer);
 
 	// Actually sets the rendering loop.
 	//emscripten_set_main_loop_arg(loop, &ctx, fps_count, run_infinite);
