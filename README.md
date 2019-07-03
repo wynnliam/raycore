@@ -31,8 +31,8 @@ most up-to-date list of issues. Nonetheless, I'll try my best to keep a list her
 quick viewing.
 
 Current outstanding issues:
-- LICENSE needs to be added
-- Original raycasting system needs to be imported.
+- If you fail to load a level, the system gets stuck in a loop. Ctrl-C, 'P' key, exit button
+do not work.
 
 # Licensing
 This program is licensed uder the "MIT License". Please see the `LICENSE` in the source distribution
