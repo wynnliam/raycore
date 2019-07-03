@@ -4,6 +4,8 @@ LIB= -lm -lSDL2
 OUT= ./bin/raycore.out
 
 SRC= ./src/*.c \
+     ./src/rendering/*.c \
+     ./src/animation/*.c \
      ./src/map/*.c \
      ./src/map/map_loading/*.c \
      ./src/map/map_loading/parse/*.c
