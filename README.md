@@ -1,5 +1,5 @@
 # raycore
-Copyright 2019 Liam Wynn
+Copyright (c) 2019 Liam Wynn
 
 A simple raycasting based game engine
 
@@ -23,7 +23,8 @@ Current outstanding issues:
 - Original raycasting system needs to be imported.
 
 # Licensing
-Please see Issue Summary.
+This program is licensed uder the "MIT License". Please see the `LICENSE` in the source distribution
+of this software for license terms.
 
 # A brief history of raycore
 In brief, raycore is the project for my CS 461p class at Portland State Unviersity.
