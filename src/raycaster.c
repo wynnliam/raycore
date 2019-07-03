@@ -223,9 +223,6 @@ void initialize_lookup_tables() {
 }
 
 static void compute_lookup_vals_for_angle(const int deg) {
-	// Stores the angle in radians.
-	float curr_angle;
-
 	compute_tan_lookup_val_for_angle(deg);
 	compute_inverse_tan_lookup_val_for_angle(deg);
 	sin128table[deg] = (int)round(sin(deg * M_PI / 180.0f) * 128);
@@ -517,8 +514,6 @@ static void get_ray_hit(int ray_angle, struct hitinfo* hit) {
 static int compute_initial_ray_pos(const int ray_angle, int curr_h[2], int curr_v[2]) {
 	if(is_tan_undefined_for_angle(ray_angle))
 		return 0;
-
-	int alpha;
 
 	if(is_angle_in_quadrant_1(ray_angle)) {
 		compute_initial_ray_pos_when_angle_in_quad_1(ray_angle, curr_h, curr_v);
