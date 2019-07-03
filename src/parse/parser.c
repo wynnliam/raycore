@@ -185,9 +185,6 @@ int parse_attribute(char c, FILE* map_file, struct map_data* map_data) {
 	// Used to fill buffer.
 	unsigned int index;
 
-	// If the data type is an integer, we would store that here
-	int attrib_val_as_int;
-
 	// The parser detects c is a "relevent" character (not whitespace or a comment or end of line).
 	// However, it is a closing curly brace, so it denotes the end of the recipe's attributes.
 	if(c == '}') {
