@@ -34,6 +34,43 @@ Current outstanding issues:
 - If you fail to load a level, the system gets stuck in a loop. Ctrl-C, 'P' key, exit button
 do not work.
 
+# Roadmap
+raycore is a project that will be on-going. That is, I will like to add several features to
+it that make it a more robust engine. As features come up, I'll add them here. Furthermore, as
+features become more fleshed out, I will update them here. Roughly speaking, features that
+become in active development will be moved into Issue Summary.
+
+With all this said, here is the current laundry list of dream features, ordered roughly
+by their priority:
+
+* Clean up what already exists! This is the key one because right now, raycore is a mess! A lot of it
+was slapped together, and if we go in with a poor foundation, this thing will inevitably implode.
+
+* Entities. Currently, levels consist of two object types: geometry (walls, floors, ceilings, sky texture),
+and "things", which are props that are rendered as sprites. Entities would be a third object in levels that
+control some part of game or environment logic. These will be player spawn points, sounds, AI, etc.
+
+* AI. This will be a rewrite of an AI system I did a few years ago with An Engine of Ice and Fire (which you
+can find on my github). However, this will be even more simplistic, as I will only include the ability to find
+a path from two points A to B. Everything beyond that is pretty game-dependent. This will essentially be A-star
+pathfinding.
+
+* Sound. Right now you can render environments, walk around them, and (when Entities are done) do stuff in them.
+But it's like a silent movie. I would like to add a robust sound system. The plan is to use OpenAL for this,
+so that I can do 3D sounds. Basically, if a gun goes off in one corner of the level, you'll only hear it
+if you're close to it AND you'll hear it based on its relative position to you.
+
+* GUI System. Basically things like menus and whatnot. Like AI, I had a system in An Engine of Ice and Fire
+that worked fairly well, which I'd like to bring back and spruce up here. This is only a neccessity for when
+there are more game elements to interact with. I want to avoid "dangling features" or neat features that I
+don't do anything with for a long time.
+
+* Multiplayer. I think it'd be very cool to have the ability to connect with other players in a game. This
+is a faaar off dream right now, since integrating it will require a lot of rewriting. As such, I'd like to
+have a more "defined" engine in place before I decide how it integrates into the system.
+
+This list is subject to change, to say the least.
+
 # Licensing
 This program is licensed uder the "MIT License". Please see the `LICENSE` in the source distribution
 of this software for license terms.
