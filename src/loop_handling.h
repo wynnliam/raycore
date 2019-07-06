@@ -16,10 +16,21 @@
 // Handles any pre-loop logic we need.
 void initialize(SDL_Renderer* renderer);
 
-// Handles any non-rendering logic we need
-// per frame. Returns 1 if we want to do another
-// loop iteration, and 0 if we want to quit.
-int update();
+/*
+	Performs a single step of non-rendering game logic.
+
+	PRECONDITIONS:
+		initialize needs to be called.
+
+	POSTCONDITIONS:
+		Several game-specific objects will likely be modified.
+
+	ARGUMENTS:
+		keep_running: A flag that we pass in to tell us if
+		we should keep running the game. If 0, it will end the game.
+		Otherwise, we keep going.
+*/
+void update(int* keep_running);
 
 // Handles per-frame rendering logic.
 void render(SDL_Renderer* renderer);

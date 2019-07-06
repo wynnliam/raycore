@@ -33,7 +33,7 @@ void do_loop(SDL_Renderer* renderer) {
 		startTicks = SDL_GetTicks();
 
 		// Things like keyboard input and user movement.
-		keep_running_game_loop = update();
+		update(&keep_running_game_loop);
 		// Do a ray-casting rendering step.
 		render(renderer);
 
@@ -73,9 +73,14 @@ void initialize(SDL_Renderer* renderer) {
 
 /*UPDATE PROCEDURES*/
 // TODO: Clean up this!
-int update() {
+void update(int* keep_going) {
+	// Uh oh, something terrible happened.
+	if(!keep_going)
+		return;
+
 	int result = 1;
 	SDL_Event event;
+	// TODO: Move to input handling function.
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_KEYDOWN) {
 			if(event.key.keysym.sym == SDLK_1) {
@@ -137,8 +142,10 @@ int update() {
 		}
 	}
 
-	if(!map)
-		return result;
+	if(!map) {
+		*keep_going = result;
+		return;
+	}
 
 	int i;
 	for(i = 0; i < map->num_things; ++i) {
@@ -157,7 +164,7 @@ int update() {
 			update_anim_class_2(&map->things[i]);
 	}
 
-	return result;
+	*keep_going = result;
 }
 
 void update_thing_type_0(struct mapdef* map, struct thingdef* thing) {
