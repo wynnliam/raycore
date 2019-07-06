@@ -82,6 +82,11 @@ void update(int* keep_going) {
 	SDL_Event event;
 	// TODO: Move to input handling function.
 	while(SDL_PollEvent(&event)) {
+		if(event.type == SDL_QUIT) {
+			*keep_going = 0;
+			return;
+		}
+
 		if(event.type == SDL_KEYDOWN) {
 			if(event.key.keysym.sym == SDLK_1) {
 				free_map(&map);
