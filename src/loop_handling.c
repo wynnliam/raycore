@@ -72,15 +72,11 @@ void initialize(SDL_Renderer* renderer) {
 }
 
 /*UPDATE PROCEDURES*/
-// TODO: Clean up this!
-void update(int* keep_going) {
-	// Uh oh, something terrible happened.
-	if(!keep_going)
-		return;
-
-	int result = 1;
+// TODO: Should be called in do_loop
+// TODO: Should also use AEOIAF method of storing array of key presses
+// to update function can access them.
+void handle_input(int* keep_going) {
 	SDL_Event event;
-	// TODO: Move to input handling function.
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
 			*keep_going = 0;
@@ -98,7 +94,7 @@ void update(int* keep_going) {
 			}
 
 			if(event.key.keysym.sym == SDLK_p) {
-				result = 0;
+				*keep_going = 0;
 			}
 
 			if(map) {
@@ -146,6 +142,20 @@ void update(int* keep_going) {
 			}
 		}
 	}
+}
+
+// TODO: Clean up this!
+void update(int* keep_going) {
+	// Uh oh, something terrible happened.
+	if(!keep_going)
+		return;
+
+	handle_input(keep_going);
+
+	if((*keep_going) == 0)
+		return;
+
+	int result = 1;
 
 	if(!map) {
 		*keep_going = result;
