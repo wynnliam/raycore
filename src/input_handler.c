@@ -3,14 +3,13 @@
 #include "./input_handler.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 
 static const Uint8* curr_keyboard_state = NULL;
-static const Uint8* prev_keyboard_state = NULL;
 
 void handle_inputs() {
 	SDL_PumpEvents();
 
-	prev_keyboard_state = curr_keyboard_state;
 	curr_keyboard_state = SDL_GetKeyboardState(NULL);
 }
 

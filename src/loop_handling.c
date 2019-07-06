@@ -85,12 +85,6 @@ void initialize(SDL_Renderer* renderer) {
 			*keep_going = 0;
 			return;
 		}
-
-		if(event.type == SDL_KEYDOWN) {
-
-
-		}
-	}
 }*/
 
 // TODO: Clean up this!
@@ -119,48 +113,46 @@ void update(int* keep_going) {
 		return;
 	}
 
-	if(map) {
-		if(key_pressed(SDL_SCANCODE_A)) {
-			player_rot += 2;
+	if(key_pressed(SDL_SCANCODE_A)) {
+		player_rot += 2;
 
-			if(player_rot < 0)
-				player_rot += 360;
-			if(player_rot > 360)
-				player_rot -= 360;
-		}
+		if(player_rot < 0)
+			player_rot += 360;
+		if(player_rot > 360)
+			player_rot -= 360;
+	}
 
-		if(key_pressed(SDL_SCANCODE_D)) {
-			player_rot -= 2;
+	if(key_pressed(SDL_SCANCODE_D)) {
+		player_rot -= 2;
 
-			if(player_rot < 0)
-				player_rot += 360;
-			if(player_rot > 360)
-				player_rot -= 360;
-		}
+		if(player_rot < 0)
+			player_rot += 360;
+		if(player_rot > 360)
+			player_rot -= 360;
+	}
 
-		if(key_pressed(SDL_SCANCODE_W)) {
-			player_y -= (sin128table[player_rot] << 4) >> 7;
-			player_x += (cos128table[player_rot] << 4) >> 7;
+	if(key_pressed(SDL_SCANCODE_W)) {
+		player_y -= (sin128table[player_rot] << 4) >> 7;
+		player_x += (cos128table[player_rot] << 4) >> 7;
 
-			if(get_tile(player_x, player_y, map) < 0 || is_position_wall(map, player_x, player_y)) {
-				player_y += (sin128table[player_rot] << 4) >> 7;
-				player_x -= (cos128table[player_rot] << 4) >> 7;
-			}
-		}
-
-		if(key_pressed(SDL_SCANCODE_S)) {
+		if(get_tile(player_x, player_y, map) < 0 || is_position_wall(map, player_x, player_y)) {
 			player_y += (sin128table[player_rot] << 4) >> 7;
 			player_x -= (cos128table[player_rot] << 4) >> 7;
-
-			if(get_tile(player_x, player_y, map) < 0 || is_position_wall(map, player_x, player_y)) {
-				player_y -= (sin128table[player_rot] << 4) >> 7;
-				player_x += (cos128table[player_rot] << 4) >> 7;
-			}
 		}
+	}
 
-		/*if(event.key.keysym.sym == SDLK_c) {
-			printf("Player position = [%d, %d]. Player rotation = %d\n", player_x, player_y, player_rot);
-		}*/
+	if(key_pressed(SDL_SCANCODE_S)) {
+		player_y += (sin128table[player_rot] << 4) >> 7;
+		player_x -= (cos128table[player_rot] << 4) >> 7;
+
+		if(get_tile(player_x, player_y, map) < 0 || is_position_wall(map, player_x, player_y)) {
+			player_y -= (sin128table[player_rot] << 4) >> 7;
+			player_x += (cos128table[player_rot] << 4) >> 7;
+		}
+	}
+
+	if(key_pressed(SDL_SCANCODE_C)) {
+		printf("Player position = [%d, %d]. Player rotation = %d\n", player_x, player_y, player_rot);
 	}
 
 	int i;
