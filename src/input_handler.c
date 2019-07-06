@@ -23,6 +23,9 @@ int key_pressed(const int key) {
 }
 
 int key_pressed_once(const int key) {
+	if(key < SDL_SCANCODE_A || key >= SDL_NUM_SCANCODES || !curr_keyboard_state || !prev_keyboard_state)
+		return 0;
+
 	return curr_keyboard_state[key] && !prev_keyboard_state[key];
 }
 
