@@ -1,6 +1,7 @@
 // Liam Wynn, 5/11/2018, Raycore
 
 #include "loop_handling.h"
+#include "./input_handler.h"
 #include "./rendering/raycaster.h"
 #include "./map/map_loading/map_loading.h"
 #include "./map/map_loading/parse/parser.h"
@@ -32,6 +33,8 @@ void do_loop(SDL_Renderer* renderer) {
 	while(1) {
 		startTicks = SDL_GetTicks();
 
+		// Grab all keyboard and mouse inputs.
+		handle_inputs();
 		// Things like keyboard input and user movement.
 		update(&keep_running_game_loop);
 		// Do a ray-casting rendering step.
@@ -75,7 +78,7 @@ void initialize(SDL_Renderer* renderer) {
 // TODO: Should be called in do_loop
 // TODO: Should also use AEOIAF method of storing array of key presses
 // to update function can access them.
-void handle_input(int* keep_going) {
+/*void handle_input(int* keep_going) {
 	SDL_Event event;
 	while(SDL_PollEvent(&event)) {
 		if(event.type == SDL_QUIT) {
@@ -84,65 +87,11 @@ void handle_input(int* keep_going) {
 		}
 
 		if(event.type == SDL_KEYDOWN) {
-			if(event.key.keysym.sym == SDLK_1) {
-				free_map(&map);
-				map = load_map(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
 
-				curr_level++;
-				if(curr_level >= get_num_loaded_maps())
-					curr_level = 0;
-			}
 
-			if(event.key.keysym.sym == SDLK_p) {
-				*keep_going = 0;
-			}
-
-			if(map) {
-				if(event.key.keysym.sym == SDLK_a) {
-					player_rot += 2;
-
-					if(player_rot < 0)
-						player_rot += 360;
-					if(player_rot > 360)
-						player_rot -= 360;
-				}
-
-				if(event.key.keysym.sym == SDLK_d) {
-					player_rot -= 2;
-
-					if(player_rot < 0)
-						player_rot += 360;
-					if(player_rot > 360)
-						player_rot -= 360;
-				}
-
-				if(event.key.keysym.sym == SDLK_w) {
-					player_y -= (sin128table[player_rot] << 4) >> 7;
-					player_x += (cos128table[player_rot] << 4) >> 7;
-
-					if(get_tile(player_x, player_y, map) < 0 || is_position_wall(map, player_x, player_y)) {
-						player_y += (sin128table[player_rot] << 4) >> 7;
-						player_x -= (cos128table[player_rot] << 4) >> 7;
-					}
-				}
-
-				if(event.key.keysym.sym == SDLK_s) {
-					player_y += (sin128table[player_rot] << 4) >> 7;
-					player_x -= (cos128table[player_rot] << 4) >> 7;
-
-					if(get_tile(player_x, player_y, map) < 0 || is_position_wall(map, player_x, player_y)) {
-						player_y -= (sin128table[player_rot] << 4) >> 7;
-						player_x += (cos128table[player_rot] << 4) >> 7;
-					}
-				}
-
-				if(event.key.keysym.sym == SDLK_c) {
-					printf("Player position = [%d, %d]. Player rotation = %d\n", player_x, player_y, player_rot);
-				}
-			}
 		}
 	}
-}
+}*/
 
 // TODO: Clean up this!
 void update(int* keep_going) {
@@ -150,16 +99,68 @@ void update(int* keep_going) {
 	if(!keep_going)
 		return;
 
-	handle_input(keep_going);
-
-	if((*keep_going) == 0)
-		return;
-
 	int result = 1;
+
+	if(key_pressed(SDL_SCANCODE_1)) {
+		free_map(&map);
+		map = load_map(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
+
+		curr_level++;
+		if(curr_level >= get_num_loaded_maps())
+			curr_level = 0;
+	}
+
+	if(key_pressed(SDL_SCANCODE_P)) {
+		result = 0;
+	}
 
 	if(!map) {
 		*keep_going = result;
 		return;
+	}
+
+	if(map) {
+		if(key_pressed(SDL_SCANCODE_A)) {
+			player_rot += 2;
+
+			if(player_rot < 0)
+				player_rot += 360;
+			if(player_rot > 360)
+				player_rot -= 360;
+		}
+
+		if(key_pressed(SDL_SCANCODE_D)) {
+			player_rot -= 2;
+
+			if(player_rot < 0)
+				player_rot += 360;
+			if(player_rot > 360)
+				player_rot -= 360;
+		}
+
+		if(key_pressed(SDL_SCANCODE_W)) {
+			player_y -= (sin128table[player_rot] << 4) >> 7;
+			player_x += (cos128table[player_rot] << 4) >> 7;
+
+			if(get_tile(player_x, player_y, map) < 0 || is_position_wall(map, player_x, player_y)) {
+				player_y += (sin128table[player_rot] << 4) >> 7;
+				player_x -= (cos128table[player_rot] << 4) >> 7;
+			}
+		}
+
+		if(key_pressed(SDL_SCANCODE_S)) {
+			player_y += (sin128table[player_rot] << 4) >> 7;
+			player_x -= (cos128table[player_rot] << 4) >> 7;
+
+			if(get_tile(player_x, player_y, map) < 0 || is_position_wall(map, player_x, player_y)) {
+				player_y -= (sin128table[player_rot] << 4) >> 7;
+				player_x += (cos128table[player_rot] << 4) >> 7;
+			}
+		}
+
+		/*if(event.key.keysym.sym == SDLK_c) {
+			printf("Player position = [%d, %d]. Player rotation = %d\n", player_x, player_y, player_rot);
+		}*/
 	}
 
 	int i;
