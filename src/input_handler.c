@@ -5,12 +5,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+static int num_scancodes;
 static const Uint8* curr_keyboard_state = NULL;
+static Uint8* prev_keyboard_state = NULL;
 
 void handle_inputs() {
 	SDL_PumpEvents();
 
-	curr_keyboard_state = SDL_GetKeyboardState(NULL);
+	curr_keyboard_state = SDL_GetKeyboardState(&num_scancodes);
 }
 
 int key_pressed(const int key) {
@@ -18,4 +20,24 @@ int key_pressed(const int key) {
 		return 0;
 
 	return curr_keyboard_state[key];
+}
+
+int key_pressed_once(const int key) {
+	return curr_keyboard_state[key] && !prev_keyboard_state[key];
+}
+
+void save_prev_keyboard_state() {
+	if(prev_keyboard_state)
+		free(prev_keyboard_state);
+
+	if(!curr_keyboard_state || num_scancodes < 1) {
+		prev_keyboard_state = NULL;
+		return;
+	}
+
+	prev_keyboard_state = (Uint8*)malloc(sizeof(Uint8) * num_scancodes);
+
+	int i;
+	for(i = 0; i < num_scancodes; i++)
+		prev_keyboard_state[i] = curr_keyboard_state[i];
 }

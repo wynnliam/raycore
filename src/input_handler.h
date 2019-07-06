@@ -47,5 +47,10 @@ void handle_inputs();
 */
 int key_pressed(const int key);
 
+int key_pressed_once(const int key);
+
+void save_prev_keyboard_state();
+
+
 #endif
 

@@ -40,6 +40,8 @@ void do_loop(SDL_Renderer* renderer) {
 		// Do a ray-casting rendering step.
 		render(renderer);
 
+		save_prev_keyboard_state();
+
 		if(!keep_running_game_loop)
 			break;
 
@@ -95,7 +97,7 @@ void update(int* keep_going) {
 
 	int result = 1;
 
-	if(key_pressed(SDL_SCANCODE_1)) {
+	if(key_pressed_once(SDL_SCANCODE_1)) {
 		free_map(&map);
 		map = load_map(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
 
