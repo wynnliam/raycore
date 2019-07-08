@@ -12,6 +12,8 @@
 
 #include <stdio.h>
 
+static struct state state_example;
+
 // Stores the player 
 int player_x, player_y;
 // The player rotation.
@@ -38,7 +40,7 @@ void do_loop(SDL_Renderer* renderer) {
 		startTicks = SDL_GetTicks();
 
 		// Grab all keyboard and mouse inputs.
-		handle_inputs();
+		process_input();
 		// Things like keyboard input and user movement.
 		update(&keep_running_game_loop);
 		// Do a ray-casting rendering step.
@@ -60,6 +62,17 @@ void do_loop(SDL_Renderer* renderer) {
 /*INITIALIZATION PROCEDURES*/
 
 void initialize(SDL_Renderer* renderer) {
+	// TODO: Move state creation elsewhere
+	state_example.initialize = &state_example_initialize;
+	state_example.enter = &state_example_enter;
+	state_example.leave = &state_example_leave;
+	state_example.process_input = &state_example_process_input;
+	state_example.update = &state_example_update;
+	state_example.draw = &state_example_draw;
+	state_example.clean_up = &state_example_clean_up;
+	state_example.quit = &state_example_quit;
+	state_example.id = 0;
+
 	player_x = 256;
 	player_y = 256;
 	player_rot = 0;
@@ -78,26 +91,29 @@ void initialize(SDL_Renderer* renderer) {
 	initialize_map_lookup_table();
 	curr_level = 0;
 	map = NULL;
+
+	(*state_example.initialize)(renderer);
+	// Entering and leaving a state only make sense in the context of
+	// other states, really. However, this here would be entering the
+	// first state of the game.
+	(*state_example.enter)();
+}
+
+void process_input() {
+	// Calling the input handler's function
+	handle_inputs();
+	(*state_example.process_input)();
 }
 
 /*UPDATE PROCEDURES*/
-// TODO: Should be called in do_loop
-// TODO: Should also use AEOIAF method of storing array of key presses
-// to update function can access them.
-/*void handle_input(int* keep_going) {
-	SDL_Event event;
-	while(SDL_PollEvent(&event)) {
-		if(event.type == SDL_QUIT) {
-			*keep_going = 0;
-			return;
-		}
-}*/
-
 // TODO: Clean up this!
 void update(int* keep_going) {
 	// Uh oh, something terrible happened.
 	if(!keep_going)
 		return;
+
+	(*state_example.update)();
+	*keep_going = (*state_example.quit)();
 
 	int result = 1;
 
@@ -224,6 +240,7 @@ void update_anim_class_2(struct thingdef* thing) {
 
 /*RENDERING PROCEDURES*/
 void render(SDL_Renderer* renderer) {
+	(*state_example.draw)(renderer);
 	SDL_SetRenderDrawColor(renderer, 100, 149, 237, 255);
 	// Fills the screen with the current render draw color, which is
 	// cornflower blue.
@@ -237,6 +254,13 @@ void render(SDL_Renderer* renderer) {
 }
 
 void clean_up() {
+	// Just like entering, leaving only makes sense in the
+	// context of other states (leaving state A and entering state B).
+	// However, when we clean up, we want to make sure we are not in
+	// any particular state.
+	(*state_example.leave)();
+	(*state_example.clean_up)();
+
 	printf("Cleaning up raycaster!\n");
 
 	free_map(&map);

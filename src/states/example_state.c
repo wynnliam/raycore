@@ -31,3 +31,7 @@ void state_example_draw(SDL_Renderer* renderer) {
 void state_example_clean_up() {
 	printf("Example Clean Up!\n");
 }
+
+int state_example_quit() {
+	return 0;
+}

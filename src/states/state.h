@@ -38,6 +38,8 @@ struct state {
 	void (*draw)(SDL_Renderer*);
 	void (*clean_up)();
 
+	int (*quit)();
+
 	int id;
 };
 
