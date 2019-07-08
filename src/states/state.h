@@ -3,6 +3,8 @@
 #ifndef STATE
 #define STATE
 
+#include <SDL2/SDL.h>
+
 /*
 	At any given moment, a game is in some kind of state.
 	Each state is something akin to its own program. Depending
@@ -28,8 +30,15 @@
 */
 
 struct state {
+	void (*initialize)(SDL_Renderer*);
+	void (*enter)();
+	void (*leave)();
+	void (*process_input)();
+	void (*update)();
+	void (*draw)(SDL_Renderer*);
+	void (*clean_up)();
+
 	int id;
-	void* data;
 };
 
 #endif
