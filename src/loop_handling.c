@@ -5,6 +5,7 @@
 #include "./rendering/raycaster.h"
 
 #include "./states/state.h"
+#include "./states/example_state.h"
 
 #include "./map/map_loading/map_loading.h"
 #include "./map/map_loading/parse/parser.h"
