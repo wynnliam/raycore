@@ -73,14 +73,12 @@ void initialize(SDL_Renderer* renderer) {
 	// Entering and leaving a state only make sense in the context of
 	// other states, really. However, this here would be entering the
 	// first state of the game.
-	//(*state_example.enter)();
 	(*(curr_state->enter))();
 }
 
 void process_input() {
 	// Calling the input handler's function
 	handle_inputs();
-	//(*state_example.process_input)();
 	(*(curr_state->process_input))();
 }
 
@@ -91,16 +89,12 @@ void update(int* keep_going) {
 	if(!keep_going)
 		return;
 
-	//(*state_example.update)();
-	//*keep_going = !(*state_example.quit)();
 	(*(curr_state->update))();
 	*keep_going = !(*(curr_state->quit))();
 }
 
-
 /*RENDERING PROCEDURES*/
 void render(SDL_Renderer* renderer) {
-	//(*state_example.draw)(renderer);
 	(*(curr_state->draw))(renderer);
 }
 
@@ -109,8 +103,8 @@ void clean_up() {
 	// context of other states (leaving state A and entering state B).
 	// However, when we clean up, we want to make sure we are not in
 	// any particular state.
-	//(*state_example.leave)();
 	(*(curr_state->leave))();
+
 	(*state_main_menu.clean_up)();
 	(*state_example.clean_up)();
 }
