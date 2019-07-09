@@ -9,8 +9,9 @@
 
 #include <stdio.h>
 
-static struct state state_example;
-static struct state state_main_menu;
+static struct state* curr_state;
+static struct state  state_example;
+static struct state  state_main_menu;
 
 /* GAME LOOP IMPLEMENTATION */
 void do_loop(SDL_Renderer* renderer) {
@@ -66,18 +67,21 @@ void initialize(SDL_Renderer* renderer) {
 
 	(*state_example.initialize)(renderer);
 	(*state_main_menu.initialize)(renderer);
+
+	curr_state = &state_main_menu;
+
 	// Entering and leaving a state only make sense in the context of
 	// other states, really. However, this here would be entering the
 	// first state of the game.
 	//(*state_example.enter)();
-	(*state_main_menu.enter)();
+	(*(curr_state->enter))();
 }
 
 void process_input() {
 	// Calling the input handler's function
 	handle_inputs();
 	//(*state_example.process_input)();
-	(*state_main_menu.process_input)();
+	(*(curr_state->process_input))();
 }
 
 /*UPDATE PROCEDURES*/
@@ -89,15 +93,15 @@ void update(int* keep_going) {
 
 	//(*state_example.update)();
 	//*keep_going = !(*state_example.quit)();
-	(*state_main_menu.update)();
-	*keep_going = !(*state_main_menu.quit)();
+	(*(curr_state->update))();
+	*keep_going = !(*(curr_state->quit))();
 }
 
 
 /*RENDERING PROCEDURES*/
 void render(SDL_Renderer* renderer) {
 	//(*state_example.draw)(renderer);
-	(*state_main_menu.draw)(renderer);
+	(*(curr_state->draw))(renderer);
 }
 
 void clean_up() {
@@ -106,7 +110,7 @@ void clean_up() {
 	// However, when we clean up, we want to make sure we are not in
 	// any particular state.
 	//(*state_example.leave)();
-	(*state_main_menu.leave)();
+	(*(curr_state->leave))();
 	(*state_main_menu.clean_up)();
 	(*state_example.clean_up)();
 }
