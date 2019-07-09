@@ -40,9 +40,9 @@ void do_loop(SDL_Renderer* renderer) {
 		if(next_state_id != -1) {
 			(*(curr_state->leave))();
 
-			if(next_state_id == 0)
+			if(next_state_id == STATE_ID_EXAMPLE)
 				curr_state = &state_example;
-			else
+			else if(next_state_id == STATE_ID_MAIN_MENU)
 				curr_state = &state_main_menu;
 
 			(*(curr_state->enter))();

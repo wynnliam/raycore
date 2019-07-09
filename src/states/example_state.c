@@ -18,7 +18,8 @@ int player_rot;
 unsigned int curr_level;
 struct mapdef* map;
 
-int quit = 0;
+static int quit = 0;
+static int next_state;
 
 void update_thing_type_0(struct mapdef* map, struct thingdef* thing);
 void update_thing_type_1(struct mapdef* map, struct thingdef* thing);
@@ -44,12 +45,14 @@ void state_example_initialize(SDL_Renderer* renderer) {
 	// Map Loading
 
 	initialize_map_lookup_table();
+
 	curr_level = 0;
-	map = NULL;
+	map = load_map(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
+	curr_level++;
 }
 
 void state_example_enter() {
-	printf("Example Enter!\n");
+	next_state = STATE_ID_NONE;
 }
 
 void state_example_leave() {
@@ -57,8 +60,8 @@ void state_example_leave() {
 }
 
 void state_example_process_input() {
-	if(key_pressed(SDL_SCANCODE_P)) {
-		quit = 1;
+	if(key_pressed_once(SDL_SCANCODE_P)) {
+		next_state = STATE_ID_MAIN_MENU;
 	}
 }
 
@@ -199,5 +202,5 @@ int state_example_quit() {
 }
 
 int state_example_next_state() {
-	return -1;
+	return next_state;
 }

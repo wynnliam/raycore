@@ -4,6 +4,7 @@
 #define STATE_MAIN_MENU
 
 #include <SDL2/SDL.h>
+#include "./state.h"
 
 void state_main_menu_initialize(SDL_Renderer* renderer);
 void state_main_menu_enter();

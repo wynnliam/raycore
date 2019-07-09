@@ -5,6 +5,10 @@
 
 #include <SDL2/SDL.h>
 
+#define STATE_ID_NONE		-1
+#define STATE_ID_MAIN_MENU	0
+#define STATE_ID_EXAMPLE	1
+
 /*
 	At any given moment, a game is in some kind of state.
 	Each state is something akin to its own program. Depending
