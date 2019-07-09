@@ -27,6 +27,11 @@
 
 		-clean_up: Similar to leave (potentially), but what is called when
 		we quit the game.
+
+		-quit: Returns 1 if we want to quit the game. Returns 0 if not.
+
+		-next_state: Returns -1 if we want to remain in this state,
+		otherwise returns an integer specifying the state we want.
 */
 
 struct state {
@@ -39,6 +44,7 @@ struct state {
 	void (*clean_up)();
 
 	int (*quit)();
+	int (*next_state)();
 
 	int id;
 };

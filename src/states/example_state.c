@@ -197,3 +197,7 @@ void state_example_clean_up() {
 int state_example_quit() {
 	return quit;
 }
+
+int state_example_next_state() {
+	return -1;
+}

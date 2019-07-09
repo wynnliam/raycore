@@ -14,5 +14,6 @@ void state_example_draw(SDL_Renderer* renderer);
 void state_example_clean_up();
 
 int state_example_quit();
+int state_example_next_state();
 
 #endif

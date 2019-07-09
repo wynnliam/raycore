@@ -14,6 +14,7 @@ void state_main_menu_draw(SDL_Renderer* renderer);
 void state_main_menu_clean_up();
 
 int state_main_menu_quit();
+int state_main_menu_next_state();
 
 #endif
 

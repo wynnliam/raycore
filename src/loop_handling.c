@@ -16,6 +16,7 @@ static struct state  state_main_menu;
 /* GAME LOOP IMPLEMENTATION */
 void do_loop(SDL_Renderer* renderer) {
 	int keep_running_game_loop;
+	int next_state_id;
 	unsigned int startTicks, endTicks;
 	unsigned int tickDiff;
 
@@ -33,6 +34,19 @@ void do_loop(SDL_Renderer* renderer) {
 
 		if(!keep_running_game_loop)
 			break;
+
+		next_state_id = (*(curr_state->next_state))();
+
+		if(next_state_id != -1) {
+			(*(curr_state->leave))();
+
+			if(next_state_id == 0)
+				curr_state = &state_example;
+			else
+				curr_state = &state_main_menu;
+
+			(*(curr_state->enter))();
+		}
 
 		endTicks = SDL_GetTicks();
 		tickDiff = endTicks - startTicks;
@@ -54,6 +68,7 @@ void initialize(SDL_Renderer* renderer) {
 	state_example.draw = &state_example_draw;
 	state_example.clean_up = &state_example_clean_up;
 	state_example.quit = &state_example_quit;
+	state_example.next_state = &state_example_next_state;
 	state_example.id = 0;
 
 	state_main_menu.initialize = &state_main_menu_initialize;
@@ -64,6 +79,8 @@ void initialize(SDL_Renderer* renderer) {
 	state_main_menu.draw = &state_main_menu_draw;
 	state_main_menu.clean_up = &state_main_menu_clean_up;
 	state_main_menu.quit = &state_main_menu_quit;
+	state_main_menu.next_state = &state_main_menu_next_state;
+	state_example.id = 1;
 
 	(*state_example.initialize)(renderer);
 	(*state_main_menu.initialize)(renderer);
@@ -83,7 +100,6 @@ void process_input() {
 }
 
 /*UPDATE PROCEDURES*/
-// TODO: Clean up this!
 void update(int* keep_going) {
 	// Uh oh, something terrible happened.
 	if(!keep_going)

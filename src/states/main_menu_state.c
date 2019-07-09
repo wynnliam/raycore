@@ -5,11 +5,13 @@
 #include "../input_handler.h"
 
 static int quit = 0;
+static int next_state = -1;
 
 void state_main_menu_initialize(SDL_Renderer* renderer) {
 }
 
 void state_main_menu_enter() {
+	next_state = -1;
 }
 
 void state_main_menu_leave() {
@@ -18,6 +20,10 @@ void state_main_menu_leave() {
 void state_main_menu_process_input() {
 	if(key_pressed(SDL_SCANCODE_P)) {
 		quit = 1;
+	}
+
+	if(key_pressed_once(SDL_SCANCODE_1)) {
+		next_state = 0;
 	}
 }
 
@@ -38,4 +44,8 @@ void state_main_menu_clean_up() {
 
 int state_main_menu_quit() {
 	return quit;
+}
+
+int state_main_menu_next_state() {
+	return next_state;
 }
