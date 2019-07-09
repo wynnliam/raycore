@@ -45,8 +45,6 @@ struct state {
 
 	int (*quit)();
 	int (*next_state)();
-
-	int id;
 };
 
 #endif

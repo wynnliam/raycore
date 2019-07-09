@@ -69,7 +69,6 @@ void initialize(SDL_Renderer* renderer) {
 	state_example.clean_up = &state_example_clean_up;
 	state_example.quit = &state_example_quit;
 	state_example.next_state = &state_example_next_state;
-	state_example.id = 0;
 
 	state_main_menu.initialize = &state_main_menu_initialize;
 	state_main_menu.enter = &state_main_menu_enter;
@@ -80,7 +79,6 @@ void initialize(SDL_Renderer* renderer) {
 	state_main_menu.clean_up = &state_main_menu_clean_up;
 	state_main_menu.quit = &state_main_menu_quit;
 	state_main_menu.next_state = &state_main_menu_next_state;
-	state_example.id = 1;
 
 	(*state_example.initialize)(renderer);
 	(*state_main_menu.initialize)(renderer);
