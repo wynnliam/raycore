@@ -1,6 +1,8 @@
 // Liam Wynn, 7/9/2019, Raycore
 
-#include "./main_menu.h"
+#include "./main_menu_state.h"
+
+#include "../input_handler.h"
 
 static int quit = 0;
 
@@ -23,7 +25,7 @@ void state_main_menu_update() {
 }
 
 void state_main_menu_draw(SDL_Renderer* renderer) {
-	SDL_SetRenderDrawColor(render, 125, 78, 145, 255);
+	SDL_SetRenderDrawColor(renderer, 125, 78, 145, 255);
 	SDL_RenderClear(renderer);
 
 	// ...
