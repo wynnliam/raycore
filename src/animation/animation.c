@@ -99,3 +99,4 @@ int get_thing_orientation(int thing_rot, int player_rot) {
 
 	return orientation;
 }
+
