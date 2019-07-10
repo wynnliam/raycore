@@ -17,6 +17,7 @@ static struct state  state_main_menu;
 void do_loop(SDL_Renderer* renderer) {
 	int keep_running_game_loop;
 	int next_state_id;
+	void* message;
 	unsigned int startTicks, endTicks;
 	unsigned int tickDiff;
 
@@ -38,6 +39,7 @@ void do_loop(SDL_Renderer* renderer) {
 		next_state_id = (*(curr_state->next_state))();
 
 		if(next_state_id != -1) {
+			message = (*(curr_state->get_pass_message))();
 			(*(curr_state->leave))();
 
 			if(next_state_id == STATE_ID_EXAMPLE)
@@ -45,7 +47,7 @@ void do_loop(SDL_Renderer* renderer) {
 			else if(next_state_id == STATE_ID_MAIN_MENU)
 				curr_state = &state_main_menu;
 
-			(*(curr_state->enter))();
+			(*(curr_state->enter))(next_state_id, message);
 		}
 
 		endTicks = SDL_GetTicks();
@@ -90,7 +92,7 @@ void initialize(SDL_Renderer* renderer) {
 	// Entering and leaving a state only make sense in the context of
 	// other states, really. However, this here would be entering the
 	// first state of the game.
-	(*(curr_state->enter))();
+	(*(curr_state->enter))(STATE_ID_NONE, NULL);
 }
 
 void process_input() {

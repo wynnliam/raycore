@@ -2,6 +2,7 @@
 
 #include "./example_state.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "../rendering/raycaster.h"
 #include "../input_handler.h"
@@ -51,8 +52,19 @@ void state_example_initialize(SDL_Renderer* renderer) {
 	curr_level++;
 }
 
-void state_example_enter() {
+void state_example_enter(const int from_state, void* message) {
+	// Setting this to NONE requests the loop handler to NOT
+	// transition to another state.
 	next_state = STATE_ID_NONE;
+
+	if(!message)
+		return;
+
+	// The message is a string in this case.
+	if(from_state == STATE_ID_MAIN_MENU)
+		printf("%s", (char*)message);
+
+	free(message);
 }
 
 void state_example_leave() {

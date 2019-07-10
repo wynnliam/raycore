@@ -45,7 +45,7 @@
 
 struct state {
 	void (*initialize)(SDL_Renderer*);
-	void (*enter)();
+	void (*enter)(const int from_state, void* message);
 	void (*leave)();
 	void (*process_input)();
 	void (*update)();

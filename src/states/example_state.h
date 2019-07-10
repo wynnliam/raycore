@@ -7,7 +7,7 @@
 #include "./state.h"
 
 void state_example_initialize(SDL_Renderer* renderer);
-void state_example_enter();
+void state_example_enter(const int from_state, void* message);
 void state_example_leave();
 void state_example_process_input();
 void state_example_update();

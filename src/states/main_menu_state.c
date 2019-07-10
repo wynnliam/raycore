@@ -3,6 +3,7 @@
 #include "./main_menu_state.h"
 
 #include "../input_handler.h"
+#include <stdlib.h>
 
 static int quit = 0;
 static int next_state = STATE_ID_NONE;
@@ -10,8 +11,11 @@ static int next_state = STATE_ID_NONE;
 void state_main_menu_initialize(SDL_Renderer* renderer) {
 }
 
-void state_main_menu_enter() {
+void state_main_menu_enter(const int from_state, void* message) {
 	next_state = STATE_ID_NONE;
+
+	if(message)
+		free(message);
 }
 
 void state_main_menu_leave() {
@@ -56,5 +60,5 @@ void* state_main_menu_get_pass_message() {
 	char* result = (char*)malloc(strlen(message) + 1);
 	strcpy(result, message);
 
-	return (void*)message;
+	return (void*)result;
 }
