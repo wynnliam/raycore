@@ -13,11 +13,13 @@ static struct state* curr_state;
 static struct state  state_example;
 static struct state  state_main_menu;
 
+static struct state* get_state(const int id);
+static void change_state(const int curr_state_id, const int next_state_id);
+
 /* GAME LOOP IMPLEMENTATION */
 void do_loop(SDL_Renderer* renderer) {
 	int keep_running_game_loop;
-	int prev_state_id, next_state_id;
-	void* message;
+	int next_state_id;
 	unsigned int startTicks, endTicks;
 	unsigned int tickDiff;
 
@@ -36,20 +38,10 @@ void do_loop(SDL_Renderer* renderer) {
 		if(!keep_running_game_loop)
 			break;
 
-		prev_state_id = curr_state->id;
 		next_state_id = (*(curr_state->next_state))();
+		if(next_state_id != STATE_ID_NONE)
+			change_state(curr_state->id, next_state_id);
 
-		if(next_state_id != -1) {
-			message = (*(curr_state->get_pass_message))();
-			(*(curr_state->leave))();
-
-			if(next_state_id == STATE_ID_EXAMPLE)
-				curr_state = &state_example;
-			else if(next_state_id == STATE_ID_MAIN_MENU)
-				curr_state = &state_main_menu;
-
-			(*(curr_state->enter))(prev_state_id, message);
-		}
 
 		endTicks = SDL_GetTicks();
 		tickDiff = endTicks - startTicks;
@@ -57,6 +49,29 @@ void do_loop(SDL_Renderer* renderer) {
 		if(tickDiff < IDEAL_FRAMES_PER_SECOND)
 			SDL_Delay(IDEAL_FRAMES_PER_SECOND - tickDiff);
 	}
+}
+
+static struct state* get_state(const int id) {
+	if(id == STATE_ID_MAIN_MENU)
+		return &state_main_menu;
+	else if(id == STATE_ID_EXAMPLE)
+		return &state_example;
+	else
+		return NULL;
+}
+
+static void change_state(const int curr_state_id, const int next_state_id) {
+	struct state* next_state = get_state(next_state_id);
+	void* message;
+
+	if(!next_state)
+		return;
+
+	message = (*(curr_state->get_pass_message))();
+
+	(*(curr_state->leave))();
+	curr_state = next_state;
+	(*(curr_state->enter))(curr_state_id, message);
 }
 
 /*INITIALIZATION PROCEDURES*/
