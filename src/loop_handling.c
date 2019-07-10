@@ -13,6 +13,9 @@ static struct state* curr_state;
 static struct state  state_example;
 static struct state  state_main_menu;
 
+static struct state* get_state(const int id);
+static void change_state(const int curr_state_id, const int next_state_id);
+
 /* GAME LOOP IMPLEMENTATION */
 void do_loop(SDL_Renderer* renderer) {
 	int keep_running_game_loop;
@@ -36,17 +39,9 @@ void do_loop(SDL_Renderer* renderer) {
 			break;
 
 		next_state_id = (*(curr_state->next_state))();
+		if(next_state_id != STATE_ID_NONE)
+			change_state(curr_state->id, next_state_id);
 
-		if(next_state_id != -1) {
-			(*(curr_state->leave))();
-
-			if(next_state_id == STATE_ID_EXAMPLE)
-				curr_state = &state_example;
-			else if(next_state_id == STATE_ID_MAIN_MENU)
-				curr_state = &state_main_menu;
-
-			(*(curr_state->enter))();
-		}
 
 		endTicks = SDL_GetTicks();
 		tickDiff = endTicks - startTicks;
@@ -54,6 +49,29 @@ void do_loop(SDL_Renderer* renderer) {
 		if(tickDiff < IDEAL_FRAMES_PER_SECOND)
 			SDL_Delay(IDEAL_FRAMES_PER_SECOND - tickDiff);
 	}
+}
+
+static struct state* get_state(const int id) {
+	if(id == STATE_ID_MAIN_MENU)
+		return &state_main_menu;
+	else if(id == STATE_ID_EXAMPLE)
+		return &state_example;
+	else
+		return NULL;
+}
+
+static void change_state(const int curr_state_id, const int next_state_id) {
+	struct state* next_state = get_state(next_state_id);
+	void* message;
+
+	if(!next_state)
+		return;
+
+	message = (*(curr_state->get_pass_message))();
+
+	(*(curr_state->leave))();
+	curr_state = next_state;
+	(*(curr_state->enter))(curr_state_id, message);
 }
 
 /*INITIALIZATION PROCEDURES*/
@@ -69,6 +87,8 @@ void initialize(SDL_Renderer* renderer) {
 	state_example.clean_up = &state_example_clean_up;
 	state_example.quit = &state_example_quit;
 	state_example.next_state = &state_example_next_state;
+	state_example.get_pass_message = &state_example_get_pass_message;
+	state_example.id = STATE_ID_EXAMPLE;
 
 	state_main_menu.initialize = &state_main_menu_initialize;
 	state_main_menu.enter = &state_main_menu_enter;
@@ -79,6 +99,8 @@ void initialize(SDL_Renderer* renderer) {
 	state_main_menu.clean_up = &state_main_menu_clean_up;
 	state_main_menu.quit = &state_main_menu_quit;
 	state_main_menu.next_state = &state_main_menu_next_state;
+	state_main_menu.get_pass_message = &state_main_menu_get_pass_message;
+	state_example.id = STATE_ID_MAIN_MENU;
 
 	(*state_example.initialize)(renderer);
 	(*state_main_menu.initialize)(renderer);
@@ -88,7 +110,7 @@ void initialize(SDL_Renderer* renderer) {
 	// Entering and leaving a state only make sense in the context of
 	// other states, really. However, this here would be entering the
 	// first state of the game.
-	(*(curr_state->enter))();
+	(*(curr_state->enter))(STATE_ID_NONE, NULL);
 }
 
 void process_input() {

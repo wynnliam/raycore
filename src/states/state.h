@@ -36,11 +36,16 @@
 
 		-next_state: Returns -1 if we want to remain in this state,
 		otherwise returns an integer specifying the state we want.
+
+		-get_pass_message: Returns some kind of data the state we are
+		leaving wants to give the state we are entering. If we do not
+		want to pass data, simply return NULL. Note that when the next state
+		recieves the message, it becomes the next state's responsibility.
 */
 
 struct state {
 	void (*initialize)(SDL_Renderer*);
-	void (*enter)();
+	void (*enter)(const int from_state, void* message);
 	void (*leave)();
 	void (*process_input)();
 	void (*update)();
@@ -49,6 +54,9 @@ struct state {
 
 	int (*quit)();
 	int (*next_state)();
+	void* (*get_pass_message)();
+
+	int id;
 };
 
 #endif
