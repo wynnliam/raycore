@@ -16,7 +16,7 @@ static struct state  state_main_menu;
 /* GAME LOOP IMPLEMENTATION */
 void do_loop(SDL_Renderer* renderer) {
 	int keep_running_game_loop;
-	int next_state_id;
+	int prev_state_id, next_state_id;
 	void* message;
 	unsigned int startTicks, endTicks;
 	unsigned int tickDiff;
@@ -36,6 +36,7 @@ void do_loop(SDL_Renderer* renderer) {
 		if(!keep_running_game_loop)
 			break;
 
+		prev_state_id = curr_state->id;
 		next_state_id = (*(curr_state->next_state))();
 
 		if(next_state_id != -1) {
@@ -47,7 +48,7 @@ void do_loop(SDL_Renderer* renderer) {
 			else if(next_state_id == STATE_ID_MAIN_MENU)
 				curr_state = &state_main_menu;
 
-			(*(curr_state->enter))(next_state_id, message);
+			(*(curr_state->enter))(prev_state_id, message);
 		}
 
 		endTicks = SDL_GetTicks();
@@ -72,6 +73,7 @@ void initialize(SDL_Renderer* renderer) {
 	state_example.quit = &state_example_quit;
 	state_example.next_state = &state_example_next_state;
 	state_example.get_pass_message = &state_example_get_pass_message;
+	state_example.id = STATE_ID_EXAMPLE;
 
 	state_main_menu.initialize = &state_main_menu_initialize;
 	state_main_menu.enter = &state_main_menu_enter;
@@ -83,6 +85,7 @@ void initialize(SDL_Renderer* renderer) {
 	state_main_menu.quit = &state_main_menu_quit;
 	state_main_menu.next_state = &state_main_menu_next_state;
 	state_main_menu.get_pass_message = &state_main_menu_get_pass_message;
+	state_example.id = STATE_ID_MAIN_MENU;
 
 	(*state_example.initialize)(renderer);
 	(*state_main_menu.initialize)(renderer);

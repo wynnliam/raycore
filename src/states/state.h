@@ -55,6 +55,8 @@ struct state {
 	int (*quit)();
 	int (*next_state)();
 	void* (*get_pass_message)();
+
+	int id;
 };
 
 #endif
