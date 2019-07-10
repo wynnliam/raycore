@@ -1,4 +1,37 @@
+// Liam Wynn, 7/10/2019, Raycore
+
 #include "./thing.h"
+#include "./map.h"
+
+static void update_thing_type_0(struct mapdef* map, struct thingdef* thing);
+static void update_thing_type_1(struct mapdef* map, struct thingdef* thing);
+static void update_anim_class_0(struct thingdef* thing, const int player_rot);
+static void update_anim_class_1(struct thingdef* thing, const int player_rot);
+static void update_anim_class_2(struct thingdef* thing, const int player_rot);
+
+void update_things(struct mapdef* map, const int player_rot) {
+	if(!map)
+		return;
+
+	int i;
+	for(i = 0; i < map->num_things; ++i) {
+		// Update according to type.
+		if(map->things[i].type == 0)
+			update_thing_type_0(map, &map->things[i]);
+		else if(map->things[i].type == 1)
+			update_thing_type_1(map, &map->things[i]);
+
+		update_thing_anim(&map->things[i], player_rot);
+	}
+}
+
+void update_thing_type_0(struct mapdef* map, struct thingdef* thing) {
+	// Nothing to do since this is just a player spawn.
+}
+
+void update_thing_type_1(struct mapdef* map, struct thingdef* thing) {
+	// Nothing to do since this is just a static prop.
+}
 
 void update_thing_anim(struct thingdef* thing, const int player_rot) {
 	// Update animation according to class

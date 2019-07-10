@@ -22,9 +22,6 @@ struct mapdef* map;
 static int quit = 0;
 static int next_state;
 
-void update_thing_type_0(struct mapdef* map, struct thingdef* thing);
-void update_thing_type_1(struct mapdef* map, struct thingdef* thing);
-
 void state_example_initialize(SDL_Renderer* renderer) {
 	player_x = 256;
 	player_y = 256;
@@ -129,25 +126,9 @@ void state_example_update() {
 		printf("Player position = [%d, %d]. Player rotation = %d\n", player_x, player_y, player_rot);
 	}
 
-	int i;
-	for(i = 0; i < map->num_things; ++i) {
-		// Update according to type.
-		if(map->things[i].type == 0)
-			update_thing_type_0(map, &map->things[i]);
-		else if(map->things[i].type == 1)
-			update_thing_type_1(map, &map->things[i]);
-
-		update_thing_anim(&map->things[i], player_rot);
-	}
+	update_things(map, player_rot);
 }
 
-void update_thing_type_0(struct mapdef* map, struct thingdef* thing) {
-	// Nothing to do since this is just a player spawn.
-}
-
-void update_thing_type_1(struct mapdef* map, struct thingdef* thing) {
-	// Nothing to do since this is just a static prop.
-}
 
 void state_example_draw(SDL_Renderer* renderer) {
 	SDL_SetRenderDrawColor(renderer, 100, 149, 237, 255);
