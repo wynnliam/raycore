@@ -128,4 +128,5 @@ void stop_anim(struct animdef* anim);
 */
 int get_thing_orientation(int thing_rot, int player_rot);
 
+
 #endif

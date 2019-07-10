@@ -22,13 +22,6 @@ struct mapdef* map;
 static int quit = 0;
 static int next_state;
 
-void update_thing_type_0(struct mapdef* map, struct thingdef* thing);
-void update_thing_type_1(struct mapdef* map, struct thingdef* thing);
-
-void update_anim_class_0(struct thingdef* thing);
-void update_anim_class_1(struct thingdef* thing);
-void update_anim_class_2(struct thingdef* thing);
-
 void state_example_initialize(SDL_Renderer* renderer) {
 	player_x = 256;
 	player_y = 256;
@@ -133,64 +126,9 @@ void state_example_update() {
 		printf("Player position = [%d, %d]. Player rotation = %d\n", player_x, player_y, player_rot);
 	}
 
-	int i;
-	for(i = 0; i < map->num_things; ++i) {
-		// Update according to type.
-		if(map->things[i].type == 0)
-			update_thing_type_0(map, &map->things[i]);
-		else if(map->things[i].type == 1)
-			update_thing_type_1(map, &map->things[i]);
-
-		// Update animation according to class
-		if(map->things[i].anim_class == 0)
-			update_anim_class_0(&map->things[i]);
-		else if(map->things[i].anim_class == 1)
-			update_anim_class_1(&map->things[i]);
-		else if(map->things[i].anim_class == 2)
-			update_anim_class_2(&map->things[i]);
-	}
+	update_things(map, player_rot);
 }
 
-void update_thing_type_0(struct mapdef* map, struct thingdef* thing) {
-	// Nothing to do since this is just a player spawn.
-}
-
-void update_thing_type_1(struct mapdef* map, struct thingdef* thing) {
-	// Nothing to do since this is just a static prop.
-}
-
-void update_anim_class_0(struct thingdef* thing) {
-	// Nothing to do since this is just a single frame.
-}
-
-void update_anim_class_1(struct thingdef* thing) {
-	int orientation;
-
-	orientation = get_thing_orientation(thing->rotation, player_rot);
-	thing->curr_anim = 0;
-	thing->anims[0].curr_frame = orientation;
-	thing->anims[0].start_x = 0;
-}
-
-void update_anim_class_2(struct thingdef* thing) {
-	int orientation;
-	int anim;
-
-	// Get the orientation of the thing. Add one to it to get the walking animation
-	// for that orientation.
-	orientation = get_thing_orientation(thing->rotation, player_rot);
-	anim = (orientation << 1) + 1;
-
-	// If the animation the thing should have is not the same as its current,
-	// stop the current animation, then set the current animation to the correct one.
-	if(anim != thing->curr_anim) {
-		stop_anim(&thing->anims[thing->curr_anim]);
-		thing->curr_anim = anim;
-		start_anim(&thing->anims[thing->curr_anim]);
-	}
-
-	update_anim(&thing->anims[thing->curr_anim]);
-}
 
 void state_example_draw(SDL_Renderer* renderer) {
 	SDL_SetRenderDrawColor(renderer, 100, 149, 237, 255);
