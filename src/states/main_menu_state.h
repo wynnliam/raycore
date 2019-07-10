@@ -16,6 +16,7 @@ void state_main_menu_clean_up();
 
 int state_main_menu_quit();
 int state_main_menu_next_state();
+void* state_main_menu_get_pass_message();
 
 #endif
 

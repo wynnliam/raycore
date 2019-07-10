@@ -49,3 +49,12 @@ int state_main_menu_quit() {
 int state_main_menu_next_state() {
 	return next_state;
 }
+
+void* state_main_menu_get_pass_message() {
+	char* message = "Coming from main menu!\n";
+
+	char* result = (char*)malloc(strlen(message) + 1);
+	strcpy(result, message);
+
+	return (void*)message;
+}

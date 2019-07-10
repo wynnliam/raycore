@@ -39,7 +39,8 @@
 
 		-get_pass_message: Returns some kind of data the state we are
 		leaving wants to give the state we are entering. If we do not
-		want to pass data, simply return NULL.
+		want to pass data, simply return NULL. Note that when the next state
+		recieves the message, it becomes the next state's responsibility.
 */
 
 struct state {
@@ -53,7 +54,7 @@ struct state {
 
 	int (*quit)();
 	int (*next_state)();
-	void* (*get_pass_message());
+	void* (*get_pass_message)();
 };
 
 #endif

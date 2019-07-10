@@ -204,3 +204,7 @@ int state_example_quit() {
 int state_example_next_state() {
 	return next_state;
 }
+
+void* state_example_get_pass_message() {
+	return NULL;
+}
