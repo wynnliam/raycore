@@ -7,8 +7,18 @@
 
 static int quit = 0;
 static int next_state = STATE_ID_NONE;
+static SDL_Texture* help_graphic = NULL;
 
 void state_main_menu_initialize(SDL_Renderer* renderer) {
+	char* help_graphic_path = "./assests/ui/help.bmp";
+	SDL_Surface* loaded_bmp = SDL_LoadBMP(help_graphic_path);
+
+	if(!loaded_bmp)
+		help_graphic = NULL;
+	else {
+		help_graphic = SDL_CreateTextureFromSurface(renderer, loaded_bmp);
+		SDL_FreeSurface(loaded_bmp);
+	}
 }
 
 void state_main_menu_enter(const int from_state, void* message) {
@@ -38,7 +48,8 @@ void state_main_menu_draw(SDL_Renderer* renderer) {
 	SDL_SetRenderDrawColor(renderer, 125, 78, 145, 255);
 	SDL_RenderClear(renderer);
 
-	// ...
+	if(help_graphic)
+		SDL_RenderCopy(renderer, help_graphic, NULL, NULL);
 
 	SDL_RenderPresent(renderer);
 }
