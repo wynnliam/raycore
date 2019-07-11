@@ -32,6 +32,10 @@ Then run
 
 You should now be able to run the application!
 
+## Developer Documentation
+For a how-to on adding features or building a game using raycore, please see the
+repo [wiki](https://github.com/wynnliam/raycore/wiki).
+
 # Issue Summary
 Please navigate to the [Issue tab](https://github.com/wynnliam/raycore/issues) for the
 most up-to-date list of issues. Nonetheless, I'll try my best to keep a list here for
