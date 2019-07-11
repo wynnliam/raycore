@@ -12,6 +12,13 @@ Wolfenstein 3D by iD Software in the early 90's.
 
 ## How do I run raycore?
 To run raycore, you need to have SDL2 (Simple Direct Media Layer) installed.
+Google will help you here, since installing it is dependent on the OS you are using.
+[Go here](https://lazyfoo.net/tutorials/SDL/01_hello_SDL/) for instructions to install
+SDL2.
+
+Please note that I developed this in a Linux environment. Thus, while I assume that
+the system will work regardless of the OS you are using, I cannot guarantee this will
+work on say Windows.
 
 Once you've got that installed, make sure you are in the root of the project.
 When you are there, run the command
@@ -25,6 +32,10 @@ Then run
 
 You should now be able to run the application!
 
+## Developer Documentation
+For a how-to on adding features or building a game using raycore, please see the
+repo [wiki](https://github.com/wynnliam/raycore/wiki).
+
 # Issue Summary
 Please navigate to the [Issue tab](https://github.com/wynnliam/raycore/issues) for the
 most up-to-date list of issues. Nonetheless, I'll try my best to keep a list here for
@@ -32,7 +43,8 @@ quick viewing.
 
 Current outstanding issues:
 - If you fail to load a level, the system gets stuck in a loop. Ctrl-C, 'P' key, exit button
-do not work.
+do not work. For now, use `ps -aux` (or some equivalent command) to find the id of raycore, and
+then run `kill -9 [RAYCORE_ID]` where the numeric id of raycore goes where the `[RAYCORE_ID]` is.
 
 # Roadmap
 raycore is a project that will be on-going. That is, I will like to add several features to

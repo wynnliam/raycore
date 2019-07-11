@@ -305,6 +305,12 @@ int add_thing_type_0(struct thingdef* thing, struct thing_data* data) {
 	if(!thing)
 		return 0;
 
+	thing->surf = NULL;
+	// Player spawn (type 0 thing)
+	// has no animations so we don't need to worry about that here.
+	thing->num_anims = 0;
+	thing->curr_anim = 0;
+
 	return 1;
 }
 
