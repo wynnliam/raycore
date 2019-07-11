@@ -55,6 +55,10 @@ void state_main_menu_draw(SDL_Renderer* renderer) {
 }
 
 void state_main_menu_clean_up() {
+	if(help_graphic) {
+		SDL_DestroyTexture(help_graphic);
+		help_graphic = NULL;
+	}
 }
 
 int state_main_menu_quit() {
