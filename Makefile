@@ -8,6 +8,7 @@ SRC= ./src/*.c \
      ./src/animation/*.c \
 	 ./src/states/*.c \
      ./src/map/*.c \
+     ./src/map/entity/*.c \
      ./src/map/map_loading/*.c \
      ./src/map/map_loading/parse/*.c
 
