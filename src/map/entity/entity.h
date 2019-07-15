@@ -3,6 +3,9 @@
 #ifndef ENTITY
 #define ENTITY
 
+#define ENTITY_TYPE_NONE	-1
+#define ENTITY_TYPE_EXAMPLE	0
+
 // Forward declaration of a map. This way,
 struct mapdef;
 
@@ -20,7 +23,7 @@ struct entity {
 	void (*clean)(struct entity* entity, struct mapdef* curr_map);
 
 	// A way of idenfitying this kind of entity.
-	int entity_type;
+	int type;
 	// A unique identity for this particular entity.
 	int id;
 

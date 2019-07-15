@@ -1,0 +1,13 @@
+1. Navigate to entity.h
+2. In entity.h, add an ID for your entity. Note that this
+must be distinct from all other entity id's.
+3. Add entity.h and entity.c. Here, you should have the following:
+	a. Entity data struct
+	b. Entity construct function
+		-- Called when allocating a new entity.
+	c. Entity initialize function
+		-- Called when first initializing the map. May be different
+		-- than initialization
+	d. Entity update function
+		-- Called each frame for non-rendering logic
+	e. Entity clean up function
