@@ -12,6 +12,7 @@
 #include <SDL2/SDL.h>
 
 #include "./thing.h"
+#include "./entity/entity.h"
 #include "./map_loading/parse/parser.h"
 
 #define MAP_W	20
@@ -59,6 +60,8 @@ struct mapdef {
 	// in a level.
 	struct thingdef things[1000];
 
+	struct entity* entities[1000];
+
 	// Specifies the dimensions of the world.
 	unsigned int map_w, map_h;
 
@@ -71,6 +74,7 @@ struct mapdef {
 
 	// Stores the number of things in the world.
 	unsigned int num_things;
+	unsigned int num_entities;
 
 	// If 0 -- Do not use fog. If not 0 -- Use fog.
 	int use_fog;
