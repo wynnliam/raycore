@@ -34,11 +34,9 @@ struct thingdef {
 
 struct mapdef;
 
-void update_things(struct mapdef* map, const int player_rot);
 /*
-	For different classes animations, we update them differently.
-	These are example animation classes. If you want your own,
-	you'd have to implement them here.
+	Updates the animations of each thing. Depending on the animation
+	class it has, we use a different update function.
 */
-void update_thing_anim(struct thingdef* thing, const int player_rot);
+void update_thing_anims(struct mapdef* map, const int player_rot);
 #endif

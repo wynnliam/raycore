@@ -7,7 +7,7 @@ static void update_anim_class_0(struct thingdef* thing, const int player_rot);
 static void update_anim_class_1(struct thingdef* thing, const int player_rot);
 static void update_anim_class_2(struct thingdef* thing, const int player_rot);
 
-void update_things(struct mapdef* map, const int player_rot) {
+void update_thing_anims(struct mapdef* map, const int player_rot) {
 	if(!map)
 		return;
 
@@ -20,10 +20,6 @@ void update_things(struct mapdef* map, const int player_rot) {
 		else if(map->things[i].anim_class == 2)
 			update_anim_class_2(&map->things[i], player_rot);
 	}
-}
-
-void update_thing_anim(struct thingdef* thing, const int player_rot) {
-	// Update animation according to class
 }
 
 void update_anim_class_0(struct thingdef* thing, const int player_rot) {

@@ -137,7 +137,7 @@ void state_example_update() {
 		printf("Player position = [%d, %d]. Player rotation = %d\n", player_x, player_y, player_rot);
 	}
 
-	update_things(map, player_rot);
+	update_thing_anims(map, player_rot);
 }
 
 
