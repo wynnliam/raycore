@@ -86,12 +86,12 @@ struct mapdef {
 	int fog_r, fog_b, fog_g;
 };
 
-
-// TODO: Remove functions above this comment
-
+// Null initializes everything in the map.
 int initialize_map(struct mapdef* map);
 
 int insert_entity_into_map(struct mapdef* map, struct entity* entity);
+int remove_entity_from_map(struct mapdef* map, const int id);
+void update_entities(struct mapdef* map);
 
 /*
 	Cleans up all the allocated attributes of a given mapdef.

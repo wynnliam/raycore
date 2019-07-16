@@ -94,6 +94,40 @@ int insert_entity_into_map(struct mapdef* map, struct entity* entity) {
 	return result;
 }
 
+int remove_entity_from_map(struct mapdef* map, const int id) {
+	if(!map)
+		return 0;
+
+	int result = 0;
+
+	unsigned int i;
+	for(i = 0; i < ENTITY_COUNT; i++) {
+		if(map->entities[i] && map->entities[i]->id == id) {
+			map->entities[i]->clean(map->entities[i], map);
+			free(map->entities[i]);
+			map->entities[i] = NULL;
+			map->num_entities -= 1;
+			result = 1;
+			break;
+		}
+	}
+
+	return result;
+}
+
+void update_entities(struct mapdef* map) {
+	if(!map)
+		return;
+
+	unsigned int i;
+	for(i = 0; i < ENTITY_COUNT; i++) {
+		if(map->entities[i])
+			map->entities[i]->update(map->entities[i], map);
+
+		// TODO: Have signal system.
+	}
+}
+
 int clean_mapdef(struct mapdef* to_clean) {
 	if(!to_clean)
 		return 0;
