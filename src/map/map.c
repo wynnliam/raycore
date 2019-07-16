@@ -53,6 +53,8 @@ void clean_thing(struct thingdef* to_clean);
 int build_mapdef_from_map_data(struct mapdef* mapdef, struct map_data* map_data, int* player_x, int* player_y, int* player_rot) {
 	struct map_bounds bounds;
 
+	initialize_map(mapdef);
+
 	if(!calculate_map_bounds(map_data->component_head, &bounds))
 		return 0;
 
@@ -472,6 +474,95 @@ int initialize_map_properties(struct mapdef* map, struct map_data* map_data) {
 	map->fog_b = map_data->fog_b;
 
 	return 1;
+}
+
+// TODO: Remove pretty much everything above this comment
+
+// TODO: Clean this up!
+int initialize_map(struct mapdef* map) {
+	if(!map)
+		return 0;
+
+	// Integer based iterators.
+	unsigned int i, j;
+
+	map->layout = NULL;
+	map->invisible_walls = NULL;
+
+	for(i = 0; i < WALL_DEF_COUNT; i++) {
+		map->walls[i].path = NULL;
+		map->walls[i].surf = NULL;
+	}
+
+	for(i = 0; i < FLOOR_CEIL_COUNT; i++) {
+		map->floor_ceils[i].floor_path = NULL;
+		map->floor_ceils[i].ceil_path = NULL;
+		map->floor_ceils[i].floor_surf = NULL;
+		map->floor_ceils[i].ceil_surf = NULL;
+		map->floor_ceils[i].invisible_wall = 0;
+	}
+
+	map->sky_surf = NULL;
+
+	for(i = 0; i < THING_COUNT; i++) {
+		map->things[i].surf = NULL;
+
+		for(j = 0; j < ANIM_COUNT; j++) {
+			map->things[i].anims[j].num_frames = 0;
+			map->things[i].anims[j].frame_time = 0;
+			map->things[i].anims[j].curr_frame = 0;
+			map->things[i].anims[j].bRepeats = 0;
+			map->things[i].anims[j].bRunning = 0;
+			map->things[i].anims[j].start_tick = 0;
+			map->things[i].anims[j].start_x = 0;
+			map->things[i].anims[j].start_y = 0;
+		}
+
+		map->things[i].position[0] = 0;
+		map->things[i].position[1] = 0;
+		map->things[i].rotation = 0;
+		map->things[i].dist = 0;
+		map->things[i].anim_class = 0;
+		map->things[i].num_anims = 0;
+		map->things[i].curr_anim = 0;
+		map->things[i].type = 0;
+	}
+
+	for(i = 0; i < ENTITY_COUNT; i++) {
+		map->entities[i] = NULL;
+	}
+
+	map->map_w = 0;
+	map->map_h = 0;
+	map->num_tiles = 0;
+	map->num_wall_tex = 0;
+	map->num_floor_ceils = 0;
+
+	map->num_things = 0;
+	map->num_entities = 0;
+
+	map->use_fog = 0;
+
+	return 1;
+}
+
+int insert_entity_into_map(struct mapdef* map, struct entity* entity) {
+	if(!map || !entity)
+		return 0;
+
+	int result = 0;
+
+	unsigned int i;
+	for(i = 0; i < ENTITY_COUNT; i++) {
+		if(!map->entities[i]) {
+			map->entities[i] = entity;
+			map->num_entities += 1;
+			result = 1;
+			break;
+		}
+	}
+
+	return result;
 }
 
 int clean_mapdef(struct mapdef* to_clean) {

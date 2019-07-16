@@ -18,6 +18,11 @@
 #define MAP_W	20
 #define MAP_H	10
 
+#define WALL_DEF_COUNT		100
+#define FLOOR_CEIL_COUNT	100
+#define THING_COUNT			1000
+#define ENTITY_COUNT		1000
+
 // Specifies the data for a given wall tile.
 struct walldef {
 	// To do a quick lookup of the path for a given texture.
@@ -47,9 +52,9 @@ struct mapdef {
 	int* invisible_walls;
 
 	// Assume an upper bound of 100 wall textures.
-	struct walldef walls[100];
+	struct walldef walls[WALL_DEF_COUNT];
 	// Assume also an upper bound of 100 floor and ceiling textures.
-	struct floorcielingdef floor_ceils[100];
+	struct floorcielingdef floor_ceils[FLOOR_CEIL_COUNT];
 
 	// Stores the sky texture used for the map.
 	SDL_Surface* sky_surf;
@@ -58,9 +63,9 @@ struct mapdef {
 	// this every frame by distance from the player.
 	// We will assume there can be at most 1000 sprites
 	// in a level.
-	struct thingdef things[1000];
+	struct thingdef things[THING_COUNT];
 
-	struct entity* entities[1000];
+	struct entity* entities[ENTITY_COUNT];
 
 	// Specifies the dimensions of the world.
 	unsigned int map_w, map_h;
@@ -101,6 +106,12 @@ struct mapdef {
 	0 - Failed to build mapdef from map_data.
 */
 int build_mapdef_from_map_data(struct mapdef* mapdef, struct map_data* map_data, int* player_x, int* player_y, int* player_rot);
+
+// TODO: Remove functions above this comment
+
+int initialize_map(struct mapdef* map);
+
+int insert_entity_into_map(struct mapdef* map, struct entity* entity);
 
 /*
 	Cleans up all the allocated attributes of a given mapdef.

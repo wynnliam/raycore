@@ -6,13 +6,15 @@
 #include "../animation/animation.h"
 #include <SDL2/SDL.h>
 
+#define ANIM_COUNT	100
+
 // Defines a "thing" in the world. This is for
 // static objects in the world, but can easily
 // be extended for dynamic objects and/or NPCs.
 struct thingdef {
 	// The texture to render.
 	SDL_Surface* surf;
-	struct animdef anims[100];
+	struct animdef anims[ANIM_COUNT];
 	// The global position.
 	int position[2];
 	// The global rotation in degrees.
