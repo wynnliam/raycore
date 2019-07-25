@@ -8,7 +8,6 @@
 #include "../input_handler.h"
 
 #include "../map/map_loading/map_loading.h"
-#include "../map/map_loading/parse/parser.h"
 
 // TODO: Move this elsewhere (entities should only exist in maps)
 #include "../map/entity/entity.h"
@@ -47,7 +46,7 @@ void state_example_initialize(SDL_Renderer* renderer) {
 	initialize_map_lookup_table();
 
 	curr_level = 0;
-	map = load_map(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
+	map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
 	curr_level++;
 
 	some_entity = construct_entity_example();
@@ -84,7 +83,7 @@ void state_example_update() {
 
 	if(key_pressed_once(SDL_SCANCODE_1)) {
 		free_map(&map);
-		map = load_map(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
+		map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
 
 		curr_level++;
 		if(curr_level >= get_num_loaded_maps())

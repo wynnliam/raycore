@@ -14,7 +14,6 @@ SRC= ./src/*.c \
      ./src/map/map_loading/parser/*.c \
      ./src/map/map_loading/ir/*.c \
      ./src/map/map_loading/utilities/*.c \
-     ./src/map/map_loading/parse/*.c
 
 .PHONY: clean
 

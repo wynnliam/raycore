@@ -210,25 +210,6 @@ void clean_thing(struct thingdef* to_clean) {
 	}
 }
 
-struct mapdef* load_map(const char* path, int* player_x, int* player_y, int* player_rot) {
-	if(!path)
-		return NULL;
-
-	FILE* map_file = fopen(path, "r");
-	struct map_data* map_data = parse_to_map_data(map_file);
-	struct mapdef* map = (struct mapdef*)malloc(sizeof(struct mapdef));
-
-	build_mapdef_from_map_data(map, map_data, player_x, player_y, player_rot);
-
-	fclose(map_file);
-	
-	clear_map_data(map_data);
-	free(map_data);
-	map_data = NULL;
-
-	return map;
-}
-
 void free_map(struct mapdef** map) {
 	if(!map || !(*map))
 		return;

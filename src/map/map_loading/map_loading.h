@@ -26,6 +26,6 @@ char* do_map_lookup(unsigned int index);
 
 unsigned int get_num_loaded_maps();
 
-struct mapdef* load_map_from_file(const char* path);
+struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y, int* player_rot);
 
 #endif

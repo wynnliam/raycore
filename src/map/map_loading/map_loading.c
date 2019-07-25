@@ -63,12 +63,9 @@ unsigned int get_num_loaded_maps() {
 	return map_lookup_table_size;
 }
 
-struct mapdef* load_map_from_file(const char* path) {
+struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y, int* player_rot) {
 	if(!path)
 		return NULL;
-
-	struct mapdef* result = NULL;
-	struct token_list
 
 	return NULL;
 }
