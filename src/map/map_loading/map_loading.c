@@ -6,6 +6,12 @@
 // free space
 
 #include "map_loading.h"
+#include "../map.h"
+
+#include "./tokenizer/tokenizer.h"
+#include "./parser/recipe.h"
+#include "./ir/intermediate_mapdef.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -55,4 +61,14 @@ char* do_map_lookup(unsigned int index) {
 
 unsigned int get_num_loaded_maps() {
 	return map_lookup_table_size;
+}
+
+struct mapdef* load_map_from_file(const char* path) {
+	if(!path)
+		return NULL;
+
+	struct mapdef* result = NULL;
+	struct token_list
+
+	return NULL;
 }

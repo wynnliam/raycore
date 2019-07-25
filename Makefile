@@ -10,6 +10,10 @@ SRC= ./src/*.c \
      ./src/map/*.c \
      ./src/map/entity/*.c \
      ./src/map/map_loading/*.c \
+     ./src/map/map_loading/tokenizer/*.c \
+     ./src/map/map_loading/parser/*.c \
+     ./src/map/map_loading/ir/*.c \
+     ./src/map/map_loading/utilities/*.c \
      ./src/map/map_loading/parse/*.c
 
 .PHONY: clean

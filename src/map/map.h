@@ -13,7 +13,6 @@
 
 #include "./thing.h"
 #include "./entity/entity.h"
-#include "./map_loading/parse/parser.h"
 
 #define MAP_W	20
 #define MAP_H	10

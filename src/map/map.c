@@ -1,7 +1,6 @@
 // Liam Wynn, 7/28/2018, Raycore
 
 #include "map.h"
-#include "./map_loading/map_from_file.h"
 
 static void clean_walldef(struct walldef* to_clean);
 static void clean_floorcieldef(struct floorcielingdef* to_clean);
