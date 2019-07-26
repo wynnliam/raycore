@@ -9,15 +9,15 @@ properties {
 }
 
 # Player spawn.
-thing {
-	type = "0";
-	x = "224";
-	y = "128";
-	rot = "270";
-
-	anim_class = "0";
-	sprite_sheet = "0";
-}
+# thing {
+# 	type = "0";
+# 	x = "224";
+# 	y = "128";
+# 	rot = "270";
+# 
+# 	anim_class = "0";
+# 	sprite_sheet = "0";
+# }
 
 # Connects Entrance to Estate Interior
 component {

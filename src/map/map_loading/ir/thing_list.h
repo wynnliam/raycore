@@ -21,6 +21,8 @@ struct thinglist_node {
 
 struct thing_list {
 	struct thinglist_node* head;
+
+	unsigned int count;
 };
 
 struct thinglist_data* construct_thinglist_data(const char* sprite_sheet, int anim_class, int x, int y, int rot);

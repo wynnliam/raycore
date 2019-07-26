@@ -9,15 +9,15 @@ properties {
 }
 
 # Player spawn.
-thing {
-	type = "0";
-	x = "256";
-	y = "512";
-	rot = "0";
-
-	anim_class = "0";
-	sprite_sheet = "0";
-}
+# thing {
+# 	type = "0";
+# 	x = "256";
+# 	y = "512";
+# 	rot = "0";
+# 
+# 	anim_class = "0";
+# 	sprite_sheet = "0";
+# }
 
 # Bounding box
 component {

@@ -14,15 +14,15 @@ properties {
 }
 
 # Player spawn.
-thing {
-	type = "0";
-	x = "2712";
-	y = "1048";
-	rot = "90";
-
-	anim_class = "0";
-	sprite_sheet = "0";
-}
+# thing {
+# 	type = "0";
+# 	x = "2712";
+# 	y = "1048";
+# 	rot = "90";
+# 
+# 	anim_class = "0";
+# 	sprite_sheet = "0";
+# }
 
 # NORTH WING
 # The detail components for the room.

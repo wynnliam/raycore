@@ -116,6 +116,7 @@ struct thing_list* construct_thing_list() {
 	struct thing_list* result = (struct thing_list*)malloc(sizeof(struct thing_list));
 
 	result->head = NULL;
+	result->count = 0;
 
 	return result;
 }
@@ -129,6 +130,8 @@ int insert_data_into_thing_list(struct thing_list* list, struct thinglist_data* 
 	temp->data = data;
 	temp->next = list->head;
 	list->head = temp;
+
+	list->count += 1;
 
 	return 1;
 }
