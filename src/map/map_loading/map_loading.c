@@ -87,7 +87,7 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 
 	compute_map_layout(intermediate_mapdef->components, result);
 
-	result->num_tiles = intermediate_mapdef->textures->num_walls + intermediate_mapdef->textures->num_floor_ceils;
+	result->num_tiles = 200;
 	create_wall_textures(intermediate_mapdef->textures, result);
 	create_floor_ceil_textures(intermediate_mapdef->textures, result);
 
@@ -157,6 +157,31 @@ static void compute_map_dimensions(struct component_list* components, unsigned i
 	*map_h = (max_y_component->y + max_y_component->h) - min_y_component->y;
 }
 
+static void place_single_component(struct component_list_node* head, struct mapdef* result) {
+	if(!head || !result)
+		return;
+
+	// Recurse to the end of the list. As we unroll our loop, place components so the draw order
+	// is correct.
+	place_single_component(head->next, result);
+
+	unsigned int x, y;
+	// a 2D point converted into 1D so that we can index into our map.
+	unsigned int mapdef_index;
+
+	for(x = head->data->x; x < head->data->x + head->data->w; x++) {
+		for(y = head->data->y; y < head->data->y + head->data->h; y++) {
+			if(x >= result->map_w || y >= result->map_h)
+				continue;
+
+			mapdef_index = y * result->map_w + x;
+
+			result->layout[mapdef_index] = head->data->tex_id;
+			// TODO: Invisible walls!
+		}
+	}
+}
+
 static void compute_map_layout(struct component_list* components, struct mapdef* result) {
 	if(!components || !result)
 		return;
@@ -170,30 +195,15 @@ static void compute_map_layout(struct component_list* components, struct mapdef*
 		result->invisible_walls[i] = 0;
 	}
 
-	struct component_list_node* curr = components->head;
-	unsigned int x, y;
-	// a 2D point converted into 1D so that we can index into our map.
-	unsigned int mapdef_index;
+	place_single_component(components->head, result);
 
-	while(curr) {
-		for(x = curr->data->x; x < curr->data->x + curr->data->w; x++) {
-			for(y = curr->data->y; y < curr->data->y + curr->data->h; y++) {
-				mapdef_index = y * result->map_w + x;
-
-				result->layout[mapdef_index] = curr->data->tex_id;
-				// TODO: Invisible walls!
-			}
-		}
-
-		curr = curr->next;
-	}
 }
 
 static void create_wall_textures(struct texture_list* textures, struct mapdef* result) {
 	if(!textures || !result)
 		return;
 
-	result->num_wall_tex = textures->num_walls;
+	result->num_wall_tex = 100;
 
 	struct texlist_node* curr = textures->head;
 	int walldef_index;
@@ -203,10 +213,14 @@ static void create_wall_textures(struct texture_list* textures, struct mapdef* r
 			walldef_index = curr->data->mapdef_id - 100;
 
 			if(curr->data->tex_0) {
+				if(walldef_index == 5)
+					printf("Found the problem\n");
 				result->walls[walldef_index].path = (char*)malloc(strlen(curr->data->tex_0) + 1);
 				strcpy(result->walls[walldef_index].path, curr->data->tex_0);
 
+				printf("loading wall texture %s\n", result->walls[walldef_index].path);
 				result->walls[walldef_index].surf = SDL_LoadBMP(result->walls[walldef_index].path);
+
 			} else {
 				result->walls[walldef_index].path = NULL;
 				result->walls[walldef_index].surf = NULL;
@@ -221,7 +235,7 @@ static void create_floor_ceil_textures(struct texture_list* textures, struct map
 	if(!textures || !result)
 		return;
 
-	result->num_floor_ceils = textures->num_floor_ceils;
+	result->num_floor_ceils = 100;
 
 	struct texlist_node* curr = textures->head;
 	int floorceildef_index;
