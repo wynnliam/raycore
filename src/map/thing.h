@@ -34,6 +34,8 @@ struct thingdef {
 	int type;
 };
 
+int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int anim_class, int x, int y, int rot);
+
 /*
 	Updates the animations of each thing. Depending on the animation
 	class it has, we use a different update function.
