@@ -12,6 +12,8 @@
 #include <string.h>
 
 // TODO: All these static functions should probably go into a seperate file.
+static void compute_map_properties(struct ir_map_properties* ir_properties, struct mapdef* result);
+
 static void compute_map_dimensions(struct component_list* components, unsigned int* map_w, unsigned int* map_h);
 static void compute_map_layout(struct component_list* components, struct mapdef* result);
 
@@ -83,6 +85,8 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 	struct mapdef* result = (struct mapdef*)malloc(sizeof(struct mapdef));
 	initialize_map(result);
 
+	compute_map_properties(intermediate_mapdef->properties, result);
+
 	// TODO: Make seperate function for these lines (set_map_dimensions)
 	compute_map_dimensions(intermediate_mapdef->components, &map_w, &map_h);
 	result->map_w = map_w;
@@ -124,6 +128,21 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 	}
 
 	return result;
+}
+
+static void compute_map_properties(struct ir_map_properties* ir_properties, struct mapdef* result) {
+	if(!ir_properties || !result)
+		return;
+
+	if(ir_properties->sky_tex)
+		result->sky_surf = SDL_LoadBMP(ir_properties->sky_tex);
+	else
+		result->sky_surf = NULL;
+
+	result->use_fog = ir_properties->use_fog;
+	result->fog_r = ir_properties->fog_r;
+	result->fog_g = ir_properties->fog_g;
+	result->fog_b = ir_properties->fog_b;
 }
 
 static void compute_map_dimensions(struct component_list* components, unsigned int* map_w, unsigned int* map_h) {
