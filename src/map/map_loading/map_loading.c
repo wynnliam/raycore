@@ -1,10 +1,5 @@
 // Liam Wynn, 4/17/2019, Raycore
 
-// TODO: Clean up:
-// Loading (if num levels is 0)
-// look up
-// free space
-
 #include "map_loading.h"
 #include "../map.h"
 
@@ -15,6 +10,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+static void compute_map_dimensions(struct component_list* components, unsigned int* map_w, unsigned int* map_h);
+static void compute_map_layout(struct component_list* components, struct mapdef* result);
+
+static void create_wall_textures(struct texture_list* textures, struct mapdef* result);
 
 // And array of every level we want in the game.
 char** map_lookup_table;
@@ -67,5 +67,122 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 	if(!path)
 		return NULL;
 
+	struct token_list* tokens = get_tokens(path);
+	struct recipe_list* map_tree = build_map_tree(tokens);
+	struct intermediate_mapdef* intermediate_mapdef = construct_intermediate_mapdef(map_tree);
+
+	unsigned int map_w, map_h;
+
+	// TODO: Move this to seperate functions/files
+	struct mapdef* result = (struct mapdef*)malloc(sizeof(struct mapdef));
+	initialize_map(result);
+
+	// TODO: Make seperate function for these lines (set_map_dimensions)
+	compute_map_dimensions(intermediate_mapdef->components, &map_w, &map_h);
+	result->map_w = map_w;
+	result->map_h = map_h;
+
+	compute_map_layout(intermediate_mapdef->components, result);
+
+	result->num_tiles = intermediate_mapdef->textures->num_walls + intermediate_mapdef->textures->num_floor_ceils;
+	create_wall_textures(intermediate_mapdef->textures, result);
+
+	printf("Loaded %s\n", path);
+
 	return NULL;
+}
+
+static void compute_map_dimensions(struct component_list* components, unsigned int* map_w, unsigned int* map_h) {
+	if(!components)
+		return;
+
+	// Used to keep track of the minimal and maximal dimensions.
+	// By having all of these, we can 
+	struct component* min_x_component;
+	struct component* min_y_component;
+	struct component* max_x_component;
+	struct component* max_y_component;
+
+	struct component_list_node* curr = components->head;
+
+	min_x_component = curr->data;
+	min_y_component = curr->data;
+	max_x_component = curr->data;
+	max_y_component = curr->data;
+
+	while(curr) {
+		if(curr->data->x < min_x_component->x)
+			min_x_component = curr->data;
+		if(curr->data->x > max_x_component->x)
+			max_x_component = curr->data;
+		if(curr->data->y < min_y_component->y)
+			min_y_component = curr->data;
+		if(curr->data->y > max_y_component->y)
+			max_y_component = curr->data;
+
+		curr = curr->next;
+	}
+
+	*map_w = (max_x_component->x + max_x_component->w) - min_x_component->x;
+	*map_h = (max_y_component->y + max_y_component->h) - min_y_component->y;
+}
+
+static void compute_map_layout(struct component_list* components, struct mapdef* result) {
+	if(!components || !result)
+		return;
+
+	result->layout = (unsigned int*)malloc(sizeof(unsigned int) * result->map_w * result->map_h);
+	result->invisible_walls = (int*)malloc(sizeof(int) * result->map_w * result->map_h);
+
+	unsigned int i;
+	for(i = 0; i < result->map_w * result->map_h; i++) {
+		result->layout[i] = 0;
+		result->invisible_walls[i] = 0;
+	}
+
+	struct component_list_node* curr = components->head;
+	unsigned int x, y;
+	// a 2D point converted into 1D so that we can index into our map.
+	unsigned int mapdef_index;
+
+	while(curr) {
+		for(x = curr->data->x; x < curr->data->x + curr->data->w; x++) {
+			for(y = curr->data->y; y < curr->data->y + curr->data->h; y++) {
+				mapdef_index = y * result->map_w + x;
+
+				result->layout[mapdef_index] = curr->data->tex_id;
+				// TODO: Invisible walls!
+			}
+		}
+
+		curr = curr->next;
+	}
+}
+
+static void create_wall_textures(struct texture_list* textures, struct mapdef* result) {
+	if(!textures || !result)
+		return;
+
+	result->num_wall_tex = textures->num_walls;
+
+	struct texlist_node* curr = textures->head;
+	int walldef_index;
+
+	while(!curr) {
+		if(curr->data->mapdef_id >= 100) {
+			walldef_index = curr->data->mapdef_id - 100;
+
+			if(curr->data->tex_0) {
+				result->walls[walldef_index].path = (char*)malloc(strlen(curr->data->tex_0) + 1);
+				strcpy(result->walls[walldef_index].path, curr->data->tex_0);
+
+				result->walls[walldef_index].surf = SDL_LoadBMP(result->walls[walldef_index].path);
+			} else {
+				result->walls[walldef_index].path = NULL;
+				result->walls[walldef_index].surf = NULL;
+			}
+		}
+
+		curr = curr->next;
+	}
 }
