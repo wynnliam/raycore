@@ -18,6 +18,8 @@ struct intermediate_mapdef* construct_intermediate_mapdef(struct recipe_list* ma
 
 	result->components = build_component_list_from_recipe_list_and_texture_list(map_tree, result->textures);
 
+	result->properties = build_ir_map_properties_from_map_tree(map_tree);
+
 	return result;
 }
 
@@ -35,6 +37,9 @@ void clean_intermediate_mapdef(struct intermediate_mapdef* to_clean) {
 		clear_texture_list(to_clean->textures);
 		free(to_clean->textures);
 	}
+
+	if(to_clean->properties)
+		clean_ir_map_properties(to_clean->properties);
 
 	free(to_clean);
 }
