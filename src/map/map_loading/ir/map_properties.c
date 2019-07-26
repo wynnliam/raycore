@@ -71,6 +71,23 @@ struct ir_map_properties* build_ir_map_properties_from_recipe(struct recipe* rec
 	return result;
 }
 
+static struct ir_map_properties* find_properties_recipe(struct recipe_list_node* head) {
+	if(!head)
+		return construct_properties();
+
+	if(head->recipe && strcmp(head->recipe->type, "properties") == 0)
+		return build_ir_map_properties_from_recipe(head->recipe);
+
+	return find_properties_recipe(head->next);
+}
+
+struct ir_map_properties* build_ir_map_properties_from_map_tree(struct recipe_list* map_tree) {
+	if(!map_tree)
+		return construct_properties();
+
+	return find_properties_recipe(map_tree->head);
+}
+
 void clean_ir_map_properties(struct ir_map_properties* to_clean) {
 	if(!to_clean)
 		return;

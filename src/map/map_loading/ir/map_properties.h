@@ -17,6 +17,7 @@ struct ir_map_properties {
 
 struct ir_map_properties* construct_properties();
 struct ir_map_properties* build_ir_map_properties_from_recipe(struct recipe* recipe);
+struct ir_map_properties* build_ir_map_properties_from_map_tree(struct recipe_list* map_tree);
 void clean_ir_map_properties(struct ir_map_properties* to_clean);
 
 #endif
