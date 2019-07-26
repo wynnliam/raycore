@@ -15,5 +15,6 @@ struct ir_map_properties {
 };
 
 struct ir_map_properties* construct_properties();
+void clean_ir_map_properties(struct ir_map_properties* to_clean);
 
 #endif

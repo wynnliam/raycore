@@ -19,4 +19,15 @@ struct ir_map_properties* construct_properties() {
 	return result;
 }
 
+void clean_ir_map_properties(struct ir_map_properties* to_clean) {
+	if(!to_clean)
+		return;
+
+	if(to_clean->mapdef_name)
+		free(to_clean->mapdef_name);
+	if(to_clean->sky_tex)
+		free(to_clean->sky_tex);
+
+	free(to_clean);
+}
 
