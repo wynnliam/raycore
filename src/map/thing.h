@@ -8,6 +8,8 @@
 
 #define ANIM_COUNT	100
 
+struct mapdef;
+
 // Defines a "thing" in the world. This is for
 // static objects in the world, but can easily
 // be extended for dynamic objects and/or NPCs.
@@ -31,8 +33,6 @@ struct thingdef {
 
 	int type;
 };
-
-struct mapdef;
 
 /*
 	Updates the animations of each thing. Depending on the animation

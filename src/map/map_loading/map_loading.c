@@ -11,11 +11,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+// TODO: All these static functions should probably go into a seperate file.
 static void compute_map_dimensions(struct component_list* components, unsigned int* map_w, unsigned int* map_h);
 static void compute_map_layout(struct component_list* components, struct mapdef* result);
 
 static void create_wall_textures(struct texture_list* textures, struct mapdef* result);
 static void create_floor_ceil_textures(struct texture_list* textures, struct mapdef* result);
+
+static void add_thingdefs_to_map(struct thing_list* things, struct mapdef* result);
 
 // And array of every level we want in the game.
 char** map_lookup_table;
@@ -91,12 +94,13 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 	create_wall_textures(intermediate_mapdef->textures, result);
 	create_floor_ceil_textures(intermediate_mapdef->textures, result);
 
-	// TODO: Things
+	add_thingdefs_to_map(intermediate_mapdef->things, result);
 
 	// TODO: Entities
 
 	printf("Loaded %s\n", path);
 
+	// TODO: Have a player spawn strategy that resolves spawning.
 	if(strcmp(path, "./assests/maps/c01.sqm") == 0) {
 		*player_x = 2712;
 		*player_y = 1024;
@@ -266,5 +270,19 @@ static void create_floor_ceil_textures(struct texture_list* textures, struct map
 		}
 
 		curr = curr->next;
+	}
+}
+
+static void add_thingdefs_to_map(struct thing_list* things, struct mapdef* result) {
+	if(!things || !result)
+		return;
+
+	result->num_things = things->count;
+
+	// TODO: Create CRUD interface for things in map
+	struct thinglist_node* curr = things->head;
+	unsigned int index = 0;
+
+	while(curr) {
 	}
 }
