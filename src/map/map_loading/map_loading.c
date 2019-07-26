@@ -15,6 +15,7 @@ static void compute_map_dimensions(struct component_list* components, unsigned i
 static void compute_map_layout(struct component_list* components, struct mapdef* result);
 
 static void create_wall_textures(struct texture_list* textures, struct mapdef* result);
+static void create_floor_ceil_textures(struct texture_list* textures, struct mapdef* result);
 
 // And array of every level we want in the game.
 char** map_lookup_table;
@@ -73,6 +74,8 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 
 	unsigned int map_w, map_h;
 
+	// TODO: Properties
+
 	// TODO: Move this to seperate functions/files
 	struct mapdef* result = (struct mapdef*)malloc(sizeof(struct mapdef));
 	initialize_map(result);
@@ -86,10 +89,37 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 
 	result->num_tiles = intermediate_mapdef->textures->num_walls + intermediate_mapdef->textures->num_floor_ceils;
 	create_wall_textures(intermediate_mapdef->textures, result);
+	create_floor_ceil_textures(intermediate_mapdef->textures, result);
+
+	// TODO: Things
+
+	// TODO: Entities
 
 	printf("Loaded %s\n", path);
 
-	return NULL;
+	if(strcmp(path, "./assests/maps/c01.sqm") == 0) {
+		*player_x = 2712;
+		*player_y = 1024;
+		*player_rot = 90;
+	} else if(strcmp(path, "./assests/maps/c02.sqm") == 0) {
+		*player_x = 1707;
+		*player_y = 550;
+		*player_rot = 170;
+	} else if(strcmp(path, "./assests/maps/c03.sqm") == 0) {
+		*player_x = 256;
+		*player_y = 512;
+		*player_rot = 0;
+	} else if(strcmp(path, "./assests/maps/c04.sqm") == 0) {
+		*player_x = 224;
+		*player_y = 128;
+		*player_rot = 270;
+	} else if(strcmp(path, "./assests/maps/c05.sqm") == 0) {
+		*player_x = 1662;
+		*player_y = 177;
+		*player_rot = 270;
+	}
+
+	return result;
 }
 
 static void compute_map_dimensions(struct component_list* components, unsigned int* map_w, unsigned int* map_h) {
@@ -180,6 +210,44 @@ static void create_wall_textures(struct texture_list* textures, struct mapdef* r
 			} else {
 				result->walls[walldef_index].path = NULL;
 				result->walls[walldef_index].surf = NULL;
+			}
+		}
+
+		curr = curr->next;
+	}
+}
+
+static void create_floor_ceil_textures(struct texture_list* textures, struct mapdef* result) {
+	if(!textures || !result)
+		return;
+
+	result->num_floor_ceils = textures->num_floor_ceils;
+
+	struct texlist_node* curr = textures->head;
+	int floorceildef_index;
+
+	while(!curr) {
+		if(curr->data->mapdef_id < 100) {
+			floorceildef_index = curr->data->mapdef_id;
+
+			if(curr->data->tex_0) {
+				result->floor_ceils[floorceildef_index].floor_path = (char*)malloc(strlen(curr->data->tex_0) + 1);
+				strcpy(result->floor_ceils[floorceildef_index].floor_path, curr->data->tex_0);
+
+				result->floor_ceils[floorceildef_index].floor_surf = SDL_LoadBMP(result->floor_ceils[floorceildef_index].floor_path);
+			} else {
+				result->floor_ceils[floorceildef_index].floor_path = NULL;
+				result->floor_ceils[floorceildef_index].floor_surf = NULL;
+			}
+
+			if(curr->data->tex_1) {
+				result->floor_ceils[floorceildef_index].ceil_path = (char*)malloc(strlen(curr->data->tex_1) + 1);
+				strcpy(result->floor_ceils[floorceildef_index].ceil_path, curr->data->tex_1);
+
+				result->floor_ceils[floorceildef_index].ceil_surf = SDL_LoadBMP(result->floor_ceils[floorceildef_index].ceil_path);
+			} else {
+				result->floor_ceils[floorceildef_index].ceil_path = NULL;
+				result->floor_ceils[floorceildef_index].ceil_surf = NULL;
 			}
 		}
 
