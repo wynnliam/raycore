@@ -9,15 +9,15 @@ properties {
 }
 
 # Player spawn.
-thing {
-	type = "0";
-	x = "1662";
-	y = "177";
-	rot = "270";
-
-	anim_class = "0";
-	sprite_sheet = "0";
-}
+# thing {
+# 	type = "0";
+# 	x = "1662";
+# 	y = "177";
+# 	rot = "270";
+# 
+# 	anim_class = "0";
+# 	sprite_sheet = "0";
+# }
 
 # Main Pass Area
 # Mud next to stream

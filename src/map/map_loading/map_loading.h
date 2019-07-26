@@ -3,6 +3,8 @@
 #ifndef MAP_LOADING
 #define MAP_LOADING
 
+struct mapdef;
+
 /*
 	Initializes the level lookup table. It does so by
 	loading load.conf (assests/maps/load.conf) into
@@ -23,5 +25,7 @@ int initialize_map_lookup_table();
 char* do_map_lookup(unsigned int index);
 
 unsigned int get_num_loaded_maps();
+
+struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y, int* player_rot);
 
 #endif

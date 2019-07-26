@@ -8,8 +8,12 @@ SRC= ./src/*.c \
      ./src/animation/*.c \
 	 ./src/states/*.c \
      ./src/map/*.c \
+     ./src/map/entity/*.c \
      ./src/map/map_loading/*.c \
-     ./src/map/map_loading/parse/*.c
+     ./src/map/map_loading/tokenizer/*.c \
+     ./src/map/map_loading/parser/*.c \
+     ./src/map/map_loading/ir/*.c \
+     ./src/map/map_loading/utilities/*.c \
 
 .PHONY: clean
 

@@ -6,13 +6,17 @@
 #include "../animation/animation.h"
 #include <SDL2/SDL.h>
 
+#define ANIM_COUNT	100
+
+struct mapdef;
+
 // Defines a "thing" in the world. This is for
 // static objects in the world, but can easily
 // be extended for dynamic objects and/or NPCs.
 struct thingdef {
 	// The texture to render.
 	SDL_Surface* surf;
-	struct animdef anims[100];
+	struct animdef anims[ANIM_COUNT];
 	// The global position.
 	int position[2];
 	// The global rotation in degrees.
@@ -30,13 +34,11 @@ struct thingdef {
 	int type;
 };
 
-struct mapdef;
+int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int anim_class, int x, int y, int rot);
 
-void update_things(struct mapdef* map, const int player_rot);
 /*
-	For different classes animations, we update them differently.
-	These are example animation classes. If you want your own,
-	you'd have to implement them here.
+	Updates the animations of each thing. Depending on the animation
+	class it has, we use a different update function.
 */
-void update_thing_anim(struct thingdef* thing, const int player_rot);
+void update_thing_anims(struct mapdef* map, const int player_rot);
 #endif
