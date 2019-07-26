@@ -198,7 +198,7 @@ static void create_wall_textures(struct texture_list* textures, struct mapdef* r
 	struct texlist_node* curr = textures->head;
 	int walldef_index;
 
-	while(!curr) {
+	while(curr) {
 		if(curr->data->mapdef_id >= 100) {
 			walldef_index = curr->data->mapdef_id - 100;
 
@@ -226,7 +226,7 @@ static void create_floor_ceil_textures(struct texture_list* textures, struct map
 	struct texlist_node* curr = textures->head;
 	int floorceildef_index;
 
-	while(!curr) {
+	while(curr) {
 		if(curr->data->mapdef_id < 100) {
 			floorceildef_index = curr->data->mapdef_id;
 
