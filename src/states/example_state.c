@@ -8,19 +8,24 @@
 #include "../input_handler.h"
 
 #include "../map/map_loading/map_loading.h"
-#include "../map/map_loading/parse/parser.h"
+
+// TODO: Move this elsewhere (entities should only exist in maps)
+#include "../map/entity/entity.h"
+#include "../map/entity/example_entity.h"
 
 // Stores the player 
-int player_x, player_y;
+static int player_x, player_y;
 // The player rotation.
-int player_rot;
+static int player_rot;
 
 // Temporary storage for map.
-unsigned int curr_level;
-struct mapdef* map;
+static unsigned int curr_level;
+static struct mapdef* map;
 
 static int quit = 0;
 static int next_state;
+
+static struct entity* some_entity;
 
 void state_example_initialize(SDL_Renderer* renderer) {
 	player_x = 256;
@@ -41,8 +46,11 @@ void state_example_initialize(SDL_Renderer* renderer) {
 	initialize_map_lookup_table();
 
 	curr_level = 0;
-	map = load_map(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
+	map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
 	curr_level++;
+
+	some_entity = construct_entity_example();
+	(*(some_entity->initialize))(some_entity, map);
 }
 
 void state_example_enter(const int from_state, void* message) {
@@ -71,9 +79,11 @@ void state_example_process_input() {
 }
 
 void state_example_update() {
+	(*(some_entity->update))(some_entity, map);
+
 	if(key_pressed_once(SDL_SCANCODE_1)) {
 		free_map(&map);
-		map = load_map(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
+		map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
 
 		curr_level++;
 		if(curr_level >= get_num_loaded_maps())
@@ -126,7 +136,7 @@ void state_example_update() {
 		printf("Player position = [%d, %d]. Player rotation = %d\n", player_x, player_y, player_rot);
 	}
 
-	update_things(map, player_rot);
+	update_thing_anims(map, player_rot);
 }
 
 
@@ -145,6 +155,8 @@ void state_example_draw(SDL_Renderer* renderer) {
 
 void state_example_clean_up() {
 	free_map(&map);
+
+	(*(some_entity->clean))(some_entity, map);
 }
 
 int state_example_quit() {

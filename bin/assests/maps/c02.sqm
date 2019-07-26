@@ -9,15 +9,15 @@ properties {
 }
 
 # Player spawn.
-thing {
-	type = "0";
-	x = "1707";
-	y = "550";
-	rot = "170";
-
-	anim_class = "0";
-	sprite_sheet = "0";
-}
+# thing {
+# 	type = "0";
+# 	x = "1707";
+# 	y = "550";
+# 	rot = "170";
+# 
+# 	anim_class = "0";
+# 	sprite_sheet = "0";
+# }
 
 ### MAIN ROOM ###
 

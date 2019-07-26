@@ -12,10 +12,15 @@
 #include <SDL2/SDL.h>
 
 #include "./thing.h"
-#include "./map_loading/parse/parser.h"
+#include "./entity/entity.h"
 
 #define MAP_W	20
 #define MAP_H	10
+
+#define WALL_DEF_COUNT		100
+#define FLOOR_CEIL_COUNT	100
+#define THING_COUNT			1000
+#define ENTITY_COUNT		1000
 
 // Specifies the data for a given wall tile.
 struct walldef {
@@ -46,9 +51,9 @@ struct mapdef {
 	int* invisible_walls;
 
 	// Assume an upper bound of 100 wall textures.
-	struct walldef walls[100];
+	struct walldef walls[WALL_DEF_COUNT];
 	// Assume also an upper bound of 100 floor and ceiling textures.
-	struct floorcielingdef floor_ceils[100];
+	struct floorcielingdef floor_ceils[FLOOR_CEIL_COUNT];
 
 	// Stores the sky texture used for the map.
 	SDL_Surface* sky_surf;
@@ -57,7 +62,9 @@ struct mapdef {
 	// this every frame by distance from the player.
 	// We will assume there can be at most 1000 sprites
 	// in a level.
-	struct thingdef things[1000];
+	struct thingdef things[THING_COUNT];
+
+	struct entity* entities[ENTITY_COUNT];
 
 	// Specifies the dimensions of the world.
 	unsigned int map_w, map_h;
@@ -71,32 +78,19 @@ struct mapdef {
 
 	// Stores the number of things in the world.
 	unsigned int num_things;
+	unsigned int num_entities;
 
 	// If 0 -- Do not use fog. If not 0 -- Use fog.
 	int use_fog;
 	int fog_r, fog_b, fog_g;
 };
 
-/*
-	Main driver for constructing a mapdef from a map_data.
+// Null initializes everything in the map.
+int initialize_map(struct mapdef* map);
 
-	PRECONDITIONS:
-	mapdef and map_data are not NULL, and the data inside map_data is valid (files
-	can be found, no inappropriate values for members, etc).
-
-	POSTCONDITIONS:
-	The player position might be changed.
-
-	ARGUMENTS:
-	mapdef - the mapdef structure that will have data added to it.
-	map_data - who we transform into mapdef.
-	player_x and player_y and player_rot- temporary values so that we can set the player's position and rotation
-
-	RETURNS:
-	1 - Successfully built mapdef from map_data.
-	0 - Failed to build mapdef from map_data.
-*/
-int build_mapdef_from_map_data(struct mapdef* mapdef, struct map_data* map_data, int* player_x, int* player_y, int* player_rot);
+int insert_entity_into_map(struct mapdef* map, struct entity* entity);
+int remove_entity_from_map(struct mapdef* map, const int id);
+void update_entities(struct mapdef* map);
 
 /*
 	Cleans up all the allocated attributes of a given mapdef.

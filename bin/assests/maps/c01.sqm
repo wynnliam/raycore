@@ -7,22 +7,22 @@ properties {
 	# String - 0 will denote "NULL"
 	sky_tex = "./assests/textures/skybox/sky01.bmp";
 
-	#use_fog = "1";
-	#fog_r = "255";
-	#fog_g = "0";
-	#fog_b = "0";
+	# use_fog = "1";
+	# fog_r = "33";
+	# fog_g = "22";
+	# fog_b = "171";
 }
 
 # Player spawn.
-thing {
-	type = "0";
-	x = "2712";
-	y = "1048";
-	rot = "90";
-
-	anim_class = "0";
-	sprite_sheet = "0";
-}
+# thing {
+# 	type = "0";
+# 	x = "2712";
+# 	y = "1048";
+# 	rot = "90";
+# 
+# 	anim_class = "0";
+# 	sprite_sheet = "0";
+# }
 
 # NORTH WING
 # The detail components for the room.
