@@ -284,5 +284,16 @@ static void add_thingdefs_to_map(struct thing_list* things, struct mapdef* resul
 	unsigned int index = 0;
 
 	while(curr) {
+		if(curr->data && curr->data->sprite_sheet) {
+			create_thingdef(&result->things[index],
+							curr->data->sprite_sheet,
+							curr->data->anim_class,
+							curr->data->x, curr->data->y,
+							curr->data->rot);
+
+			index++;
+		}
+
+		curr = curr->next;
 	}
 }
