@@ -30,6 +30,7 @@ struct entity {
 
 	struct entity* child_entities[CHILD_ENTITY_COUNT];
 	struct thingdef* child_things[CHILD_THING_COUNT];
+	// The tiles themselves are the positions of the actual tile.
 	unsigned int child_tiles[CHILD_TILE_COUNT];
 
 	// A way of idenfitying this kind of entity.
@@ -48,6 +49,13 @@ struct entity {
 };
 
 struct entity* construct_empty_entity();
+
+int insert_child_entity(struct entity* insert_into, struct entity* child);
+int remove_child_entity(struct entity* remove_from, int child_id);
+// For entities and things:
+// Insert, Remove, Find, Clear
+// For tiles:
+// Insert, Find, Clear
 
 #endif
 

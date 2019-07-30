@@ -39,3 +39,46 @@ static int initialize_entity(struct entity* to_initialize) {
 
 	return 1;
 }
+
+// Child Entity CRUD
+int insert_child_entity(struct entity* insert_into, struct entity* child) {
+	if(!insert_into || !child)
+		return 0;
+
+	int result = 0;
+
+	// Find the first empty slot to put the child and place. If no spot is found, return 0.
+	unsigned int i;
+	for(i = 0; i < CHILD_ENTITY_COUNT; i++) {
+		if(!insert_into->child_entities[i]) {
+			insert_into->child_entities[i] = child;
+			insert_into->num_child_entity += 1;
+			result = 1;
+			break;
+		}
+	}
+
+	return result;
+}
+
+int remove_child_entity(struct entity* remove_from, int child_id) {
+	if(!remove_from)
+		return 0;
+
+	int result = 0;
+
+	unsigned int i;
+	for(i = 0; i < CHILD_ENTITY_COUNT; i++) {
+		if(remove_from->child_entities[i] && remove_from->child_entities[i]->id == child_id) {
+			// Don't actually remove them, since the map is responsible for the
+			// child entity itself.
+			remove_from->child_entities[i] = NULL;
+			remove_from->num_child_entity -= 1;
+
+			result = 1;
+			break;
+		}
+	}
+
+	return result;
+}
