@@ -13,6 +13,7 @@ struct entity* construct_entity_example() {
 	data->counter = 0;
 
 	struct entity* result = (struct entity*)malloc(sizeof(struct entity));
+	initialize_entity(result);
 
 	result->type = ENTITY_TYPE_EXAMPLE;
 	result->id = 0;
