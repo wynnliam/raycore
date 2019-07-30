@@ -82,3 +82,31 @@ int remove_child_entity(struct entity* remove_from, int child_id) {
 
 	return result;
 }
+
+struct entity* find_child_entity(struct entity* find_in, int child_id) {
+	if(!find_in)
+		return NULL;
+
+	struct entity* result = NULL;
+
+	unsigned int i;
+	for(i = 0; i < CHILD_ENTITY_COUNT; i++) {
+		if(find_in->child_entities[i] && find_in->child_entities[i]->id == child_id) {
+			result = find_in->child_entities[i];
+			break;
+		}
+	}
+
+	return result;
+}
+
+void clear_child_entities(struct entity* to_clear) {
+	if(!to_clear)
+		return;
+
+	unsigned int i;
+	for(i = 0; i < CHILD_ENTITY_COUNT; i++)
+		to_clear->child_entities[i] = NULL;
+
+	to_clear->num_child_entity = 0;
+}

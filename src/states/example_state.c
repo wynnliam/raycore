@@ -57,9 +57,7 @@ void state_example_initialize(SDL_Renderer* renderer) {
 	(*(some_entity->initialize))(some_entity, map);
 	insert_child_entity(some_entity, another_entity);
 
-	if(remove_child_entity(some_entity, 500) == 1)
-		printf("Removed %u from entity!\n", another_entity->id);
-
+	clear_child_entities(some_entity);
 	printf("Number of child entities = %u\n", some_entity->num_child_entity);
 }
 

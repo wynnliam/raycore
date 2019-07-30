@@ -52,6 +52,8 @@ struct entity* construct_empty_entity();
 
 int insert_child_entity(struct entity* insert_into, struct entity* child);
 int remove_child_entity(struct entity* remove_from, int child_id);
+struct entity* find_child_entity(struct entity* find_in, int child_id);
+void clear_child_entities(struct entity* to_clear);
 // For entities and things:
 // Insert, Remove, Find, Clear
 // For tiles:
