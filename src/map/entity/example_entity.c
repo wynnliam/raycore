@@ -12,8 +12,7 @@ struct entity* construct_entity_example() {
 	struct entity_example* data = (struct entity_example*)malloc(sizeof(struct entity_example));
 	data->counter = 0;
 
-	struct entity* result = (struct entity*)malloc(sizeof(struct entity));
-	initialize_entity(result);
+	struct entity* result = construct_empty_entity();
 
 	result->type = ENTITY_TYPE_EXAMPLE;
 	result->id = 0;

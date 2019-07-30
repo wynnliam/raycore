@@ -47,9 +47,7 @@ struct entity {
 	unsigned int num_child_things;
 };
 
-// Should be called before we attach a data object or functions.
-// This ensures our entity is clean for use.
-int initialize_entity(struct entity* to_initialize);
+struct entity* construct_empty_entity();
 
 #endif
 

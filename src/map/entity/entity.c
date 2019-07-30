@@ -3,7 +3,18 @@
 #include "./entity.h"
 #include "../thing.h"
 
-int initialize_entity(struct entity* to_initialize) {
+#include <stdlib.h>
+
+static int initialize_entity(struct entity* to_initialize);
+
+struct entity* construct_empty_entity() {
+	struct entity* result = (struct entity*)malloc(sizeof(struct entity));
+	initialize_entity(result);
+
+	return result;
+}
+
+static int initialize_entity(struct entity* to_initialize) {
 	if(!to_initialize)
 		return 0;
 
