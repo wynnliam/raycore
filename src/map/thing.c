@@ -26,6 +26,8 @@ int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int ani
 	// TODO: Remove type since we have entities (originally, 
 	// type was a way to distinguish different things when things and entities were the same).
 	empty_thingdef->type = 1;
+
+	empty_thingdef->id = 0;
 	empty_thingdef->surf = SDL_LoadBMP(sprite_sheet);
 	empty_thingdef->position[0] = x;
 	empty_thingdef->position[1] = y;
