@@ -1819,15 +1819,17 @@ component {
 }
 
 # East wall
-component {
-	x = "51";
-	y = "22";
-	w = "1";
-	h = "1";
+entity {
+	component {
+		x = "51";
+		y = "22";
+		w = "1";
+		h = "1";
 
-	is_floor_ciel = "0";
-	tex_0 = "./assests/textures/wall/stone2.bmp";
-	tex_1 = "0";
+		is_floor_ciel = "0";
+		tex_0 = "./assests/textures/wall/stone2.bmp";
+		tex_1 = "0";
+	}
 }
 
 component {
