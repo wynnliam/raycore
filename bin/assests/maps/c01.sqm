@@ -294,6 +294,7 @@ component {
 # Props for the North Wing.
 thing {
 	type = "1";
+	id = "3541";
 
 	x = "288";
 	y = "96";
