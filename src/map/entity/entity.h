@@ -50,10 +50,18 @@ struct entity {
 
 struct entity* construct_empty_entity();
 
+// Child entity CRUD interfaces
 int insert_child_entity(struct entity* insert_into, struct entity* child);
 int remove_child_entity(struct entity* remove_from, int child_id);
 struct entity* find_child_entity(struct entity* find_in, int child_id);
 void clear_child_entities(struct entity* to_clear);
+
+// Child thing CRUD interfaces
+int insert_child_thing(struct entity* insert_into, struct thingdef* child);
+int remove_child_thing(struct entity* remove_from, int child_id);
+struct thingdef* find_child_thing(struct entity* find_in, int child_id);
+void clear_child_things(struct entity* to_clear);
+
 // For entities and things:
 // Insert, Remove, Find, Clear
 // For tiles:

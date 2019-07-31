@@ -48,17 +48,6 @@ void state_example_initialize(SDL_Renderer* renderer) {
 	curr_level = 0;
 	map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
 	curr_level++;
-
-	struct entity* another_entity = construct_entity_example();
-	another_entity->id = 500;
-
-	some_entity = construct_entity_example();
-	printf("Number of child entities = %u\n", some_entity->num_child_entity);
-	(*(some_entity->initialize))(some_entity, map);
-	insert_child_entity(some_entity, another_entity);
-
-	clear_child_entities(some_entity);
-	printf("Number of child entities = %u\n", some_entity->num_child_entity);
 }
 
 void state_example_enter(const int from_state, void* message) {
