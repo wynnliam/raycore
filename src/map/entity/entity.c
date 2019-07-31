@@ -110,3 +110,23 @@ void clear_child_entities(struct entity* to_clear) {
 
 	to_clear->num_child_entity = 0;
 }
+
+int insert_child_thing(struct entity* insert_into, struct thingdef* child) {
+	if(!insert_into || !child)
+		return 0;
+
+	int result = 0;
+
+	// Find the first empty slot to put the child and place. If no spot is found, return 0.
+	unsigned int i;
+	for(i = 0; i < CHILD_ENTITY_COUNT; i++) {
+		if(!insert_into->child_entities[i]) {
+			insert_into->child_things[i] = child;
+			insert_into->num_child_things += 1;
+			result = 1;
+			break;
+		}
+	}
+
+	return result;
+}
