@@ -30,8 +30,13 @@ struct entity {
 
 	struct entity* child_entities[CHILD_ENTITY_COUNT];
 	struct thingdef* child_things[CHILD_THING_COUNT];
+
 	// The tiles themselves are the positions of the actual tile.
 	unsigned int child_tiles[CHILD_TILE_COUNT];
+	// If the map is sufficiently large, any value >= 0 is a valid child.
+	// As such, we have a corresponding flag that tells us if the child
+	// is "active" (not 0) or not (0).
+	unsigned int is_child_tile_active[CHILD_TILE_COUNT];
 
 	// A way of idenfitying this kind of entity.
 	int type;
