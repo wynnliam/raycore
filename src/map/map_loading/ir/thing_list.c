@@ -23,6 +23,8 @@ struct thinglist_data* construct_thinglist_data(const char* sprite_sheet, int an
 	result->y = y;
 	result->rot = rot;
 
+	result->id = 0;
+
 	return result;
 }
 
@@ -41,7 +43,8 @@ int thinglist_data_equals(struct thinglist_data* a, struct thinglist_data* b) {
 		result = sprite_sheet_cmp &&
 				 a->x == b->x && a->y == b->y &&
 				 a->rot == b->rot &&
-				 a->anim_class == b->anim_class;
+				 a->anim_class == b->anim_class &&
+				 a->id == b->id;
 	}
 
 	return result;
@@ -79,6 +82,7 @@ struct thinglist_data* thinglist_data_from_recipe(struct recipe* recipe) {
 	char* x_attr = get_attribute_value(recipe->attributes, "x");
 	char* y_attr = get_attribute_value(recipe->attributes, "y");
 	char* rot_attr = get_attribute_value(recipe->attributes, "rot");
+	char* id_attr = get_attribute_value(recipe->attributes, "id");
 
 	// The thinglist data values
 	char* result_sprite_sheet = NULL;
@@ -101,6 +105,12 @@ struct thinglist_data* thinglist_data_from_recipe(struct recipe* recipe) {
 		result_rot = atoi(rot_attr);
 	
 	result = construct_thinglist_data(result_sprite_sheet, result_anim_class, result_x, result_y, result_rot);
+
+	if(id_attr) {
+		result->id = atoi(id_attr);
+		printf("id = %s\n", id_attr);
+		free(id_attr);
+	}
 
 	if(sprite_sheet_attr) free(sprite_sheet_attr);
 	if(anim_class_attr) free(anim_class_attr);
