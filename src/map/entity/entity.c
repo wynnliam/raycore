@@ -152,3 +152,31 @@ int remove_child_thing(struct entity* remove_from, int child_id) {
 
 	return result;
 }
+
+struct thingdef* find_child_thing(struct entity* find_in, int child_id) {
+	if(!find_in)
+		return NULL;
+
+	struct thingdef* result = NULL;
+
+	unsigned int i;
+	for(i = 0; i < CHILD_THING_COUNT; i++) {
+		if(find_in->child_things[i] && find_in->child_things[i]->id == child_id) {
+			result = find_in->child_things[i];
+			break;
+		}
+	}
+
+	return result;
+}
+
+void clear_child_things(struct entity* to_clear) {
+	if(!to_clear)
+		return;
+
+	unsigned int i;
+	for(i = 0; i < CHILD_THING_COUNT; i++)
+		to_clear->child_things[i] = NULL;
+
+	to_clear->num_child_things = 0;
+}
