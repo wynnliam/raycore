@@ -225,3 +225,15 @@ void update_anim_class_2(struct thingdef* thing, const int player_rot) {
 
 	update_anim(&thing->anims[thing->curr_anim]);
 }
+
+int clear_thingdef(struct thingdef* to_clean) {
+	if(!to_clean)
+		return 0;
+
+	if(to_clean->surf) {
+		SDL_FreeSurface(to_clean->surf);
+		to_clean->surf = NULL;
+	}
+
+	return 1;
+}

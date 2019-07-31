@@ -41,4 +41,6 @@ int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int ani
 	class it has, we use a different update function.
 */
 void update_thing_anims(struct mapdef* map, const int player_rot);
+
+int clear_thingdef(struct thingdef* to_clean);
 #endif

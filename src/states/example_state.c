@@ -48,6 +48,9 @@ void state_example_initialize(SDL_Renderer* renderer) {
 	curr_level = 0;
 	map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
 	curr_level++;
+
+	some_entity = construct_entity_example();
+	(*(some_entity->initialize))(some_entity, map);
 }
 
 void state_example_enter(const int from_state, void* message) {
