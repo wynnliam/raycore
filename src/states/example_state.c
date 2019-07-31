@@ -53,19 +53,9 @@ void state_example_initialize(SDL_Renderer* renderer) {
 	some_entity = construct_entity_example();
 	(*(some_entity->initialize))(some_entity, map);
 
-	struct thingdef* temp = NULL;
-	unsigned int i;
-	for(i = 0; i < 100; i++) {
-		if(map->things[i].id == 3541) {
-			temp = &map->things[i];
-			break;
-		}
-	}
+	insert_child_tile(some_entity, 1600);
 
-	insert_child_thing(some_entity, temp);
-	remove_child_thing(some_entity, 3541);
-
-	printf("Num things: %d\n", some_entity->num_child_things);
+	printf("Num child tiles: %u", some_entity->num_child_tiles);
 }
 
 void state_example_enter(const int from_state, void* message) {

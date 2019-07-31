@@ -67,6 +67,8 @@ int remove_child_thing(struct entity* remove_from, int child_id);
 struct thingdef* find_child_thing(struct entity* find_in, int child_id);
 void clear_child_things(struct entity* to_clear);
 
+// Child tile CRUD interfaces
+int insert_child_tile(struct entity* insert_into, unsigned int tile_pos);
 // For entities and things:
 // Insert, Remove, Find, Clear
 // For tiles:

@@ -111,6 +111,7 @@ void clear_child_entities(struct entity* to_clear) {
 	to_clear->num_child_entity = 0;
 }
 
+// Child thing functions 
 int insert_child_thing(struct entity* insert_into, struct thingdef* child) {
 	if(!insert_into || !child)
 		return 0;
@@ -179,4 +180,27 @@ void clear_child_things(struct entity* to_clear) {
 		to_clear->child_things[i] = NULL;
 
 	to_clear->num_child_things = 0;
+}
+
+// Child Tile
+int insert_child_tile(struct entity* insert_into, unsigned int tile_pos) {
+	if(!insert_into)
+		return 0;
+
+	int result = 0;
+
+	unsigned int i;
+	for(i = 0; i < CHILD_TILE_COUNT; i++) {
+		if(!insert_into->is_child_tile_active[i]) {
+			insert_into->child_tiles[i] = tile_pos;
+			insert_into->is_child_tile_active[i] = 1;
+			insert_into->num_child_tiles += 1;
+
+			result = 1;
+
+			break;
+		}
+	}
+
+	return result;
 }
