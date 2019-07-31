@@ -54,8 +54,14 @@ void state_example_initialize(SDL_Renderer* renderer) {
 	(*(some_entity->initialize))(some_entity, map);
 
 	insert_child_tile(some_entity, 1600);
+	insert_child_tile(some_entity, 1600);
+	insert_child_tile(some_entity, 1600);
+	insert_child_tile(some_entity, 1600);
 
-	printf("Num child tiles: %u", some_entity->num_child_tiles);
+	printf("Num child tiles: %u\n", some_entity->num_child_tiles);
+
+	clear_child_tiles(some_entity);
+	printf("Num child tiles: %u\n", some_entity->num_child_tiles);
 }
 
 void state_example_enter(const int from_state, void* message) {

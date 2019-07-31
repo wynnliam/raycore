@@ -204,3 +204,15 @@ int insert_child_tile(struct entity* insert_into, unsigned int tile_pos) {
 
 	return result;
 }
+
+void clear_child_tiles(struct entity* to_clear) {
+	if(!to_clear)
+		return;
+
+	unsigned int i;
+	for(i = 0; i < CHILD_TILE_COUNT; i++) {
+		to_clear->is_child_tile_active[i] = 0;
+	}
+
+	to_clear->num_child_tiles = 0;
+}
