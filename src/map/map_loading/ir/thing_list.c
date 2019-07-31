@@ -108,7 +108,6 @@ struct thinglist_data* thinglist_data_from_recipe(struct recipe* recipe) {
 
 	if(id_attr) {
 		result->id = atoi(id_attr);
-		printf("id = %s\n", id_attr);
 		free(id_attr);
 	}
 

@@ -119,10 +119,32 @@ int insert_child_thing(struct entity* insert_into, struct thingdef* child) {
 
 	// Find the first empty slot to put the child and place. If no spot is found, return 0.
 	unsigned int i;
-	for(i = 0; i < CHILD_ENTITY_COUNT; i++) {
+	for(i = 0; i < CHILD_THING_COUNT; i++) {
 		if(!insert_into->child_entities[i]) {
 			insert_into->child_things[i] = child;
 			insert_into->num_child_things += 1;
+			result = 1;
+			break;
+		}
+	}
+
+	return result;
+}
+
+int remove_child_thing(struct entity* remove_from, int child_id) {
+	if(!remove_from)
+		return 0;
+
+	int result = 0;
+
+	unsigned int i;
+	for(i = 0; i < CHILD_THING_COUNT; i++) {
+		if(remove_from->child_things[i] && remove_from->child_things[i]->id == child_id) {
+			// Don't actually remove them, since the map is responsible for the
+			// child thing itself.
+			remove_from->child_things[i] = NULL;
+			remove_from->num_child_things -= 1;
+
 			result = 1;
 			break;
 		}
