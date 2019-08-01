@@ -6,6 +6,7 @@
 #include "./tokenizer/tokenizer.h"
 #include "./parser/recipe.h"
 #include "./ir/intermediate_mapdef.h"
+#include "./entity_loading/entity_loading.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,6 +22,8 @@ static void create_wall_textures(struct texture_list* textures, struct mapdef* r
 static void create_floor_ceil_textures(struct texture_list* textures, struct mapdef* result);
 
 static void add_thingdefs_to_map(struct thing_list* things, struct mapdef* result);
+
+static void add_entities_to_map(struct recipe_list_node* head, struct mapdef* result);
 
 // And array of every level we want in the game.
 char** map_lookup_table;
@@ -100,7 +103,7 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 
 	add_thingdefs_to_map(intermediate_mapdef->things, result);
 
-	// TODO: Entities
+	add_entities_to_map(map_tree->head, result);
 
 	printf("Loaded %s\n", path);
 
@@ -317,4 +320,20 @@ static void add_thingdefs_to_map(struct thing_list* things, struct mapdef* resul
 
 		curr = curr->next;
 	}
+}
+
+static void add_entities_to_map(struct recipe_list_node* head, struct mapdef* result) {
+	if(!head || !head->recipe || !result)
+		return;
+
+	if(strcmp("entity", head->recipe->type) == 0) {
+		struct entity* entity  = construct_entity_from_recipe(head->recipe);
+		if(entity)
+			insert_entity_into_map(result, entity);
+	}
+
+	add_entities_to_map(head->next, result);
+	
+	if(head->recipe->subrecipes)
+		add_entities_to_map(head->recipe->subrecipes->head, result);
 }
