@@ -11,3 +11,4 @@ must be distinct from all other entity id's.
 	d. Entity update function
 		-- Called each frame for non-rendering logic
 	e. Entity clean up function
+4. Navigate to src/map/map_loading/entity_loading/. Create entity loading system.

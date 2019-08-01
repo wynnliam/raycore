@@ -1821,6 +1821,11 @@ component {
 
 # East wall
 entity {
+	type = "entity_example";
+	id = "1";
+	x = "0";
+	y = "0";
+
 	component {
 		x = "51";
 		y = "22";
