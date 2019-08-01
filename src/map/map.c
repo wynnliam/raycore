@@ -156,6 +156,11 @@ int clean_mapdef(struct mapdef* to_clean) {
 	for(i = 0; i < to_clean->num_things; ++i)
 		clear_thingdef(&(to_clean->things[i]));
 
+	for(i = 0; i < ENTITY_COUNT; i++) {
+		if(to_clean->entities[i])
+			(*(to_clean->entities[i]->clean))(to_clean->entities[i], to_clean);
+	}
+
 	return 1;
 }
 
