@@ -23,7 +23,7 @@ static void create_floor_ceil_textures(struct texture_list* textures, struct map
 
 static void add_thingdefs_to_map(struct thing_list* things, struct mapdef* result);
 
-static void add_entities_to_map(struct recipe_list_node* head, struct mapdef* result);
+static void add_entities_to_map(struct recipe_list_node* head, struct entity* parent, struct mapdef* result);
 
 // And array of every level we want in the game.
 char** map_lookup_table;
@@ -103,7 +103,7 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 
 	add_thingdefs_to_map(intermediate_mapdef->things, result);
 
-	add_entities_to_map(map_tree->head, result);
+	add_entities_to_map(map_tree->head, NULL, result);
 
 	printf("Loaded %s\n", path);
 
@@ -322,18 +322,25 @@ static void add_thingdefs_to_map(struct thing_list* things, struct mapdef* resul
 	}
 }
 
-static void add_entities_to_map(struct recipe_list_node* head, struct mapdef* result) {
+static void add_entities_to_map(struct recipe_list_node* head, struct entity* parent, struct mapdef* result) {
 	if(!head || !head->recipe || !result)
 		return;
 
+	struct entity* entity = NULL;
 	if(strcmp("entity", head->recipe->type) == 0) {
-		struct entity* entity  = construct_entity_from_recipe(head->recipe);
+		entity  = construct_entity_from_recipe(head->recipe);
+
 		if(entity)
 			insert_entity_into_map(result, entity);
+			// TODO: Check if parent is not NULL.
+		else
+			printf("Error reading entity! Check entity recipes to ensure they are correct!\n");
+	} else {
+		// TODO: Check if parent not NULL.
 	}
 
-	add_entities_to_map(head->next, result);
+	add_entities_to_map(head->next, parent, result);
 	
 	if(head->recipe->subrecipes)
-		add_entities_to_map(head->recipe->subrecipes->head, result);
+		add_entities_to_map(head->recipe->subrecipes->head, entity, result);
 }
