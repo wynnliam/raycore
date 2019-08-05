@@ -25,8 +25,6 @@ static struct mapdef* map;
 static int quit = 0;
 static int next_state;
 
-static struct entity* some_entity;
-
 void state_example_initialize(SDL_Renderer* renderer) {
 	player_x = 256;
 	player_y = 256;
@@ -48,9 +46,6 @@ void state_example_initialize(SDL_Renderer* renderer) {
 	curr_level = 0;
 	map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
 	curr_level++;
-
-	some_entity = construct_entity_example();
-	(*(some_entity->initialize))(some_entity, map);
 }
 
 void state_example_enter(const int from_state, void* message) {
@@ -79,8 +74,6 @@ void state_example_process_input() {
 }
 
 void state_example_update() {
-	(*(some_entity->update))(some_entity, map);
-
 	if(key_pressed_once(SDL_SCANCODE_1)) {
 		free_map(&map);
 		map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
@@ -137,6 +130,7 @@ void state_example_update() {
 	}
 
 	update_thing_anims(map, player_rot);
+	update_entities(map);
 }
 
 
@@ -155,8 +149,6 @@ void state_example_draw(SDL_Renderer* renderer) {
 
 void state_example_clean_up() {
 	free_map(&map);
-
-	(*(some_entity->clean))(some_entity, map);
 }
 
 int state_example_quit() {

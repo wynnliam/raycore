@@ -26,6 +26,8 @@ int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int ani
 	// TODO: Remove type since we have entities (originally, 
 	// type was a way to distinguish different things when things and entities were the same).
 	empty_thingdef->type = 1;
+
+	empty_thingdef->id = 0;
 	empty_thingdef->surf = SDL_LoadBMP(sprite_sheet);
 	empty_thingdef->position[0] = x;
 	empty_thingdef->position[1] = y;
@@ -224,4 +226,16 @@ void update_anim_class_2(struct thingdef* thing, const int player_rot) {
 	}
 
 	update_anim(&thing->anims[thing->curr_anim]);
+}
+
+int clear_thingdef(struct thingdef* to_clean) {
+	if(!to_clean)
+		return 0;
+
+	if(to_clean->surf) {
+		SDL_FreeSurface(to_clean->surf);
+		to_clean->surf = NULL;
+	}
+
+	return 1;
 }

@@ -4,7 +4,6 @@
 
 static void clean_walldef(struct walldef* to_clean);
 static void clean_floorcieldef(struct floorcielingdef* to_clean);
-static void clean_thing(struct thingdef* to_clean);
 
 // TODO: Clean this up!
 int initialize_map(struct mapdef* map) {
@@ -155,7 +154,12 @@ int clean_mapdef(struct mapdef* to_clean) {
 		clean_floorcieldef(&(to_clean->floor_ceils[i]));
 
 	for(i = 0; i < to_clean->num_things; ++i)
-		clean_thing(&(to_clean->things[i]));
+		clear_thingdef(&(to_clean->things[i]));
+
+	for(i = 0; i < ENTITY_COUNT; i++) {
+		if(to_clean->entities[i])
+			(*(to_clean->entities[i]->clean))(to_clean->entities[i], to_clean);
+	}
 
 	return 1;
 }
@@ -197,16 +201,6 @@ void clean_floorcieldef(struct floorcielingdef* to_clean) {
 	if(to_clean->ceil_surf) {
 		SDL_FreeSurface(to_clean->ceil_surf);
 		to_clean->ceil_surf = NULL;
-	}
-}
-
-void clean_thing(struct thingdef* to_clean) {
-	if(!to_clean)
-		return;
-
-	if(to_clean->surf) {
-		SDL_FreeSurface(to_clean->surf);
-		to_clean->surf = NULL;
 	}
 }
 
