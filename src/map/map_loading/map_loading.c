@@ -343,8 +343,28 @@ static void add_enitty_child_tiles_from_recipe(struct entity* parent, struct rec
 		}
 	}
 
-	printf("Added children tiles to entity!\n");
+	printf("Child tiles for entity: %u", parent->num_child_tiles);
 	clean_component(from_recipe);
+}
+
+void add_entity_child_thing_from_recipe(struct entity* parent, struct recipe* recipe, struct mapdef* map) {
+	if(!parent || !recipe || !map)
+		return;
+
+	struct thinglist_data* temp_data = thinglist_data_from_recipe(recipe);
+	if(!temp_data)
+		return;
+
+	int id = temp_data->id;
+	clean_thinglist_data(temp_data);
+
+	unsigned int i;
+	for(i = 0; i < map->num_things; i++) {
+		if(map->things[i].id == id) {
+			insert_child_thing(parent, &map->things[i]);
+			printf("Added thing child!\n");
+		}
+	}
 }
 
 static void add_entities_to_map(struct recipe_list_node* head, struct entity* parent, struct mapdef* result) {
@@ -366,7 +386,7 @@ static void add_entities_to_map(struct recipe_list_node* head, struct entity* pa
 		if(strcmp("component", head->recipe->type) == 0) {
 			add_enitty_child_tiles_from_recipe(parent, head->recipe, result);
 		} else if(strcmp("thing", head->recipe->type) == 0) {
-			// TODO: Handle case of thing.
+			add_entity_child_thing_from_recipe(parent, head->recipe, result);
 		}
 	}
 
