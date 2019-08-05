@@ -322,6 +322,31 @@ static void add_thingdefs_to_map(struct thing_list* things, struct mapdef* resul
 	}
 }
 
+// Add child tiles to parent entity. However, we take a recipe, and find the corresponding
+// tiles.
+static void add_enitty_child_tiles_from_recipe(struct entity* parent, struct recipe* recipe, struct mapdef* map) {
+	if(!parent || !recipe || !map)
+		return;
+
+	struct component* from_recipe = construct_component_from_recipe_and_texture_list(recipe, NULL);
+	if(!from_recipe)
+		return;
+
+	unsigned int x, y, tile_index;
+	for(x = from_recipe->x; x < from_recipe->w; x++) {
+		for(y = from_recipe->y; y < from_recipe->h; y++) {
+			if(x >= map->map_w || y >= map->map_h)
+				continue;
+
+			tile_index = y * map->map_w + x;
+			insert_child_tile(parent, tile_index);
+		}
+	}
+
+	printf("Added children tiles to entity!\n");
+	clean_component(from_recipe);
+}
+
 static void add_entities_to_map(struct recipe_list_node* head, struct entity* parent, struct mapdef* result) {
 	if(!head || !head->recipe || !result)
 		return;
@@ -330,13 +355,19 @@ static void add_entities_to_map(struct recipe_list_node* head, struct entity* pa
 	if(strcmp("entity", head->recipe->type) == 0) {
 		entity  = construct_entity_from_recipe(head->recipe);
 
-		if(entity)
+		if(entity) {
 			insert_entity_into_map(result, entity);
-			// TODO: Check if parent is not NULL.
-		else
+
+			if(parent)
+				insert_child_entity(parent, entity);
+		} else
 			printf("Error reading entity! Check entity recipes to ensure they are correct!\n");
-	} else {
-		// TODO: Check if parent not NULL.
+	} else if(parent) {
+		if(strcmp("component", head->recipe->type) == 0) {
+			add_enitty_child_tiles_from_recipe(parent, head->recipe, result);
+		} else if(strcmp("thing", head->recipe->type) == 0) {
+			// TODO: Handle case of thing.
+		}
 	}
 
 	add_entities_to_map(head->next, parent, result);
