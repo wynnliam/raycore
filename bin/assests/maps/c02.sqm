@@ -224,14 +224,21 @@ component {
 }
 
 # Things in the main room
-thing {
-	type = "1";
-	x = "1120";
-	y = "640";
-	rot = "90";
+entity {
+	type = "entity_example";
+	id = "1";
+	x = "0";
+	y = "0";
 
-	anim_class = "0";
-	sprite_sheet = "./assests/sprites/sculptures/king_rock.bmp";
+	thing {
+		id = "1";
+		x = "1120";
+		y = "640";
+		rot = "90";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/sculptures/king_rock.bmp";
+	}
 }
 
 thing {
