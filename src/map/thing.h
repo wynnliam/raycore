@@ -32,6 +32,15 @@ struct thingdef {
 	unsigned int curr_anim;
 
 	int type;
+	// A way to identify things. Note that id's are NOT required for
+	// things. They only make sense for things that are children of
+	// entities. Most things only exist as decorations for levels.
+	// By default, the id is set to 0, so for unique things, choose
+	// ids with a number not 0.
+	int id;
+
+	// TODO Union of signal bits!
+	int signal_user_interact;
 };
 
 int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int anim_class, int x, int y, int rot);
@@ -41,4 +50,13 @@ int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int ani
 	class it has, we use a different update function.
 */
 void update_thing_anims(struct mapdef* map, const int player_rot);
+
+int clear_thingdef(struct thingdef* to_clean);
+
+// Thing signal api
+
+void set_signal_user_interact_on(struct thingdef* thing);
+void set_signal_user_interact_off(struct thingdef* thing);
+int check_signal_user_interact(struct thingdef* thing);
+void clear_all_signals(struct thingdef* thing);
 #endif

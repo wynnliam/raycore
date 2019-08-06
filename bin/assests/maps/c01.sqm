@@ -294,6 +294,7 @@ component {
 # Props for the North Wing.
 thing {
 	type = "1";
+	id = "3541";
 
 	x = "288";
 	y = "96";
@@ -2912,4 +2913,25 @@ component {
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/grass/grass1.bmp";
 	tex_1 = "0";
+}
+
+# Level transition entity
+entity {
+	type = "entity_level_transition";
+	id = "1";
+	x = "0";
+	y = "0";
+
+	goto_level = "2";
+
+	thing {
+		id = "1";
+
+		x = "3232";
+		y = "1440";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
 }

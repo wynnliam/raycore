@@ -26,6 +26,8 @@ int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int ani
 	// TODO: Remove type since we have entities (originally, 
 	// type was a way to distinguish different things when things and entities were the same).
 	empty_thingdef->type = 1;
+
+	empty_thingdef->id = 0;
 	empty_thingdef->surf = SDL_LoadBMP(sprite_sheet);
 	empty_thingdef->position[0] = x;
 	empty_thingdef->position[1] = y;
@@ -47,6 +49,8 @@ int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int ani
 		printf("WARNING: thing has bad anim_class. Make sure it is set to 0, 1, or 2\n");
 		initialize_anim_class_0(empty_thingdef);
 	}
+
+	clear_all_signals(empty_thingdef);
 
 	return 1;
 }
@@ -224,4 +228,44 @@ void update_anim_class_2(struct thingdef* thing, const int player_rot) {
 	}
 
 	update_anim(&thing->anims[thing->curr_anim]);
+}
+
+int clear_thingdef(struct thingdef* to_clean) {
+	if(!to_clean)
+		return 0;
+
+	if(to_clean->surf) {
+		SDL_FreeSurface(to_clean->surf);
+		to_clean->surf = NULL;
+	}
+
+	return 1;
+}
+
+void set_signal_user_interact_on(struct thingdef* thing) {
+	if(!thing)
+		return;
+
+	thing->signal_user_interact = 1;
+}
+
+void set_signal_user_interact_off(struct thingdef* thing) {
+	if(!thing)
+		return;
+
+	thing->signal_user_interact = 0;
+}
+
+int check_signal_user_interact(struct thingdef* thing) {
+	if(!thing)
+		return 0;
+
+	return thing->signal_user_interact;
+}
+
+void clear_all_signals(struct thingdef* thing) {
+	if(!thing)
+		return;
+
+	set_signal_user_interact_off(thing);
 }

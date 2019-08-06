@@ -12,6 +12,7 @@ struct thinglist_data {
 	int anim_class;
 	int x, y;
 	int rot;
+	int id;
 };
 
 struct thinglist_node {

@@ -1702,3 +1702,23 @@ thing {
 	anim_class = "0";
 	sprite_sheet = "./assests/sprites/barrels/barrel_2.bmp";
 }
+
+entity {
+	type = "entity_level_transition";
+	id = "1";
+	x = "0";
+	y = "0";
+
+	goto_level = "2";
+
+	thing {
+		id = "1";
+
+		x = "224";
+		y = "96";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
+}

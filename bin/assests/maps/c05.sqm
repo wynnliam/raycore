@@ -1742,3 +1742,23 @@ thing {
 #	tex_0 = "./assests/textures/measure/measure_02.bmp";
 #	tex_1 = "0";
 #}
+
+entity {
+	type = "entity_level_transition";
+	id = "1";
+	x = "0";
+	y = "0";
+
+	goto_level = "2";
+
+	thing {
+		id = "1";
+
+		x = "1120";
+		y = "1760";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
+}

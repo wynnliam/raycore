@@ -25,7 +25,7 @@ struct component* construct_component(unsigned int tex_id, unsigned int x, unsig
 }
 
 struct component* construct_component_from_recipe_and_texture_list(struct recipe* recipe, struct texture_list* texture_list) {
-	if(!recipe || !texture_list)
+	if(!recipe)
 		return NULL;
 	
 	unsigned int tex_id;
@@ -36,10 +36,13 @@ struct component* construct_component_from_recipe_and_texture_list(struct recipe
 	char* w_attr = get_attribute_value(recipe->attributes, "w");
 	char* h_attr = get_attribute_value(recipe->attributes, "h");
 
-	struct texlist_data* component_texture_data = build_texlist_data_from_recipe(recipe);
-	tex_id = find_mapdef_id(component_texture_data, texture_list);
-	if(component_texture_data)
-		clean_textlist_data(component_texture_data);
+	if(texture_list) {
+		struct texlist_data* component_texture_data = build_texlist_data_from_recipe(recipe);
+		tex_id = find_mapdef_id(component_texture_data, texture_list);
+		if(component_texture_data)
+			clean_textlist_data(component_texture_data);
+	} else
+		tex_id = 0;
 
 	if(x_attr) {
 		x = (unsigned int)atoi(x_attr);

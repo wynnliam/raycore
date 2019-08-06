@@ -4,7 +4,6 @@
 
 static void clean_walldef(struct walldef* to_clean);
 static void clean_floorcieldef(struct floorcielingdef* to_clean);
-static void clean_thing(struct thingdef* to_clean);
 
 // TODO: Clean this up!
 int initialize_map(struct mapdef* map) {
@@ -54,6 +53,8 @@ int initialize_map(struct mapdef* map) {
 		map->things[i].num_anims = 0;
 		map->things[i].curr_anim = 0;
 		map->things[i].type = 0;
+
+		clear_all_signals(&map->things[i]);
 	}
 
 	for(i = 0; i < ENTITY_COUNT; i++) {
@@ -70,6 +71,8 @@ int initialize_map(struct mapdef* map) {
 	map->num_entities = 0;
 
 	map->use_fog = 0;
+
+	map->signal_level_transition = -1;
 
 	return 1;
 }
@@ -114,6 +117,15 @@ int remove_entity_from_map(struct mapdef* map, const int id) {
 	return result;
 }
 
+void clear_all_thing_signals(struct mapdef* map) {
+	if(!map)
+		return;
+
+	unsigned int i;
+	for(i = 0; i < map->num_things; i++)
+		clear_all_signals(&map->things[i]);
+}
+
 void update_entities(struct mapdef* map) {
 	if(!map)
 		return;
@@ -155,7 +167,12 @@ int clean_mapdef(struct mapdef* to_clean) {
 		clean_floorcieldef(&(to_clean->floor_ceils[i]));
 
 	for(i = 0; i < to_clean->num_things; ++i)
-		clean_thing(&(to_clean->things[i]));
+		clear_thingdef(&(to_clean->things[i]));
+
+	for(i = 0; i < ENTITY_COUNT; i++) {
+		if(to_clean->entities[i])
+			(*(to_clean->entities[i]->clean))(to_clean->entities[i], to_clean);
+	}
 
 	return 1;
 }
@@ -200,16 +217,6 @@ void clean_floorcieldef(struct floorcielingdef* to_clean) {
 	}
 }
 
-void clean_thing(struct thingdef* to_clean) {
-	if(!to_clean)
-		return;
-
-	if(to_clean->surf) {
-		SDL_FreeSurface(to_clean->surf);
-		to_clean->surf = NULL;
-	}
-}
-
 void free_map(struct mapdef** map) {
 	if(!map || !(*map))
 		return;
@@ -231,3 +238,4 @@ int is_position_wall(struct mapdef* map, int player_x, int player_y) {
 
 	return map->layout[index] >= map->num_floor_ceils || map->invisible_walls[index];
 }
+
