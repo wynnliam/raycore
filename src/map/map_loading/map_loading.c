@@ -82,8 +82,6 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 
 	unsigned int map_w, map_h;
 
-	// TODO: Properties
-
 	// TODO: Move this to seperate functions/files
 	struct mapdef* result = (struct mapdef*)malloc(sizeof(struct mapdef));
 	initialize_map(result);
@@ -129,6 +127,10 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 		*player_y = 177;
 		*player_rot = 270;
 	}
+
+	clean_token_list(tokens);
+	clean_recipe_list(map_tree);
+	clean_intermediate_mapdef(intermediate_mapdef);
 
 	return result;
 }
