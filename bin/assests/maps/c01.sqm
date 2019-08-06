@@ -2921,3 +2921,16 @@ component {
 	tex_0 = "./assests/textures/grass/grass1.bmp";
 	tex_1 = "0";
 }
+
+# Level transition entity
+thing {
+	id = "1";
+
+	x = "3232";
+	y = "1440";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/hud/alert.bmp";
+}
+
