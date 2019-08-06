@@ -38,7 +38,7 @@ void entity_level_transition_update(struct entity* entity, struct mapdef* curr_m
 	int i;
 	for(i = 0; i < CHILD_THING_COUNT; i++) {
 		if(entity->child_things[i] && check_signal_user_interact(entity->child_things[i])) {
-			printf("Activated child %u\n", entity->child_things[i]->id);
+			curr_map->signal_level_transition = ((struct level_transition_entity*)(entity->data))->goto_level_id;
 		}
 	}
 }
