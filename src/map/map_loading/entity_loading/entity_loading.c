@@ -5,9 +5,24 @@
 
 #include "../../entity/entity.h"
 #include "../../entity/example_entity.h"
+#include "../../entity/level_transition_entity.h"
 
 #include <string.h>
 #include <stdlib.h>
+
+static struct entity* construct_level_transition_entity_from_recipe(struct recipe* recipe) {
+	struct entity* result = construct_entity_level_transition();
+	struct level_transition_entity* data = (struct level_transition_entity*)result->data;
+
+	char* goto_level_attr = get_attribute_value(recipe->attributes, "goto_level");
+
+	if(goto_level_attr) {
+		data->goto_level_id = atoi(goto_level_attr);
+		free(goto_level_attr);
+	}
+
+	return result;
+}
 
 struct entity* construct_entity_from_recipe(struct recipe* recipe) {
 	if(!recipe)
@@ -24,6 +39,8 @@ struct entity* construct_entity_from_recipe(struct recipe* recipe) {
 
 	if(strcmp(type_attr, "entity_example") == 0) {
 		result = construct_entity_example();
+	} else if(strcmp(type_attr, "entity_level_transition") == 0) {
+		result = construct_level_transition_entity_from_recipe(recipe);
 	}
 
 	if(x_attr) {
