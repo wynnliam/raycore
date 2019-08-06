@@ -115,4 +115,6 @@ void free_map(struct mapdef** map);
 
 int is_position_wall(struct mapdef* map, int player_x, int player_y);
 
+void clear_all_thing_signals(struct mapdef* map);
+
 #endif

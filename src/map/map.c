@@ -53,6 +53,8 @@ int initialize_map(struct mapdef* map) {
 		map->things[i].num_anims = 0;
 		map->things[i].curr_anim = 0;
 		map->things[i].type = 0;
+
+		clear_all_signals(&map->things[i]);
 	}
 
 	for(i = 0; i < ENTITY_COUNT; i++) {
@@ -111,6 +113,15 @@ int remove_entity_from_map(struct mapdef* map, const int id) {
 	}
 
 	return result;
+}
+
+void clear_all_thing_signals(struct mapdef* map) {
+	if(!map)
+		return;
+
+	unsigned int i;
+	for(i = 0; i < map->num_things; i++)
+		clear_all_signals(&map->things[i]);
 }
 
 void update_entities(struct mapdef* map) {
@@ -225,3 +236,4 @@ int is_position_wall(struct mapdef* map, int player_x, int player_y) {
 
 	return map->layout[index] >= map->num_floor_ceils || map->invisible_walls[index];
 }
+
