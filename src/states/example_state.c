@@ -125,6 +125,29 @@ void state_example_update() {
 		}
 	}
 
+	if(key_pressed_once(SDL_SCANCODE_E)) {
+		printf("User activation!\n");
+
+		int player_tile_pos, thing_tile_pos;
+		int* thing_pos;
+		// First divide player position by 64 then compute tile index.
+		player_tile_pos = (player_y >> 6) * map->map_w + (player_x >> 6);
+
+		unsigned int i;
+		for(i = 0; i < map->num_things; i++) {
+			thing_pos = map->things[i].position;
+			// Do the same for the thing position.
+			thing_tile_pos = (thing_pos[1] >> 6) * map->map_w + (thing_pos[0] >> 6);
+
+			if(thing_tile_pos == player_tile_pos)
+				printf("Interacted with thing at %d %d\n", thing_pos[0], thing_pos[1]);
+		}
+
+		// TODO: Map quadtree.
+		// TODO: Scan things in level and send activation signal to corresponding
+		// activation signal to them.
+	}
+
 	if(key_pressed(SDL_SCANCODE_C)) {
 		printf("Player position = [%d, %d]. Player rotation = %d\n", player_x, player_y, player_rot);
 	}
