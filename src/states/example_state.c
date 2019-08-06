@@ -87,6 +87,8 @@ void state_example_update() {
 		return;
 	}
 
+	clear_all_thing_signals(map);
+
 	if(key_pressed(SDL_SCANCODE_A)) {
 		player_rot += 2;
 
@@ -140,12 +142,11 @@ void state_example_update() {
 			thing_tile_pos = (thing_pos[1] >> 6) * map->map_w + (thing_pos[0] >> 6);
 
 			if(thing_tile_pos == player_tile_pos)
-				printf("Interacted with thing at %d %d\n", thing_pos[0], thing_pos[1]);
+				set_signal_user_interact_on(&map->things[i]);
 		}
 
 		// TODO: Map quadtree.
-		// TODO: Scan things in level and send activation signal to corresponding
-		// activation signal to them.
+		// TODO: Move this code to map.h/map.c (procedure check_map_user_interaction or something).
 	}
 
 	if(key_pressed(SDL_SCANCODE_C)) {
