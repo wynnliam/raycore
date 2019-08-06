@@ -224,21 +224,14 @@ component {
 }
 
 # Things in the main room
-entity {
-	type = "entity_example";
+thing {
 	id = "1";
-	x = "0";
-	y = "0";
+	x = "1120";
+	y = "640";
+	rot = "90";
 
-	thing {
-		id = "1";
-		x = "1120";
-		y = "640";
-		rot = "90";
-
-		anim_class = "0";
-		sprite_sheet = "./assests/sprites/sculptures/king_rock.bmp";
-	}
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/sculptures/king_rock.bmp";
 }
 
 thing {
@@ -496,4 +489,24 @@ thing {
 
 	anim_class = "0";
 	sprite_sheet = "./assests/sprites/pots/big_pot.bmp";
+}
+
+entity {
+	type = "entity_level_transition";
+	id = "1";
+	x = "0";
+	y = "0";
+
+	goto_level = "2";
+
+	thing {
+		id = "2";
+
+		x = "1760";
+		y = "608";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
 }
