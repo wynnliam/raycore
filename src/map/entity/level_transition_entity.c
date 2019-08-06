@@ -49,5 +49,6 @@ void entity_level_transition_clean(struct entity* entity, struct mapdef* curr_ma
 
 	if(entity->data)
 		free(entity->data);
-	free(entity->data);
+
+	free(entity);
 }
