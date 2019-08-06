@@ -52,4 +52,11 @@ int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int ani
 void update_thing_anims(struct mapdef* map, const int player_rot);
 
 int clear_thingdef(struct thingdef* to_clean);
+
+// Thing signal api
+
+void set_signal_user_interact_on(struct thingdef* thing);
+void set_signal_user_interact_off(struct thingdef* thing);
+int check_signal_user_interact(struct thingdef* thing);
+void clear_all_signals(struct thingdef* thing);
 #endif

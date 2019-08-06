@@ -50,6 +50,8 @@ int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int ani
 		initialize_anim_class_0(empty_thingdef);
 	}
 
+	clear_all_signals(empty_thingdef);
+
 	return 1;
 }
 
@@ -238,4 +240,32 @@ int clear_thingdef(struct thingdef* to_clean) {
 	}
 
 	return 1;
+}
+
+void set_signal_user_interact_on(struct thingdef* thing) {
+	if(!thing)
+		return;
+
+	thing->signal_user_interact = 1;
+}
+
+void set_signal_user_interact_off(struct thingdef* thing) {
+	if(!thing)
+		return;
+
+	thing->signal_user_interact = 0;
+}
+
+int check_signal_user_interact(struct thingdef* thing) {
+	if(!thing)
+		return 0;
+
+	return thing->signal_user_interact;
+}
+
+void clear_all_signals(struct thingdef* thing) {
+	if(!thing)
+		return;
+
+	set_signal_user_interact_off(thing);
 }
