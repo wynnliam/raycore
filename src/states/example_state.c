@@ -87,6 +87,8 @@ void state_example_update() {
 		return;
 	}
 
+	clear_all_thing_signals(map);
+
 	if(key_pressed(SDL_SCANCODE_A)) {
 		player_rot += 2;
 
@@ -123,6 +125,28 @@ void state_example_update() {
 			player_y -= (sin128table[player_rot] << 4) >> 7;
 			player_x += (cos128table[player_rot] << 4) >> 7;
 		}
+	}
+
+	if(key_pressed_once(SDL_SCANCODE_E)) {
+		printf("User activation!\n");
+
+		int player_tile_pos, thing_tile_pos;
+		int* thing_pos;
+		// First divide player position by 64 then compute tile index.
+		player_tile_pos = (player_y >> 6) * map->map_w + (player_x >> 6);
+
+		unsigned int i;
+		for(i = 0; i < map->num_things; i++) {
+			thing_pos = map->things[i].position;
+			// Do the same for the thing position.
+			thing_tile_pos = (thing_pos[1] >> 6) * map->map_w + (thing_pos[0] >> 6);
+
+			if(thing_tile_pos == player_tile_pos)
+				set_signal_user_interact_on(&map->things[i]);
+		}
+
+		// TODO: Map quadtree.
+		// TODO: Move this code to map.h/map.c (procedure check_map_user_interaction or something).
 	}
 
 	if(key_pressed(SDL_SCANCODE_C)) {
