@@ -38,6 +38,9 @@ struct thingdef {
 	// By default, the id is set to 0, so for unique things, choose
 	// ids with a number not 0.
 	int id;
+
+	// TODO Union of signal bits!
+	int signal_user_interact;
 };
 
 int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int anim_class, int x, int y, int rot);
