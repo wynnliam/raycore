@@ -83,6 +83,10 @@ struct mapdef {
 	// If 0 -- Do not use fog. If not 0 -- Use fog.
 	int use_fog;
 	int fog_r, fog_b, fog_g;
+
+	// TODO: Have gamemode struct where this gets handled.
+	// if -1: no transition. Otherwise, transition to corresponding level.
+	int signal_level_transition;
 };
 
 // Null initializes everything in the map.
