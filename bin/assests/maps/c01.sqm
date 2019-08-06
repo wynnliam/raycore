@@ -1820,22 +1820,15 @@ component {
 }
 
 # East wall
-entity {
-	type = "entity_example";
-	id = "1";
-	x = "0";
-	y = "0";
+component {
+	x = "51";
+	y = "22";
+	w = "1";
+	h = "1";
 
-	component {
-		x = "51";
-		y = "22";
-		w = "1";
-		h = "1";
-
-		is_floor_ciel = "0";
-		tex_0 = "./assests/textures/wall/stone2.bmp";
-		tex_1 = "0";
-	}
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/wall/stone2.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -2920,4 +2913,25 @@ component {
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/grass/grass1.bmp";
 	tex_1 = "0";
+}
+
+# Level transition entity
+entity {
+	type = "entity_level_transition";
+	id = "1";
+	x = "0";
+	y = "0";
+
+	goto_level = "2";
+
+	thing {
+		id = "1";
+
+		x = "3232";
+		y = "1440";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
 }

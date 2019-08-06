@@ -72,6 +72,8 @@ int initialize_map(struct mapdef* map) {
 
 	map->use_fog = 0;
 
+	map->signal_level_transition = -1;
+
 	return 1;
 }
 

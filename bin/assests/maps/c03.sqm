@@ -578,3 +578,88 @@ thing {
 	anim_class = "0";
 	sprite_sheet = "./assests/sprites/foliage/bush/type_0/bush_shrub03.bmp";
 }
+
+# Level transition entities
+# To c01.sqm
+entity {
+	type = "entity_level_transition";
+	id = "1";
+	x = "0";
+	y = "0";
+
+	goto_level = "0";
+
+	thing {
+		id = "1";
+
+		x = "1440";
+		y = "480";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
+}
+
+# To Cloud Top Respite
+entity {
+	type = "entity_level_transition";
+	id = "2";
+	x = "0";
+	y = "0";
+
+	goto_level = "1";
+
+	thing {
+		id = "2";
+
+		x = "928";
+		y = "2464";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
+}
+
+# To Bellington Estate
+entity {
+	type = "entity_level_transition";
+	id = "3";
+	x = "0";
+	y = "0";
+
+	goto_level = "3";
+
+	thing {
+		id = "3";
+
+		x = "1440";
+		y = "736";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
+}
+
+# To Hastah's Pass
+entity {
+	type = "entity_level_transition";
+	id = "4";
+	x = "0";
+	y = "0";
+
+	goto_level = "4";
+
+	thing {
+		id = "4";
+
+		x = "96";
+		y = "864";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
+}

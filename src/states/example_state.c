@@ -74,15 +74,6 @@ void state_example_process_input() {
 }
 
 void state_example_update() {
-	if(key_pressed_once(SDL_SCANCODE_1)) {
-		free_map(&map);
-		map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
-
-		curr_level++;
-		if(curr_level >= get_num_loaded_maps())
-			curr_level = 0;
-	}
-
 	if(!map) {
 		return;
 	}
@@ -155,6 +146,12 @@ void state_example_update() {
 
 	update_thing_anims(map, player_rot);
 	update_entities(map);
+
+	if(map->signal_level_transition > -1) {
+		curr_level = map->signal_level_transition;
+		free_map(&map);
+		map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
+	}
 }
 
 
