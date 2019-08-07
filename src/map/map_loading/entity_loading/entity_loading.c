@@ -30,7 +30,7 @@ static struct entity* construct_player_spawn_entity_from_recipe(struct recipe* r
 		return NULL;
 
 	struct entity* result = construct_entity_player_spawn();
-	struct player_spawn_entity* data = result->data;
+	struct player_spawn_entity* data = (struct player_spawn_entity*)result->data;
 
 	char* player_x_attr = get_attribute_value(recipe->attributes, "player_x");
 	char* player_y_attr = get_attribute_value(recipe->attributes, "player_y");
