@@ -43,8 +43,9 @@ void state_example_initialize(SDL_Renderer* renderer) {
 
 	initialize_map_lookup_table();
 
-	curr_level = 0;
-	map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
+	curr_level = 4;
+	map = load_map_from_file(do_map_lookup(curr_level));
+	spawn_player(map, &player_x, &player_y, &player_rot, 2);
 	curr_level++;
 }
 
@@ -148,9 +149,9 @@ void state_example_update() {
 	update_entities(map);
 
 	if(map->signal_level_transition > -1) {
-		curr_level = map->signal_level_transition;
+		/*curr_level = map->signal_level_transition;
 		free_map(&map);
-		map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);
+		map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);*/
 	}
 }
 
