@@ -11,6 +11,7 @@ struct entity* construct_entity_level_transition() {
 	struct level_transition_entity* data = (struct level_transition_entity*)
 												malloc(sizeof(struct level_transition_entity));
 	data->goto_level_id = 0;
+	data->next_spawn_id = 0;
 
 	struct entity* result = construct_empty_entity();
 
@@ -35,10 +36,13 @@ void entity_level_transition_update(struct entity* entity, struct mapdef* curr_m
 	if(!entity || !curr_map)
 		return;
 
+	struct level_transition_entity* data = (struct level_transition_entity*)entity->data;
+
 	int i;
 	for(i = 0; i < CHILD_THING_COUNT; i++) {
 		if(entity->child_things[i] && check_signal_user_interact(entity->child_things[i])) {
-			curr_map->signal_level_transition = ((struct level_transition_entity*)(entity->data))->goto_level_id;
+			curr_map->signal_level_transition = data->goto_level_id;
+			curr_map->signal_next_spawn = data->next_spawn_id;
 		}
 	}
 }

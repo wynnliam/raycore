@@ -72,7 +72,7 @@ unsigned int get_num_loaded_maps() {
 	return map_lookup_table_size;
 }
 
-struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y, int* player_rot) {
+struct mapdef* load_map_from_file(const char* path) {
 	if(!path)
 		return NULL;
 
@@ -105,8 +105,8 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 
 	printf("Loaded %s\n", path);
 
-	// TODO: Have a player spawn strategy that resolves spawning.
-	if(strcmp(path, "./assests/maps/c01.sqm") == 0) {
+	// TODO: Move this to seperate procedure
+	/*if(strcmp(path, "./assests/maps/c01.sqm") == 0) {
 		*player_x = 2712;
 		*player_y = 1024;
 		*player_rot = 90;
@@ -126,7 +126,7 @@ struct mapdef* load_map_from_file(const char* path, int* player_x, int* player_y
 		*player_x = 1662;
 		*player_y = 177;
 		*player_rot = 270;
-	}
+	}*/
 
 	clean_token_list(tokens);
 	clean_recipe_list(map_tree);

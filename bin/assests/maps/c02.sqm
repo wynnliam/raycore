@@ -498,6 +498,7 @@ entity {
 	y = "0";
 
 	goto_level = "2";
+	spawn_id = "7";
 
 	thing {
 		id = "2";
@@ -509,4 +510,15 @@ entity {
 		anim_class = "0";
 		sprite_sheet = "./assests/sprites/hud/alert.bmp";
 	}
+}
+
+entity {
+	type = "entity_player_spawn";
+	id = "2";
+	x = "0";
+	y = "0";
+
+	player_x = "1707";
+	player_y = "550";
+	player_rot = "170";
 }
