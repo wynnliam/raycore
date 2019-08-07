@@ -1750,6 +1750,7 @@ entity {
 	y = "0";
 
 	goto_level = "2";
+	spawn_id = "5";
 
 	thing {
 		id = "1";
@@ -1763,6 +1764,7 @@ entity {
 	}
 }
 
+# Entering Hastah's Pass
 entity {
 	type = "entity_player_spawn";
 	id = "2";
@@ -1772,4 +1774,16 @@ entity {
 	player_x = "1662";
 	player_y = "177";
 	player_rot = "270";
+}
+
+# Coming from c03 (Feasog Mounds)
+entity {
+	type = "entity_player_spawn";
+	id = "3";
+	x = "0";
+	y = "0";
+
+	player_x = "1116";
+	player_y = "1724";
+	player_rot = "90";
 }
