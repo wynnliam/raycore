@@ -11,6 +11,7 @@ struct entity* construct_entity_level_transition() {
 	struct level_transition_entity* data = (struct level_transition_entity*)
 												malloc(sizeof(struct level_transition_entity));
 	data->goto_level_id = 0;
+	data->next_spawn_id = 0;
 
 	struct entity* result = construct_empty_entity();
 
