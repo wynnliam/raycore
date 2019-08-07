@@ -149,9 +149,11 @@ void state_example_update() {
 	update_entities(map);
 
 	if(map->signal_level_transition > -1) {
-		/*curr_level = map->signal_level_transition;
+		curr_level = map->signal_level_transition;
+		int next_spawn = map->signal_next_spawn;
 		free_map(&map);
-		map = load_map_from_file(do_map_lookup(curr_level), &player_x, &player_y, &player_rot);*/
+		map = load_map_from_file(do_map_lookup(curr_level));
+		spawn_player(map, &player_x, &player_y, &player_rot, next_spawn);
 	}
 }
 
