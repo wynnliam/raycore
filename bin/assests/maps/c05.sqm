@@ -1762,3 +1762,14 @@ entity {
 		sprite_sheet = "./assests/sprites/hud/alert.bmp";
 	}
 }
+
+entity {
+	type = "entity_player_spawn";
+	id = "2";
+	x = "0";
+	y = "0";
+
+	player_x = "1662";
+	player_y = "177";
+	player_rot = "270";
+}
