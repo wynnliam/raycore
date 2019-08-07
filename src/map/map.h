@@ -87,6 +87,8 @@ struct mapdef {
 	// TODO: Have gamemode struct where this gets handled.
 	// if -1: no transition. Otherwise, transition to corresponding level.
 	int signal_level_transition;
+	// Id of the spawn to go to.
+	int signal_next_spawn;
 };
 
 // Null initializes everything in the map.
