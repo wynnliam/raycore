@@ -2,6 +2,8 @@
 
 #include "map.h"
 
+#include "./entity/player_spawn_entity.h"
+
 static void clean_walldef(struct walldef* to_clean);
 static void clean_floorcieldef(struct floorcielingdef* to_clean);
 
@@ -239,3 +241,31 @@ int is_position_wall(struct mapdef* map, int player_x, int player_y) {
 	return map->layout[index] >= map->num_floor_ceils || map->invisible_walls[index];
 }
 
+void spawn_player(struct mapdef* map, int* player_x, int* player_y, int* player_rot, int spawn_id) {
+	if(!map || !player_x || !player_y || !player_rot || !spawn_id)
+		return;
+
+	struct entity* spawn = NULL;
+	struct player_spawn_entity* data = NULL;
+	int i;
+
+	for(i = 0; i < ENTITY_COUNT; i++) {
+		if(map->entities[i] && map->entities[i]->type == ENTITY_TYPE_PLAYER_SPAWN) {
+			if(!spawn)
+				spawn = map->entities[i];
+
+			if(map->entities[i]->id == spawn_id) {
+				spawn = map->entities[i];
+				break;
+			}
+		}
+	}
+
+	if(spawn) {
+		data = (struct player_spawn_entity*)spawn->data;
+
+		*player_x = data->player_x;
+		*player_y = data->player_y;
+		*player_rot = data->player_rot;
+	}
+}

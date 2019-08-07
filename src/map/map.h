@@ -121,4 +121,6 @@ int is_position_wall(struct mapdef* map, int player_x, int player_y);
 
 void clear_all_thing_signals(struct mapdef* map);
 
+void spawn_player(struct mapdef* map, int* player_x, int* player_y, int* player_rot, int spawn_id);
+
 #endif
