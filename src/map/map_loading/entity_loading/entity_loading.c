@@ -16,10 +16,16 @@ static struct entity* construct_level_transition_entity_from_recipe(struct recip
 	struct level_transition_entity* data = (struct level_transition_entity*)result->data;
 
 	char* goto_level_attr = get_attribute_value(recipe->attributes, "goto_level");
+	char* next_spawn_id_attr = get_attribute_value(recipe->attributes, "spawn_id");
 
 	if(goto_level_attr) {
 		data->goto_level_id = atoi(goto_level_attr);
 		free(goto_level_attr);
+	}
+
+	if(next_spawn_id_attr) {
+		data->next_spawn_id = atoi(next_spawn_id_attr);
+		free(next_spawn_id_attr);
 	}
 
 	return result;
