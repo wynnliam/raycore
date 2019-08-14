@@ -2923,6 +2923,7 @@ entity {
 	y = "0";
 
 	goto_level = "2";
+	spawn_id = "6";
 
 	thing {
 		id = "1";
@@ -2934,4 +2935,16 @@ entity {
 		anim_class = "0";
 		sprite_sheet = "./assests/sprites/hud/alert.bmp";
 	}
+}
+
+# Coming from c03 (Feasog Mounds)
+entity {
+	type = "entity_player_spawn";
+	id = "2";
+	x = "0";
+	y = "0";
+
+	player_x = "3177";
+	player_y = "1438";
+	player_rot = "180";
 }

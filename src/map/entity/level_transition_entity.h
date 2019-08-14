@@ -8,7 +8,7 @@ struct mapdef;
 
 struct level_transition_entity {
 	unsigned int goto_level_id;
-	// TODO: Specify spawn.
+	int next_spawn_id;
 };
 
 struct entity* construct_entity_level_transition();

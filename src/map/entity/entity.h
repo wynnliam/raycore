@@ -6,6 +6,7 @@
 #define ENTITY_TYPE_NONE				-1
 #define ENTITY_TYPE_EXAMPLE				0
 #define ENTITY_TYPE_LEVEL_TRANSITION	1
+#define ENTITY_TYPE_PLAYER_SPAWN		2
 
 #define CHILD_ENTITY_COUNT	1000
 // A tile can either be a floorceildef or walldef.

@@ -588,6 +588,7 @@ entity {
 	y = "0";
 
 	goto_level = "0";
+	spawn_id = "2";
 
 	thing {
 		id = "1";
@@ -609,6 +610,7 @@ entity {
 	y = "0";
 
 	goto_level = "1";
+	spawn_id = "2";
 
 	thing {
 		id = "2";
@@ -630,6 +632,7 @@ entity {
 	y = "0";
 
 	goto_level = "3";
+	spawn_id = "2";
 
 	thing {
 		id = "3";
@@ -651,6 +654,7 @@ entity {
 	y = "0";
 
 	goto_level = "4";
+	spawn_id = "3";
 
 	thing {
 		id = "4";
@@ -662,4 +666,54 @@ entity {
 		anim_class = "0";
 		sprite_sheet = "./assests/sprites/hud/alert.bmp";
 	}
+}
+
+# Spawn points
+
+# Coming from c05 (Hastah's Pass)
+entity {
+	type = "entity_player_spawn";
+	id = "5";
+	x = "0";
+	y = "0";
+
+	player_x = "148";
+	player_y = "863";
+	player_rot = "2";
+}
+
+# Coming from c01 (Lachance Art Gallery)
+entity {
+	type = "entity_player_spawn";
+	id = "6";
+	x = "0";
+	y = "0";
+
+	player_x = "1367";
+	player_y = "473";
+	player_rot = "174";
+}
+
+# Coming from c02 (Cloud Top Respite)
+entity {
+	type = "entity_player_spawn";
+	id = "7";
+	x = "0";
+	y = "0";
+
+	player_x = "929";
+	player_y = "2439";
+	player_rot = "94";
+}
+
+# Coming from c04 (Bellington Estate)
+entity {
+	type = "entity_player_spawn";
+	id = "8";
+	x = "0";
+	y = "0";
+
+	player_x = "1393";
+	player_y = "735";
+	player_rot = "190";
 }
