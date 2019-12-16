@@ -105,29 +105,6 @@ struct mapdef* load_map_from_file(const char* path) {
 
 	printf("Loaded %s\n", path);
 
-	// TODO: Move this to seperate procedure
-	/*if(strcmp(path, "./assests/maps/c01.sqm") == 0) {
-		*player_x = 2712;
-		*player_y = 1024;
-		*player_rot = 90;
-	} else if(strcmp(path, "./assests/maps/c02.sqm") == 0) {
-		*player_x = 1707;
-		*player_y = 550;
-		*player_rot = 170;
-	} else if(strcmp(path, "./assests/maps/c03.sqm") == 0) {
-		*player_x = 256;
-		*player_y = 512;
-		*player_rot = 0;
-	} else if(strcmp(path, "./assests/maps/c04.sqm") == 0) {
-		*player_x = 224;
-		*player_y = 128;
-		*player_rot = 270;
-	} else if(strcmp(path, "./assests/maps/c05.sqm") == 0) {
-		*player_x = 1662;
-		*player_y = 177;
-		*player_rot = 270;
-	}*/
-
 	clean_token_list(tokens);
 	clean_recipe_list(map_tree);
 	clean_intermediate_mapdef(intermediate_mapdef);
