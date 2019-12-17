@@ -441,7 +441,7 @@ static void cast_single_ray(const int screen_col) {
 	update_adjusted_angle();
 
 	// SKY CASTING
-	draw_sky_slice(screen_col);
+	//draw_sky_slice(screen_col);
 
 	z_buffer[screen_col] = 0;
 	get_ray_hit(adj_ray_angle, &hit);
@@ -457,7 +457,7 @@ static void cast_single_ray(const int screen_col) {
 		draw_wall_slice(&wall_slice, &hit);
 
 		// FLOOR AND CEILING CASTING
-		draw_column_of_floor_and_ceiling_from_wall(&wall_slice);
+		//draw_column_of_floor_and_ceiling_from_wall(&wall_slice);
 	}
 }
 
@@ -695,6 +695,14 @@ static void draw_sky_slice(const int screen_col) {
 }
 
 static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinfo* hit, const int screen_col, struct wall_slice* slice) {
+	/*
+		TODO: Fix this!
+
+		To do so:
+		1. Fix the slice_height computation to use a height value.
+		2. Fix slice screen position computations -- not sure yet how to do.
+	*/
+
 	// Height of the slice in the world
 	unsigned int slice_height;
 
