@@ -451,6 +451,10 @@ static void cast_single_ray(const int screen_col) {
 
 	update_adjusted_angle();
 
+
+	if(compute_initial_ray_pos(adj_ray_angle, ray_data.curr_h, ray_data.curr_v) == 0)
+		return;
+
 	// SKY CASTING
 	//draw_sky_slice(screen_col);
 
