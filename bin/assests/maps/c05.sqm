@@ -80,6 +80,17 @@ component {
 
 # Northmost Wall 
 component {
+	x = "23";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/test/test_var_height.bmp";
+	tex_1 = "0";
+}
+
+component {
 	x = "19";
 	y = "0";
 	w = "12";
