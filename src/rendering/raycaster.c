@@ -720,17 +720,28 @@ static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinf
 
 	// Height of the slice in the world
 	unsigned int slice_height;
+	// The amount of projected wall slice above the first 64 pixels.
+	unsigned int slice_remain;
+	int tex_h;
 
+	slice->wall_tex = hit->wall_type - map->num_floor_ceils;
+
+	if(!map->walls[slice->wall_tex].surf)
+		return;
+
+	tex_h = map->walls[slice->wall_tex].surf->h;
 	// Dist to projection * 64 / slice dist.
-	slice_height = (DIST_TO_PROJ << 6) / hit->dist;
+	slice_height = (DIST_TO_PROJ * tex_h) / hit->dist;
+	slice_remain = slice_height - ((DIST_TO_PROJ << 6) / hit->dist);
 
 	// Define the part of the screen we render to such that it is a single column with the
 	// slice's middle pixel at the center of the screen.
-	slice->screen_row  = HALF_PROJ_H - (slice_height >> 1);
+	//slice->screen_row  = HALF_PROJ_H - (slice_height >> 1);
+	slice->screen_row  = HALF_PROJ_H - (slice_height >> 1) - slice_remain;
 	slice->screen_col = screen_col;
-	slice->screen_height = (HALF_PROJ_H + (slice_height >> 1)) - slice->screen_row;
+	//slice->screen_height = (HALF_PROJ_H + (slice_height >> 1)) - slice->screen_row;
+	slice->screen_height = slice_height;
 
-	slice->wall_tex = hit->wall_type - map->num_floor_ceils;
 	// Use a single column of pixels based on where the ray hit.
 	slice->tex_col = hit->is_horiz ? (hit->hit_pos[0] % UNIT_SIZE) : (hit->hit_pos[1] % UNIT_SIZE);
 }
