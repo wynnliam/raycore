@@ -432,16 +432,18 @@ static int partition(int s, int e) {
 	}
 }
 
-struct {
+struct ray_data {
 	int curr_h[2];
 	int curr_v[2];
 	int delta_h[2];
 	int delta_v[2];
 	int hit_h[2];
 	int hit_v[2];
-} ray_data;
+};
 
 static void cast_single_ray(const int screen_col) {
+	// Use this to keep persistent ray traverse information.
+	struct ray_data ray_data;
 
 	struct hitinfo hit;
 	// Data needed to render a wall slice.
