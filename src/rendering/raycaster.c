@@ -710,14 +710,6 @@ static void draw_sky_slice(const int screen_col) {
 }
 
 static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinfo* hit, const int screen_col, struct wall_slice* slice) {
-	/*
-		TODO: Fix this!
-
-		To do so:
-		1. Fix the slice_height computation to use a height value.
-		2. Fix slice screen position computations -- not sure yet how to do.
-	*/
-
 	// Height of the slice in the world
 	unsigned int slice_height;
 	// The amount of projected wall slice above the first 64 pixels.
@@ -737,9 +729,8 @@ static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinf
 	// Define the part of the screen we render to such that it is a single column with the
 	// slice's middle pixel at the center of the screen.
 	//slice->screen_row  = HALF_PROJ_H - (slice_height >> 1);
-	slice->screen_row  = HALF_PROJ_H - (slice_height >> 1) - slice_remain;
+	slice->screen_row  = HALF_PROJ_H - (slice_height >> 1) - (slice_remain >> 1);
 	slice->screen_col = screen_col;
-	//slice->screen_height = (HALF_PROJ_H + (slice_height >> 1)) - slice->screen_row;
 	slice->screen_height = slice_height;
 
 	// Use a single column of pixels based on where the ray hit.
