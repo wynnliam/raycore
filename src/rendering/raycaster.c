@@ -451,7 +451,7 @@ static void cast_single_ray(const int screen_col) {
 
 	compute_ray_delta_vectors(adj_ray_angle, ray_data.delta_h, ray_data.delta_v);
 
-	z_buffer[screen_col] = 0;
+	z_buffer[screen_col] = -1;
 	wall_slice.highest_slice_row = PROJ_H;
 
 	do {
@@ -459,6 +459,9 @@ static void cast_single_ray(const int screen_col) {
 
 		if(!ray_hit_wall(&hit))
 			break;
+
+		if(z_buffer[screen_col] == -1)
+			z_buffer[screen_col] = hit.dist;
 
 		// Computes the angle relative to the player rotation.
 		ray_angle_relative_to_player_rot = abs(adj_ray_angle - player_rot);
