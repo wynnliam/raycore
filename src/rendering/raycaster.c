@@ -439,10 +439,11 @@ static int partition(int s, int e) {
 static void cast_single_ray(const int screen_col) {
 	// Use this to keep persistent ray traverse information.
 	struct ray_data ray_data;
-
 	struct hitinfo hit;
 	// Data needed to render a wall slice.
 	struct wall_slice wall_slice;
+	// We only want to render floors on the first ray hit.
+	int render_floors = 1;
 
 	update_adjusted_angle();
 
@@ -451,7 +452,10 @@ static void cast_single_ray(const int screen_col) {
 
 	compute_ray_delta_vectors(adj_ray_angle, ray_data.delta_h, ray_data.delta_v);
 
-	z_buffer[screen_col] = 0;
+	// SKY CASTING
+	draw_sky_slice(screen_col);
+
+	z_buffer[screen_col] = -1;
 	wall_slice.highest_slice_row = PROJ_H;
 
 	do {
@@ -459,6 +463,9 @@ static void cast_single_ray(const int screen_col) {
 
 		if(!ray_hit_wall(&hit))
 			break;
+
+		if(z_buffer[screen_col] == -1)
+			z_buffer[screen_col] = hit.dist;
 
 		// Computes the angle relative to the player rotation.
 		ray_angle_relative_to_player_rot = abs(adj_ray_angle - player_rot);
@@ -470,6 +477,15 @@ static void cast_single_ray(const int screen_col) {
 		// Only render if we actually can see it.
 		if(wall_slice.screen_height > 0)
 			draw_wall_slice(&wall_slice, &hit);
+
+		// FLOOR AND CEILING RENDERING
+		if(render_floors) {
+			draw_column_of_floor_and_ceiling_from_wall(&wall_slice);
+			render_floors = 0;
+
+			// TODO: Make seperate call for ceiling rendering when we do variable
+			// height ceilings.
+		}
 
 		// After rendering, we need to move the ray curr_h and curr_v's again.
 		move_ray_pos(ray_data.curr_h, ray_data.delta_h);
@@ -754,10 +770,16 @@ static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinf
 }
 
 static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
-	if(!map->walls[slice->wall_tex].surf)
+	SDL_Surface* tex = map->walls[slice->wall_tex].surf;
+
+	if(!tex)
 		return;
 
 	int fog_dist  = map->use_fog ? hit->dist : 0;
+	int p_x, p_y;
+	int tex_h = tex->h;
+
+	p_x = slice->tex_col;
 
 	// Manually copies texture from source to portion of screen.
 	int j;
@@ -766,8 +788,10 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 		if(j + slice->screen_row < 0 || j + slice->screen_row  >= PROJ_H)
 			continue;
 
+		p_y = (j * tex_h) / slice->screen_height;
+
 		raycast_pixels[(j + slice->screen_row) * PROJ_W + slice->screen_col] =
-			apply_fog(get_pixel(map->walls[slice->wall_tex].surf, slice->tex_col, (j << 6) / slice->screen_height), fog_dist);
+			apply_fog(get_pixel(tex, p_x, p_y), fog_dist);
 	}
 }
 
