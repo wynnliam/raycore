@@ -432,15 +432,6 @@ static int partition(int s, int e) {
 	}
 }
 
-struct ray_data {
-	int curr_h[2];
-	int curr_v[2];
-	int delta_h[2];
-	int delta_v[2];
-	int hit_h[2];
-	int hit_v[2];
-};
-
 static void cast_single_ray(const int screen_col) {
 	// Use this to keep persistent ray traverse information.
 	struct ray_data ray_data;
@@ -451,14 +442,15 @@ static void cast_single_ray(const int screen_col) {
 
 	update_adjusted_angle();
 
-
 	if(compute_initial_ray_pos(adj_ray_angle, ray_data.curr_h, ray_data.curr_v) == 0)
 		return;
+
+	compute_ray_delta_vectors(ray_angle, delta_h, delta_v);
 
 	// SKY CASTING
 	//draw_sky_slice(screen_col);
 
-	z_buffer[screen_col] = 0;
+	/*z_buffer[screen_col] = 0;
 	get_ray_hit(adj_ray_angle, &hit);
 	if(ray_hit_wall(&hit)) {
 		z_buffer[screen_col] = hit.dist;
@@ -473,7 +465,7 @@ static void cast_single_ray(const int screen_col) {
 
 		// FLOOR AND CEILING CASTING
 		//draw_column_of_floor_and_ceiling_from_wall(&wall_slice);
-	}
+	}*/
 }
 
 static void update_adjusted_angle() {
