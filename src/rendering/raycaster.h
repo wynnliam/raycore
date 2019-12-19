@@ -46,6 +46,15 @@
 // worked very well.
 #define SKYBOX_TEX_WIDTH		640
 
+struct ray_data {
+	int curr_h[2];
+	int curr_v[2];
+	int delta_h[2];
+	int delta_v[2];
+	int hit_h[2];
+	int hit_v[2];
+};
+
 struct hitinfo {
 	// Where we hit.
 	int hit_pos[2];

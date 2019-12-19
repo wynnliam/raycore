@@ -93,6 +93,10 @@ struct wall_slice {
 	int screen_col;
 	// The height in pixels of the slice. No width since a slice is just a single line of pixels.
 	int screen_height;
+	// For drawing slices of walls behind this one. Note that this is backwards: as the slice
+	// has greater height when rendering, this value gets smaller. This is because the y axis is
+	// flipped.
+	int highest_slice_row;
 	// The texture we want to render.
 	int wall_tex;
 	// The column of pixels we want to render.
@@ -171,7 +175,7 @@ static int partition(int, int);
 static void cast_single_ray(const int);
 static void update_adjusted_angle();
 
-static void get_ray_hit(int, struct hitinfo*);
+static void get_ray_hit(struct ray_data*, struct hitinfo*);
 static void choose_ray_horizontal_or_vertical_hit_pos(int[2], int[2], struct hitinfo*);
 static int both_ray_horizontal_and_vertical_hit_pos_invalid(int[2], int[2]);
 static int ray_hit_pos_is_invalid(int[2]);
@@ -433,6 +437,8 @@ static int partition(int s, int e) {
 }
 
 static void cast_single_ray(const int screen_col) {
+	// Use this to keep persistent ray traverse information.
+	struct ray_data ray_data;
 
 	struct hitinfo hit;
 	// Data needed to render a wall slice.
@@ -440,10 +446,41 @@ static void cast_single_ray(const int screen_col) {
 
 	update_adjusted_angle();
 
-	// SKY CASTING
-	draw_sky_slice(screen_col);
+	if(compute_initial_ray_pos(adj_ray_angle, ray_data.curr_h, ray_data.curr_v) == 0)
+		return;
+
+	compute_ray_delta_vectors(adj_ray_angle, ray_data.delta_h, ray_data.delta_v);
 
 	z_buffer[screen_col] = 0;
+	wall_slice.highest_slice_row = PROJ_H;
+
+	do {
+		get_ray_hit(&ray_data, &hit);
+
+		if(!ray_hit_wall(&hit))
+			break;
+
+		// Computes the angle relative to the player rotation.
+		ray_angle_relative_to_player_rot = abs(adj_ray_angle - player_rot);
+		hit.dist = correct_hit_dist_for_fisheye_effect(hit.dist);
+
+		// WALL CASTING
+		compute_wall_slice_render_data_from_hit_and_screen_col(&hit, screen_col, &wall_slice);
+
+		// Only render if we actually can see it.
+		if(wall_slice.screen_height > 0)
+			draw_wall_slice(&wall_slice, &hit);
+
+		// After rendering, we need to move the ray curr_h and curr_v's again.
+		move_ray_pos(ray_data.curr_h, ray_data.delta_h);
+		move_ray_pos(ray_data.curr_v, ray_data.delta_v);
+		
+	} while(ray_hit_wall(&hit));
+
+	// SKY CASTING
+	//draw_sky_slice(screen_col);
+
+	/*z_buffer[screen_col] = 0;
 	get_ray_hit(adj_ray_angle, &hit);
 	if(ray_hit_wall(&hit)) {
 		z_buffer[screen_col] = hit.dist;
@@ -457,8 +494,8 @@ static void cast_single_ray(const int screen_col) {
 		draw_wall_slice(&wall_slice, &hit);
 
 		// FLOOR AND CEILING CASTING
-		draw_column_of_floor_and_ceiling_from_wall(&wall_slice);
-	}
+		//draw_column_of_floor_and_ceiling_from_wall(&wall_slice);
+	}*/
 }
 
 static void update_adjusted_angle() {
@@ -478,35 +515,15 @@ static void update_adjusted_angle() {
 		adj_ray_angle += 1;
 }
 
-static void get_ray_hit(int ray_angle, struct hitinfo* hit) {
-	// Stores the position of the ray as it moves
-	// from one grid line to the next. x is 0, y is 1
-	int curr_h[2];
-	int curr_v[2];
-	// How much we move from curr_x and curr_y.
-	int delta_h[2];
-	int delta_v[2];
-	// Where the final ray position is traveling along
-	// horizontal and vertical grid lines.
-	int hit_h[2];
-	int hit_v[2];
-
-	if(compute_initial_ray_pos(ray_angle, curr_h, curr_v) == 0) {
-		hit->hit_pos[0] = -1;
-		hit->hit_pos[1] = -1;
-		return;
-	}
-
-	compute_ray_delta_vectors(ray_angle, delta_h, delta_v);
-
+static void get_ray_hit(struct ray_data* ray, struct hitinfo* hit) {
 	// Now find the point that is a wall by travelling along horizontal gridlines.
-	compute_ray_hit_position(curr_h, delta_h, hit_h);
+	compute_ray_hit_position(ray->curr_h, ray->delta_h, ray->hit_h);
 	// Now find the point that is a wall by travelling along vertical gridlines.
-	compute_ray_hit_position(curr_v, delta_v, hit_v);
+	compute_ray_hit_position(ray->curr_v, ray->delta_v, ray->hit_v);
 
 	// Now choose either the horizontal or vertical intersection
 	// point. Or choose -1, -1 to denote an error.
-	choose_ray_horizontal_or_vertical_hit_pos(hit_h, hit_v, hit);
+	choose_ray_horizontal_or_vertical_hit_pos(ray->hit_h, ray->hit_v, hit);
 
 	hit->wall_type = get_tile(hit->hit_pos[0], hit->hit_pos[1], map);
 }
@@ -697,17 +714,41 @@ static void draw_sky_slice(const int screen_col) {
 static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinfo* hit, const int screen_col, struct wall_slice* slice) {
 	// Height of the slice in the world
 	unsigned int slice_height;
+	// The amount of projected wall slice above the first 64 pixels.
+	unsigned int slice_remain;
+	int tex_h;
+
+	slice->wall_tex = hit->wall_type - map->num_floor_ceils;
+
+	if(!map->walls[slice->wall_tex].surf)
+		return;
+
+	tex_h = map->walls[slice->wall_tex].surf->h;
 
 	// Dist to projection * 64 / slice dist.
-	slice_height = (DIST_TO_PROJ << 6) / hit->dist;
+	slice_height = (DIST_TO_PROJ * tex_h) / hit->dist;
+	slice_remain = slice_height - ((DIST_TO_PROJ << 6) / hit->dist);
 
 	// Define the part of the screen we render to such that it is a single column with the
 	// slice's middle pixel at the center of the screen.
-	slice->screen_row  = HALF_PROJ_H - (slice_height >> 1);
+	slice->screen_row  = HALF_PROJ_H - (slice_height >> 1) - (slice_remain >> 1);
 	slice->screen_col = screen_col;
-	slice->screen_height = (HALF_PROJ_H + (slice_height >> 1)) - slice->screen_row;
 
-	slice->wall_tex = hit->wall_type - map->num_floor_ceils;
+	// Case 1: We basically have not rendered a slice for this column yet.
+	if(slice->highest_slice_row >= PROJ_H) {
+		slice->screen_height = slice_height;
+		slice->highest_slice_row = slice->screen_row;
+	// Case 2: The slice we want to render is above the last highest one.
+	// Note that the y axis is flipped in this renderer, so a larger slice->highest_slice_row
+	// is rendered from a row below the current slice row.
+	} else if(slice->highest_slice_row > slice->screen_row) {
+		slice->screen_height = slice->highest_slice_row - slice->screen_row;
+		slice->highest_slice_row = slice->screen_row;
+	// Case 3: The slice we want to render is obscured by a slice we already rendered.
+	} else {
+		slice->screen_height = 0;
+	}
+
 	// Use a single column of pixels based on where the ray hit.
 	slice->tex_col = hit->is_horiz ? (hit->hit_pos[0] % UNIT_SIZE) : (hit->hit_pos[1] % UNIT_SIZE);
 }
