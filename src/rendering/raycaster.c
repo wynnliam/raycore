@@ -452,6 +452,9 @@ static void cast_single_ray(const int screen_col) {
 
 	compute_ray_delta_vectors(adj_ray_angle, ray_data.delta_h, ray_data.delta_v);
 
+	// SKY CASTING
+	draw_sky_slice(screen_col);
+
 	z_buffer[screen_col] = -1;
 	wall_slice.highest_slice_row = PROJ_H;
 
