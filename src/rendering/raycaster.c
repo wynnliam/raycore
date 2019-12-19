@@ -93,8 +93,10 @@ struct wall_slice {
 	int screen_col;
 	// The height in pixels of the slice. No width since a slice is just a single line of pixels.
 	int screen_height;
-	// For drawing slices of walls behind this one.
-	int prev_screen_height;
+	// For drawing slices of walls behind this one. Note that this is backwards: as the slice
+	// has greater height when rendering, this value gets smaller. This is because the y axis is
+	// flipped.
+	int highest_slice_row;
 	// The texture we want to render.
 	int wall_tex;
 	// The column of pixels we want to render.
@@ -450,7 +452,7 @@ static void cast_single_ray(const int screen_col) {
 	compute_ray_delta_vectors(adj_ray_angle, ray_data.delta_h, ray_data.delta_v);
 
 	z_buffer[screen_col] = 0;
-	wall_slice.prev_screen_height = PROJ_H;
+	wall_slice.highest_slice_row = PROJ_H;
 
 	do {
 		get_ray_hit(&ray_data, &hit);
@@ -464,7 +466,10 @@ static void cast_single_ray(const int screen_col) {
 
 		// WALL CASTING
 		compute_wall_slice_render_data_from_hit_and_screen_col(&hit, screen_col, &wall_slice);
-		draw_wall_slice(&wall_slice, &hit);
+
+		// Only render if we actually can see it.
+		if(wall_slice.screen_height > 0)
+			draw_wall_slice(&wall_slice, &hit);
 
 		// After rendering, we need to move the ray curr_h and curr_v's again.
 		move_ray_pos(ray_data.curr_h, ray_data.delta_h);
@@ -729,12 +734,17 @@ static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinf
 	slice->screen_row  = HALF_PROJ_H - (slice_height >> 1) - (slice_remain >> 1);
 	slice->screen_col = screen_col;
 
-	if(slice->prev_screen_height >= PROJ_H) {
+	// Case 1: We basically have not rendered a slice for this column yet.
+	if(slice->highest_slice_row >= PROJ_H) {
 		slice->screen_height = slice_height;
-		slice->prev_screen_height = slice->screen_row;
-	} else if(slice->prev_screen_height > slice->screen_row) {
-		slice->screen_height = slice->prev_screen_height - slice->screen_row;
-		slice->prev_screen_height = slice->screen_row;
+		slice->highest_slice_row = slice->screen_row;
+	// Case 2: The slice we want to render is above the last highest one.
+	// Note that the y axis is flipped in this renderer, so a larger slice->highest_slice_row
+	// is rendered from a row below the current slice row.
+	} else if(slice->highest_slice_row > slice->screen_row) {
+		slice->screen_height = slice->highest_slice_row - slice->screen_row;
+		slice->highest_slice_row = slice->screen_row;
+	// Case 3: The slice we want to render is obscured by a slice we already rendered.
 	} else {
 		slice->screen_height = 0;
 	}
