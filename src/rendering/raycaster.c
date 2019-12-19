@@ -171,7 +171,7 @@ static int partition(int, int);
 static void cast_single_ray(const int);
 static void update_adjusted_angle();
 
-static void get_ray_hit(int, struct hitinfo*);
+static void get_ray_hit(struct ray_data*, struct hitinfo*);
 static void choose_ray_horizontal_or_vertical_hit_pos(int[2], int[2], struct hitinfo*);
 static int both_ray_horizontal_and_vertical_hit_pos_invalid(int[2], int[2]);
 static int ray_hit_pos_is_invalid(int[2]);
@@ -447,6 +447,28 @@ static void cast_single_ray(const int screen_col) {
 
 	compute_ray_delta_vectors(adj_ray_angle, ray_data.delta_h, ray_data.delta_v);
 
+	z_buffer[screen_col] = 0;
+
+	do {
+		get_ray_hit(&ray_data, &hit);
+
+		if(!ray_hit_wall(&hit))
+			break;
+
+		// Computes the angle relative to the player rotation.
+		ray_angle_relative_to_player_rot = abs(adj_ray_angle - player_rot);
+		hit.dist = correct_hit_dist_for_fisheye_effect(hit.dist);
+
+		// WALL CASTING
+		compute_wall_slice_render_data_from_hit_and_screen_col(&hit, screen_col, &wall_slice);
+		draw_wall_slice(&wall_slice, &hit);
+
+		// After rendering, we need to move the ray curr_h and curr_v's again.
+		move_ray_pos(ray_data.curr_h, ray_data.delta_h);
+		move_ray_pos(ray_data.curr_v, ray_data.delta_v);
+		
+	} while(ray_hit_wall(&hit));
+
 	// SKY CASTING
 	//draw_sky_slice(screen_col);
 
@@ -485,35 +507,15 @@ static void update_adjusted_angle() {
 		adj_ray_angle += 1;
 }
 
-static void get_ray_hit(int ray_angle, struct hitinfo* hit) {
-	// Stores the position of the ray as it moves
-	// from one grid line to the next. x is 0, y is 1
-	int curr_h[2];
-	int curr_v[2];
-	// How much we move from curr_x and curr_y.
-	int delta_h[2];
-	int delta_v[2];
-	// Where the final ray position is traveling along
-	// horizontal and vertical grid lines.
-	int hit_h[2];
-	int hit_v[2];
-
-	if(compute_initial_ray_pos(ray_angle, curr_h, curr_v) == 0) {
-		hit->hit_pos[0] = -1;
-		hit->hit_pos[1] = -1;
-		return;
-	}
-
-	compute_ray_delta_vectors(ray_angle, delta_h, delta_v);
-
+static void get_ray_hit(struct ray_data* ray, struct hitinfo* hit) {
 	// Now find the point that is a wall by travelling along horizontal gridlines.
-	compute_ray_hit_position(curr_h, delta_h, hit_h);
+	compute_ray_hit_position(ray->curr_h, ray->delta_h, ray->hit_h);
 	// Now find the point that is a wall by travelling along vertical gridlines.
-	compute_ray_hit_position(curr_v, delta_v, hit_v);
+	compute_ray_hit_position(ray->curr_v, ray->delta_v, ray->hit_v);
 
 	// Now choose either the horizontal or vertical intersection
 	// point. Or choose -1, -1 to denote an error.
-	choose_ray_horizontal_or_vertical_hit_pos(hit_h, hit_v, hit);
+	choose_ray_horizontal_or_vertical_hit_pos(ray->hit_h, ray->hit_v, hit);
 
 	hit->wall_type = get_tile(hit->hit_pos[0], hit->hit_pos[1], map);
 }
