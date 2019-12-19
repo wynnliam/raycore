@@ -770,10 +770,16 @@ static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinf
 }
 
 static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
-	if(!map->walls[slice->wall_tex].surf)
+	SDL_Surface* tex = map->walls[slice->wall_tex].surf;
+
+	if(!tex)
 		return;
 
 	int fog_dist  = map->use_fog ? hit->dist : 0;
+	int p_x, p_y;
+	int tex_h = tex->h;
+
+	p_x = slice->tex_col;
 
 	// Manually copies texture from source to portion of screen.
 	int j;
@@ -782,8 +788,10 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 		if(j + slice->screen_row < 0 || j + slice->screen_row  >= PROJ_H)
 			continue;
 
+		p_y = (j * tex_h) / slice->screen_height;
+
 		raycast_pixels[(j + slice->screen_row) * PROJ_W + slice->screen_col] =
-			apply_fog(get_pixel(map->walls[slice->wall_tex].surf, slice->tex_col, (j << 6) / slice->screen_height), fog_dist);
+			apply_fog(get_pixel(tex, p_x, p_y), fog_dist);
 	}
 }
 
