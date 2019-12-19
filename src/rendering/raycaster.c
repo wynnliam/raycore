@@ -445,7 +445,7 @@ static void cast_single_ray(const int screen_col) {
 	if(compute_initial_ray_pos(adj_ray_angle, ray_data.curr_h, ray_data.curr_v) == 0)
 		return;
 
-	compute_ray_delta_vectors(ray_angle, delta_h, delta_v);
+	compute_ray_delta_vectors(adj_ray_angle, ray_data.delta_h, ray_data.delta_v);
 
 	// SKY CASTING
 	//draw_sky_slice(screen_col);
