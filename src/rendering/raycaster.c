@@ -93,6 +93,8 @@ struct wall_slice {
 	int screen_col;
 	// The height in pixels of the slice. No width since a slice is just a single line of pixels.
 	int screen_height;
+	// For drawing slices of walls behind this one.
+	int prev_screen_height;
 	// The texture we want to render.
 	int wall_tex;
 	// The column of pixels we want to render.
@@ -448,6 +450,7 @@ static void cast_single_ray(const int screen_col) {
 	compute_ray_delta_vectors(adj_ray_angle, ray_data.delta_h, ray_data.delta_v);
 
 	z_buffer[screen_col] = 0;
+	wall_slice.prev_screen_height = PROJ_H;
 
 	do {
 		get_ray_hit(&ray_data, &hit);
@@ -716,16 +719,25 @@ static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinf
 		return;
 
 	tex_h = map->walls[slice->wall_tex].surf->h;
+
 	// Dist to projection * 64 / slice dist.
 	slice_height = (DIST_TO_PROJ * tex_h) / hit->dist;
 	slice_remain = slice_height - ((DIST_TO_PROJ << 6) / hit->dist);
 
 	// Define the part of the screen we render to such that it is a single column with the
 	// slice's middle pixel at the center of the screen.
-	//slice->screen_row  = HALF_PROJ_H - (slice_height >> 1);
 	slice->screen_row  = HALF_PROJ_H - (slice_height >> 1) - (slice_remain >> 1);
 	slice->screen_col = screen_col;
-	slice->screen_height = slice_height;
+
+	if(slice->prev_screen_height >= PROJ_H) {
+		slice->screen_height = slice_height;
+		slice->prev_screen_height = slice->screen_row;
+	} else if(slice->prev_screen_height > slice->screen_row) {
+		slice->screen_height = slice->prev_screen_height - slice->screen_row;
+		slice->prev_screen_height = slice->screen_row;
+	} else {
+		slice->screen_height = 0;
+	}
 
 	// Use a single column of pixels based on where the ray hit.
 	slice->tex_col = hit->is_horiz ? (hit->hit_pos[0] % UNIT_SIZE) : (hit->hit_pos[1] % UNIT_SIZE);

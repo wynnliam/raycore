@@ -8,6 +8,16 @@ properties {
 	sky_tex = "./assests/textures/skybox/sky05.bmp";
 }
 
+component {
+	x = "23";
+	y = "0";
+	w = "1";
+	h = "3";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/test/test_var_height.bmp";
+	tex_1 = "0";
+}
 # Player spawn.
 # thing {
 # 	type = "0";
@@ -79,16 +89,6 @@ component {
 }
 
 # Northmost Wall 
-component {
-	x = "23";
-	y = "0";
-	w = "1";
-	h = "1";
-
-	is_floor_ciel = "0";
-	tex_0 = "./assests/textures/test/test_var_height.bmp";
-	tex_1 = "0";
-}
 
 component {
 	x = "19";
@@ -1782,9 +1782,11 @@ entity {
 	x = "0";
 	y = "0";
 
-	player_x = "1662";
-	player_y = "177";
-	player_rot = "270";
+	#player_x = "1662";
+	#player_y = "177";
+	player_x = "1687";
+	player_y = "215";
+	player_rot = "134";
 }
 
 # Coming from c03 (Feasog Mounds)
