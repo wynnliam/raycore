@@ -951,7 +951,7 @@ static void compute_thing_dimensions_on_screen(const int thing_sorted_index, con
 	thing_screen_rect->h = (int)(tex_h / dist * DIST_TO_PROJ);
 	height_remain = thing_screen_rect->h - ((DIST_TO_PROJ << 6) / dist);
 	// x and y are is the top-left corner of the screen.
-	thing_screen_rect->y = HALF_PROJ_H - (thing_screen_rect->h >> 1) - height_remain;
+	thing_screen_rect->y = HALF_PROJ_H - (thing_screen_rect->h >> 1) - (height_remain >> 1);
 	thing_screen_rect->x = screen_pos[0] - (thing_screen_rect->w >> 1);
 }
 
@@ -1015,7 +1015,7 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	unsigned int t_color;
 
 	int screen_row;
-
+	int tex_height = things_sorted[thing_column_data->thing_sorted_index]->surf->h;
 	int thing_dist_sqrt = 0;
 
 	if(map->use_fog)
@@ -1028,7 +1028,7 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 			continue;
 
 		t_x = (thing_column_data->src->x) + thing_column_data->frame_offset[0];
-		t_y = ((k << 6) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
+		t_y = ((k * tex_height) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
 		t_color = get_pixel(things_sorted[thing_column_data->thing_sorted_index]->surf, t_x, t_y);
 		// Only put a pixel if it is not transparent.
 		if(thing_pixel_is_not_transparent(t_color))
