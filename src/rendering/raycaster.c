@@ -933,16 +933,25 @@ static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos
 static void compute_thing_dimensions_on_screen(const int thing_sorted_index, const int screen_pos[2], SDL_Rect* thing_screen_rect) {
 	int tex_h = things_sorted[thing_sorted_index]->surf->h;
 	int dist_squared = things_sorted[thing_sorted_index]->dist;
+	double dist = sqrt(dist_squared);
+	// How much we subtract from the thing height to render at the
+	// correct row.
+	int height_remain;
 
 	// Inspired by the computation to find the height of a wall slice
 	// on the screen.
 
-	thing_screen_rect->w = (int)(UNIT_SIZE / sqrt(dist_squared) * DIST_TO_PROJ);
+	/*
+	slice_remain = slice_height - ((DIST_TO_PROJ << 6) / hit->dist);
+	*/
+
+	thing_screen_rect->w = (int)(UNIT_SIZE / dist * DIST_TO_PROJ);
 	// Since sprites are squares, the screen width == screen height
 	//thing_screen_rect->h = thing_screen_rect->w;
-	thing_screen_rect->h = (int)(tex_h / sqrt(dist_squared) * DIST_TO_PROJ);
+	thing_screen_rect->h = (int)(tex_h / dist * DIST_TO_PROJ);
+	height_remain = thing_screen_rect->h - ((DIST_TO_PROJ << 6) / dist);
 	// x and y are is the top-left corner of the screen.
-	thing_screen_rect->y = HALF_PROJ_H - (thing_screen_rect->h >> 1);
+	thing_screen_rect->y = HALF_PROJ_H - (thing_screen_rect->h >> 1) - height_remain;
 	thing_screen_rect->x = screen_pos[0] - (thing_screen_rect->w >> 1);
 }
 
