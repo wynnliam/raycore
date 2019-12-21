@@ -455,12 +455,12 @@ static void cast_single_ray(const int screen_col) {
 	// SKY CASTING
 	draw_sky_slice(screen_col);
 
-	z_buffer[screen_col] = -1;
-	wall_slice.highest_slice_row = PROJ_H;
-
 	int i;
 	for(i = 0; i < PROJ_H; i++)
 		z_buffer_2d[screen_col][i] = -1;
+
+	z_buffer[screen_col] = -1;
+	wall_slice.highest_slice_row = PROJ_H;
 
 	do {
 		get_ray_hit(&ray_data, &hit);
@@ -791,6 +791,8 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 		// j + screen_slice_y gives us the position to render the current pixel on the screen.
 		if(j + slice->screen_row < 0 || j + slice->screen_row  >= PROJ_H)
 			continue;
+
+		z_buffer_2d[slice->screen_col][j + slice->screen_row] = hit->dist;
 
 		p_y = (j * tex_h) / slice->screen_height;
 
