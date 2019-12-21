@@ -931,11 +931,16 @@ static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos
 }
 
 static void compute_thing_dimensions_on_screen(const int thing_sorted_index, const int screen_pos[2], SDL_Rect* thing_screen_rect) {
+	int tex_h = things_sorted[thing_sorted_index]->surf->h;
+	int dist_squared = things_sorted[thing_sorted_index]->dist;
+
 	// Inspired by the computation to find the height of a wall slice
 	// on the screen.
-	thing_screen_rect->w = (int)(UNIT_SIZE / sqrt(things_sorted[thing_sorted_index]->dist) * DIST_TO_PROJ);
+
+	thing_screen_rect->w = (int)(UNIT_SIZE / sqrt(dist_squared) * DIST_TO_PROJ);
 	// Since sprites are squares, the screen width == screen height
-	thing_screen_rect->h = thing_screen_rect->w;
+	//thing_screen_rect->h = thing_screen_rect->w;
+	thing_screen_rect->h = (int)(tex_h / sqrt(dist_squared) * DIST_TO_PROJ);
 	// x and y are is the top-left corner of the screen.
 	thing_screen_rect->y = HALF_PROJ_H - (thing_screen_rect->h >> 1);
 	thing_screen_rect->x = screen_pos[0] - (thing_screen_rect->w >> 1);
