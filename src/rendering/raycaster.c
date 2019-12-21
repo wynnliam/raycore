@@ -922,7 +922,7 @@ static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos
 	/*
 		We make three assumptions about sprites and the environment
 		1. Sprites are vertically centered.
-		2. Sprites are all 64 x 64 pixels
+		2. Sprites are all 64 x 64 pixels -- Actually this no longer holds
 		3. The player height is 32
 
 		Thus, the center of every sprite is at half of the projection screen height.
