@@ -931,7 +931,13 @@ static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos
 }
 
 static void compute_thing_dimensions_on_screen(const int thing_sorted_index, const int screen_pos[2], SDL_Rect* thing_screen_rect) {
-	int tex_h = things_sorted[thing_sorted_index]->surf->h;
+	int tex_h;
+
+	if(things_sorted[thing_sorted_index]->surf)
+		tex_h = things_sorted[thing_sorted_index]->surf->h;
+	else
+		tex_h = 64;
+
 	int dist_squared = things_sorted[thing_sorted_index]->dist;
 	double dist = sqrt(dist_squared);
 	// How much we subtract from the thing height to render at the
@@ -1015,8 +1021,13 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	unsigned int t_color;
 
 	int screen_row;
-	int tex_height = things_sorted[thing_column_data->thing_sorted_index]->surf->h;
+	int tex_height;
 	int thing_dist_sqrt = 0;
+
+	if(things_sorted[thing_column_data->thing_sorted_index]->surf)
+		tex_height = things_sorted[thing_column_data->thing_sorted_index]->surf->h;
+	else
+		tex_height = 64;
 
 	if(map->use_fog)
 		thing_dist_sqrt = (int)sqrt(things_sorted[thing_column_data->thing_sorted_index]->dist);

@@ -8,16 +8,16 @@ properties {
 	sky_tex = "./assests/textures/skybox/sky05.bmp";
 }
 
-#component {
-#	x = "23";
-#	y = "1";
-#	w = "1";
-#	h = "3";
-#
-#	is_floor_ciel = "0";
-#	tex_0 = "./assests/textures/test/test_var_height.bmp";
-#	tex_1 = "0";
-#}
+component {
+	x = "23";
+	y = "1";
+	w = "1";
+	h = "3";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/test/test_var_height.bmp";
+	tex_1 = "0";
+}
 
 # Player spawn.
 # thing {
