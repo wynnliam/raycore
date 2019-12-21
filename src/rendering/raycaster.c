@@ -455,6 +455,10 @@ static void cast_single_ray(const int screen_col) {
 	// SKY CASTING
 	draw_sky_slice(screen_col);
 
+	int i;
+	for(i = 0; i < PROJ_H; i++)
+		z_buffer_2d[screen_col][i] = -1;
+
 	z_buffer[screen_col] = -1;
 	wall_slice.highest_slice_row = PROJ_H;
 
@@ -788,6 +792,8 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 		if(j + slice->screen_row < 0 || j + slice->screen_row  >= PROJ_H)
 			continue;
 
+		z_buffer_2d[slice->screen_col][j + slice->screen_row] = hit->dist;
+
 		p_y = (j * tex_h) / slice->screen_height;
 
 		raycast_pixels[(j + slice->screen_row) * PROJ_W + slice->screen_col] =
@@ -807,14 +813,10 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
 		floor_ceil_pixel.screen_col = wall_slice->screen_col;
 		project_screen_pixel_to_world_space(&floor_ceil_pixel);
 
-		if(map->use_fog) {
-			pixel_dist = get_dist_sqrd(floor_ceil_pixel.world_space_coordinates[0],
-									   floor_ceil_pixel.world_space_coordinates[1],
-									   player_x, player_y);
-			pixel_dist = correct_hit_dist_for_fisheye_effect((int)sqrt(pixel_dist));
-		} else {
-			pixel_dist = 0;
-		}
+		pixel_dist = get_dist_sqrd(floor_ceil_pixel.world_space_coordinates[0],
+								   floor_ceil_pixel.world_space_coordinates[1],
+								   player_x, player_y);
+		pixel_dist = correct_hit_dist_for_fisheye_effect((int)sqrt(pixel_dist));
 
 		floor_ceil_pixel.texture  = get_tile(floor_ceil_pixel.world_space_coordinates[0],
 								   			 floor_ceil_pixel.world_space_coordinates[1],
@@ -846,16 +848,23 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
 	int floor_screen_pixel = floor_ceil_pixel->screen_row * PROJ_W + floor_ceil_pixel->screen_col;
 	int ceiling_screen_pixel = ((-floor_ceil_pixel->screen_row) + PROJ_H) * PROJ_W + floor_ceil_pixel->screen_col;
 
+	int use_fog = map->use_fog ? pixel_dist : 0;
+
 	// Put floor pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].floor_surf) {
 		floor_ceiling_pixels[floor_screen_pixel] = apply_fog(get_pixel(map->floor_ceils[floor_ceil_pixel->texture].floor_surf, texture_x, texture_y),
-															 pixel_dist);
+															 use_fog);
 	}
 
 	// Put ceiling pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf) {
 		floor_ceiling_pixels[ceiling_screen_pixel] = apply_fog(get_pixel(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf, texture_x, texture_y),
-															   pixel_dist);
+															   use_fog);
+
+		if(z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] == -1 || 
+		   z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] > pixel_dist) {
+			z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] = pixel_dist;
+		}
 	}
 }
 
@@ -922,7 +931,7 @@ static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos
 	/*
 		We make three assumptions about sprites and the environment
 		1. Sprites are vertically centered.
-		2. Sprites are all 64 x 64 pixels
+		2. Sprites are all 64 x 64 pixels -- Actually this no longer holds
 		3. The player height is 32
 
 		Thus, the center of every sprite is at half of the projection screen height.
@@ -931,13 +940,33 @@ static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos
 }
 
 static void compute_thing_dimensions_on_screen(const int thing_sorted_index, const int screen_pos[2], SDL_Rect* thing_screen_rect) {
+	int tex_h;
+
+	if(things_sorted[thing_sorted_index]->surf)
+		tex_h = things_sorted[thing_sorted_index]->surf->h;
+	else
+		tex_h = 64;
+
+	int dist_squared = things_sorted[thing_sorted_index]->dist;
+	double dist = sqrt(dist_squared);
+	// How much we subtract from the thing height to render at the
+	// correct row.
+	int height_remain;
+
 	// Inspired by the computation to find the height of a wall slice
 	// on the screen.
-	thing_screen_rect->w = (int)(UNIT_SIZE / sqrt(things_sorted[thing_sorted_index]->dist) * DIST_TO_PROJ);
+
+	/*
+	slice_remain = slice_height - ((DIST_TO_PROJ << 6) / hit->dist);
+	*/
+
+	thing_screen_rect->w = (int)(UNIT_SIZE / dist * DIST_TO_PROJ);
 	// Since sprites are squares, the screen width == screen height
-	thing_screen_rect->h = thing_screen_rect->w;
+	//thing_screen_rect->h = thing_screen_rect->w;
+	thing_screen_rect->h = (int)(tex_h / dist * DIST_TO_PROJ);
+	height_remain = thing_screen_rect->h - ((DIST_TO_PROJ << 6) / dist);
 	// x and y are is the top-left corner of the screen.
-	thing_screen_rect->y = HALF_PROJ_H - (thing_screen_rect->h >> 1);
+	thing_screen_rect->y = HALF_PROJ_H - (thing_screen_rect->h >> 1) - (height_remain >> 1);
 	thing_screen_rect->x = screen_pos[0] - (thing_screen_rect->w >> 1);
 }
 
@@ -963,7 +992,7 @@ static void draw_columns_of_thing(const int thing_sorted_index, const SDL_Rect* 
 
 	int j;
 	for(j = dest->x; j < dest->x + dest->w; ++j) {
-		if(column_in_bounds_of_screen(j) && thing_not_obscured_by_wall_slice(thing_sorted_index, j)) {
+		if(column_in_bounds_of_screen(j)) {//&& thing_not_obscured_by_wall_slice(thing_sorted_index, j)) {
 			compute_column_of_thing_texture(m, dest, &src_tex_col);
 
 			thing_column.thing_sorted_index = thing_sorted_index;
@@ -1001,24 +1030,37 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	unsigned int t_color;
 
 	int screen_row;
-
+	int tex_height;
 	int thing_dist_sqrt = 0;
 
-	if(map->use_fog)
-		thing_dist_sqrt = (int)sqrt(things_sorted[thing_column_data->thing_sorted_index]->dist);
+	if(things_sorted[thing_column_data->thing_sorted_index]->surf)
+		tex_height = things_sorted[thing_column_data->thing_sorted_index]->surf->h;
+	else
+		tex_height = 64;
+
+	thing_dist_sqrt = (int)sqrt(things_sorted[thing_column_data->thing_sorted_index]->dist);
 
 	int k;
 	for(k = 0; k < thing_column_data->dest->h; ++k) {
 		screen_row = k + thing_column_data->dest->y;
+
+		if(z_buffer_2d[thing_column_data->screen_column][screen_row] != -1 &&
+		   thing_dist_sqrt > z_buffer_2d[thing_column_data->screen_column][screen_row])
+			continue;
+
 		if(thing_pixel_row_out_of_screen_bounds(screen_row))
 			continue;
 
 		t_x = (thing_column_data->src->x) + thing_column_data->frame_offset[0];
-		t_y = ((k << 6) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
+		t_y = ((k * tex_height) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
 		t_color = get_pixel(things_sorted[thing_column_data->thing_sorted_index]->surf, t_x, t_y);
 		// Only put a pixel if it is not transparent.
-		if(thing_pixel_is_not_transparent(t_color))
-			thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = apply_fog(t_color, thing_dist_sqrt);
+		if(thing_pixel_is_not_transparent(t_color)) {
+			if(map->use_fog)
+				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = apply_fog(t_color, thing_dist_sqrt);
+			else
+				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = apply_fog(t_color, 0);
+		}
 	}
 }
 
