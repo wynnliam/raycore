@@ -458,6 +458,10 @@ static void cast_single_ray(const int screen_col) {
 	z_buffer[screen_col] = -1;
 	wall_slice.highest_slice_row = PROJ_H;
 
+	int i;
+	for(i = 0; i < PROJ_H; i++)
+		z_buffer_2d[screen_col][i] = -1;
+
 	do {
 		get_ray_hit(&ray_data, &hit);
 
