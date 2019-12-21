@@ -862,6 +862,9 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
 	if(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf) {
 		floor_ceiling_pixels[ceiling_screen_pixel] = apply_fog(get_pixel(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf, texture_x, texture_y),
 															   pixel_dist);
+
+		if(z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] > pixel_dist)
+			z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] = pixel_dist;
 	}
 }
 
