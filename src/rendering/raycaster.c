@@ -813,14 +813,10 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
 		floor_ceil_pixel.screen_col = wall_slice->screen_col;
 		project_screen_pixel_to_world_space(&floor_ceil_pixel);
 
-		if(map->use_fog) {
-			pixel_dist = get_dist_sqrd(floor_ceil_pixel.world_space_coordinates[0],
-									   floor_ceil_pixel.world_space_coordinates[1],
-									   player_x, player_y);
-			pixel_dist = correct_hit_dist_for_fisheye_effect((int)sqrt(pixel_dist));
-		} else {
-			pixel_dist = 0;
-		}
+		pixel_dist = get_dist_sqrd(floor_ceil_pixel.world_space_coordinates[0],
+								   floor_ceil_pixel.world_space_coordinates[1],
+								   player_x, player_y);
+		pixel_dist = correct_hit_dist_for_fisheye_effect((int)sqrt(pixel_dist));
 
 		floor_ceil_pixel.texture  = get_tile(floor_ceil_pixel.world_space_coordinates[0],
 								   			 floor_ceil_pixel.world_space_coordinates[1],
@@ -852,19 +848,23 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
 	int floor_screen_pixel = floor_ceil_pixel->screen_row * PROJ_W + floor_ceil_pixel->screen_col;
 	int ceiling_screen_pixel = ((-floor_ceil_pixel->screen_row) + PROJ_H) * PROJ_W + floor_ceil_pixel->screen_col;
 
+	int use_fog = map->use_fog ? pixel_dist : 0;
+
 	// Put floor pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].floor_surf) {
 		floor_ceiling_pixels[floor_screen_pixel] = apply_fog(get_pixel(map->floor_ceils[floor_ceil_pixel->texture].floor_surf, texture_x, texture_y),
-															 pixel_dist);
+															 use_fog);
 	}
 
 	// Put ceiling pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf) {
 		floor_ceiling_pixels[ceiling_screen_pixel] = apply_fog(get_pixel(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf, texture_x, texture_y),
-															   pixel_dist);
+															   use_fog);
 
-		if(z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] > pixel_dist)
+		if(z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] == -1 || 
+		   z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] > pixel_dist) {
 			z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] = pixel_dist;
+		}
 	}
 }
 
