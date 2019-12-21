@@ -992,7 +992,7 @@ static void draw_columns_of_thing(const int thing_sorted_index, const SDL_Rect* 
 
 	int j;
 	for(j = dest->x; j < dest->x + dest->w; ++j) {
-		if(column_in_bounds_of_screen(j) && thing_not_obscured_by_wall_slice(thing_sorted_index, j)) {
+		if(column_in_bounds_of_screen(j)) {//&& thing_not_obscured_by_wall_slice(thing_sorted_index, j)) {
 			compute_column_of_thing_texture(m, dest, &src_tex_col);
 
 			thing_column.thing_sorted_index = thing_sorted_index;
@@ -1038,12 +1038,16 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	else
 		tex_height = 64;
 
-	if(map->use_fog)
-		thing_dist_sqrt = (int)sqrt(things_sorted[thing_column_data->thing_sorted_index]->dist);
+	thing_dist_sqrt = (int)sqrt(things_sorted[thing_column_data->thing_sorted_index]->dist);
 
 	int k;
 	for(k = 0; k < thing_column_data->dest->h; ++k) {
 		screen_row = k + thing_column_data->dest->y;
+
+		if(z_buffer_2d[thing_column_data->screen_column][screen_row] != -1 &&
+		   thing_dist_sqrt > z_buffer_2d[thing_column_data->screen_column][screen_row])
+			continue;
+
 		if(thing_pixel_row_out_of_screen_bounds(screen_row))
 			continue;
 
@@ -1051,8 +1055,12 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 		t_y = ((k * tex_height) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
 		t_color = get_pixel(things_sorted[thing_column_data->thing_sorted_index]->surf, t_x, t_y);
 		// Only put a pixel if it is not transparent.
-		if(thing_pixel_is_not_transparent(t_color))
-			thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = apply_fog(t_color, thing_dist_sqrt);
+		if(thing_pixel_is_not_transparent(t_color)) {
+			if(map->use_fog)
+				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = apply_fog(t_color, thing_dist_sqrt);
+			else
+				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = apply_fog(t_color, 0);
+		}
 	}
 }
 
