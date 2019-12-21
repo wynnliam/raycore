@@ -95,6 +95,7 @@ int delta_v_y[361];
 
 // Stores the distance each ray is from the player when it hits something.
 int z_buffer[PROJ_W];
+int z_buffer_2d[PROJ_W][PROJ_H];
 
 // What we render for the floor/ceiling
 SDL_Texture* floor_ceiling_tex;
