@@ -5,7 +5,7 @@ properties {
 	# String
 	name = "Francisco Leopold Art Gallery";
 	# String - 0 will denote "NULL"
-	sky_tex = "./assests/textures/skybox/sky01.bmp";
+	sky_tex = "./assests/textures/skybox/sky03.bmp";
 
 	# use_fog = "1";
 	# fog_r = "33";
