@@ -28,7 +28,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_00.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -39,7 +39,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_01.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -50,7 +50,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_02.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -61,7 +61,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_03.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -72,7 +72,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_10.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -83,7 +83,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_11.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -94,7 +94,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_12.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -105,7 +105,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_13.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -116,7 +116,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_20.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -127,7 +127,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_21.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -138,7 +138,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_22.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -149,7 +149,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_23.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -160,7 +160,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_30.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -171,7 +171,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_31.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -182,7 +182,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_32.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -193,7 +193,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_33.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -204,7 +204,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_00.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -215,7 +215,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_01.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -226,7 +226,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_02.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -237,7 +237,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_03.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -248,7 +248,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_10.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -259,7 +259,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_11.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -270,7 +270,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_12.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -281,7 +281,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_13.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -292,7 +292,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_20.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -303,7 +303,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_21.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -314,7 +314,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_22.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -325,7 +325,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_23.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -336,7 +336,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_30.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -347,7 +347,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_31.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -358,7 +358,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_32.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -369,7 +369,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_33.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -380,7 +380,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_00.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -391,7 +391,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_01.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -402,7 +402,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_02.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -413,7 +413,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_03.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -424,7 +424,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_10.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -435,7 +435,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_11.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -446,7 +446,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_12.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -457,7 +457,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_13.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -468,7 +468,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_20.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -479,7 +479,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_21.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -490,7 +490,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_22.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -501,7 +501,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_23.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -512,7 +512,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_30.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -523,7 +523,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_31.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -534,7 +534,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_32.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -545,7 +545,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a3_lower_market/a3_33.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -556,7 +556,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_00.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -567,7 +567,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_01.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -578,7 +578,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_02.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -589,7 +589,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_03.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -600,7 +600,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_10.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -611,7 +611,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_11.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -622,7 +622,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_12.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -633,7 +633,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_13.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -644,7 +644,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_20.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -655,7 +655,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_21.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -666,7 +666,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_22.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -677,7 +677,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_23.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -688,7 +688,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_30.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -699,7 +699,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_31.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -710,7 +710,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_32.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -721,7 +721,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b1_upper_residential/b1_33.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -732,7 +732,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_00.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -743,7 +743,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_01.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -754,7 +754,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_02.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -765,7 +765,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_03.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -776,7 +776,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_10.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -787,7 +787,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_11.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -798,7 +798,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_12.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -809,7 +809,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_13.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -820,7 +820,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_20.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -831,7 +831,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_21.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -842,7 +842,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_22.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -853,7 +853,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_23.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -864,7 +864,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_30.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -875,7 +875,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_31.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -886,7 +886,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_32.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -897,7 +897,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b2_town_center/b2_33.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -908,7 +908,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_00.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -919,7 +919,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_01.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -930,7 +930,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_02.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -941,7 +941,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_03.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -952,7 +952,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_10.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -963,7 +963,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_11.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -974,7 +974,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_12.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -985,7 +985,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_13.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -996,7 +996,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_20.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1007,7 +1007,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_21.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1018,7 +1018,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_22.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1029,7 +1029,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_23.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1040,7 +1040,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_30.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1051,7 +1051,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_31.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1062,7 +1062,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_32.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1073,7 +1073,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/b3_main_gate/b3_33.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1084,7 +1084,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_00.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1095,7 +1095,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_01.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1106,7 +1106,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_02.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1117,7 +1117,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_03.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1128,7 +1128,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_10.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1139,7 +1139,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_11.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1150,7 +1150,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_12.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1161,7 +1161,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_13.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1172,7 +1172,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_20.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1183,7 +1183,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_21.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1194,7 +1194,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_22.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1205,7 +1205,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_23.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1216,7 +1216,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_30.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1227,7 +1227,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_31.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1238,7 +1238,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_32.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1249,7 +1249,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c1_arena/c1_33.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1260,7 +1260,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_00.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1271,7 +1271,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_01.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1282,7 +1282,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_02.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1293,7 +1293,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_03.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1304,7 +1304,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_10.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1315,7 +1315,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_11.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1326,7 +1326,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_12.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1337,7 +1337,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_13.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1348,7 +1348,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_20.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1359,7 +1359,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_21.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1370,7 +1370,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_22.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1381,7 +1381,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_23.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1392,7 +1392,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_30.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1403,7 +1403,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_31.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1414,7 +1414,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_32.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1425,7 +1425,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c2_east_port/c2_33.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1436,7 +1436,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_00.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1447,7 +1447,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_01.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1458,7 +1458,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_02.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1469,7 +1469,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_03.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1480,7 +1480,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_10.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1491,7 +1491,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_11.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1502,7 +1502,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_12.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1513,7 +1513,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_13.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1524,7 +1524,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_20.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1535,7 +1535,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_21.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1546,7 +1546,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_22.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1557,7 +1557,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_23.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1568,7 +1568,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_30.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1579,7 +1579,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_31.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1590,7 +1590,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_32.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 component {
@@ -1601,7 +1601,7 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/c3_market/c3_33.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 # Floor
@@ -1613,10 +1613,21 @@ component {
 
 	is_floor_ciel = "1";
 	tex_0 = "./assests/textures/baroque/floor1.bmp";
-	tex_1 = "./assests/textures/baroque/ceiling1.bmp";
+	tex_1 = "0";
 }
 
 # Walls
+component {
+	x = "6";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/art/villa_art/cymylog/cloud_0.bmp";
+	tex_1 = "0";
+}
+
 component {
 	x = "0";
 	y = "0";
