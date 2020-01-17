@@ -1628,6 +1628,41 @@ component {
 	tex_1 = "0";
 }
 
+
+component {
+	x = "7";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/art/villa_art/cymylog/cloud_1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "8";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/art/villa_art/cymylog/cloud_2.bmp";
+	tex_1 = "0";
+}
+
+
+component {
+	x = "9";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/art/villa_art/cymylog/cloud_3.bmp";
+	tex_1 = "0";
+}
+
 component {
 	x = "0";
 	y = "0";
