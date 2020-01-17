@@ -1639,6 +1639,52 @@ component {
 	tex_1 = "0";
 }
 
+# Paintings on leftmost wall
+
+component {
+	x = "0";
+	y = "3";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/art/villa_art/ice_towers.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "6";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/art/villa_art/the_twins.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "9";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/art/villa_art/angel-defends-man-from-demons.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "12";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/art/villa_art/tableu.bmp";
+	tex_1 = "0";
+}
+
 component {
 	x = "0";
 	y = "1";
