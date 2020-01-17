@@ -196,6 +196,181 @@ component {
 	tex_1 = "0";
 }
 
+component {
+	x = "2";
+	y = "6";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_00.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "3";
+	y = "6";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_01.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "4";
+	y = "6";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_02.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "5";
+	y = "6";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_03.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "2";
+	y = "7";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_10.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "3";
+	y = "7";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_11.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "4";
+	y = "7";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_12.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "5";
+	y = "7";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_13.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "2";
+	y = "8";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_20.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "3";
+	y = "8";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_21.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "4";
+	y = "8";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_22.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "5";
+	y = "8";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_23.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "2";
+	y = "9";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_30.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "3";
+	y = "9";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_31.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "4";
+	y = "9";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_32.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "5";
+	y = "9";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a2_garden/a2_33.bmp";
+	tex_1 = "0";
+}
 
 # Floor
 component {
