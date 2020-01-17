@@ -4,8 +4,8 @@
 #include "../parser/recipe.h"
 
 // TODO: Place in common location as map.h defines
-#define WALL_DEF_COUNT		200
-#define FLOOR_CEIL_COUNT	200
+#define WALL_DEF_COUNT		1000
+#define FLOOR_CEIL_COUNT	1000
 
 #include <stdio.h>
 #include <stdlib.h>
