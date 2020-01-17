@@ -3,6 +3,10 @@
 #include "./texture_list.h"
 #include "../parser/recipe.h"
 
+// TODO: Place in common location as map.h defines
+#define WALL_DEF_COUNT		200
+#define FLOOR_CEIL_COUNT	200
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -113,7 +117,7 @@ int insert_texture_into_texture_list(struct texture_list* list, struct texlist_d
 		data->mapdef_id = list->num_floor_ceils;
 		list->num_floor_ceils += 1;
 	} else {
-		data->mapdef_id = list->num_walls + 100;
+		data->mapdef_id = list->num_walls + WALL_DEF_COUNT;
 		list->num_walls += 1;
 	}
 

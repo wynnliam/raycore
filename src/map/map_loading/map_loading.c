@@ -95,7 +95,7 @@ struct mapdef* load_map_from_file(const char* path) {
 
 	compute_map_layout(intermediate_mapdef->components, result);
 
-	result->num_tiles = 200;
+	result->num_tiles = WALL_DEF_COUNT + FLOOR_CEIL_COUNT;
 	create_wall_textures(intermediate_mapdef->textures, result);
 	create_floor_ceil_textures(intermediate_mapdef->textures, result);
 
@@ -208,14 +208,14 @@ static void create_wall_textures(struct texture_list* textures, struct mapdef* r
 	if(!textures || !result)
 		return;
 
-	result->num_wall_tex = 100;
+	result->num_wall_tex = WALL_DEF_COUNT;
 
 	struct texlist_node* curr = textures->head;
 	int walldef_index;
 
 	while(curr) {
-		if(curr->data->mapdef_id >= 100) {
-			walldef_index = curr->data->mapdef_id - 100;
+		if(curr->data->mapdef_id >= WALL_DEF_COUNT) {
+			walldef_index = curr->data->mapdef_id - WALL_DEF_COUNT;
 
 			if(curr->data->tex_0) {
 				if(walldef_index == 5)
@@ -240,13 +240,13 @@ static void create_floor_ceil_textures(struct texture_list* textures, struct map
 	if(!textures || !result)
 		return;
 
-	result->num_floor_ceils = 100;
+	result->num_floor_ceils = FLOOR_CEIL_COUNT;
 
 	struct texlist_node* curr = textures->head;
 	int floorceildef_index;
 
 	while(curr) {
-		if(curr->data->mapdef_id < 100) {
+		if(curr->data->mapdef_id < FLOOR_CEIL_COUNT) {
 			floorceildef_index = curr->data->mapdef_id;
 
 			if(curr->data->tex_0) {

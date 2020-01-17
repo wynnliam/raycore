@@ -24,7 +24,7 @@ struct texlist_data {
 
 	// Used in the mapdef to identify the tile texture in the mapdef.
 	// The rule is that floor/ceiling textures are a number from 0 to 99 (inclusive)
-	// and the wall textures are from 100 to 199. This nomenclature is an artifact
+	// and the wall textures are from FLOOR_DEF_COUNT to FLOOR_DEF_COUNT + WALL_DEF_COUNT. This nomenclature is an artifact
 	// from early mapdef development, and is the way we differentiate walls from floor/ceils
 	// while using the layout int array.
 
@@ -42,7 +42,7 @@ struct texture_list {
 
 	// Used to identify walls and floor/ceil textures.
 	// For example, when we insert a new wall texture,
-	// its id becomes num_walls + 100 (and then num_walls is incremented).
+	// its id becomes num_walls + WALL_DEF_COUNT (and then num_walls is incremented).
 	// For floor/ceil textures the id is just the current value of num_floor_ceils
 	// (which too is also incremented after inserting a floor/ceil texture).
 	unsigned int num_walls;

@@ -17,8 +17,8 @@
 #define MAP_W	20
 #define MAP_H	10
 
-#define WALL_DEF_COUNT		100
-#define FLOOR_CEIL_COUNT	100
+#define WALL_DEF_COUNT		200
+#define FLOOR_CEIL_COUNT	200
 #define THING_COUNT			1000
 #define ENTITY_COUNT		1000
 
