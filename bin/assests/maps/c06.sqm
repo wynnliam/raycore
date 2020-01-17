@@ -1,0 +1,77 @@
+# Liam Wynn, 2/26/2019, Raycaster
+
+# Metadata about the map.
+properties {
+	# String
+	name = "Villa";
+	# String - 0 will denote "NULL"
+	sky_tex = "0";
+}
+
+entity {
+	type = "entity_player_spawn";
+	id = "1";
+	x = "0";
+	y = "0";
+
+	player_x = "128";
+	player_y = "128";
+	player_rot = "0";
+}
+
+# Floor
+component {
+	x = "1";
+	y = "1";
+	w = "14";
+	h = "14";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/measure/measure_02.bmp";
+	tex_1 = "0";
+}
+
+# Walls
+component {
+	x = "0";
+	y = "0";
+	w = "16";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/measure/measure_02.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "15";
+	w = "16";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/measure/measure_02.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
+	y = "1";
+	w = "1";
+	h = "14";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/measure/measure_02.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "15";
+	y = "1";
+	w = "1";
+	h = "14";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/measure/measure_02.bmp";
+	tex_1 = "0";
+}

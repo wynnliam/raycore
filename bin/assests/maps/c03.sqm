@@ -587,8 +587,10 @@ entity {
 	x = "0";
 	y = "0";
 
-	goto_level = "0";
-	spawn_id = "2";
+	#goto_level = "0";
+	#spawn_id = "2";
+	goto_level = "5";
+	spawn_id = "1";
 
 	thing {
 		id = "1";
