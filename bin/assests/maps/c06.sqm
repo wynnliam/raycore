@@ -14,10 +14,188 @@ entity {
 	x = "0";
 	y = "0";
 
-	player_x = "128";
-	player_y = "128";
-	player_rot = "0";
+	player_x = "795";
+	player_y = "945";
+	player_rot = "90";
 }
+
+# The Ideal City
+component {
+	x = "2";
+	y = "2";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_00.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "3";
+	y = "2";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_01.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "4";
+	y = "2";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_02.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "5";
+	y = "2";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_03.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "2";
+	y = "3";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_10.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "3";
+	y = "3";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_11.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "4";
+	y = "3";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_12.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "5";
+	y = "3";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_13.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "2";
+	y = "4";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_20.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "3";
+	y = "4";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_21.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "4";
+	y = "4";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_22.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "5";
+	y = "4";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_23.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "2";
+	y = "5";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_30.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "3";
+	y = "5";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_31.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "4";
+	y = "5";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_32.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "5";
+	y = "5";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/art/villa_art/idaniki_poli/a1_castle/a1_33.bmp";
+	tex_1 = "0";
+}
+
 
 # Floor
 component {
