@@ -1675,6 +1675,17 @@ component {
 }
 
 component {
+	x = "13";
+	y = "15";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/baroque/wall_big_with_door.bmp";
+	tex_1 = "0";
+}
+
+component {
 	x = "0";
 	y = "15";
 	w = "16";
