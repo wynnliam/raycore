@@ -14,9 +14,9 @@ entity {
 	x = "0";
 	y = "0";
 
-	player_x = "795";
-	player_y = "945";
-	player_rot = "90";
+	player_x = "790";
+	player_y = "854";
+	player_rot = "108";
 }
 
 # The Ideal City
