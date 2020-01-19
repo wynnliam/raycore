@@ -1753,6 +1753,51 @@ component {
 	tex_1 = "0";
 }
 
+# The King is Wounded
+component {
+	x = "15";
+	y = "6";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/art/villa_art/the_king_is_wounded/0.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "15";
+	y = "7";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/art/villa_art/the_king_is_wounded/1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "15";
+	y = "8";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/art/villa_art/the_king_is_wounded/2.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "15";
+	y = "9";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/art/villa_art/the_king_is_wounded/3.bmp";
+	tex_1 = "0";
+}
+
 component {
 	x = "15";
 	y = "1";
