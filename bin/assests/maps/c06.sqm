@@ -1618,6 +1618,50 @@ component {
 
 # Walls
 component {
+	x = "2";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/baroque/wall_big_with_window.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "4";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/baroque/wall_big_with_window.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "11";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/baroque/wall_big_with_window.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "13";
+	y = "0";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/baroque/wall_big_with_window.bmp";
+	tex_1 = "0";
+}
+
+component {
 	x = "6";
 	y = "0";
 	w = "1";
@@ -1675,7 +1719,40 @@ component {
 }
 
 component {
-	x = "13";
+	x = "3";
+	y = "15";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/baroque/wall_big_with_window.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "6";
+	y = "15";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/baroque/wall_big_with_window.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "9";
+	y = "15";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/baroque/wall_big_with_window.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "12";
 	y = "15";
 	w = "1";
 	h = "1";
@@ -1795,6 +1872,28 @@ component {
 
 	is_floor_ciel = "0";
 	tex_0 = "./assests/textures/art/villa_art/the_king_is_wounded/3.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "15";
+	y = "3";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/baroque/wall_big_with_window.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "15";
+	y = "12";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/baroque/wall_big_with_window.bmp";
 	tex_1 = "0";
 }
 
