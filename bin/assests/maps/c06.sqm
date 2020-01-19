@@ -3,7 +3,7 @@
 # Metadata about the map.
 properties {
 	# String
-	name = "Villa";
+	name = "Right House";
 	# String - 0 will denote "NULL"
 	sky_tex = "0";
 }
@@ -17,6 +17,27 @@ entity {
 	player_x = "790";
 	player_y = "854";
 	player_rot = "108";
+}
+
+entity {
+	type = "entity_level_transition";
+	id = "1";
+	x = "0";
+	y = "0";
+
+	goto_level = "6";
+	spawn_id = "2";
+
+	thing {
+		id = "1";
+
+		x = "800";
+		y = "928";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
 }
 
 # The Ideal City
