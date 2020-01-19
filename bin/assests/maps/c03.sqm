@@ -580,15 +580,15 @@ thing {
 }
 
 # Level transition entities
-# To c01.sqm
+# To c07.sqm
 entity {
 	type = "entity_level_transition";
 	id = "1";
 	x = "0";
 	y = "0";
 
-	goto_level = "0";
-	spawn_id = "2";
+	goto_level = "6";
+	spawn_id = "1";
 	#goto_level = "5";
 	#spawn_id = "1";
 
@@ -619,28 +619,6 @@ entity {
 
 		x = "928";
 		y = "2464";
-		rot = "72";
-
-		anim_class = "0";
-		sprite_sheet = "./assests/sprites/hud/alert.bmp";
-	}
-}
-
-# To Bellington Estate
-entity {
-	type = "entity_level_transition";
-	id = "3";
-	x = "0";
-	y = "0";
-
-	goto_level = "3";
-	spawn_id = "2";
-
-	thing {
-		id = "3";
-
-		x = "1440";
-		y = "736";
 		rot = "72";
 
 		anim_class = "0";
@@ -684,7 +662,7 @@ entity {
 	player_rot = "2";
 }
 
-# Coming from c01 (Lachance Art Gallery)
+# Coming from c07 (Ephraim Spring Villa)
 entity {
 	type = "entity_player_spawn";
 	id = "6";
@@ -706,16 +684,4 @@ entity {
 	player_x = "929";
 	player_y = "2439";
 	player_rot = "94";
-}
-
-# Coming from c04 (Bellington Estate)
-entity {
-	type = "entity_player_spawn";
-	id = "8";
-	x = "0";
-	y = "0";
-
-	player_x = "1393";
-	player_y = "735";
-	player_rot = "190";
 }

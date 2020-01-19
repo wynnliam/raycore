@@ -118,6 +118,28 @@ entity {
 		sprite_sheet = "./assests/sprites/hud/alert.bmp";
 	}
 }
+
+entity {
+	type = "entity_level_transition";
+	id = "8";
+	x = "0";
+	y = "0";
+
+	goto_level = "2";
+	spawn_id = "6";
+
+	thing {
+		id = "5";
+
+		x = "512";
+		y = "512";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
+}
+
 # North Wall
 component {
 	x = "0";
