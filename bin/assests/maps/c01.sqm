@@ -2922,7 +2922,7 @@ entity {
 	x = "0";
 	y = "0";
 
-	goto_level = "2";
+	goto_level = "6";
 	spawn_id = "6";
 
 	thing {

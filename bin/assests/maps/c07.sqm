@@ -32,9 +32,54 @@ entity {
 	player_rot = "2";
 }
 
+# Coming from Bellington Estate
+entity {
+	type = "entity_player_spawn";
+	id = "3";
+	x = "0";
+	y = "0";
+
+	player_x = "680";
+	player_y = "3416";
+	player_rot = "88";
+}
+
+# Coming from La Chance Art Gallery
+entity {
+	type = "entity_player_spawn";
+	id = "6";
+	x = "0";
+	y = "0";
+
+	player_x = "1302";
+	player_y = "1636";
+	player_rot = "180";
+}
+
 entity {
 	type = "entity_level_transition";
-	id = "1";
+	id = "4";
+	x = "0";
+	y = "0";
+
+	goto_level = "3";
+	spawn_id = "1";
+
+	thing {
+		id = "2";
+
+		x = "680";
+		y = "3500";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
+}
+
+entity {
+	type = "entity_level_transition";
+	id = "5";
 	x = "0";
 	y = "0";
 
@@ -53,6 +98,26 @@ entity {
 	}
 }
 
+entity {
+	type = "entity_level_transition";
+	id = "7";
+	x = "0";
+	y = "0";
+
+	goto_level = "0";
+	spawn_id = "2";
+
+	thing {
+		id = "3";
+
+		x = "1430";
+		y = "1636";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
+}
 # North Wall
 component {
 	x = "0";
