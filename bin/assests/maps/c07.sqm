@@ -197,15 +197,26 @@ component {
 	tex_1 = "0";
 }
 
-# Walkways to the area around the entrance to Bellington Garden
+# Walkways
+component {
+	x = "1";
+	y = "22";
+	w = "25";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
 component {
 	x = "3";
 	y = "9";
 	w = "2";
-	h = "1";
+	h = "14";
 
 	is_floor_ciel = "1";
-	tex_0 = "./assests/textures/grass/grass1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
 	tex_1 = "0";
 }
 
@@ -213,10 +224,21 @@ component {
 	x = "19";
 	y = "9";
 	w = "2";
-	h = "1";
+	h = "14";
 
 	is_floor_ciel = "1";
-	tex_0 = "./assests/textures/grass/grass1.bmp";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "11";
+	y = "23";
+	w = "2";
+	h = "32";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
 	tex_1 = "0";
 }
 
