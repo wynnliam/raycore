@@ -7,7 +7,6 @@ properties {
 	sky_tex = "./assests/textures/skybox/sky03.bmp";
 }
 
-
 # Entering the Villa
 entity {
 	type = "entity_player_spawn";
@@ -15,8 +14,8 @@ entity {
 	x = "0";
 	y = "0";
 
-	player_x = "934";
-	player_y = "3439";
+	player_x = "800";
+	player_y = "3456";
 	player_rot = "90";
 }
 
@@ -131,8 +130,8 @@ entity {
 	thing {
 		id = "5";
 
-		x = "1185";
-		y = "3417";
+		x = "800";
+		y = "3488";
 		rot = "72";
 
 		anim_class = "0";
@@ -234,7 +233,7 @@ component {
 component {
 	x = "11";
 	y = "23";
-	w = "2";
+	w = "3";
 	h = "32";
 
 	is_floor_ciel = "1";
