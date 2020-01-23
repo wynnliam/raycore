@@ -51,9 +51,9 @@ entity {
 	x = "0";
 	y = "0";
 
-	player_x = "1302";
-	player_y = "1636";
-	player_rot = "180";
+	player_x = "160";
+	player_y = "1440";
+	player_rot = "2";
 }
 
 entity {
@@ -110,8 +110,8 @@ entity {
 	thing {
 		id = "3";
 
-		x = "1430";
-		y = "1636";
+		x = "96";
+		y = "1440";
 		rot = "72";
 
 		anim_class = "0";
@@ -202,12 +202,23 @@ component {
 # West Wall
 component {
 	x = "0";
+	y = "22";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/wall/stone2.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "0";
 	y = "1";
 	w = "1";
 	h = "54";
 
 	is_floor_ciel = "0";
-	tex_0 = "./assests/textures/measure/measure_01.bmp";
+	tex_0 = "./assests/textures/wall/stone1.bmp";
 	tex_1 = "0";
 }
 
