@@ -27,8 +27,8 @@ entity {
 	x = "0";
 	y = "0";
 
-	player_x = "1768";
-	player_y = "2256";
+	player_x = "1504";
+	player_y = "1440";
 	player_rot = "176";
 }
 
@@ -89,8 +89,8 @@ entity {
 	thing {
 		id = "1";
 
-		x = "136";
-		y = "970";
+		x = "1568";
+		y = "1440";
 		rot = "72";
 
 		anim_class = "0";
@@ -141,6 +141,17 @@ entity {
 }
 
 # The Right Building
+component {
+	x = "25";
+	y = "22";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/baroque/ext_big_with_door.bmp";
+	tex_1 = "0";
+}
+
 component {
 	x = "25";
 	y = "10";
