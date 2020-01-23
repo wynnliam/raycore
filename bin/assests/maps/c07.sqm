@@ -15,9 +15,9 @@ entity {
 	x = "0";
 	y = "0";
 
-	player_x = "788";
-	player_y = "124";
-	player_rot = "268";
+	player_x = "934";
+	player_y = "3439";
+	player_rot = "90";
 }
 
 # Coming from Right House
@@ -27,9 +27,9 @@ entity {
 	x = "0";
 	y = "0";
 
-	player_x = "182";
-	player_y = "954";
-	player_rot = "2";
+	player_x = "1768";
+	player_y = "2256";
+	player_rot = "176";
 }
 
 # Coming from Bellington Estate
@@ -39,9 +39,9 @@ entity {
 	x = "0";
 	y = "0";
 
-	player_x = "680";
-	player_y = "3416";
-	player_rot = "88";
+	player_x = "962";
+	player_y = "189";
+	player_rot = "270";
 }
 
 # Coming from La Chance Art Gallery
@@ -140,11 +140,23 @@ entity {
 	}
 }
 
+# The Right Building
+component {
+	x = "25";
+	y = "10";
+	w = "16";
+	h = "16";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/baroque/ext_big.bmp";
+	tex_1 = "0";
+}
+
 # North Wall
 component {
 	x = "0";
 	y = "0";
-	w = "24";
+	w = "43";
 	h = "1";
 
 	is_floor_ciel = "0";
@@ -156,7 +168,7 @@ component {
 component {
 	x = "0";
 	y = "55";
-	w = "24";
+	w = "43";
 	h = "1";
 
 	is_floor_ciel = "0";
@@ -166,7 +178,7 @@ component {
 
 # East Wall
 component {
-	x = "23";
+	x = "42";
 	y = "1";
 	w = "1";
 	h = "54";
@@ -192,7 +204,7 @@ component {
 component {
 	x = "1";
 	y = "1";
-	w = "22";
+	w = "39";
 	h = "54";
 
 	is_floor_ciel = "1";
