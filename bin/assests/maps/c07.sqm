@@ -4,7 +4,7 @@ properties {
 	# String
 	name = "Ephraim Spring Villa";
 	# String - 0 will denote "NULL"
-	sky_tex = "0";
+	sky_tex = "./assests/textures/skybox/sky03.bmp";
 }
 
 
@@ -205,7 +205,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "1";
-	tex_0 = "./assests/textures/measure/measure_01.bmp";
+	tex_0 = "./assests/textures/grass/grass1.bmp";
 	tex_1 = "0";
 }
 
@@ -216,7 +216,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "1";
-	tex_0 = "./assests/textures/measure/measure_01.bmp";
+	tex_0 = "./assests/textures/grass/grass1.bmp";
 	tex_1 = "0";
 }
 
@@ -251,7 +251,7 @@ component {
 	h = "1";
 
 	is_floor_ciel = "0";
-	tex_0 = "./assests/textures/measure/measure_01.bmp";
+	tex_0 = "./assests/textures/wall/stone1.bmp";
 	tex_1 = "0";
 }
 
@@ -263,7 +263,7 @@ component {
 	h = "54";
 
 	is_floor_ciel = "0";
-	tex_0 = "./assests/textures/measure/measure_01.bmp";
+	tex_0 = "./assests/textures/wall/stone1.bmp";
 	tex_1 = "0";
 }
 
@@ -298,7 +298,7 @@ component {
 	h = "54";
 
 	is_floor_ciel = "1";
-	tex_0 = "./assests/textures/measure/measure_01.bmp";
+	tex_0 = "./assests/textures/grass/grass1.bmp";
 	tex_1 = "0";
 }
 
