@@ -197,6 +197,52 @@ component {
 	tex_1 = "0";
 }
 
+# Walkways to the area around the entrance to Bellington Garden
+component {
+	x = "3";
+	y = "9";
+	w = "2";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/measure/measure_01.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "19";
+	y = "9";
+	w = "2";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/measure/measure_01.bmp";
+	tex_1 = "0";
+}
+
+# Form the walls around the entrance to Bellington Garden
+component {
+	x = "23";
+	y = "1";
+	w = "1";
+	h = "9";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/wall/stone1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "1";
+	y = "9";
+	w = "22";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/wall/stone1.bmp";
+	tex_1 = "0";
+}
+
 # South Wall
 component {
 	x = "0";
