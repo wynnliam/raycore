@@ -386,6 +386,73 @@ component {
 	tex_1 = "0";
 }
 
+# Paths around entrance to Bellington Garden
+component {
+	x = "1";
+	y = "1";
+	w = "21";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "1";
+	y = "2";
+	w = "1";
+	h = "7";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "2";
+	y = "8";
+	w = "21";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "22";
+	y = "8";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "22";
+	y = "1";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "22";
+	y = "2";
+	w = "1";
+	h = "6";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
 # Form the walls around the entrance to Bellington Garden
 component {
 	x = "23";
