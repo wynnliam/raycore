@@ -340,6 +340,52 @@ component {
 	tex_1 = "0";
 }
 
+# Floor under statues
+component {
+	x = "10";
+	y = "13";
+	w = "3";
+	h = "3";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "24";
+	y = "41";
+	w = "3";
+	h = "3";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+# Paths leading to statues
+component {
+	x = "14";
+	y = "42";
+	w = "10";
+	h = "1";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
+component {
+	x = "11";
+	y = "16";
+	w = "1";
+	h = "6";
+
+	is_floor_ciel = "1";
+	tex_0 = "./assests/textures/floor/cobblestone1.bmp";
+	tex_1 = "0";
+}
+
 # Form the walls around the entrance to Bellington Garden
 component {
 	x = "23";
@@ -414,7 +460,7 @@ component {
 thing {
 	type = "1";
 	x = "736";
-	y = "906";
+	y = "928";
 	rot = "0";
 
 	anim_class = "0";
@@ -423,8 +469,8 @@ thing {
 
 thing {
 	type = "1";
-	x = "1631";
-	y = "2699";
+	x = "1632";
+	y = "2720";
 	rot = "0";
 
 	anim_class = "0";
