@@ -410,6 +410,27 @@ component {
 	tex_1 = "0";
 }
 
+# Statues
+thing {
+	type = "1";
+	x = "736";
+	y = "906";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/theotokos.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1631";
+	y = "2699";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/king_fortinbras.bmp";
+}
+
 # Floor
 component {
 	x = "1";
@@ -418,7 +439,7 @@ component {
 	h = "54";
 
 	is_floor_ciel = "1";
-	tex_0 = "./assests/textures/grass/grass1.bmp";
+	tex_0 = "./assests/textures/sand/sand_02.bmp";
 	tex_1 = "0";
 }
 
