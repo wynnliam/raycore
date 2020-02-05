@@ -31,7 +31,6 @@ int get_dist_sqrd(int x1, int y1, int x2, int y2) {
 	return d_x + d_y;
 }
 
-
 static unsigned int get_pixel(SDL_Surface* surface, int x, int y) {
 	if(!surface)
 		return 0;
@@ -80,11 +79,79 @@ static int player_x, player_y;
 static int player_rot;
 static struct mapdef* map;
 
+// Stores the sin value of every degree from 0 to 360 multiplied by 128.
+// This will enable us to preserve enough precision for each number as
+// a byte. When we want a value, we can access sin128table[i] >> 7, which
+// undoes the multiplication.
+int sin128table[361];
+// Stores the cos value of every degree from 0 to 360 multiplied by 128.
+int cos128table[361];
+// Stores every tan value of every degree from 0 to 360 multiplied by 128.
+// The values for 0, 90, 180, 270, and 360 will be -1.
+static int tan128table[361];
+
+// Stores the value of 1/tan(t) * 128 for every degree between 0 and 360.
+// The values for 0, 90, 180, 270, and 360 will be -1.
+static int tan1table[361];
+// Stores the value of 1/sin(t) * 128 for every degree between 0 and 360.
+static int sin1table[361];
+
+// Stores the delta values for horizontal and vertical increments for each
+// angle.
+static int delta_h_x[361];
+static int delta_h_y[361];
+static int delta_v_x[361];
+static int delta_v_y[361];
+
+// Stores the distance each ray is from the player when it hits something.
+static int z_buffer[PROJ_W];
+static int z_buffer_2d[PROJ_W][PROJ_H];
+
+// What we render for the floor/ceiling
+static SDL_Texture* floor_ceiling_tex;
+// Where we store the floor and ceiling pixels before we render.
+static unsigned int floor_ceiling_pixels[64000];
+
+// Where we render for skybox and wall pixels.
+static SDL_Texture* raycast_texture;
+// Where we store sky and wall textures before we render.
+static unsigned int raycast_pixels[64000];
+
+// What we render for the things.
+static SDL_Texture* thing_texture;
+// Where we store thing pixels before we render.
+static unsigned int thing_pixels[64000];
+// Stores the things in a sorted order.
+static struct thingdef* things_sorted[1000];
+
 // Stores the precise angle of our current ray.
 static float curr_ray_angle;
 // The curr_ray_angle adjusted to be within 0 and 360.
 static int adj_ray_angle;
 static int ray_angle_relative_to_player_rot;
+
+struct ray_data {
+	int curr_h[2];
+	int curr_v[2];
+	int delta_h[2];
+	int delta_v[2];
+	int hit_h[2];
+	int hit_v[2];
+};
+
+struct hitinfo {
+	// Where we hit.
+	int hit_pos[2];
+	// The squared distance.
+	int dist;
+	// The wall texture.
+	int wall_type;
+	// If true, the intersection was along a horizontal grid.
+	// Otherwise, it was vertical.
+	int is_horiz;
+	// Used when correcting for 'fisheye' lens.
+	int quadrant;
+};
 
 struct wall_slice {
 	// The row of pixels on the screen we want to render from (top-most row going down).

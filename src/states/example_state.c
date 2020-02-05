@@ -25,6 +25,9 @@ static struct mapdef* map;
 static int quit = 0;
 static int next_state;
 
+extern int sin128table[361];
+extern int cos128table[361];
+
 void state_example_initialize(SDL_Renderer* renderer) {
 	player_x = 256;
 	player_y = 256;

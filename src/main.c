@@ -5,6 +5,17 @@
 
 #include "loop_handling.h"
 
+struct context {
+	SDL_Renderer* renderer;
+};
+
+void web_loop(void* args) {
+	struct context* ctx = (struct context*)args;
+	SDL_Renderer* renderer = ctx->renderer;
+
+	do_loop(renderer);
+}
+
 int main() {
 	SDL_Window* window;
 	SDL_Renderer* renderer;
@@ -22,8 +33,13 @@ int main() {
 	// Now run the loop.
 	do_loop(renderer);
 
+	/*struct context ctx;
+	// Using -1 makes the renderer run as fast as possible.
+	const int fps_count = -1;
+	// If true, runs the loop infinitely.
+	const int run_infinite = 1;
 	// Actually sets the rendering loop.
-	//emscripten_set_main_loop_arg(loop, &ctx, fps_count, run_infinite);
+	emscripten_set_main_loop_arg(web_loop, &ctx, fps_count, run_infinite);*/
 
 	clean_up();
 
