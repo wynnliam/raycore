@@ -478,6 +478,17 @@ component {
 
 # South Wall
 component {
+	x = "12";
+	y = "55";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	tex_0 = "./assests/textures/wall/stone2.bmp";
+	tex_1 = "0";
+}
+
+component {
 	x = "0";
 	y = "55";
 	w = "43";
