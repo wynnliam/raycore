@@ -22,7 +22,7 @@ int main() {
 
 	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
 
-	window = SDL_CreateWindow("S P A C E M A N", 0, 0, 320, 200, 0);
+	window = SDL_CreateWindow("Raycore", 0, 0, 320, 200, 0);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
 
 	//SDL_CreateWindowAndRenderer(320, 200, 0, &window, &renderer);
