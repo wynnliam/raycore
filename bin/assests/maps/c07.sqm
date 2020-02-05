@@ -3721,3 +3721,77 @@ thing {
 	anim_class = "0";
 	sprite_sheet = "./assests/sprites/foliage/palm_tree1.bmp";
 }
+
+# Cross Stands
+thing {
+	type = "1";
+	x = "928";
+	y = "2784";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/cross_stand_1.bmp";
+}
+thing {
+	type = "1";
+	x = "928";
+	y = "2656";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/cross_stand_1.bmp";
+}
+thing {
+	type = "1";
+	x = "672";
+	y = "1504";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/cross_stand_1.bmp";
+}
+thing {
+	type = "1";
+	x = "672";
+	y = "1376";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/cross_stand_1.bmp";
+}
+thing {
+	type = "1";
+	x = "800";
+	y = "1376";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/cross_stand_1.bmp";
+}
+thing {
+	type = "1";
+	x = "928";
+	y = "1504";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/cross_stand_1.bmp";
+}
+thing {
+	type = "1";
+	x = "1184";
+	y = "1376";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/cross_stand_1.bmp";
+}
+thing {
+	type = "1";
+	x = "1376";
+	y = "1376";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/cross_stand_1.bmp";
+}
+thing {
+	type = "1";
+	x = "2361";
+	y = "216";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/cross_stand_2.bmp";
+}
