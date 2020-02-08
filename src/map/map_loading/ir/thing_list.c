@@ -134,7 +134,7 @@ int insert_data_into_thing_list(struct thing_list* list, struct thinglist_data* 
 	if(!list || !data)
 		return 0;
 
-	struct thinglist_node* temp = (struct thinglist_node*)malloc(sizeof(struct thinglist_node*));
+	struct thinglist_node* temp = (struct thinglist_node*)malloc(sizeof(struct thinglist_node));
 
 	temp->data = data;
 	temp->next = list->head;
