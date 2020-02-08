@@ -1784,10 +1784,9 @@ entity {
 	x = "0";
 	y = "0";
 
-	#player_x = "1662";
-	#player_y = "177";
 	player_x = "1687";
 	player_y = "215";
+
 	player_rot = "266";
 }
 

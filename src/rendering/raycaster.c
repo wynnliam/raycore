@@ -1111,11 +1111,10 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	for(k = 0; k < thing_column_data->dest->h; ++k) {
 		screen_row = k + thing_column_data->dest->y;
 
+		if(thing_pixel_row_out_of_screen_bounds(screen_row))
+			continue;
 		if(z_buffer_2d[thing_column_data->screen_column][screen_row] != -1 &&
 		   thing_dist_sqrt > z_buffer_2d[thing_column_data->screen_column][screen_row])
-			continue;
-
-		if(thing_pixel_row_out_of_screen_bounds(screen_row))
 			continue;
 
 		t_x = (thing_column_data->src->x) + thing_column_data->frame_offset[0];
