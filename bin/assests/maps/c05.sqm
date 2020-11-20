@@ -30,6 +30,19 @@ properties {
 # 	sprite_sheet = "0";
 # }
 
+# Dummy wall
+component {
+	x = "27";
+	y = "15";
+	w = "1";
+	h = "1";
+
+	is_floor_ciel = "0";
+	is_invisible = "1";
+	tex_0 = "./assests/textures/measure/measure_01.bmp";
+	tex_1 = "0";
+}
+
 # Main Pass Area
 # Mud next to stream
 component {
