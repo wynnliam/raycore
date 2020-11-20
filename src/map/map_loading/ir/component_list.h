@@ -12,6 +12,7 @@ struct component {
 	// Used to denote the tile texture we have.
 	// If no texture, we assume it is texture 0.
 	unsigned int tex_id;
+	unsigned int is_invisible;
 
 	unsigned int x, y, w, h;
 };
@@ -25,7 +26,7 @@ struct component_list {
 	struct component_list_node* head;
 };
 
-struct component* construct_component(unsigned int tex_id, unsigned int x, unsigned int y,
+struct component* construct_component(unsigned int tex_id, unsigned int is_invisible, unsigned int x, unsigned int y,
 									  unsigned int w, unsigned int h);
 struct component* construct_component_from_recipe_and_texture_list(struct recipe* recipe, struct texture_list* texture_list);
 void clean_component(struct component* to_clean);

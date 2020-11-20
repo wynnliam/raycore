@@ -11,11 +11,12 @@
 static int build_component_list_from_recipe_list_nodes_and_texture_list(struct recipe_list_node* head, struct texture_list* texlist, struct component_list* result);
 
 /* COMPONENT IMPLEMENTATIONS */
-struct component* construct_component(unsigned int tex_id, unsigned int x, unsigned int y,
+struct component* construct_component(unsigned int tex_id, unsigned int is_invisible, unsigned int x, unsigned int y,
 									  unsigned int w, unsigned int h) {
 	struct component* result = (struct component*)malloc(sizeof(struct component));
 
 	result->tex_id = tex_id;
+	result->is_invisible = is_invisible;
 	result->x = x;
 	result->y = y;
 	result->w = w;
@@ -30,11 +31,13 @@ struct component* construct_component_from_recipe_and_texture_list(struct recipe
 	
 	unsigned int tex_id;
 	unsigned int x, y, w, h;
+	unsigned int is_invis = 0;
 
 	char* x_attr = get_attribute_value(recipe->attributes, "x");
 	char* y_attr = get_attribute_value(recipe->attributes, "y");
 	char* w_attr = get_attribute_value(recipe->attributes, "w");
 	char* h_attr = get_attribute_value(recipe->attributes, "h");
+	char* invis_attr = get_attribute_value(recipe->attributes, "is_invisible");
 
 	if(texture_list) {
 		struct texlist_data* component_texture_data = build_texlist_data_from_recipe(recipe);
@@ -68,7 +71,12 @@ struct component* construct_component_from_recipe_and_texture_list(struct recipe
 	} else
 		h = 1;
 
-	return construct_component(tex_id, x, y, w, h);
+	if(invis_attr) {
+		is_invis = (unsigned int)atoi(invis_attr);
+		free(invis_attr);
+	}
+
+	return construct_component(tex_id, is_invis, x, y, w, h);
 }
 
 void clean_component(struct component* to_clean) {

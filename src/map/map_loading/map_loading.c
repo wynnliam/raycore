@@ -182,6 +182,7 @@ static void place_single_component(struct component_list_node* head, struct mapd
 			mapdef_index = y * result->map_w + x;
 
 			result->layout[mapdef_index] = head->data->tex_id;
+			result->invisible_walls[mapdef_index] = head->data->is_invisible;
 			// TODO: Invisible walls!
 		}
 	}
