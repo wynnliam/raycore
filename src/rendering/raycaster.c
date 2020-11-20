@@ -446,7 +446,7 @@ static void clean_pixel_arrays() {
 
 static void preprocess_things() {
 	compute_distance_to_player_for_each_thing();
-	sort_things(0, map->num_things - 1);
+	//sort_things(0, map->num_things - 1);
 }
 
 static void compute_distance_to_player_for_each_thing() {
@@ -462,44 +462,6 @@ static void compute_distance_to_player_for_each_thing() {
 
 		// Add the thing to the sorted list.
 		things_sorted[i] = &(map->things[i]);
-	}
-}
-
-static void sort_things(int s, int e) {
-	if(e <= s)
-		return;
-
-	int m = partition(s, e);
-
-	sort_things(s, m);
-	sort_things(m + 1, e);
-}
-
-static int partition(int s, int e) {
-	int i = s - 1;
-	int j = e + 1;
-
-	int p_dist = things_sorted[s]->dist;
-
-	struct thingdef* temp;
-
-	while(1) {
-		do {
-			i += 1;
-		} while(things_sorted[i]->dist > p_dist);
-
-		do {
-			j -= 1;
-		} while(things_sorted[j]->dist < p_dist);
-
-		if(i >= j)
-			return j;
-
-		if(things_sorted[i]->dist < things_sorted[j]->dist) {
-			temp = things_sorted[i];
-			things_sorted[i] = things_sorted[j];
-			things_sorted[j] = temp;
-		}
 	}
 }
 
@@ -1126,6 +1088,8 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = apply_fog(t_color, thing_dist_sqrt);
 			else
 				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = apply_fog(t_color, 0);
+
+			z_buffer_2d[thing_column_data->screen_column][screen_row] = thing_dist_sqrt;
 		}
 	}
 }
