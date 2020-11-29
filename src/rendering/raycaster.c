@@ -185,6 +185,10 @@ struct thing_column_render_data {
 	const int* frame_offset;
 };
 
+/*
+	TODO: Nix this. We will keep track of distance as we fire rays.
+	As rays travel we will determine if we need a fog factor or not.
+*/
 static unsigned int apply_fog(unsigned int pixel_color, const unsigned int dist) {
 	unsigned char fog_factor, base_factor;
 	unsigned char* color = (unsigned char*)&pixel_color;
