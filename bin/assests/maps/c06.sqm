@@ -6,6 +6,10 @@ properties {
 	name = "Right House";
 	# String - 0 will denote "NULL"
 	sky_tex = "0";
+
+	fog_r = "233";
+	fog_g = "139";
+	fog_b = "89";
 }
 
 entity {

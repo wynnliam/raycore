@@ -7,10 +7,9 @@ properties {
 	# String - 0 will denote "NULL"
 	sky_tex = "./assests/textures/skybox/sky03.bmp";
 
-	use_fog = "1";
-	fog_r = "128";
-	fog_g = "49";
-	fog_b = "175";
+	fog_r = "233";
+	fog_g = "139";
+	fog_b = "89";
 }
 
 # component {

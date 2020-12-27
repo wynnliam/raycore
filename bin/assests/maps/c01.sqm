@@ -7,10 +7,9 @@ properties {
 	# String - 0 will denote "NULL"
 	sky_tex = "./assests/textures/skybox/sky03.bmp";
 
-	# use_fog = "1";
-	# fog_r = "33";
-	# fog_g = "22";
-	# fog_b = "171";
+	fog_r = "233";
+	fog_g = "139";
+	fog_b = "89";
 }
 
 # Player spawn.

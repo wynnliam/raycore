@@ -5,6 +5,10 @@ properties {
 	name = "Ephraim Spring Villa";
 	# String - 0 will denote "NULL"
 	sky_tex = "./assests/textures/skybox/sky03.bmp";
+
+	fog_r = "233";
+	fog_g = "139";
+	fog_b = "89";
 }
 
 # Entering the Villa
