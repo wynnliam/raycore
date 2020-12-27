@@ -23,7 +23,9 @@ void do_loop(SDL_Renderer* renderer) {
 	unsigned int startTicks, endTicks;
 	unsigned int tickDiff;
 
-	while(1) {
+	//while(1) {
+	int i;
+	for(i = 0; i < 100; i++) {
 		startTicks = SDL_GetTicks();
 
 		// Grab all keyboard and mouse inputs.
@@ -48,8 +50,6 @@ void do_loop(SDL_Renderer* renderer) {
 
 		if(tickDiff < IDEAL_FRAMES_PER_SECOND)
 			SDL_Delay(IDEAL_FRAMES_PER_SECOND - tickDiff);
-
-		break;
 	}
 }
 
