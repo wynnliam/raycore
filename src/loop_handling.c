@@ -48,6 +48,8 @@ void do_loop(SDL_Renderer* renderer) {
 
 		if(tickDiff < IDEAL_FRAMES_PER_SECOND)
 			SDL_Delay(IDEAL_FRAMES_PER_SECOND - tickDiff);
+
+		break;
 	}
 }
 
@@ -105,7 +107,8 @@ void initialize(SDL_Renderer* renderer) {
 	(*state_example.initialize)(renderer);
 	(*state_main_menu.initialize)(renderer);
 
-	curr_state = &state_main_menu;
+	//curr_state = &state_main_menu;
+	curr_state = &state_example;
 
 	// Entering and leaving a state only make sense in the context of
 	// other states, really. However, this here would be entering the
