@@ -189,33 +189,35 @@ struct thing_column_render_data {
 	TODO: Nix this. We will keep track of distance as we fire rays.
 	As rays travel we will determine if we need a fog factor or not.
 */
-static unsigned int apply_fog(unsigned int pixel_color, const unsigned int dist) {
-	unsigned char fog_factor, base_factor;
-	unsigned char* color = (unsigned char*)&pixel_color;
 
+typedef struct {
+	unsigned char fog_factor, base_factor;
+} fog_color_param;
+
+fog_color_param fog_param[5] = {
+	{0, 4},
+	{1, 3},
+	{2, 2},
+	{3, 1},
+	{4, 0}
+};
+
+static unsigned int apply_fog(unsigned int pixel_color, const unsigned int dist) {
+	unsigned char* color = (unsigned char*)&pixel_color;
 	unsigned char fog_r, fog_g, fog_b;
 
 	fog_r = (unsigned char)map->fog_r;
 	fog_g = (unsigned char)map->fog_g;
 	fog_b = (unsigned char)map->fog_b;
 
-	if(dist <= 100) {
-		fog_factor = 0;
-	} else if(dist <= 200) {
-		fog_factor = 32;
-	} else if(dist <= 300) {
-		fog_factor = 64;
-	} else if(dist <= 400) {
-		fog_factor = 96;
-	} else {
-		fog_factor = 128;
-	}
+	int param_index = (dist << 2) >> 10;
+	param_index = param_index > 4 ? 4 : param_index;
+	unsigned char f = fog_param[param_index].fog_factor;
+	unsigned char b = fog_param[param_index].base_factor;
 
-	base_factor = 128 - fog_factor;
-
-	color[2] = ((fog_r * fog_factor) + (color[2] * base_factor)) >> 7;
-	color[1] = ((fog_g * fog_factor) + (color[1] * base_factor)) >> 7;
-	color[0] = ((fog_b * fog_factor) + (color[0] * base_factor)) >> 7;
+	color[2] = ((fog_r * f) + (color[2] * b)) >> 2;
+	color[1] = ((fog_g * f) + (color[1] * b)) >> 2;
+	color[0] = ((fog_b * f) + (color[0] * b)) >> 2;
 
 	return *(unsigned int*)color;
 }
