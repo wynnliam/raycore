@@ -78,6 +78,8 @@ static unsigned int get_pixel(SDL_Surface* surface, int x, int y) {
 static int player_x, player_y;
 static int player_rot;
 static struct mapdef* map;
+// Fog color as a single int.
+static unsigned int fog_color;
 
 // Stores the sin value of every degree from 0 to 360 multiplied by 128.
 // This will enable us to preserve enough precision for each number as
@@ -401,7 +403,6 @@ void initialize_render_textures(SDL_Renderer* renderer) {
 }
 
 void cast_rays(SDL_Renderer* renderer, struct mapdef* curr_map, int curr_player_x, int curr_player_y, int curr_player_rot) {
-
 	update_state_variables(curr_map, curr_player_x, curr_player_y, curr_player_rot);
 
 	clean_pixel_arrays();
@@ -427,6 +428,11 @@ static void update_state_variables(struct mapdef* curr_map, const int curr_playe
 	map = curr_map;
 
 	curr_ray_angle = (float)(player_rot + FOV_HALF);
+
+	unsigned char* fog_color_arr = (unsigned char*)&fog_color;
+	fog_color_arr[2] = (unsigned char)map->fog_r;
+	fog_color_arr[1] = (unsigned char)map->fog_g;
+	fog_color_arr[0] = (unsigned char)map->fog_b;
 }
 
 static void clean_pixel_arrays() {
@@ -812,10 +818,13 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 
 		z_buffer_2d[slice->screen_col][j + slice->screen_row] = hit->dist;
 
-		p_y = (j * tex_h) / slice->screen_height;
-
-		raycast_pixels[(j + slice->screen_row) * PROJ_W + slice->screen_col] =
-			apply_fog(get_pixel(tex, p_x, p_y), fog_dist);
+		if(hit->dist <= 1024) {
+			p_y = (j * tex_h) / slice->screen_height;
+			raycast_pixels[(j + slice->screen_row) * PROJ_W + slice->screen_col] =
+				apply_fog(get_pixel(tex, p_x, p_y), fog_dist);
+		} else
+			raycast_pixels[(j + slice->screen_row) * PROJ_W + slice->screen_col] =
+				fog_color;
 	}
 }
 
