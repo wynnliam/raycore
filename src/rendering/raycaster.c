@@ -804,7 +804,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	if(!tex)
 		return;
 
-	int fog_dist  = map->use_fog ? hit->dist : 0;
+	int fog_dist  = hit->dist;
 	int pixel_index;
 	int p_x, p_y;
 	int tex_h = tex->h;
@@ -877,18 +877,24 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
 	int floor_screen_pixel = floor_ceil_pixel->screen_row * PROJ_W + floor_ceil_pixel->screen_col;
 	int ceiling_screen_pixel = ((-floor_ceil_pixel->screen_row) + PROJ_H) * PROJ_W + floor_ceil_pixel->screen_col;
 
-	int use_fog = map->use_fog ? pixel_dist : 0;
+	int use_fog = pixel_dist;
 
 	// Put floor pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].floor_surf) {
-		floor_ceiling_pixels[floor_screen_pixel] = apply_fog(get_pixel(map->floor_ceils[floor_ceil_pixel->texture].floor_surf, texture_x, texture_y),
-															 use_fog);
+		if(pixel_dist <= 1024)
+			floor_ceiling_pixels[floor_screen_pixel] = apply_fog(get_pixel(map->floor_ceils[floor_ceil_pixel->texture].floor_surf, texture_x, texture_y),
+																 use_fog);
+		else
+			floor_ceiling_pixels[floor_screen_pixel] = fog_color;
 	}
 
 	// Put ceiling pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf) {
-		floor_ceiling_pixels[ceiling_screen_pixel] = apply_fog(get_pixel(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf, texture_x, texture_y),
-															   use_fog);
+		if(pixel_dist <= 1024)
+			floor_ceiling_pixels[ceiling_screen_pixel] = apply_fog(get_pixel(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf, texture_x, texture_y),
+																   use_fog);
+		else
+			floor_ceiling_pixels[ceiling_screen_pixel] = fog_color;
 
 		if(z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] == -1 || 
 		   z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] > pixel_dist) {
@@ -926,7 +932,6 @@ static void draw_things() {
 		compute_thing_dimensions_on_screen(i, screen_pos, &thing_rect);
 		compute_frame_offset(i, frame_offset);
 		draw_columns_of_thing(i, &thing_rect, frame_offset);
-
 	}
 }
 
@@ -1084,10 +1089,10 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 		t_color = get_pixel(things_sorted[thing_column_data->thing_sorted_index]->surf, t_x, t_y);
 		// Only put a pixel if it is not transparent.
 		if(thing_pixel_is_not_transparent(t_color)) {
-			if(map->use_fog)
+			if(thing_dist_sqrt <= 1024)
 				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = apply_fog(t_color, thing_dist_sqrt);
 			else
-				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = apply_fog(t_color, 0);
+				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = fog_color;
 
 			z_buffer_2d[thing_column_data->screen_column][screen_row] = thing_dist_sqrt;
 		}
