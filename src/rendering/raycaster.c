@@ -430,6 +430,7 @@ static void update_state_variables(struct mapdef* curr_map, const int curr_playe
 	curr_ray_angle = (float)(player_rot + FOV_HALF);
 
 	unsigned char* fog_color_arr = (unsigned char*)&fog_color;
+	fog_color_arr[3] = 255;
 	fog_color_arr[2] = (unsigned char)map->fog_r;
 	fog_color_arr[1] = (unsigned char)map->fog_g;
 	fog_color_arr[0] = (unsigned char)map->fog_b;
@@ -804,6 +805,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 		return;
 
 	int fog_dist  = map->use_fog ? hit->dist : 0;
+	int pixel_index;
 	int p_x, p_y;
 	int tex_h = tex->h;
 
@@ -818,13 +820,13 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 
 		z_buffer_2d[slice->screen_col][j + slice->screen_row] = hit->dist;
 
+		pixel_index = (j + slice->screen_row) * PROJ_W + slice->screen_col;
+
 		if(hit->dist <= 1024) {
 			p_y = (j * tex_h) / slice->screen_height;
-			raycast_pixels[(j + slice->screen_row) * PROJ_W + slice->screen_col] =
-				apply_fog(get_pixel(tex, p_x, p_y), fog_dist);
-		} else
-			raycast_pixels[(j + slice->screen_row) * PROJ_W + slice->screen_col] =
-				fog_color;
+			raycast_pixels[pixel_index] = apply_fog(get_pixel(tex, p_x, p_y), fog_dist);
+	 	} else
+			raycast_pixels[pixel_index] = fog_color;
 	}
 }
 
