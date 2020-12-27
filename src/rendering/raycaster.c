@@ -187,31 +187,6 @@ struct thing_column_render_data {
 	const int* frame_offset;
 };
 
-/*
-	TODO: Nix this. We will keep track of distance as we fire rays.
-	As rays travel we will determine if we need a fog factor or not.
-*/
-
-static unsigned int apply_fog(unsigned int pixel_color, const unsigned int dist) {
-	unsigned char* color = (unsigned char*)&pixel_color;
-	unsigned char fog_r, fog_g, fog_b;
-
-	fog_r = (unsigned char)map->fog_r;
-	fog_g = (unsigned char)map->fog_g;
-	fog_b = (unsigned char)map->fog_b;
-
-	int param_index = (dist << 2) >> 10;
-	param_index = param_index > 4 ? 4 : param_index;
-	unsigned char f = (unsigned char)param_index;
-	unsigned char b = 4 - f;
-
-	color[2] = ((fog_r * f) + (color[2] * b)) >> 2;
-	color[1] = ((fog_g * f) + (color[1] * b)) >> 2;
-	color[0] = ((fog_b * f) + (color[0] * b)) >> 2;
-
-	return *(unsigned int*)color;
-}
-
 static void compute_lookup_vals_for_angle(const int);
 static void compute_tan_lookup_val_for_angle(const int);
 static void compute_inverse_tan_lookup_val_for_angle(const int);
@@ -230,10 +205,7 @@ static void update_state_variables(struct mapdef*, const int, const int, const i
 
 static void clean_pixel_arrays();
 
-static void preprocess_things();
 static void compute_distance_to_player_for_each_thing();
-static void sort_things(int, int);
-static int partition(int, int);
 
 static void cast_single_ray(const int);
 static void update_adjusted_angle();
@@ -274,7 +246,6 @@ static void compute_thing_dimensions_on_screen(const int, const int[2], SDL_Rect
 static void compute_frame_offset(const int, int[2]);
 static void draw_columns_of_thing(const int, const SDL_Rect*, const int[2]);
 static int column_in_bounds_of_screen(const int);
-static int thing_not_obscured_by_wall_slice(int, int);
 static void compute_column_of_thing_texture(const int, const SDL_Rect*, SDL_Rect*);
 static void draw_column_of_thing_texture(struct thing_column_render_data*);
 static int thing_pixel_row_out_of_screen_bounds(const int);
@@ -804,7 +775,6 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	if(!tex)
 		return;
 
-	int fog_dist  = hit->dist;
 	int pixel_index;
 	int p_x, p_y;
 	int tex_h = tex->h;
@@ -824,7 +794,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 
 		if(hit->dist <= 1024) {
 			p_y = (j * tex_h) / slice->screen_height;
-			raycast_pixels[pixel_index] = apply_fog(get_pixel(tex, p_x, p_y), fog_dist);
+			raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
 	 	} else
 			raycast_pixels[pixel_index] = fog_color;
 	}
@@ -877,13 +847,10 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
 	int floor_screen_pixel = floor_ceil_pixel->screen_row * PROJ_W + floor_ceil_pixel->screen_col;
 	int ceiling_screen_pixel = ((-floor_ceil_pixel->screen_row) + PROJ_H) * PROJ_W + floor_ceil_pixel->screen_col;
 
-	int use_fog = pixel_dist;
-
 	// Put floor pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].floor_surf) {
 		if(pixel_dist <= 1024)
-			floor_ceiling_pixels[floor_screen_pixel] = apply_fog(get_pixel(map->floor_ceils[floor_ceil_pixel->texture].floor_surf, texture_x, texture_y),
-																 use_fog);
+			floor_ceiling_pixels[floor_screen_pixel] = get_pixel(map->floor_ceils[floor_ceil_pixel->texture].floor_surf, texture_x, texture_y);
 		else
 			floor_ceiling_pixels[floor_screen_pixel] = fog_color;
 	}
@@ -891,8 +858,7 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
 	// Put ceiling pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf) {
 		if(pixel_dist <= 1024)
-			floor_ceiling_pixels[ceiling_screen_pixel] = apply_fog(get_pixel(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf, texture_x, texture_y),
-																   use_fog);
+			floor_ceiling_pixels[ceiling_screen_pixel] = get_pixel(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf, texture_x, texture_y);
 		else
 			floor_ceiling_pixels[ceiling_screen_pixel] = fog_color;
 
@@ -1026,7 +992,7 @@ static void draw_columns_of_thing(const int thing_sorted_index, const SDL_Rect* 
 
 	int j;
 	for(j = dest->x; j < dest->x + dest->w; ++j) {
-		if(column_in_bounds_of_screen(j)) {//&& thing_not_obscured_by_wall_slice(thing_sorted_index, j)) {
+		if(column_in_bounds_of_screen(j)) {
 			compute_column_of_thing_texture(m, dest, &src_tex_col);
 
 			thing_column.thing_sorted_index = thing_sorted_index;
@@ -1044,10 +1010,6 @@ static void draw_columns_of_thing(const int thing_sorted_index, const SDL_Rect* 
 
 static int column_in_bounds_of_screen(const int col) {
 	return col >= 0 && col < PROJ_W;
-}
-
-static int thing_not_obscured_by_wall_slice(int thing_sorted_index, int slice_column) {
-	return sqrt(things_sorted[thing_sorted_index]->dist) - 1 < z_buffer[slice_column];
 }
 
 static void compute_column_of_thing_texture(const int scaled_column, const SDL_Rect* rect_to_render, SDL_Rect* thing_src_rect) {
@@ -1090,7 +1052,7 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 		// Only put a pixel if it is not transparent.
 		if(thing_pixel_is_not_transparent(t_color)) {
 			if(thing_dist_sqrt <= 1024)
-				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = apply_fog(t_color, thing_dist_sqrt);
+				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = t_color;
 			else
 				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = fog_color;
 
