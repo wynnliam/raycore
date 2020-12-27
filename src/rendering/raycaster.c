@@ -190,18 +190,6 @@ struct thing_column_render_data {
 	As rays travel we will determine if we need a fog factor or not.
 */
 
-typedef struct {
-	unsigned char fog_factor, base_factor;
-} fog_color_param;
-
-fog_color_param fog_param[5] = {
-	{0, 4},
-	{1, 3},
-	{2, 2},
-	{3, 1},
-	{4, 0}
-};
-
 static unsigned int apply_fog(unsigned int pixel_color, const unsigned int dist) {
 	unsigned char* color = (unsigned char*)&pixel_color;
 	unsigned char fog_r, fog_g, fog_b;
@@ -212,8 +200,8 @@ static unsigned int apply_fog(unsigned int pixel_color, const unsigned int dist)
 
 	int param_index = (dist << 2) >> 10;
 	param_index = param_index > 4 ? 4 : param_index;
-	unsigned char f = fog_param[param_index].fog_factor;
-	unsigned char b = fog_param[param_index].base_factor;
+	unsigned char f = (unsigned char)param_index;
+	unsigned char b = 4 - f;
 
 	color[2] = ((fog_r * f) + (color[2] * b)) >> 2;
 	color[1] = ((fog_g * f) + (color[1] * b)) >> 2;

@@ -23,9 +23,7 @@ void do_loop(SDL_Renderer* renderer) {
 	unsigned int startTicks, endTicks;
 	unsigned int tickDiff;
 
-	//while(1) {
-	int i;
-	for(i = 0; i < 100; i++) {
+	while(1) {
 		startTicks = SDL_GetTicks();
 
 		// Grab all keyboard and mouse inputs.
