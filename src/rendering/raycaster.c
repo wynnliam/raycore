@@ -405,7 +405,7 @@ void cast_rays(SDL_Renderer* renderer, struct mapdef* curr_map, int curr_player_
 	update_state_variables(curr_map, curr_player_x, curr_player_y, curr_player_rot);
 
 	clean_pixel_arrays();
-	preprocess_things();
+	compute_distance_to_player_for_each_thing();
 
 	int screen_col;
 	for(screen_col = 0; screen_col < PROJ_W; ++screen_col) {
@@ -436,11 +436,6 @@ static void clean_pixel_arrays() {
 		raycast_pixels[i] = 0;
 		thing_pixels[i] = 0;
 	}
-}
-
-static void preprocess_things() {
-	compute_distance_to_player_for_each_thing();
-	//sort_things(0, map->num_things - 1);
 }
 
 static void compute_distance_to_player_for_each_thing() {
