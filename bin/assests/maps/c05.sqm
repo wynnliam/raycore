@@ -1712,6 +1712,26 @@ thing {
 	anim_class = "0";
 	sprite_sheet = "./assests/sprites/pots/clay_pot_1.bmp";
 }
+
+thing {
+	type = "1";
+	x = "1094";
+	y = "1192";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/player/spaceman.bmp";
+}
+
+thing {
+	type = "1";
+	x = "1159";
+	y = "1231";
+	rot = "0";
+
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/player/spaceman-works.bmp";
+}
 ## Bounding Area -- Without this, the parser shits itself
 ## Floor
 #component {
