@@ -785,10 +785,25 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	    		raycast_pixels[pixel_index] = fog_color;
 	    }
 	} else if(slice->screen_row < 0 && slice->screen_row + slice->screen_height >= PROJ_H) {
-      // Case 2: You are very close to wall, and can only see a portion of it (the wall height
-      // is implicitly 64)
+      // Case 2: You are very close to wall, and can only see a portion of it
 	    int j;
 	    for(j = 0; j < PROJ_H; ++j) {
+	    	z_buffer_2d[slice->screen_col][j] = hit->dist;
+
+	    	pixel_index = j * PROJ_W + slice->screen_col;
+
+	    	if(hit->dist <= 1024) {
+                // screen row is negative, so subtract it to adjust j so we can
+                // scale to texture coordinates.
+	    		p_y = ((j - slice->screen_row) * tex_h) / slice->screen_height;
+	    		raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
+	     	} else
+	    		raycast_pixels[pixel_index] = fog_color;
+	    }
+    } else if(slice->screen_row < 0 && slice->screen_row + slice->screen_height < PROJ_H) {
+      // Case 3: You cannot see the top of the wall, but can see the bottom. Typically
+	    int j;
+	    for(j = 0; j < slice->screen_row + slice->screen_height; ++j) {
 	    	z_buffer_2d[slice->screen_col][j] = hit->dist;
 
 	    	pixel_index = j * PROJ_W + slice->screen_col;
