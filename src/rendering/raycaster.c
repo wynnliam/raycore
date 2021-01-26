@@ -771,7 +771,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 
 	// Manually copies texture from source to portion of screen.
 	int j;
-	for(j = 0; j < slice->screen_height; ++j) {
+	for(j = -slice->screen_row; j < slice->screen_height; ++j) {
 		// j + screen_slice_y gives us the position to render the current pixel on the screen.
 		if(j + slice->screen_row < 0 || j + slice->screen_row  >= PROJ_H)
 			continue;
