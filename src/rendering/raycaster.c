@@ -794,6 +794,8 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	    	pixel_index = j * PROJ_W + slice->screen_col;
 
 	    	if(hit->dist <= 1024) {
+                // screen row is negative, so subtract it to adjust j so we can
+                // scale to texture coordinates.
 	    		p_y = ((j - slice->screen_row) * tex_h) / slice->screen_height;
 	    		raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
 	     	} else
