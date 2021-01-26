@@ -39,36 +39,24 @@ static unsigned int get_pixel(SDL_Surface* surface, int x, int y) {
 	if(y < 0 || y >= surface->h)
 		return 0;
 
-	// Stores the channels of the pixel color.
-	unsigned char* channels;
-	// Used to compute channels and decides how we construct result.
+	unsigned int result = 0;
 	int bytes_per_pixel = surface->format->BytesPerPixel;
-	// What we will return.
-	unsigned int result;
 
-	channels = (unsigned char*)surface->pixels + y * surface->pitch + x * bytes_per_pixel;
-
-	switch(bytes_per_pixel) {
-		case 1:
+	if(bytes_per_pixel == 3) {
+		unsigned char* channels = (unsigned char*)surface->pixels + y * surface->pitch + x * bytes_per_pixel;
+		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
 			result = 0xFF000000 | channels[0] << 16 | channels[1] << 8 | channels[2];
-			break;
-		case 2:
-			if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
-				result = *(unsigned short*)(channels);
-			break;
-		case 3:
-			if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
-				result = 0xFF000000 | channels[0] << 16 | channels[1] << 8 | channels[2];
-			else
-				result = 0xFF000000 | channels[2] << 16 | channels[1] << 8 | channels[0];
-			break;
-		case 4:
-			result = *(unsigned int*)channels;
-			break;
-		default:
-			result = 0;
-			break;
-	}
+		else
+			result = 0xFF000000 | channels[2] << 16 | channels[1] << 8 | channels[0];
+    } else if(bytes_per_pixel == 4) {
+		unsigned char r, g, b, a;
+		unsigned int pixel = *((unsigned int*)surface->pixels + y * surface->w + x);
+		SDL_GetRGBA(pixel, surface->format, &r, &g, &b, &a);
+		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
+			result = ((unsigned int)b) << 24 | ((unsigned int)g)  << 16 | ((unsigned int)r)<< 8 | ((unsigned int)a);
+		else
+			result = ((unsigned int)a) << 24 | ((unsigned int)r)  << 16 | ((unsigned int)g)<< 8 | ((unsigned int)b);
+    }
 
 	return result;
 }
@@ -1048,6 +1036,15 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 
 		t_x = (thing_column_data->src->x) + thing_column_data->frame_offset[0];
 		t_y = ((k * tex_height) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
+
+        /*int px, py;
+        px = things_sorted[thing_column_data->thing_sorted_index]->position[0];
+        py = things_sorted[thing_column_data->thing_sorted_index]->position[1];
+		if(px == 1094 && py == 1192)
+			printf("Spaceman!\n");
+		else if(px == 1159 && py == 1231)
+			printf("Spaceman Works!\n");*/
+
 		t_color = get_pixel(things_sorted[thing_column_data->thing_sorted_index]->surf, t_x, t_y);
 		// Only put a pixel if it is not transparent.
 		if(thing_pixel_is_not_transparent(t_color)) {

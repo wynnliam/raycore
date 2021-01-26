@@ -1,5 +1,5 @@
 CMP= gcc
-FLG= -Wall -o2
+FLG= -Wall -o2 -g
 LIB= -lm -lSDL2
 OUT= ./bin/raycore.out
 
