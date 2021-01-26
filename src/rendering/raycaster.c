@@ -770,22 +770,36 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	p_x = slice->tex_col;
 
 	// Manually copies texture from source to portion of screen.
-	int j;
-	for(j = -slice->screen_row; j < slice->screen_height; ++j) {
-		// j + screen_slice_y gives us the position to render the current pixel on the screen.
-		if(j + slice->screen_row < 0 || j + slice->screen_row  >= PROJ_H)
-			continue;
+    // Case 1: Entire slice can be seen on camera
+    if(slice->screen_row >= 0 && slice->screen_row + slice->screen_height < PROJ_H) {
+	    int j;
+	    for(j = 0; j < slice->screen_height; ++j) {
+	    	z_buffer_2d[slice->screen_col][j + slice->screen_row] = hit->dist;
 
-		z_buffer_2d[slice->screen_col][j + slice->screen_row] = hit->dist;
+	    	pixel_index = (j + slice->screen_row) * PROJ_W + slice->screen_col;
 
-		pixel_index = (j + slice->screen_row) * PROJ_W + slice->screen_col;
+	    	if(hit->dist <= 1024) {
+	    		p_y = (j * tex_h) / slice->screen_height;
+	    		raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
+	     	} else
+	    		raycast_pixels[pixel_index] = fog_color;
+	    }
+	} else if(slice->screen_row < 0 && slice->screen_row + slice->screen_height >= PROJ_H) {
+      // Case 2: You are very close to wall, and can only see a portion of it (the wall height
+      // is implicitly 64)
+	    int j;
+	    for(j = 0; j < PROJ_H; ++j) {
+	    	z_buffer_2d[slice->screen_col][j] = hit->dist;
 
-		if(hit->dist <= 1024) {
-			p_y = (j * tex_h) / slice->screen_height;
-			raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
-	 	} else
-			raycast_pixels[pixel_index] = fog_color;
-	}
+	    	pixel_index = j * PROJ_W + slice->screen_col;
+
+	    	if(hit->dist <= 1024) {
+	    		p_y = ((j - slice->screen_row) * tex_h) / slice->screen_height;
+	    		raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
+	     	} else
+	    		raycast_pixels[pixel_index] = fog_color;
+	    }
+    }
 }
 
 static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_slice) {
