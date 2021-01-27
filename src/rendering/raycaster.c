@@ -816,6 +816,8 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	     	} else
 	    		raycast_pixels[pixel_index] = fog_color;
 	    }
+    } else {
+      // TODO: Fix me!
     }
 }
 
