@@ -173,6 +173,9 @@ struct thing_column_render_data {
 	SDL_Rect* src;
 	const SDL_Rect* dest;
 	const int* frame_offset;
+
+    // For rendering
+    int start_row, end_row;
 };
 
 static void compute_lookup_vals_for_angle(const int);
@@ -1023,16 +1026,43 @@ static void draw_columns_of_thing(const int thing_sorted_index, const SDL_Rect* 
 	// The column for the scaled texture.
 	int m = 0;
 
+	thing_column.thing_sorted_index = thing_sorted_index;
+	thing_column.dest = dest;
+	thing_column.frame_offset = frame_offset;
+
+    int thing_col_y = dest->y;
+    int thing_col_h = dest->h;
+    int q = thing_col_y + thing_col_h;
+    int start_row, end_row;
+
+    if(thing_col_y >= 0 && q < PROJ_H) {
+      if(thing_col_y + thing_col_h < PROJ_H) {
+        start_row = thing_col_y;
+        end_row = q;
+      } else {
+        start_row = thing_col_y;
+        end_row = PROJ_H;
+      }
+    } else {
+      if(q  < PROJ_H) {
+        start_row = 0;
+        end_row = q;
+      } else {
+        start_row = 0;
+        end_row = PROJ_H;
+      }
+    }
+
+	thing_column.start_row = start_row;
+	thing_column.end_row = end_row;
+
 	int j;
 	for(j = dest->x; j < dest->x + dest->w; ++j) {
 		if(column_in_bounds_of_screen(j)) {
 			compute_column_of_thing_texture(m, dest, &src_tex_col);
 
-			thing_column.thing_sorted_index = thing_sorted_index;
-			thing_column.screen_column = j;
 			thing_column.src = &src_tex_col;
-			thing_column.dest = dest;
-			thing_column.frame_offset = frame_offset;
+			thing_column.screen_column = j;
 
 			//draw_column_of_thing_texture(thing_sorted_index, dest, &src_tex_col, frame_offset, j);
 			draw_column_of_thing_texture(&thing_column);
@@ -1069,33 +1099,14 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 
 	thing_dist_sqrt = (int)sqrt(things_sorted[thing_column_data->thing_sorted_index]->dist);
 
-    int thing_col_y = thing_column_data->dest->y;
-    int thing_col_h = thing_column_data->dest->h;
-    int start_row, end_row;
-
-    // Case 1: screen row >= 0 || screen row + screen height < PROJ_H
-    if(thing_col_y >= 0 && thing_col_y + thing_col_h < PROJ_H) {
-      start_row = thing_col_y;
-      end_row = start_row + thing_col_h;
-    } else if(thing_col_y >= 0 && thing_col_y + thing_col_h >= PROJ_H) {
-      start_row = thing_col_y;
-      end_row = PROJ_H;
-    } else if(thing_col_y < 0 && thing_col_y + thing_col_h < PROJ_H) {
-      start_row = 0;
-      end_row = thing_col_y + thing_col_h;
-    } else {
-      start_row = 0;
-      end_row = PROJ_H;
-    }
-
 	int k;
-	for(k = start_row; k < end_row; ++k) {
+	for(k = thing_column_data->start_row; k < thing_column_data->end_row; ++k) {
 		if(z_buffer_2d[thing_column_data->screen_column][k] != -1 &&
 		   thing_dist_sqrt > z_buffer_2d[thing_column_data->screen_column][k])
 			continue;
 
 		t_x = (thing_column_data->src->x) + thing_column_data->frame_offset[0];
-		t_y = (((k - thing_col_y) * tex_height) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
+		t_y = (((k - thing_column_data->dest->y) * tex_height) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
 
 		t_color = get_pixel(things_sorted[thing_column_data->thing_sorted_index]->surf, t_x, t_y);
 		// Only put a pixel if it is not transparent.
