@@ -1069,36 +1069,43 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 
 	thing_dist_sqrt = (int)sqrt(things_sorted[thing_column_data->thing_sorted_index]->dist);
 
-	int k;
-	for(k = 0; k < thing_column_data->dest->h; ++k) {
-		screen_row = k + thing_column_data->dest->y;
+    int thing_col_y = thing_column_data->dest->y;
+    int thing_col_h = thing_column_data->dest->h;
+    int start_row, end_row;
 
-		if(thing_pixel_row_out_of_screen_bounds(screen_row))
-			continue;
-		if(z_buffer_2d[thing_column_data->screen_column][screen_row] != -1 &&
-		   thing_dist_sqrt > z_buffer_2d[thing_column_data->screen_column][screen_row])
+    // Case 1: screen row >= 0 || screen row + screen height < PROJ_H
+    if(thing_col_y >= 0 && thing_col_y + thing_col_h < PROJ_H) {
+      start_row = thing_col_y;
+      end_row = start_row + thing_col_h;
+    } else if(thing_col_y >= 0 && thing_col_y + thing_col_h >= PROJ_H) {
+      start_row = thing_col_y;
+      end_row = PROJ_H;
+    } else if(thing_col_y < 0 && thing_col_y + thing_col_h < PROJ_H) {
+      start_row = 0;
+      end_row = thing_col_y + thing_col_h;
+    } else {
+      start_row = 0;
+      end_row = PROJ_H;
+    }
+
+	int k;
+	for(k = start_row; k < end_row; ++k) {
+		if(z_buffer_2d[thing_column_data->screen_column][k] != -1 &&
+		   thing_dist_sqrt > z_buffer_2d[thing_column_data->screen_column][k])
 			continue;
 
 		t_x = (thing_column_data->src->x) + thing_column_data->frame_offset[0];
-		t_y = ((k * tex_height) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
-
-        /*int px, py;
-        px = things_sorted[thing_column_data->thing_sorted_index]->position[0];
-        py = things_sorted[thing_column_data->thing_sorted_index]->position[1];
-		if(px == 1094 && py == 1192)
-			printf("Spaceman!\n");
-		else if(px == 1159 && py == 1231)
-			printf("Spaceman Works!\n");*/
+		t_y = (((k - thing_col_y) * tex_height) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
 
 		t_color = get_pixel(things_sorted[thing_column_data->thing_sorted_index]->surf, t_x, t_y);
 		// Only put a pixel if it is not transparent.
 		if(thing_pixel_is_not_transparent(t_color)) {
 			if(thing_dist_sqrt <= 1024)
-				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = t_color;
+				thing_pixels[k * PROJ_W + thing_column_data->screen_column] = t_color;
 			else
-				thing_pixels[(screen_row) * PROJ_W + thing_column_data->screen_column] = fog_color;
+				thing_pixels[k * PROJ_W + thing_column_data->screen_column] = fog_color;
 
-			z_buffer_2d[thing_column_data->screen_column][screen_row] = thing_dist_sqrt;
+			z_buffer_2d[thing_column_data->screen_column][k] = thing_dist_sqrt;
 		}
 	}
 }
