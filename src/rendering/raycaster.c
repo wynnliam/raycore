@@ -817,7 +817,19 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	    		raycast_pixels[pixel_index] = fog_color;
 	    }
     } else {
-      // TODO: Fix me!
+        // Case 4: screen row >= 0 && row + height >= PROJ_H
+	    int j;
+	    for(j = 0; j < PROJ_H; ++j) {
+	    	z_buffer_2d[slice->screen_col][j] = hit->dist;
+
+	    	pixel_index = j * PROJ_W + slice->screen_col;
+
+	    	if(hit->dist <= 1024) {
+	    		p_y = (j* tex_h) / slice->screen_height;
+	    		raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
+	     	} else
+	    		raycast_pixels[pixel_index] = fog_color;
+	    }
     }
 }
 
