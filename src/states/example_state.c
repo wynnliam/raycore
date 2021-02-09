@@ -3,6 +3,8 @@
 #include "./example_state.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <pthread.h>
+#include <unistd.h>
 
 #include "../rendering/raycaster.h"
 #include "../input_handler.h"
@@ -28,6 +30,26 @@ static int next_state;
 extern int sin128table[361];
 extern int cos128table[361];
 
+static pthread_t network_pthread;
+// When 1, will quit the network_handler thread
+static int terminate_network_handler;
+static pthread_mutex_t mtx_terminate_nethand;
+
+static void* network_handler() {
+  int quit = 0;
+
+  do {
+    pthread_mutex_lock(&mtx_terminate_nethand);
+    quit = terminate_network_handler;
+    pthread_mutex_unlock(&mtx_terminate_nethand);
+
+    printf("network handler: doing important work\n");
+    sleep(1);
+  } while(!quit);
+
+  return 0;
+}
+
 void state_example_initialize(SDL_Renderer* renderer) {
 	player_x = 256;
 	player_y = 256;
@@ -50,6 +72,10 @@ void state_example_initialize(SDL_Renderer* renderer) {
 	map = load_map_from_file(do_map_lookup(curr_level));
 	spawn_player(map, &player_x, &player_y, &player_rot, 2);
 	curr_level++;
+
+    terminate_network_handler = 0;
+    pthread_mutex_init(&mtx_terminate_nethand, NULL);
+    pthread_create(&network_pthread, NULL, (void*)network_handler, NULL);
 }
 
 void state_example_enter(const int from_state, void* message) {
@@ -176,6 +202,13 @@ void state_example_draw(SDL_Renderer* renderer) {
 
 void state_example_clean_up() {
 	free_map(&map);
+
+    // Wait for the network to finish up
+    pthread_mutex_lock(&mtx_terminate_nethand);
+    terminate_network_handler = 1;
+    pthread_mutex_unlock(&mtx_terminate_nethand);
+
+    pthread_join(network_pthread, NULL);
 }
 
 int state_example_quit() {

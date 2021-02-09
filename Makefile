@@ -1,6 +1,6 @@
 CMP= gcc
 FLG= -Wall -o2 -g
-LIB= -lm -lSDL2
+LIB= -lm -lSDL2 -pthread
 OUT= ./bin/raycore.out
 
 SRC= ./src/*.c \
