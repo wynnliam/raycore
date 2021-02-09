@@ -67,15 +67,6 @@ void state_example_initialize(SDL_Renderer* renderer) {
 	// Map Loading
 
 	initialize_map_lookup_table();
-
-	curr_level = 4;
-	map = load_map_from_file(do_map_lookup(curr_level));
-	spawn_player(map, &player_x, &player_y, &player_rot, 2);
-	curr_level++;
-
-    terminate_network_handler = 0;
-    pthread_mutex_init(&mtx_terminate_nethand, NULL);
-    pthread_create(&network_pthread, NULL, (void*)network_handler, NULL);
 }
 
 void state_example_enter(const int from_state, void* message) {
@@ -91,10 +82,25 @@ void state_example_enter(const int from_state, void* message) {
 		printf("%s", (char*)message);
 
 	free(message);
+
+	curr_level = 4;
+	map = load_map_from_file(do_map_lookup(curr_level));
+	spawn_player(map, &player_x, &player_y, &player_rot, 2);
+	curr_level++;
+
+    terminate_network_handler = 0;
+    pthread_mutex_init(&mtx_terminate_nethand, NULL);
+    pthread_create(&network_pthread, NULL, (void*)network_handler, NULL);
 }
 
 void state_example_leave() {
 	printf("Example Leave!\n");
+
+    // Wait for the network to finish up
+    pthread_mutex_lock(&mtx_terminate_nethand);
+    terminate_network_handler = 1;
+    pthread_mutex_unlock(&mtx_terminate_nethand);
+    pthread_join(network_pthread, NULL);
 }
 
 void state_example_process_input() {
@@ -202,13 +208,6 @@ void state_example_draw(SDL_Renderer* renderer) {
 
 void state_example_clean_up() {
 	free_map(&map);
-
-    // Wait for the network to finish up
-    pthread_mutex_lock(&mtx_terminate_nethand);
-    terminate_network_handler = 1;
-    pthread_mutex_unlock(&mtx_terminate_nethand);
-
-    pthread_join(network_pthread, NULL);
 }
 
 int state_example_quit() {

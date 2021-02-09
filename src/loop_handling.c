@@ -106,7 +106,7 @@ void initialize(SDL_Renderer* renderer) {
 	(*state_main_menu.initialize)(renderer);
 
 	//curr_state = &state_main_menu;
-	curr_state = &state_example;
+	curr_state = &state_main_menu;
 
 	// Entering and leaving a state only make sense in the context of
 	// other states, really. However, this here would be entering the
