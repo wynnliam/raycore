@@ -1,8 +1,8 @@
 CMP= gcc
 FLG= -Wall -o2 -g
 LIB= -lm -lSDL2 -pthread
-OUT= ./bin/raycore.out
 
+OUT= ./bin/raycore.out
 SRC= ./src/*.c \
      ./src/rendering/*.c \
      ./src/animation/*.c \
@@ -16,10 +16,16 @@ SRC= ./src/*.c \
 	 ./src/map/map_loading/entity_loading/*.c \
      ./src/map/map_loading/utilities/*.c \
 
+SRV_OUT= ./bin/raycore_server.out
+SRV_SRC= ./src/network_server/*.c
+
 .PHONY: clean
 
 all: $(SRC)
 	$(CMP) $(FLG) $(SRC) -o $(OUT) $(LIB)
 
+server: $(SRV_SRC)
+	$(CMP) $(FLG) $(SRV_SRC) -o $(SRV_OUT) $(LIB)
+
 clean:
-	rm $(OUT)
+	-rm $(OUT) $(SRV_OUT)
