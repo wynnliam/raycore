@@ -31,6 +31,8 @@ extern int sin128table[361];
 extern int cos128table[361];
 
 static pthread_t network_pthread;
+// If 1, we are in single-player mode
+static int single_player = 1;
 // When 1, will quit the network_handler thread
 static int terminate_network_handler;
 static pthread_mutex_t mtx_terminate_nethand;
@@ -98,24 +100,31 @@ void state_example_enter(const int from_state, void* message) {
       index++;
     }
     addr[index] = '\0';
-    if(strcmp(addr, "0") == 0)
+    if(strcmp(addr, "0") == 0) {
+      single_player = 1;
       printf("Playing in singleplayer mode\n");
-    else
+    } else {
+      single_player = 0;
       printf("Connecting to: %s\n", addr);
+    }
 
-    terminate_network_handler = 0;
-    pthread_mutex_init(&mtx_terminate_nethand, NULL);
-    pthread_create(&network_pthread, NULL, (void*)network_handler, NULL);
+    if(!single_player) {
+      terminate_network_handler = 0;
+      pthread_mutex_init(&mtx_terminate_nethand, NULL);
+      pthread_create(&network_pthread, NULL, (void*)network_handler, NULL);
+    }
 }
 
 void state_example_leave() {
 	printf("Example Leave!\n");
 
     // Wait for the network to finish up
-    pthread_mutex_lock(&mtx_terminate_nethand);
-    terminate_network_handler = 1;
-    pthread_mutex_unlock(&mtx_terminate_nethand);
-    pthread_join(network_pthread, NULL);
+    if(!single_player) {
+      pthread_mutex_lock(&mtx_terminate_nethand);
+      terminate_network_handler = 1;
+      pthread_mutex_unlock(&mtx_terminate_nethand);
+      pthread_join(network_pthread, NULL);
+    }
 }
 
 void state_example_process_input() {
