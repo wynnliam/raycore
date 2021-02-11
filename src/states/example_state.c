@@ -88,6 +88,21 @@ void state_example_enter(const int from_state, void* message) {
 	spawn_player(map, &player_x, &player_y, &player_rot, 2);
 	curr_level++;
 
+    char addr[100];
+
+    printf("Please enter the server name, or 0 for single player mode: ");
+    char c;
+    int index = 0;
+    while((c = getchar()) != '\n') {
+      addr[index] = c;
+      index++;
+    }
+    addr[index] = '\0';
+    if(strcmp(addr, "0") == 0)
+      printf("Playing in singleplayer mode\n");
+    else
+      printf("Connecting to: %s\n", addr);
+
     terminate_network_handler = 0;
     pthread_mutex_init(&mtx_terminate_nethand, NULL);
     pthread_create(&network_pthread, NULL, (void*)network_handler, NULL);
