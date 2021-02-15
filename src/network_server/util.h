@@ -6,6 +6,8 @@
 #define MAX_CLIENTS		16
 #define PORT	20715
 
+// This is what we will send to each client every
+// so often.
 typedef struct {
   int level_id;
   int x, y, rot;

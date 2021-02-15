@@ -27,6 +27,9 @@ SDLNet_SocketSet sockets;
 client_connect clients[MAX_CLIENTS];
 int num_clients = 0;
 
+// The main server processing loop.
+void server();
+
 int main() {
   if(SDL_Init(0) == -1) {
     printf("server: SDL_Init: %s\n", SDL_GetError());
@@ -63,10 +66,7 @@ int main() {
   printf("server: starting\n");
   printf("server: listening on port %d\n", PORT);
 
-  while(1) {
-    printf("server: doing important stuff\n");
-    SDL_Delay(1000);
-  }
+  server();
 
   SDLNet_TCP_Close(tcp_server_socket);
 
@@ -77,4 +77,26 @@ lbl_quit:
   printf("server: bye bye\n");
 
   return 0;
+}
+
+void server() {
+  // Whenever any activity is detected, we will pick
+  // it up with this variable.
+  int num_ready;
+
+  while(1) {
+    printf("server: doing important stuff\n");
+    SDL_Delay(1000);
+    num_ready = SDLNet_CheckSockets(sockets, 10);
+
+    if(num_ready == -1) {
+      printf("server: SDLNet_CheckSockets: %s\n", SDLNet_GetError());
+      break;
+    }
+
+    if(num_ready == 0)
+      continue;
+
+    printf("server: I detected activity on %d sockets\n", num_ready);
+  }
 }
