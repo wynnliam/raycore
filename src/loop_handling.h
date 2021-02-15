@@ -10,6 +10,7 @@
 #ifndef LOOP_HANDLER
 #define LOOP_HANDLER
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_net.h>
 
 #define IDEAL_FRAMES_PER_SECOND	30
 

@@ -4,6 +4,7 @@
 #define STATE_EXAMPLE
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_net.h>
 #include "./state.h"
 
 void state_example_initialize(SDL_Renderer* renderer);

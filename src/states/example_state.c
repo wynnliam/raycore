@@ -33,6 +33,12 @@ extern int cos128table[361];
 static pthread_t network_pthread;
 // If 1, we are in single-player mode
 static int single_player = 1;
+
+// Information needed if we are connected to a server.
+static IPaddress ip;
+static TCPsocket tcp_socket;
+static SDLNet_SocketSet sockets;
+
 // When 1, will quit the network_handler thread
 static int terminate_network_handler;
 static pthread_mutex_t mtx_terminate_nethand;
@@ -85,11 +91,6 @@ void state_example_enter(const int from_state, void* message) {
 
 	free(message);
 
-	curr_level = 4;
-	map = load_map_from_file(do_map_lookup(curr_level));
-	spawn_player(map, &player_x, &player_y, &player_rot, 2);
-	curr_level++;
-
     char addr[100];
 
     printf("Please enter the server name, or 0 for single player mode: ");
@@ -106,13 +107,35 @@ void state_example_enter(const int from_state, void* message) {
     } else {
       single_player = 0;
       printf("Connecting to: %s\n", addr);
+
+      if(SDLNet_ResolveHost(&ip, addr, 20715) == -1) {
+        printf("client: SDLNet_ResolveHost: %s\n", SDLNet_GetError());
+        single_player = 1;
+        goto post_try_connect;
+      }
+
+      tcp_socket = SDLNet_TCP_Open(&ip);
+      if(!tcp_socket) {
+        printf("client: SDLNet_TCP_Open: %s\n", SDLNet_GetError());
+        single_player = 1;
+        goto post_try_connect;
+      }
+
+      sockets = SDLNet_AllocSocketSet(1);
+      SDLNet_TCP_AddSocket(sockets, tcp_socket);
     }
 
+    post_try_connect:
     if(!single_player) {
       terminate_network_handler = 0;
       pthread_mutex_init(&mtx_terminate_nethand, NULL);
       pthread_create(&network_pthread, NULL, (void*)network_handler, NULL);
     }
+
+	curr_level = 4;
+	map = load_map_from_file(do_map_lookup(curr_level));
+	spawn_player(map, &player_x, &player_y, &player_rot, 2);
+	curr_level++;
 }
 
 void state_example_leave() {
