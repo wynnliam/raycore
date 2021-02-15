@@ -5,6 +5,12 @@
 #include <SDL2/SDL_net.h>
 #include "./util.h"
 
+typedef struct {
+  TCPsocket tcp_socket;
+  client_data data;
+  int active;
+} client_connect;
+
 // Holds the IPv4 address and port number
 // for this server.
 IPaddress ip_addr;
@@ -17,6 +23,9 @@ TCPsocket tcp_server_socket;
 // There are 1 + MAX_CLIENTS sockets
 // to listen for.
 SDLNet_SocketSet sockets;
+
+client_connect clients[MAX_CLIENTS];
+int num_clients = 0;
 
 int main() {
   if(SDL_Init(0) == -1) {
