@@ -27,8 +27,12 @@ SDLNet_SocketSet sockets;
 client_connect clients[MAX_CLIENTS];
 int num_clients = 0;
 
+// Scans the clients array and sets all to inactive
+void set_all_clients_inactive();
 // The main server processing loop.
 void server();
+// When a user connects, we will attempt to add them
+int add_client_to_server();
 
 int main() {
   if(SDL_Init(0) == -1) {
@@ -66,6 +70,7 @@ int main() {
   printf("server: starting\n");
   printf("server: listening on port %d\n", PORT);
 
+  set_all_clients_inactive();
   server();
 
   SDLNet_TCP_Close(tcp_server_socket);
@@ -77,6 +82,14 @@ lbl_quit:
   printf("server: bye bye\n");
 
   return 0;
+}
+
+void set_all_clients_inactive() {
+  int i;
+  for(i = 0; i < MAX_CLIENTS; i++) {
+    clients[i].active = 0;
+    clients[i].tcp_socket = NULL;
+  }
 }
 
 void server() {
@@ -104,6 +117,48 @@ void server() {
     if(SDLNet_SocketReady(tcp_server_socket)) {
       printf("server: client connection\n");
       num_ready--;
+
+      if(add_client_to_server() != -1) {
+        printf("server: TODO send user game data\n");
+      }
+    }
+
+    for(int i = 0; num_ready > 0 && i < MAX_CLIENTS; i++) {
+      if(clients[i].active && SDLNet_SocketReady(clients[i].tcp_socket)) {
+        printf("server: TODO recieve a message from client\n");
+      }
     }
   }
+}
+
+int add_client_to_server() {
+  TCPsocket temp_socket = SDLNet_TCP_Accept(tcp_server_socket);
+
+  if(!temp_socket) {
+    printf("server: SDLNet_TCP_Accept: %s\n", SDLNet_GetError());
+    return -1;
+  }
+
+  // Now we need to find a spot for the new client if possible.
+  if(num_clients == MAX_CLIENTS) {
+    // TODO: send message to the client
+    printf("server: I'm full. Bye bye.\n");
+    SDLNet_TCP_Close(temp_socket);
+    return -1;
+  }
+
+  // Otherwise, we find a spot to put the new client in.
+  int i = 0;
+  for(i = 0; i < MAX_CLIENTS; i++) {
+    if(clients[i].active == 0) {
+      clients[i].active = 1;
+      clients[i].tcp_socket = temp_socket;
+      num_clients++;
+      break;
+    }
+  }
+
+  SDLNet_TCP_AddSocket(sockets, temp_socket);
+
+  return i;
 }
