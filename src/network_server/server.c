@@ -3,8 +3,7 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_net.h>
-
-#define PORT	20715
+#include "./util.h"
 
 // Holds the IPv4 address and port number
 // for this server.
@@ -14,6 +13,10 @@ IPaddress ip_addr;
 // socket and UDP socket. TCP is for everything that
 // isn't sending/recieving constant game updates
 TCPsocket tcp_server_socket;
+
+// There are 1 + MAX_CLIENTS sockets
+// to listen for.
+SDLNet_SocketSet sockets;
 
 int main() {
   if(SDL_Init(0) == -1) {
@@ -38,6 +41,15 @@ int main() {
     printf("server: SDLNet_TCP_Open: %s\n", SDLNet_GetError());
     goto lbl_quit;
   }
+
+  sockets = SDLNet_AllocSocketSet(1 + MAX_CLIENTS);
+  if(!sockets) {
+    printf("server: SDLNet_AllocSocketSet: %s\n", SDLNet_GetError());
+    SDLNet_TCP_Close(tcp_server_socket);
+    goto lbl_quit;
+  }
+
+  SDLNet_TCP_AddSocket(sockets, tcp_server_socket);
 
   printf("server: starting\n");
   printf("server: listening on port %d\n", PORT);
