@@ -8,7 +8,6 @@
 typedef struct {
   TCPsocket tcp_socket;
   client_data data;
-  int active;
 } client_connect;
 
 // Holds the IPv4 address and port number
@@ -87,7 +86,7 @@ lbl_quit:
 void set_all_clients_inactive() {
   int i;
   for(i = 0; i < MAX_CLIENTS; i++) {
-    clients[i].active = 0;
+    clients[i].data.active = 0;
     clients[i].tcp_socket = NULL;
   }
 }
@@ -124,7 +123,7 @@ void server() {
     }
 
     for(int i = 0; num_ready > 0 && i < MAX_CLIENTS; i++) {
-      if(clients[i].active && SDLNet_SocketReady(clients[i].tcp_socket)) {
+      if(clients[i].data.active && SDLNet_SocketReady(clients[i].tcp_socket)) {
         printf("server: TODO recieve a message from client\n");
       }
     }
@@ -150,8 +149,8 @@ int add_client_to_server() {
   // Otherwise, we find a spot to put the new client in.
   int i = 0;
   for(i = 0; i < MAX_CLIENTS; i++) {
-    if(clients[i].active == 0) {
-      clients[i].active = 1;
+    if(clients[i].data.active == 0) {
+      clients[i].data.active = 1;
       clients[i].tcp_socket = temp_socket;
       num_clients++;
       break;

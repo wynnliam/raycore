@@ -15,6 +15,8 @@
 #include "../map/entity/entity.h"
 #include "../map/entity/example_entity.h"
 
+#include "../network_server/util.h"
+
 // Stores the player 
 static int player_x, player_y;
 // The player rotation.
