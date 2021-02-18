@@ -32,6 +32,7 @@ void set_all_clients_inactive();
 void server();
 // When a user connects, we will attempt to add them
 int add_client_to_server();
+// Sends a message to a given client.
 
 int main() {
   if(SDL_Init(0) == -1) {

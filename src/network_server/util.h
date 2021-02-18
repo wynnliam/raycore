@@ -12,6 +12,12 @@
 // as UDP
 #define CLIENT_GAME		CLIENT_SIGNAL + 1
 
+// If the user connects, the value will be
+// their index in the client list.
+#define SIGNAL_CONNECT	0
+// The the server if full, they get this.
+#define SIGNAL_FULL		SIGNAL_CONNECT + 1
+
 // This is what we will send to each client every
 // so often.
 typedef struct {
@@ -22,8 +28,13 @@ typedef struct {
 
 typedef struct {
   char type;
+  char value;
+} client_signal;
+
+typedef struct {
+  char type;
   struct union {
-    char signal;
+    client_signal signal;
     client_data[MAX_CLIENTS] game;
   } data; 
 } client_message;
