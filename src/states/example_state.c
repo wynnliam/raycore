@@ -57,6 +57,9 @@ static void* network_handler() {
     sleep(1);
   } while(!quit);
 
+  SDLNet_TCP_DelSocket(sockets, tcp_socket);
+  SDLNet_TCP_Close(tcp_socket);
+
   return 0;
 }
 

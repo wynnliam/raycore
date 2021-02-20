@@ -137,7 +137,18 @@ void server() {
 
     for(int i = 0; num_ready > 0 && i < MAX_CLIENTS; i++) {
       if(clients[i].data.active && SDLNet_SocketReady(clients[i].tcp_socket)) {
-        printf("server: TODO recieve a message from client\n");
+        num_ready--;
+
+        client_message message;
+        int result = recv_message(clients[i].tcp_socket, &message);
+
+        printf("server: recvd message of size %d\n", result);
+        if(result < 1) {
+          printf("server: client %d disconnected. bye bye\n", i);
+          clients[i].data.active = 0;
+          SDLNet_TCP_DelSocket(sockets, clients[i].tcp_socket);
+          SDLNet_TCP_Close(clients[i].tcp_socket);
+        }
       }
     }
   }

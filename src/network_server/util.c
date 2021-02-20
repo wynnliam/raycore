@@ -8,6 +8,5 @@ int send_message(TCPsocket socket, client_message* message) {
 }
 
 int recv_message(TCPsocket socket, client_message* result) {
-  SDLNet_TCP_Recv(socket, result, sizeof(client_message));
-  return 1;
+  return SDLNet_TCP_Recv(socket, result, sizeof(client_message));
 }
