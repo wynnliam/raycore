@@ -125,6 +125,23 @@ void state_example_enter(const int from_state, void* message) {
 
       sockets = SDLNet_AllocSocketSet(1);
       SDLNet_TCP_AddSocket(sockets, tcp_socket);
+      client_message message;
+
+      while(1) {
+        SDLNet_CheckSockets(sockets, 100);
+        if(SDLNet_SocketReady(tcp_socket)) {
+          recv_message(tcp_socket, &message);
+
+          // We expect it to be a signal
+          if(message.type == CLIENT_SIGNAL && message.data.signal.type == SIGNAL_CONNECT) {
+            printf("client: connected. I am %d\n", message.data.signal.value);
+          } else {
+            printf("client: server full\n");
+            single_player = 1;
+          }
+          break;
+        }
+      }
     }
 
     post_try_connect:

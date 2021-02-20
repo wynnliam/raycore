@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_net.h>
 #include "./util.h"
 
 typedef struct {
@@ -31,8 +30,7 @@ void set_all_clients_inactive();
 // The main server processing loop.
 void server();
 // When a user connects, we will attempt to add them
-int add_client_to_server();
-// Sends a message to a given client.
+int add_client_to_server(TCPsocket to_add);
 
 int main() {
   if(SDL_Init(0) == -1) {
@@ -118,9 +116,23 @@ void server() {
       printf("server: client connection\n");
       num_ready--;
 
-      if(add_client_to_server() != -1) {
-        printf("server: TODO send user game data\n");
+      TCPsocket temp_socket = SDLNet_TCP_Accept(tcp_server_socket);
+      int add_result = add_client_to_server(temp_socket);
+      if(add_result == -2) // SDLNet fail
+        continue;
+
+      client_message connect_message;
+      connect_message.type = CLIENT_SIGNAL;
+      if(add_result != -1) {
+        connect_message.data.signal.type = SIGNAL_CONNECT;
+        connect_message.data.signal.value = add_result;
+      } else {
+        connect_message.data.signal.type = SIGNAL_FULL;
+        // Not neccesssary, but it's nice not to have junk values.
+        connect_message.data.signal.value = -1;
       }
+
+      send_message(temp_socket, &connect_message);
     }
 
     for(int i = 0; num_ready > 0 && i < MAX_CLIENTS; i++) {
@@ -131,19 +143,17 @@ void server() {
   }
 }
 
-int add_client_to_server() {
-  TCPsocket temp_socket = SDLNet_TCP_Accept(tcp_server_socket);
-
-  if(!temp_socket) {
+int add_client_to_server(TCPsocket to_add) {
+  if(!to_add) {
     printf("server: SDLNet_TCP_Accept: %s\n", SDLNet_GetError());
-    return -1;
+    return -2;
   }
 
   // Now we need to find a spot for the new client if possible.
   if(num_clients == MAX_CLIENTS) {
     // TODO: send message to the client
     printf("server: I'm full. Bye bye.\n");
-    SDLNet_TCP_Close(temp_socket);
+    SDLNet_TCP_Close(to_add);
     return -1;
   }
 
@@ -152,13 +162,14 @@ int add_client_to_server() {
   for(i = 0; i < MAX_CLIENTS; i++) {
     if(clients[i].data.active == 0) {
       clients[i].data.active = 1;
-      clients[i].tcp_socket = temp_socket;
+      clients[i].tcp_socket = to_add;
       num_clients++;
       break;
     }
   }
 
-  SDLNet_TCP_AddSocket(sockets, temp_socket);
+  SDLNet_TCP_AddSocket(sockets, to_add);
 
   return i;
 }
+

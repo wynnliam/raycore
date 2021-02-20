@@ -3,6 +3,8 @@
 #ifndef RAYCORE_NET_UTIL
 #define RAYCORE_NET_UTIL
 
+#include <SDL2/SDL_net.h>
+
 #define MAX_CLIENTS		16
 #define PORT	20715
 
@@ -33,10 +35,13 @@ typedef struct {
 
 typedef struct {
   char type;
-  struct union {
+  union {
     client_signal signal;
-    client_data[MAX_CLIENTS] game;
+    client_data game[MAX_CLIENTS];
   } data; 
 } client_message;
 
+// Sends a message to a given socket.
+int send_message(TCPsocket socket, client_message* message);
+int recv_message(TCPsocket socket, client_message* result);
 #endif

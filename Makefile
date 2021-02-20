@@ -15,6 +15,7 @@ SRC= ./src/*.c \
      ./src/map/map_loading/ir/*.c \
 	 ./src/map/map_loading/entity_loading/*.c \
      ./src/map/map_loading/utilities/*.c \
+     ./src/network_server/util.c
 
 SRV_OUT= ./bin/raycore_server.out
 SRV_SRC= ./src/network_server/*.c
