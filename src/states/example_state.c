@@ -35,26 +35,36 @@ extern int cos128table[361];
 static pthread_t network_pthread;
 // If 1, we are in single-player mode
 static int single_player = 1;
-
 // Information needed if we are connected to a server.
 static IPaddress ip;
 static TCPsocket tcp_socket;
 static SDLNet_SocketSet sockets;
-
 // When 1, will quit the network_handler thread
 static int terminate_network_handler;
 static pthread_mutex_t mtx_terminate_nethand;
+// What we send to the server ever frame.
+static client_data to_send;
+static pthread_mutex_t mtx_data;
 
 static void* network_handler() {
   int quit = 0;
+  server_message message;
 
   do {
+    pthread_mutex_lock(&mtx_data);
+    message.data.local = to_send;
+    pthread_mutex_unlock(&mtx_data);
+
+    /*int result = send_message_to_server(tcp_socket, &message);
+    if(!result)
+      printf("client: send_message_to_server: %s\n", SDLNet_GetError());*/
+
+    // TODO: Check for messages from server.
+
     pthread_mutex_lock(&mtx_terminate_nethand);
     quit = terminate_network_handler;
     pthread_mutex_unlock(&mtx_terminate_nethand);
 
-    printf("network handler: doing important work\n");
-    sleep(1);
   } while(!quit);
 
   SDLNet_TCP_DelSocket(sockets, tcp_socket);
@@ -133,7 +143,7 @@ void state_example_enter(const int from_state, void* message) {
       while(1) {
         SDLNet_CheckSockets(sockets, 100);
         if(SDLNet_SocketReady(tcp_socket)) {
-          recv_message(tcp_socket, &message);
+          recv_message_from_server(tcp_socket, &message);
 
           // We expect it to be a signal
           if(message.type == CLIENT_SIGNAL && message.data.signal.type == SIGNAL_CONNECT) {
@@ -151,6 +161,7 @@ void state_example_enter(const int from_state, void* message) {
     if(!single_player) {
       terminate_network_handler = 0;
       pthread_mutex_init(&mtx_terminate_nethand, NULL);
+      pthread_mutex_init(&mtx_data, NULL);
       pthread_create(&network_pthread, NULL, (void*)network_handler, NULL);
     }
 
@@ -259,6 +270,15 @@ void state_example_update() {
 		map = load_map_from_file(do_map_lookup(curr_level));
 		spawn_player(map, &player_x, &player_y, &player_rot, next_spawn);
 	}
+
+    if(!single_player) {
+      pthread_mutex_lock(&mtx_data);
+      to_send.level_id = curr_level;
+      to_send.x = player_x;
+      to_send.y = player_y;
+      to_send.rot = player_rot;
+      pthread_mutex_unlock(&mtx_data); 
+    }
 }
 
 

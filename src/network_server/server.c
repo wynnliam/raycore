@@ -96,7 +96,7 @@ void server() {
   int num_ready;
 
   while(1) {
-    printf("server: doing important stuff\n");
+    printf("server: doing important stuff %d\n", SDL_GetTicks());
     SDL_Delay(1000);
     num_ready = SDLNet_CheckSockets(sockets, 10);
 
@@ -132,22 +132,27 @@ void server() {
         connect_message.data.signal.value = -1;
       }
 
-      send_message(temp_socket, &connect_message);
+      send_message_to_client(temp_socket, &connect_message);
     }
 
     for(int i = 0; num_ready > 0 && i < MAX_CLIENTS; i++) {
       if(clients[i].data.active && SDLNet_SocketReady(clients[i].tcp_socket)) {
         num_ready--;
 
-        client_message message;
-        int result = recv_message(clients[i].tcp_socket, &message);
+        server_message message;
+        int result = recv_message_from_client(clients[i].tcp_socket, &message);
 
         printf("server: recvd message of size %d\n", result);
-        if(result < 1) {
+        if(result <= 1) {
           printf("server: client %d disconnected. bye bye\n", i);
           clients[i].data.active = 0;
           SDLNet_TCP_DelSocket(sockets, clients[i].tcp_socket);
           SDLNet_TCP_Close(clients[i].tcp_socket);
+        } else {
+          clients[i].data.level_id = message.data.local.level_id;
+          clients[i].data.x = message.data.local.x;
+          clients[i].data.y = message.data.local.y;
+          clients[i].data.rot = message.data.local.rot;
         }
       }
     }
