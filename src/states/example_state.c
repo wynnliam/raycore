@@ -55,7 +55,6 @@ static void* network_handler() {
     message.data.local = to_send;
     pthread_mutex_unlock(&mtx_data);
 
-    printf("Sending %ld bytes\n", sizeof(message));
     int result = send_message_to_server(tcp_socket, &message);
     if(!result)
       printf("client: send_message_to_server: %s\n", SDLNet_GetError());
