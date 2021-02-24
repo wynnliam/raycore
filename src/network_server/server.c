@@ -149,6 +149,8 @@ void server() {
           SDLNet_TCP_DelSocket(sockets, clients[i].tcp_socket);
           SDLNet_TCP_Close(clients[i].tcp_socket);
         } else {
+          printf("%i: leve id: %d, x: %d, y: %d, rot: %d\n",
+                  i, message.data.local.level_id, message.data.local.x, message.data.local.y, message.data.local.rot);
           clients[i].data.level_id = message.data.local.level_id;
           clients[i].data.x = message.data.local.x;
           clients[i].data.y = message.data.local.y;
