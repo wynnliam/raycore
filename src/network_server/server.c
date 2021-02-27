@@ -94,6 +94,10 @@ void server() {
   // Whenever any activity is detected, we will pick
   // it up with this variable.
   int num_ready;
+  long curr_time, last_time;
+
+  last_time = 0;
+  curr_time = 0;
 
   while(1) {
     num_ready = SDLNet_CheckSockets(sockets, 10);
@@ -146,12 +150,20 @@ void server() {
           SDLNet_TCP_DelSocket(sockets, clients[i].tcp_socket);
           SDLNet_TCP_Close(clients[i].tcp_socket);
         } else {
-          printf("client %d: x %d y %d rot %d level %d\n",
-                  i, message.data.local.x, message.data.local.y, message.data.local.rot, message.data.local.level_id);
+         // printf("client %d: x %d y %d rot %d level %d\n",
+         //         i, message.data.local.x, message.data.local.y, message.data.local.rot, message.data.local.level_id);
           clients[i].data.level_id = message.data.local.level_id;
           clients[i].data.x = message.data.local.x;
           clients[i].data.y = message.data.local.y;
           clients[i].data.rot = message.data.local.rot;
+
+          // Send message back to client.
+          client_message game;
+          game.type = CLIENT_GAME;
+          int j;
+          for(j = 0; j < MAX_CLIENTS; j++)
+            game.data.game[j] = clients[j].data;
+          send_message_to_client(clients[i].tcp_socket, &game);
         }
       }
     }

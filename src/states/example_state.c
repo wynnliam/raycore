@@ -56,10 +56,13 @@ static void* network_handler() {
     pthread_mutex_unlock(&mtx_data);
 
     int result = send_message_to_server(tcp_socket, &message);
-    if(!result)
-      printf("client: send_message_to_server: %s\n", SDLNet_GetError());
+    if(result > 0) {
+      client_message game;
+      result = recv_message_from_server(tcp_socket, &game);
 
-    // TODO: Check for messages from server.
+      if(result > 0 && game.type == CLIENT_GAME)
+        printf("client: game update\n");
+    }
 
     pthread_mutex_lock(&mtx_terminate_nethand);
     quit = terminate_network_handler;
