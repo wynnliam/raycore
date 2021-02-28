@@ -52,6 +52,8 @@ int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int ani
 
 	clear_all_signals(empty_thingdef);
 
+    empty_thingdef->active = 1;
+
 	return 1;
 }
 

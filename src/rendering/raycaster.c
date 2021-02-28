@@ -927,7 +927,7 @@ static void draw_things() {
 
 	int i;
 	for(i = 0; i < map->num_things; ++i) {
-		if(things_sorted[i]->type == 0)
+		if(things_sorted[i]->type == 0 || things_sorted[i]->active == 0)
 			continue;
 
 		project_thing_pos_onto_screen(things_sorted[i]->position, screen_pos);

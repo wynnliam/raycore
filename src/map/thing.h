@@ -23,6 +23,7 @@ struct thingdef {
 	int rotation;
 	// The distance from the player.
 	int dist;
+    int active;
 
 	// 0 is no animations. 1 is frame per orientation. 2 is
 	// animations for each orientation. This is a value that
