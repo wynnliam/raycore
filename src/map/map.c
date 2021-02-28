@@ -269,3 +269,7 @@ void spawn_player(struct mapdef* map, int* player_x, int* player_y, int* player_
 		*player_rot = data->player_rot;
 	}
 }
+
+void add_client_thing(struct mapdef* map, const int id) {
+  
+}

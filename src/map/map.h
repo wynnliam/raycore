@@ -13,6 +13,7 @@
 
 #include "./thing.h"
 #include "./entity/entity.h"
+#include "../network_server/netconst.h"
 
 #define MAP_W	20
 #define MAP_H	10
@@ -62,7 +63,7 @@ struct mapdef {
 	// this every frame by distance from the player.
 	// We will assume there can be at most 1000 sprites
 	// in a level.
-	struct thingdef things[THING_COUNT];
+	struct thingdef things[THING_COUNT + MAX_CLIENTS];
 
 	struct entity* entities[ENTITY_COUNT];
 
@@ -124,5 +125,6 @@ int is_position_wall(struct mapdef* map, int player_x, int player_y);
 void clear_all_thing_signals(struct mapdef* map);
 
 void spawn_player(struct mapdef* map, int* player_x, int* player_y, int* player_rot, int spawn_id);
+void add_client_thing(struct mapdef* map, const int id);
 
 #endif
