@@ -35,6 +35,8 @@ extern int cos128table[361];
 static pthread_t network_pthread;
 // If 1, we are in single-player mode
 static int single_player = 1;
+// My id on the server.
+static int server_id;
 // Information needed if we are connected to a server.
 static IPaddress ip;
 static TCPsocket tcp_socket;
@@ -44,6 +46,7 @@ static int terminate_network_handler;
 static pthread_mutex_t mtx_terminate_nethand;
 // What we send to the server ever frame.
 static client_data to_send;
+static client_data clients[MAX_CLIENTS];
 static pthread_mutex_t mtx_data;
 
 static void* network_handler() {
@@ -60,8 +63,11 @@ static void* network_handler() {
       client_message game;
       result = recv_message_from_server(tcp_socket, &game);
 
-      if(result > 0 && game.type == CLIENT_GAME)
-        printf("client: game update\n");
+      if(result > 0 && game.type == CLIENT_GAME) {
+        int i;
+        for(i = 0; i < 16; i++)
+          clients[i] = game.data.game[i];
+      }
     }
 
     pthread_mutex_lock(&mtx_terminate_nethand);
@@ -151,6 +157,7 @@ void state_example_enter(const int from_state, void* message) {
           // We expect it to be a signal
           if(message.type == CLIENT_SIGNAL && message.data.signal.type == SIGNAL_CONNECT) {
             printf("client: connected. I am %d\n", message.data.signal.value);
+            server_id = message.data.signal.value;
           } else {
             printf("client: server full\n");
             single_player = 1;
@@ -198,6 +205,21 @@ void state_example_update() {
 	}
 
 	clear_all_thing_signals(map);
+
+    if(!single_player) {
+      pthread_mutex_lock(&mtx_data);
+      int i;
+      for(i = 0; i < MAX_CLIENTS; i++) {
+        if(i != server_id && clients[i].active && clients[i].level_id == curr_level) {
+          map->client_things[i]->active = 1;
+          map->client_things[i]->position[0] = clients[i].x;
+          map->client_things[i]->position[1] = clients[i].y;
+          map->client_things[i]->rotation = clients[i].rot;
+        } else
+          map->client_things[i]->active = 0;
+      }
+      pthread_mutex_unlock(&mtx_data); 
+    }
 
 	if(key_pressed(SDL_SCANCODE_A)) {
 		player_rot += 2;
