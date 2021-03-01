@@ -64,6 +64,7 @@ struct mapdef {
 	// We will assume there can be at most 1000 sprites
 	// in a level.
 	struct thingdef things[THING_COUNT + MAX_CLIENTS];
+    struct thingdef* client_things[MAX_CLIENTS];
 
 	struct entity* entities[ENTITY_COUNT];
 

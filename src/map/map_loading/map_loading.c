@@ -109,6 +109,18 @@ struct mapdef* load_map_from_file(const char* path) {
 	clean_recipe_list(map_tree);
 	clean_intermediate_mapdef(intermediate_mapdef);
 
+    // Add 16 clients to the game, but disable them
+    // TODO: Refactor.
+    int i;
+    for(i = 0; i < MAX_CLIENTS; i++) {
+      struct thingdef* next = &result->things[result->num_things];
+      create_thingdef(next, "./assests/sprites/player/player.bmp", 2, 1687, 215, 72);
+      next->active = 0;
+
+      result->client_things[i] = next;
+      result->num_things++;
+    }
+
 	return result;
 }
 
