@@ -112,7 +112,7 @@ void server() {
 
     // At this point, we have activity on a socket. We need to figure out
     // what that is.
-    printf("server: I detected activity on %d sockets\n", num_ready);
+    //printf("server: I detected activity on %d sockets\n", num_ready);
 
     if(SDLNet_SocketReady(tcp_server_socket)) {
       printf("server: client connection\n");
