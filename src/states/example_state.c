@@ -178,7 +178,8 @@ void state_example_enter(const int from_state, void* message) {
 	curr_level = 4;
 	map = load_map_from_file(do_map_lookup(curr_level));
 	spawn_player(map, &player_x, &player_y, &player_rot, 2);
-	curr_level++;
+    // TODO: Why do I have this again?
+	//curr_level++;
 }
 
 void state_example_leave() {
@@ -281,8 +282,8 @@ void state_example_update() {
 		// TODO: Move this code to map.h/map.c (procedure check_map_user_interaction or something).
 	}
 
-	if(key_pressed(SDL_SCANCODE_C)) {
-		printf("Player position = [%d, %d]. Player rotation = %d\n", player_x, player_y, player_rot);
+	if(key_pressed_once(SDL_SCANCODE_C)) {
+		printf("level = %d. position = [%d, %d]. rotation = %d\n", curr_level, player_x, player_y, player_rot);
 	}
 
 	update_thing_anims(map, player_rot);
