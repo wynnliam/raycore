@@ -10,15 +10,38 @@ properties {
 	fog_b = "89";
 }
 
+# Embellishment Walls
+component {
+  x = "1";
+  y = "28";
+  w = "9";
+  h = "8";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/rock/rock_wall.bmp";
+  tex_1 = "0";
+}
+
+component {
+  x = "1";
+  y = "1";
+  w = "16";
+  h = "10";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/rock/rock_wall.bmp";
+  tex_1 = "0";
+}
+
 # Basic Floor Layout
 component {
   x = "1";
   y = "1";
-  w = "55";
-  h = "45";
+  w = "16";
+  h = "35";
 
   is_floor_ciel = "1";
-  tex_0 = "./assests/textures/measure/measure_01.bmp";
+  tex_0 = "./assests/textures/sand/sand_01.bmp";
   tex_1 = "0";
 }
 
@@ -26,23 +49,23 @@ component {
 component {
   x = "0";
   y = "0";
-  w = "57";
+  w = "18";
   h = "1";
 
   is_floor_ciel = "0";
-  tex_0 = "./assests/textures/measure/measure_02.bmp";
+  tex_0 = "./assests/textures/rock/rock_wall.bmp";
   tex_1 = "0";
 }
 
 # S Wall
 component {
   x = "0";
-  y = "46";
-  w = "57";
+  y = "36";
+  w = "18";
   h = "1";
 
   is_floor_ciel = "0";
-  tex_0 = "./assests/textures/measure/measure_02.bmp";
+  tex_0 = "./assests/textures/rock/rock_wall.bmp";
   tex_1 = "0";
 }
 
@@ -62,22 +85,22 @@ component {
   x = "0";
   y = "1";
   w = "1";
-  h = "45";
+  h = "35";
 
   is_floor_ciel = "0";
-  tex_0 = "./assests/textures/measure/measure_02.bmp";
+  tex_0 = "./assests/textures/wall/stone1.bmp";
   tex_1 = "0";
 }
 
 # E Wall
 component {
-  x = "56";
+  x = "17";
   y = "1";
   w = "1";
-  h = "45";
+  h = "35";
 
   is_floor_ciel = "0";
-  tex_0 = "./assests/textures/measure/measure_02.bmp";
+  tex_0 = "./assests/textures/rock/rock_wall.bmp";
   tex_1 = "0";
 }
 
@@ -87,10 +110,10 @@ entity {
 	x = "0";
 	y = "0";
 
-	player_x = "3340";
-	player_y = "2112";
+	player_x = "800";
+	player_y = "2208";
 
-	player_rot = "180";
+	player_rot = "90";
 }
 
 entity {
@@ -105,9 +128,9 @@ entity {
 	thing {
 		id = "3";
 
-	    x = "3485";
-	    y = "2113";
-		rot = "72";
+	    x = "800";
+	    y = "2272";
+		rot = "90";
 
 		anim_class = "0";
 		sprite_sheet = "./assests/sprites/hud/alert.bmp";
@@ -145,4 +168,406 @@ entity {
 	player_y = "1440";
 
 	player_rot = "0";
+}
+
+# PLANTS
+thing {
+	type = "1";
+	x = "422";
+	y = "1404";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_3.bmp";
+}
+thing {
+	type = "1";
+	x = "606";
+	y = "954";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_2.bmp";
+}
+thing {
+	type = "1";
+	x = "526";
+	y = "1448";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_4/bush_2.bmp";
+}
+thing {
+	type = "1";
+	x = "794";
+	y = "996";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_3.bmp";
+}
+thing {
+	type = "1";
+	x = "212";
+	y = "1214";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_4.bmp";
+}
+thing {
+	type = "1";
+	x = "734";
+	y = "785";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_1.bmp";
+}
+thing {
+	type = "1";
+	x = "549";
+	y = "1298";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/palm_tree1.bmp";
+}
+thing {
+	type = "1";
+	x = "602";
+	y = "1690";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_3.bmp";
+}
+thing {
+	type = "1";
+	x = "250";
+	y = "1240";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_4/bush_1.bmp";
+}
+thing {
+	type = "1";
+	x = "549";
+	y = "902";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_5.bmp";
+}
+thing {
+	type = "1";
+	x = "766";
+	y = "982";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
+}
+thing {
+	type = "1";
+	x = "753";
+	y = "1546";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_4/bush_1.bmp";
+}
+thing {
+	type = "1";
+	x = "248";
+	y = "1478";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_1.bmp";
+}
+thing {
+	type = "1";
+	x = "614";
+	y = "1360";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_5.bmp";
+}
+thing {
+	type = "1";
+	x = "711";
+	y = "1070";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_2.bmp";
+}
+thing {
+	type = "1";
+	x = "273";
+	y = "1645";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_4.bmp";
+}
+thing {
+	type = "1";
+	x = "622";
+	y = "786";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_1.bmp";
+}
+thing {
+	type = "1";
+	x = "479";
+	y = "1193";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_5.bmp";
+}
+thing {
+	type = "1";
+	x = "833";
+	y = "1294";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
+}
+thing {
+	type = "1";
+	x = "529";
+	y = "1237";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/palm_tree1.bmp";
+}
+thing {
+	type = "1";
+	x = "685";
+	y = "912";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_4.bmp";
+}
+thing {
+	type = "1";
+	x = "488";
+	y = "1097";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_4/bush_2.bmp";
+}
+thing {
+	type = "1";
+	x = "311";
+	y = "1370";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_4/bush_2.bmp";
+}
+thing {
+	type = "1";
+	x = "428";
+	y = "885";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/palm_tree2.bmp";
+}
+thing {
+	type = "1";
+	x = "162";
+	y = "1099";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_4/bush_2.bmp";
+}
+thing {
+	type = "1";
+	x = "308";
+	y = "831";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_4/bush_1.bmp";
+}
+thing {
+	type = "1";
+	x = "538";
+	y = "1322";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_1.bmp";
+}
+thing {
+	type = "1";
+	x = "778";
+	y = "1035";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_4/bush_2.bmp";
+}
+thing {
+	type = "1";
+	x = "420";
+	y = "1492";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
+}
+thing {
+	type = "1";
+	x = "488";
+	y = "1698";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_5.bmp";
+}
+thing {
+	type = "1";
+	x = "507";
+	y = "810";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_2.bmp";
+}
+thing {
+	type = "1";
+	x = "440";
+	y = "1481";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_2.bmp";
+}
+thing {
+	type = "1";
+	x = "269";
+	y = "875";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/palm_tree1.bmp";
+}
+thing {
+	type = "1";
+	x = "270";
+	y = "1064";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_3.bmp";
+}
+thing {
+	type = "1";
+	x = "569";
+	y = "970";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_4/bush_2.bmp";
+}
+thing {
+	type = "1";
+	x = "776";
+	y = "1477";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/palm_tree1.bmp";
+}
+thing {
+	type = "1";
+	x = "710";
+	y = "772";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_5.bmp";
+}
+thing {
+	type = "1";
+	x = "790";
+	y = "1537";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_5.bmp";
+}
+thing {
+	type = "1";
+	x = "705";
+	y = "1279";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_4/bush_2.bmp";
+}
+thing {
+	type = "1";
+	x = "711";
+	y = "1015";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_3.bmp";
+}
+thing {
+	type = "1";
+	x = "842";
+	y = "1709";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_4.bmp";
+}
+thing {
+	type = "1";
+	x = "920";
+	y = "1651";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/palm_tree2.bmp";
+}
+thing {
+	type = "1";
+	x = "914";
+	y = "1148";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_5.bmp";
+}
+thing {
+	type = "1";
+	x = "1008";
+	y = "858";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/palm_tree1.bmp";
+}
+thing {
+	type = "1";
+	x = "834";
+	y = "1719";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/tree1.bmp";
+}
+thing {
+	type = "1";
+	x = "1041";
+	y = "1531";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_2.bmp";
+}
+thing {
+	type = "1";
+	x = "1003";
+	y = "1321";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_5.bmp";
+}
+thing {
+	type = "1";
+	x = "930";
+	y = "979";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_4/bush_1.bmp";
+}
+thing {
+	type = "1";
+	x = "958";
+	y = "1143";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/palm_tree2.bmp";
+}
+thing {
+	type = "1";
+	x = "917";
+	y = "841";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/cactus_2.bmp";
 }
