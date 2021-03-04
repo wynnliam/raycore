@@ -1,0 +1,541 @@
+# Metadata about the map.
+properties {
+	# String
+	name = "Red Rock";
+	# String - 0 will denote "NULL"
+	sky_tex = "./assests/textures/skybox/sky03.bmp";
+
+	fog_r = "233";
+	fog_g = "139";
+	fog_b = "89";
+}
+
+# The Red Rock
+component {
+  x = "6";
+  y = "6";
+  w = "1";
+  h = "1";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/measure/measure_01.bmp";
+  tex_1 = "0";
+}
+
+# Embellishment walls (breaks up open space a bit)
+component {
+  x = "5";
+  y = "1";
+  w = "4";
+  h = "1";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
+  tex_1 = "0";
+}
+
+component {
+  x = "12";
+  y = "1";
+  w = "1";
+  h = "1";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
+  tex_1 = "0";
+}
+
+component {
+  x = "1";
+  y = "6";
+  w = "3";
+  h = "1";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
+  tex_1 = "0";
+}
+
+component {
+  x = "6";
+  y = "9";
+  w = "4";
+  h = "1";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
+  tex_1 = "0";
+}
+
+# Bounding Box
+
+# Floor
+component {
+  x = "1";
+  y = "1";
+  w = "12";
+  h = "9";
+
+  is_floor_ciel = "1";
+  tex_0 = "./assests/textures/sand/grey_sand_02.bmp";
+  tex_1 = "0";
+}
+
+# North Wall
+component {
+  x = "0";
+  y = "0";
+  w = "14";
+  h = "1";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
+  tex_1 = "0";
+}
+
+# South Wall
+component {
+  x = "0";
+  y = "10";
+  w = "14";
+  h = "1";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
+  tex_1 = "0";
+}
+
+# East Wall
+component {
+  x = "0";
+  y = "1";
+  w = "1";
+  h = "9";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
+  tex_1 = "0";
+}
+
+# West Wall
+component {
+  x = "13";
+  y = "1";
+  w = "1";
+  h = "9";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/rock/canyon_wall_01.bmp";
+  tex_1 = "0";
+}
+
+entity {
+	type = "entity_level_transition";
+	id = "1";
+	x = "0";
+	y = "0";
+
+	goto_level = "4";
+	spawn_id = "3";
+
+	thing {
+		id = "1";
+
+	    x = "780";
+	    y = "384";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
+}
+
+entity {
+	type = "entity_player_spawn";
+	id = "2";
+	x = "0";
+	y = "0";
+
+	player_x = "700";
+	player_y = "384";
+
+	player_rot = "180";
+}
+
+# Plants and rocks
+thing {
+	type = "1";
+	x = "475";
+	y = "506";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_2c.bmp";
+}
+thing {
+	type = "1";
+	x = "202";
+	y = "208";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_3a.bmp";
+}
+thing {
+	type = "1";
+	x = "154";
+	y = "597";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
+}
+thing {
+	type = "1";
+	x = "305";
+	y = "248";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1a.bmp";
+}
+thing {
+	type = "1";
+	x = "101";
+	y = "223";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/desert_tree.bmp";
+}
+thing {
+	type = "1";
+	x = "289";
+	y = "196";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_2.bmp";
+}
+thing {
+	type = "1";
+	x = "259";
+	y = "149";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_3.bmp";
+}
+thing {
+	type = "1";
+	x = "354";
+	y = "522";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_2.bmp";
+}
+thing {
+	type = "1";
+	x = "266";
+	y = "336";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_1.bmp";
+}
+thing {
+	type = "1";
+	x = "141";
+	y = "487";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_1.bmp";
+}
+thing {
+	type = "1";
+	x = "187";
+	y = "140";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_2.bmp";
+}
+thing {
+	type = "1";
+	x = "119";
+	y = "187";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1a.bmp";
+}
+thing {
+	type = "1";
+	x = "297";
+	y = "273";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_3a.bmp";
+}
+thing {
+	type = "1";
+	x = "239";
+	y = "117";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_1.bmp";
+}
+thing {
+	type = "1";
+	x = "435";
+	y = "163";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_2.bmp";
+}
+thing {
+	type = "1";
+	x = "441";
+	y = "204";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1a.bmp";
+}
+thing {
+	type = "1";
+	x = "373";
+	y = "234";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1b.bmp";
+}
+thing {
+	type = "1";
+	x = "547";
+	y = "225";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_2c.bmp";
+}
+thing {
+	type = "1";
+	x = "625";
+	y = "336";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_2b.bmp";
+}
+thing {
+	type = "1";
+	x = "578";
+	y = "210";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/desert_tree.bmp";
+}
+thing {
+	type = "1";
+	x = "791";
+	y = "325";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_2.bmp";
+}
+thing {
+	type = "1";
+	x = "645";
+	y = "346";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1a.bmp";
+}
+thing {
+	type = "1";
+	x = "405";
+	y = "253";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
+}
+thing {
+	type = "1";
+	x = "739";
+	y = "164";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1a.bmp";
+}
+thing {
+	type = "1";
+	x = "592";
+	y = "170";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/desert_tree.bmp";
+}
+thing {
+	type = "1";
+	x = "548";
+	y = "247";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_2b.bmp";
+}
+thing {
+	type = "1";
+	x = "406";
+	y = "320";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_2b.bmp";
+}
+thing {
+	type = "1";
+	x = "495";
+	y = "315";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1c.bmp";
+}
+thing {
+	type = "1";
+	x = "714";
+	y = "298";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_2a.bmp";
+}
+thing {
+	type = "1";
+	x = "419";
+	y = "225";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_3.bmp";
+}
+thing {
+	type = "1";
+	x = "527";
+	y = "246";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1c.bmp";
+}
+thing {
+	type = "1";
+	x = "500";
+	y = "172";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_1.bmp";
+}
+thing {
+	type = "1";
+	x = "659";
+	y = "336";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/desert_tree.bmp";
+}
+thing {
+	type = "1";
+	x = "463";
+	y = "261";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/bush/type_3/desert_bush_1.bmp";
+}
+thing {
+	type = "1";
+	x = "665";
+	y = "333";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_1.bmp";
+}
+thing {
+	type = "1";
+	x = "707";
+	y = "162";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_2a.bmp";
+}
+thing {
+	type = "1";
+	x = "507";
+	y = "314";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_2b.bmp";
+}
+thing {
+	type = "1";
+	x = "361";
+	y = "270";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1b.bmp";
+}
+thing {
+	type = "1";
+	x = "583";
+	y = "347";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_3a.bmp";
+}
+thing {
+	type = "1";
+	x = "741";
+	y = "156";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1b.bmp";
+}
+thing {
+	type = "1";
+	x = "734";
+	y = "253";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_2.bmp";
+}
+thing {
+	type = "1";
+	x = "407";
+	y = "273";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1c.bmp";
+}
+thing {
+	type = "1";
+	x = "480";
+	y = "200";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_3a.bmp";
+}
+thing {
+	type = "1";
+	x = "509";
+	y = "330";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_0/desert_flower_1.bmp";
+}
+thing {
+	type = "1";
+	x = "606";
+	y = "441";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/rock/type_0/desert_rock_1c.bmp";
+}
+thing {
+	type = "1";
+	x = "720";
+	y = "521";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_1.bmp";
+}
+thing {
+	type = "1";
+	x = "544";
+	y = "426";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/foliage/flower/type_1/cactus_1.bmp";
+}
