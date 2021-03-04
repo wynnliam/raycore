@@ -10,6 +10,62 @@ properties {
 	fog_b = "89";
 }
 
+# Embellishment Walls
+component {
+  x = "1";
+  y = "1";
+  w = "6";
+  h = "2";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/measure/measure_02.bmp";
+  tex_1 = "0";
+}
+
+component {
+  x = "1";
+  y = "3";
+  w = "4";
+  h = "2";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/measure/measure_02.bmp";
+  tex_1 = "0";
+}
+
+component {
+  x = "19";
+  y = "1";
+  w = "2";
+  h = "2";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/measure/measure_02.bmp";
+  tex_1 = "0";
+}
+
+component {
+  x = "17";
+  y = "12";
+  w = "4";
+  h = "4";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/measure/measure_02.bmp";
+  tex_1 = "0";
+}
+
+component {
+  x = "1";
+  y = "13";
+  w = "6";
+  h = "3";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/measure/measure_02.bmp";
+  tex_1 = "0";
+}
+
 # Basic Floor Layout
 component {
   x = "1";
