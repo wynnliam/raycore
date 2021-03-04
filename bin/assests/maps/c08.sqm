@@ -151,6 +151,27 @@ entity {
 }
 
 entity {
+	type = "entity_level_transition";
+	id = "3";
+	x = "0";
+	y = "0";
+
+	goto_level = "8";
+	spawn_id = "2";
+
+	thing {
+		id = "3";
+
+	    x = "264";
+	    y = "586";
+		rot = "72";
+
+		anim_class = "0";
+		sprite_sheet = "./assests/sprites/hud/alert.bmp";
+	}
+}
+
+entity {
 	type = "entity_player_spawn";
 	id = "2";
 	x = "0";
@@ -160,6 +181,18 @@ entity {
 	player_y = "384";
 
 	player_rot = "180";
+}
+
+entity {
+	type = "entity_player_spawn";
+	id = "4";
+	x = "0";
+	y = "0";
+
+	player_x = "263";
+	player_y = "547";
+
+	player_rot = "52";
 }
 
 # Plants and rocks

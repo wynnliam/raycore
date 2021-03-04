@@ -128,8 +128,8 @@ entity {
 	x = "0";
 	y = "0";
 
-	goto_level = "2";
-	spawn_id = "6";
+	goto_level = "9";
+	spawn_id = "5";
 
 	thing {
 		id = "5";
