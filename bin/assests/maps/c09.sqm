@@ -10,6 +10,39 @@ properties {
 	fog_b = "89";
 }
 
+# House
+component {
+  x = "7";
+  y = "7";
+  w = "3";
+  h = "2";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/rock/hideout_wall.bmp";
+  tex_1 = "0";
+}
+
+thing {
+	x = "800";
+	y = "672";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/outdoor/wateringhole.bmp";
+}
+
+component {
+  x = "12";
+  y = "10";
+  w = "1";
+  h = "1";
+
+  is_floor_ciel = "1";
+  is_invisible = "1";
+  tex_0 = "./assests/textures/measure/measure_02.bmp";
+  tex_1 = "0";
+}
+
 # Embellishment Walls
 component {
   x = "1";
