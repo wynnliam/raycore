@@ -11,14 +11,25 @@ properties {
 }
 
 # The Red Rock
+thing {
+	type = "1";
+	x = "416";
+	y = "416";
+	rot = "0";
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/rock_formation/redrock.bmp";
+}
+
+# Invisible wall
 component {
   x = "6";
   y = "6";
   w = "1";
   h = "1";
 
-  is_floor_ciel = "0";
-  tex_0 = "./assests/textures/measure/measure_01.bmp";
+  is_floor_ciel = "1";
+  is_invisible = "1";
+  tex_0 = "./assests/textures/sand/grey_sand_02.bmp";
   tex_1 = "0";
 }
 
@@ -141,7 +152,7 @@ entity {
 	thing {
 		id = "1";
 
-	    x = "780";
+	    x = "800";
 	    y = "384";
 		rot = "72";
 
@@ -162,8 +173,8 @@ entity {
 	thing {
 		id = "3";
 
-	    x = "264";
-	    y = "586";
+	    x = "288";
+	    y = "608";
 		rot = "72";
 
 		anim_class = "0";
