@@ -981,6 +981,28 @@ component {
 	tex_1 = "0";
 }
 
+component {
+  x = "60";
+  y = "50";
+  w = "1";
+  h = "1";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/art/art62.bmp";
+  tex_1 = "0";
+}
+
+component {
+  x = "60";
+  y = "47";
+  w = "1";
+  h = "1";
+
+  is_floor_ciel = "0";
+  tex_0 = "./assests/textures/art/art63.bmp";
+  tex_1 = "0";
+}
+
 # Carpeting
 component {
 	x = "3";
@@ -1360,6 +1382,17 @@ thing {
 
 	x = "96";
 	y = "3360";
+	rot = "72";
+
+	anim_class = "0";
+	sprite_sheet = "./assests/sprites/columns/column1.bmp";
+}
+
+thing {
+	type = "1";
+
+	x = "3808";
+	y = "2912";
 	rot = "72";
 
 	anim_class = "0";
