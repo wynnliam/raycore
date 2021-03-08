@@ -46,6 +46,8 @@
 // worked very well.
 #define SKYBOX_TEX_WIDTH		640
 
+#define MAX_DIST_SQRD			861184
+
 void initialize_lookup_tables();
 void initialize_render_textures(SDL_Renderer* renderer);
 int get_tile(int x, int y, struct mapdef* map);
