@@ -32,6 +32,11 @@ Then run
 
 You should now be able to run the application!
 
+## Credits
+[MatchaJoeJoe](https://matchajoejoe.com/) for making the awesome cosmonaut player sprite.
+
+[Christian Vallentin](https://github.com/vallentin) for making `loadbmp`
+
 ## Developer Documentation
 For a how-to on adding features or building a game using raycore, please see the
 repo [wiki](https://github.com/wynnliam/raycore/wiki).
