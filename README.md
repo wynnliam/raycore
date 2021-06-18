@@ -34,6 +34,7 @@ You should now be able to run the application!
 
 ## Credits
 [MatchaJoeJoe](https://matchajoejoe.com/) for making the awesome cosmonaut player sprite.
+
 [Christian Vallentin](https://github.com/vallentin) for making `loadbmp`
 
 ## Developer Documentation
