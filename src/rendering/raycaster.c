@@ -807,7 +807,6 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
                 // screen row is negative, so subtract it to adjust j so we can
                 // scale to texture coordinates.
 	    		p_y = ((j - slice->screen_row) * tex_h) / slice->screen_height;
-	    		//raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
           raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
 	     	} else
 	    		raycast_pixels[pixel_index] = fog_color;
@@ -891,12 +890,12 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
 	int texture_y = floor_ceil_pixel->world_space_coordinates[1] % UNIT_SIZE;
 	int floor_screen_pixel = floor_ceil_pixel->screen_row * PROJ_W + floor_ceil_pixel->screen_col;
 	int ceiling_screen_pixel = ((-floor_ceil_pixel->screen_row) + PROJ_H) * PROJ_W + floor_ceil_pixel->screen_col;
+  unsigned int index = (texture_y << 6)+ texture_x;
 
 	// Put floor pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].floor_surf) {
 		if(pixel_dist <= 1024)
-			//floor_ceiling_pixels[floor_screen_pixel] = get_pixel(map->floor_ceils[floor_ceil_pixel->texture].floor_surf, texture_x, texture_y);
-			floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].dataf[(texture_y << 6) + texture_x];
+			floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].dataf[index];
 		else
 			floor_ceiling_pixels[floor_screen_pixel] = fog_color;
 	}
@@ -904,8 +903,7 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
 	// Put ceiling pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf) {
 		if(pixel_dist <= 1024)
-			//floor_ceiling_pixels[ceiling_screen_pixel] = get_pixel(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf, texture_x, texture_y);
-			floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].datac[(texture_y << 6) + texture_x];
+			floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].datac[index];
 		else
 			floor_ceiling_pixels[ceiling_screen_pixel] = fog_color;
 
@@ -1119,7 +1117,7 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 		t_x = (thing_column_data->src->x) + thing_column_data->frame_offset[0];
 		t_y = (((k - thing_column_data->dest->y) * tex_height) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
 
-		t_color = get_pixel(things_sorted[thing_column_data->thing_sorted_index]->surf, t_x, t_y);
+    t_color = things_sorted[thing_column_data->thing_sorted_index]->data[(t_y << 6) + t_x];
 		// Only put a pixel if it is not transparent.
 		if(thing_pixel_is_not_transparent(t_color)) {
 			if(thing_dist_sqrt <= 1024)

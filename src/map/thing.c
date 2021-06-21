@@ -19,6 +19,40 @@ static void update_anim_class_0(struct thingdef* thing, const int player_rot);
 static void update_anim_class_1(struct thingdef* thing, const int player_rot);
 static void update_anim_class_2(struct thingdef* thing, const int player_rot);
 
+static unsigned int get_pixel(SDL_Surface* surface, int x, int y) {
+	if(!surface)
+		return 0;
+	if(x < 0 || x >= surface->w)
+		return 0;
+	if(y < 0 || y >= surface->h)
+		return 0;
+
+  SDL_LockSurface(surface);
+
+	unsigned int result = 0;
+	int bytes_per_pixel = surface->format->BytesPerPixel;
+
+	if(bytes_per_pixel == 3) {
+		unsigned char* channels = (unsigned char*)surface->pixels + y * surface->pitch + x * bytes_per_pixel;
+		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
+			result = 0xFF000000 | channels[0] << 16 | channels[1] << 8 | channels[2];
+		else
+			result = 0xFF000000 | channels[2] << 16 | channels[1] << 8 | channels[0];
+  } else if(bytes_per_pixel == 4) {
+		unsigned char r, g, b, a;
+		unsigned int pixel = *((unsigned int*)surface->pixels + y * surface->w + x);
+		SDL_GetRGBA(pixel, surface->format, &r, &g, &b, &a);
+		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
+			result = ((unsigned int)b) << 24 | ((unsigned int)g)  << 16 | ((unsigned int)r)<< 8 | ((unsigned int)a);
+		else
+			result = ((unsigned int)a) << 24 | ((unsigned int)r)  << 16 | ((unsigned int)g)<< 8 | ((unsigned int)b);
+  }
+
+  SDL_UnlockSurface(surface);
+
+	return result;
+}
+
 int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int anim_class, int x, int y, int rot) {
 	if(!empty_thingdef || !sprite_sheet)
 		return 0;
@@ -29,6 +63,20 @@ int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int ani
 
 	empty_thingdef->id = 0;
 	empty_thingdef->surf = SDL_LoadBMP(sprite_sheet);
+
+  if(empty_thingdef->surf) {
+    unsigned int tw, th, i, j;
+    tw = empty_thingdef->surf->w;
+    th = empty_thingdef->surf->h;
+    empty_thingdef->tw = tw;
+    empty_thingdef->th = th;
+    empty_thingdef->data = (unsigned int*)malloc(sizeof(unsigned int) * tw * th);
+    for(i = 0; i < tw; i++) {
+      for(j = 0; j < th; j++)
+        empty_thingdef->data[j * tw + i] = get_pixel(empty_thingdef->surf, i, j);
+    }
+  }
+
 	empty_thingdef->position[0] = x;
 	empty_thingdef->position[1] = y;
 	empty_thingdef->rotation = rot;

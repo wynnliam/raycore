@@ -16,6 +16,10 @@ struct mapdef;
 struct thingdef {
 	// The texture to render.
 	SDL_Surface* surf;
+  // The texture to render
+  unsigned int* data;
+  // The dimensions of the texture
+  unsigned int tw, th;
 	struct animdef anims[ANIM_COUNT];
 	// The global position.
 	int position[2];
