@@ -241,9 +241,10 @@ static void create_wall_textures(struct texture_list* textures, struct mapdef* r
 				result->walls[walldef_index].surf = SDL_LoadBMP(result->walls[walldef_index].path);
 
         unsigned int tw, th;
-        loadbmp_decode_file(result->walls[walldef_index].path, &(result->walls[walldef_index].data), &tw, &th, LOADBMP_RGB);
+        loadbmp_decode_file(result->walls[walldef_index].path, &(result->walls[walldef_index].data), &tw, &th, LOADBMP_RGBA);
         result->walls[walldef_index].tw = tw;
         result->walls[walldef_index].th = th;
+        printf("Texture size: w = %d h = %d\n", tw, th);
 			} else {
 				result->walls[walldef_index].path = NULL;
 				result->walls[walldef_index].surf = NULL;
