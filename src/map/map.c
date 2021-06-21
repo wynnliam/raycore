@@ -20,21 +20,31 @@ int initialize_map(struct mapdef* map) {
 
 	for(i = 0; i < WALL_DEF_COUNT; i++) {
 		map->walls[i].path = NULL;
-		map->walls[i].surf = NULL;
+		map->walls[i].data = NULL;
+    map->walls[i].th = 0;
+    map->walls[i].tw = 0;
 	}
 
 	for(i = 0; i < FLOOR_CEIL_COUNT; i++) {
 		map->floor_ceils[i].floor_path = NULL;
+    map->floor_ceils[i].dataf = NULL;
+    map->floor_ceils[i].ftw = 0;
+    map->floor_ceils[i].fth = 0;
+
 		map->floor_ceils[i].ceil_path = NULL;
-		map->floor_ceils[i].floor_surf = NULL;
-		map->floor_ceils[i].ceil_surf = NULL;
+    map->floor_ceils[i].datac = NULL;
+    map->floor_ceils[i].ctw = 0;
+    map->floor_ceils[i].cth = 0;
+
 		map->floor_ceils[i].invisible_wall = 0;
 	}
 
-	map->sky_surf = NULL;
+	map->sky_data = NULL;
 
 	for(i = 0; i < THING_COUNT; i++) {
-		map->things[i].surf = NULL;
+		map->things[i].data = NULL;
+    map->things[i].th = 0;
+    map->things[i].tw = 0;
 
 		for(j = 0; j < ANIM_COUNT; j++) {
 			map->things[i].anims[j].num_frames = 0;
@@ -157,9 +167,9 @@ int clean_mapdef(struct mapdef* to_clean) {
 		to_clean->invisible_walls = NULL;
 	}
 
-	if(to_clean->sky_surf) {
-		SDL_FreeSurface(to_clean->sky_surf);
-		to_clean->sky_surf = NULL;
+	if(to_clean->sky_data) {
+		free(to_clean->sky_data);
+		to_clean->sky_data = NULL;
 	}
 
 	for(i = 0; i < to_clean->num_wall_tex; ++i)
@@ -188,10 +198,10 @@ void clean_walldef(struct walldef* to_clean) {
 		to_clean->path = NULL;
 	}
 
-	if(to_clean->surf) {
-		SDL_FreeSurface(to_clean->surf);
-		to_clean->surf = NULL;
-	}
+  if(to_clean->data) {
+    free(to_clean->data);
+    to_clean->data = NULL;
+  }
 }
 
 void clean_floorcieldef(struct floorcielingdef* to_clean) {
@@ -208,14 +218,14 @@ void clean_floorcieldef(struct floorcielingdef* to_clean) {
 		to_clean->ceil_path = NULL;
 	}
 
-	if(to_clean->floor_surf) {
-		SDL_FreeSurface(to_clean->floor_surf);
-		to_clean->floor_surf = NULL;
+	if(to_clean->dataf) {
+		free(to_clean->dataf);
+		to_clean->dataf = NULL;
 	}
 
-	if(to_clean->ceil_surf) {
-		SDL_FreeSurface(to_clean->ceil_surf);
-		to_clean->ceil_surf = NULL;
+	if(to_clean->datac) {
+		free(to_clean->datac);
+		to_clean->datac = NULL;
 	}
 }
 

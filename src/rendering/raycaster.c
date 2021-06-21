@@ -209,7 +209,6 @@ static void draw_columns_of_thing(const int, const SDL_Rect*, const int[2]);
 static int column_in_bounds_of_screen(const int);
 static void compute_column_of_thing_texture(const int, const SDL_Rect*, SDL_Rect*);
 static void draw_column_of_thing_texture(struct thing_column_render_data*);
-static int thing_pixel_row_out_of_screen_bounds(const int);
 static int thing_pixel_is_not_transparent(const unsigned int);
 
 static void render_pixel_arrays_to_screen(SDL_Renderer*);
@@ -673,7 +672,7 @@ static unsigned int correct_hit_dist_for_fisheye_effect(const int hit_dist) {
 }
 
 static void draw_sky_slice(const int screen_col) {
-	if(!map || !map->sky_surf)
+	if(!map || !map->sky_data)
 		return;
 
 	// A skybox has 640 columns of pixels.
@@ -694,14 +693,14 @@ static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinf
 	unsigned int slice_height;
 	// The amount of projected wall slice above the first 64 pixels.
 	unsigned int slice_remain;
-	int tex_h;
+	unsigned int tex_h;
 
 	slice->wall_tex = hit->wall_type - map->num_floor_ceils;
 
-	if(!map->walls[slice->wall_tex].surf)
+	if(!map->walls[slice->wall_tex].data)
 		return;
 
-	tex_h = map->walls[slice->wall_tex].surf->h;
+	tex_h = map->walls[slice->wall_tex].th;
 
 	// Dist to projection * 64 / slice dist.
 	slice_height = (DIST_TO_PROJ * tex_h) / hit->dist;
@@ -732,15 +731,13 @@ static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinf
 }
 
 static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
-	SDL_Surface* tex = map->walls[slice->wall_tex].surf;
   unsigned int* wall_tex_data = map->walls[slice->wall_tex].data;
 
-	if(!tex)
+	if(!wall_tex_data)
 		return;
 
 	int pixel_index;
 	int p_x, p_y;
-	int tex_h = tex->h;
   int tw, th;
   tw = map->walls[slice->wall_tex].tw;
   th = map->walls[slice->wall_tex].th;
@@ -757,7 +754,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	    	pixel_index = (j + slice->screen_row) * PROJ_W + slice->screen_col;
 
 	    	if(hit->dist <= 1024) {
-	    		p_y = (j * tex_h) / slice->screen_height;
+	    		p_y = (j * th) / slice->screen_height;
           raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
 	     	} else
 	    		raycast_pixels[pixel_index] = fog_color;
@@ -773,7 +770,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	    	if(hit->dist <= 1024) {
                 // screen row is negative, so subtract it to adjust j so we can
                 // scale to texture coordinates.
-	    		p_y = ((j - slice->screen_row) * tex_h) / slice->screen_height;
+	    		p_y = ((j - slice->screen_row) * th) / slice->screen_height;
           raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
 	     	} else
 	    		raycast_pixels[pixel_index] = fog_color;
@@ -789,7 +786,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	    	if(hit->dist <= 1024) {
                 // screen row is negative, so subtract it to adjust j so we can
                 // scale to texture coordinates.
-	    		p_y = ((j - slice->screen_row) * tex_h) / slice->screen_height;
+	    		p_y = ((j - slice->screen_row) * th) / slice->screen_height;
           raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
 	     	} else
 	    		raycast_pixels[pixel_index] = fog_color;
@@ -803,7 +800,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	    	pixel_index = j * PROJ_W + slice->screen_col;
 
 	    	if(hit->dist <= 1024) {
-	    		p_y = (j* tex_h) / slice->screen_height;
+	    		p_y = (j * th) / slice->screen_height;
           raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
 	     	} else
 	    		raycast_pixels[pixel_index] = fog_color;
@@ -860,7 +857,7 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
   unsigned int index = (texture_y << 6)+ texture_x;
 
 	// Put floor pixel.
-	if(map->floor_ceils[floor_ceil_pixel->texture].floor_surf) {
+	if(map->floor_ceils[floor_ceil_pixel->texture].dataf) {
 		if(pixel_dist <= 1024)
 			floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].dataf[index];
 		else
@@ -868,7 +865,7 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
 	}
 
 	// Put ceiling pixel.
-	if(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf) {
+	if(map->floor_ceils[floor_ceil_pixel->texture].datac) {
 		if(pixel_dist <= 1024)
 			floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].datac[index];
 		else
@@ -903,7 +900,7 @@ static void draw_things() {
 
 	int i;
 	for(i = 0; i < map->num_things; ++i) {
-		if(things_sorted[i]->type == 0 || things_sorted[i]->active == 0 || things_sorted[i]->dist >= MAX_DIST_SQRD)
+		if(!things_sorted[i]->data || things_sorted[i]->type == 0 || things_sorted[i]->active == 0 || things_sorted[i]->dist >= MAX_DIST_SQRD)
 			continue;
 
 		project_thing_pos_onto_screen(things_sorted[i]->position, screen_pos);
@@ -954,8 +951,8 @@ static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos
 static void compute_thing_dimensions_on_screen(const int thing_sorted_index, const int screen_pos[2], SDL_Rect* thing_screen_rect) {
 	int tex_h;
 
-	if(things_sorted[thing_sorted_index]->surf && things_sorted[thing_sorted_index]->anim_class == 0)
-		tex_h = things_sorted[thing_sorted_index]->surf->h;
+	if(things_sorted[thing_sorted_index]->data && things_sorted[thing_sorted_index]->anim_class == 0)
+		tex_h = things_sorted[thing_sorted_index]->th;
 	else
 		tex_h = 64;
 
@@ -1064,12 +1061,11 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	// RGB value of the sprite texture.
 	unsigned int t_color;
 
-	int screen_row;
 	int tex_height;
 	int thing_dist_sqrt = 0;
 
-	if(things_sorted[thing_column_data->thing_sorted_index]->surf && things_sorted[thing_column_data->thing_sorted_index]->anim_class == 0)
-		tex_height = things_sorted[thing_column_data->thing_sorted_index]->surf->h;
+	if(things_sorted[thing_column_data->thing_sorted_index]->data && things_sorted[thing_column_data->thing_sorted_index]->anim_class == 0)
+		tex_height = things_sorted[thing_column_data->thing_sorted_index]->th;
 	else
 		tex_height = 64;
 
@@ -1095,10 +1091,6 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 			z_buffer_2d[thing_column_data->screen_column][k] = thing_dist_sqrt;
 		}
 	}
-}
-
-static int thing_pixel_row_out_of_screen_bounds(const int pixel) {
-	return pixel < 0 || pixel >= PROJ_H;
 }
 
 static int thing_pixel_is_not_transparent(const unsigned int t_color) {

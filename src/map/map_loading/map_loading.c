@@ -8,9 +8,6 @@
 #include "./ir/intermediate_mapdef.h"
 #include "./entity_loading/entity_loading.h"
 
-#define LOADBMP_IMPLEMENTATION
-#include "../loadbmp.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -165,20 +162,24 @@ static void compute_map_properties(struct ir_map_properties* ir_properties, stru
 	if(!ir_properties || !result)
 		return;
 
-	if(ir_properties->sky_tex) {
-		result->sky_surf = SDL_LoadBMP(ir_properties->sky_tex);
-    result->sw = result->sky_surf->w;
-    result->sh = result->sky_surf->h;
+  SDL_Surface* sky_surf = SDL_LoadBMP(ir_properties->sky_tex);
+	if(sky_surf) {
+    result->sw = sky_surf->w;
+    result->sh = sky_surf->h;
     result->sky_data = (unsigned int*)malloc(sizeof(unsigned int) * result->sw * result->sh);
     unsigned int x, y;
     for(x = 0; x < result->sw; x++) {
       for(y = 0; y < result->sh; y++) {
-        result->sky_data[y * result->sw + x] = get_pixel(result->sky_surf, x, y);
+        result->sky_data[y * result->sw + x] = get_pixel(sky_surf, x, y);
       }
     }
+
+    SDL_FreeSurface(sky_surf);   
+  } else {
+    result->sky_data = NULL;
+    result->sw = 0;
+    result->sh = 0;
   }
-	else
-		result->sky_surf = NULL;
 
 	result->use_fog = ir_properties->use_fog;
 	result->fog_r = ir_properties->fog_r;
@@ -282,21 +283,24 @@ static void create_wall_textures(struct texture_list* textures, struct mapdef* r
 				strcpy(result->walls[walldef_index].path, curr->data->tex_0);
 
 				printf("loading wall texture %s\n", result->walls[walldef_index].path);
-				result->walls[walldef_index].surf = SDL_LoadBMP(result->walls[walldef_index].path);
+				SDL_Surface* surf = SDL_LoadBMP(result->walls[walldef_index].path);
 
         unsigned int tw, th, x, y;
-        tw = result->walls[walldef_index].surf->w;
-        th = result->walls[walldef_index].surf->h;
+        tw = surf->w;
+        th = surf->h;
         result->walls[walldef_index].data = (unsigned int*)malloc(sizeof(unsigned int) * tw * th);
         result->walls[walldef_index].tw = tw;
         result->walls[walldef_index].th = th;
         for(x = 0; x < tw; x++) {
           for(y = 0; y < th; y++)
-            result->walls[walldef_index].data[y * tw + x] = get_pixel(result->walls[walldef_index].surf, x, y);
+            result->walls[walldef_index].data[y * tw + x] = get_pixel(surf, x, y);
         }
+
+        SDL_FreeSurface(surf);
+
 			} else {
 				result->walls[walldef_index].path = NULL;
-				result->walls[walldef_index].surf = NULL;
+        result->walls[walldef_index].data = NULL;
 			}
 		}
 
@@ -321,42 +325,48 @@ static void create_floor_ceil_textures(struct texture_list* textures, struct map
 				result->floor_ceils[floorceildef_index].floor_path = (char*)malloc(strlen(curr->data->tex_0) + 1);
 				strcpy(result->floor_ceils[floorceildef_index].floor_path, curr->data->tex_0);
 
-				result->floor_ceils[floorceildef_index].floor_surf = SDL_LoadBMP(result->floor_ceils[floorceildef_index].floor_path);
+				SDL_Surface* floor_surf = SDL_LoadBMP(result->floor_ceils[floorceildef_index].floor_path);
 
         unsigned int tw, th, x, y;
-        tw = result->floor_ceils[floorceildef_index].floor_surf->w;
-        th = result->floor_ceils[floorceildef_index].floor_surf->h;
+        tw = floor_surf->w;
+        th = floor_surf->h;
         result->floor_ceils[floorceildef_index].dataf = (unsigned int*)malloc(sizeof(unsigned int) * tw * th);
         result->floor_ceils[floorceildef_index].ftw = tw;
         result->floor_ceils[floorceildef_index].fth = th;
         for(x = 0; x < tw; x++) {
           for(y = 0; y < th; y++)
-            result->floor_ceils[floorceildef_index].dataf[y * tw + x] = get_pixel(result->floor_ceils[floorceildef_index].floor_surf, x, y);
+            result->floor_ceils[floorceildef_index].dataf[y * tw + x] = get_pixel(floor_surf, x, y);
         }
+
+        SDL_FreeSurface(floor_surf);
+
 			} else {
 				result->floor_ceils[floorceildef_index].floor_path = NULL;
-				result->floor_ceils[floorceildef_index].floor_surf = NULL;
+				result->floor_ceils[floorceildef_index].dataf = NULL;
 			}
 
 			if(curr->data->tex_1) {
 				result->floor_ceils[floorceildef_index].ceil_path = (char*)malloc(strlen(curr->data->tex_1) + 1);
 				strcpy(result->floor_ceils[floorceildef_index].ceil_path, curr->data->tex_1);
 
-				result->floor_ceils[floorceildef_index].ceil_surf = SDL_LoadBMP(result->floor_ceils[floorceildef_index].ceil_path);
+				SDL_Surface* ceil_surf = SDL_LoadBMP(result->floor_ceils[floorceildef_index].ceil_path);
 
         unsigned int tw, th, x, y;
-        tw = result->floor_ceils[floorceildef_index].ceil_surf->w;
-        th = result->floor_ceils[floorceildef_index].ceil_surf->h;
+        tw = ceil_surf->w;
+        th = ceil_surf->h;
         result->floor_ceils[floorceildef_index].datac = (unsigned int*)malloc(sizeof(unsigned int) * tw * th);
         result->floor_ceils[floorceildef_index].ctw = tw;
         result->floor_ceils[floorceildef_index].cth = th;
         for(x = 0; x < tw; x++) {
           for(y = 0; y < th; y++)
-            result->floor_ceils[floorceildef_index].datac[y * tw + x] = get_pixel(result->floor_ceils[floorceildef_index].ceil_surf, x, y);
+            result->floor_ceils[floorceildef_index].datac[y * tw + x] = get_pixel(ceil_surf, x, y);
         }
+
+        SDL_FreeSurface(ceil_surf);
+
 			} else {
 				result->floor_ceils[floorceildef_index].ceil_path = NULL;
-				result->floor_ceils[floorceildef_index].ceil_surf = NULL;
+				result->floor_ceils[floorceildef_index].datac = NULL;
 			}
 		}
 

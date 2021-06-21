@@ -27,8 +27,6 @@
 struct walldef {
 	// To do a quick lookup of the path for a given texture.
 	char* path;
-	// Defines the texture for this wall.
-	SDL_Surface* surf;
   // Defines the texture for this wall.
   unsigned int* data;
   // Texture width and height
@@ -41,9 +39,6 @@ struct floorcielingdef {
 	// To do a quick lookup of the path for a given texture.
 	char* floor_path;
 	char* ceil_path;
-	SDL_Surface* floor_surf;
-	SDL_Surface* ceil_surf;
-
   // Defines the texture for this floor
   unsigned int* dataf;
   // Texture width and height
@@ -70,7 +65,6 @@ struct mapdef {
 	struct floorcielingdef floor_ceils[FLOOR_CEIL_COUNT];
 
 	// Stores the sky texture used for the map.
-	SDL_Surface* sky_surf;
   unsigned int* sky_data;
   unsigned int sw, sh;
 

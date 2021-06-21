@@ -14,8 +14,6 @@ struct mapdef;
 // static objects in the world, but can easily
 // be extended for dynamic objects and/or NPCs.
 struct thingdef {
-	// The texture to render.
-	SDL_Surface* surf;
   // The texture to render
   unsigned int* data;
   // The dimensions of the texture

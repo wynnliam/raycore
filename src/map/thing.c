@@ -62,19 +62,24 @@ int create_thingdef(struct thingdef* empty_thingdef, char* sprite_sheet, int ani
 	empty_thingdef->type = 1;
 
 	empty_thingdef->id = 0;
-	empty_thingdef->surf = SDL_LoadBMP(sprite_sheet);
+	SDL_Surface* surf = SDL_LoadBMP(sprite_sheet);
 
-  if(empty_thingdef->surf) {
+  if(surf) {
     unsigned int tw, th, i, j;
-    tw = empty_thingdef->surf->w;
-    th = empty_thingdef->surf->h;
+    tw = surf->w;
+    th = surf->h;
     empty_thingdef->tw = tw;
     empty_thingdef->th = th;
     empty_thingdef->data = (unsigned int*)malloc(sizeof(unsigned int) * tw * th);
     for(i = 0; i < tw; i++) {
       for(j = 0; j < th; j++)
-        empty_thingdef->data[j * tw + i] = get_pixel(empty_thingdef->surf, i, j);
+        empty_thingdef->data[j * tw + i] = get_pixel(surf, i, j);
     }
+  } else {
+    printf("Could not load path to sprite sheet: %s\n", sprite_sheet);
+    empty_thingdef->data = NULL;
+    empty_thingdef->tw = 0;
+    empty_thingdef->th = 0;
   }
 
 	empty_thingdef->position[0] = x;
@@ -284,9 +289,9 @@ int clear_thingdef(struct thingdef* to_clean) {
 	if(!to_clean)
 		return 0;
 
-	if(to_clean->surf) {
-		SDL_FreeSurface(to_clean->surf);
-		to_clean->surf = NULL;
+	if(to_clean->data) {
+		free(to_clean->data);
+		to_clean->data = NULL;
 	}
 
 	return 1;
