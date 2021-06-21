@@ -29,6 +29,10 @@ struct walldef {
 	char* path;
 	// Defines the texture for this wall.
 	SDL_Surface* surf;
+  // Defines the texture for this wall.
+  unsigned char* data;
+  // Texture width and height
+  unsigned int tw, th;
 };
 
 // Specifies floor and ceiling textures for a given
