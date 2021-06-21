@@ -50,7 +50,7 @@ static unsigned int get_pixel(SDL_Surface* surface, int x, int y) {
 			result = 0xFF000000 | channels[0] << 16 | channels[1] << 8 | channels[2];
 		else
 			result = 0xFF000000 | channels[2] << 16 | channels[1] << 8 | channels[0];
-    } else if(bytes_per_pixel == 4) {
+  } else if(bytes_per_pixel == 4) {
 		unsigned char r, g, b, a;
 		unsigned int pixel = *((unsigned int*)surface->pixels + y * surface->w + x);
 		SDL_GetRGBA(pixel, surface->format, &r, &g, &b, &a);
@@ -58,48 +58,11 @@ static unsigned int get_pixel(SDL_Surface* surface, int x, int y) {
 			result = ((unsigned int)b) << 24 | ((unsigned int)g)  << 16 | ((unsigned int)r)<< 8 | ((unsigned int)a);
 		else
 			result = ((unsigned int)a) << 24 | ((unsigned int)r)  << 16 | ((unsigned int)g)<< 8 | ((unsigned int)b);
-    }
+  }
 
   SDL_UnlockSurface(surface);
 
 	return result;
-}
-
-static unsigned int get_pixel_temp(unsigned char* data, const int w, const int h, const int x, const int y) {
-  if(!data)
-    return 0;
-  if(x < 0 || x >= w || y < 0 || y >= h)
-    return 0;
-
-  unsigned int result = 0;
-  unsigned int index = (y * w + x) * 4;
-  unsigned char* temp = (unsigned char*)&result;
-  temp[0] = data[index];
-  temp[1] = data[index + 1];
-  temp[2] = data[index + 2];
-  temp[3] = 0xFF;
-  return result;
-
-	/*unsigned int result = 0;
-	int bytes_per_pixel = surface->format->BytesPerPixel;
-
-	if(bytes_per_pixel == 3) {
-		unsigned char* channels = (unsigned char*)surface->pixels + y * surface->pitch + x * bytes_per_pixel;
-		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
-			result = 0xFF000000 | channels[0] << 16 | channels[1] << 8 | channels[2];
-		else
-			result = 0xFF000000 | channels[2] << 16 | channels[1] << 8 | channels[0];
-    } else if(bytes_per_pixel == 4) {
-		unsigned char r, g, b, a;
-		unsigned int pixel = *((unsigned int*)surface->pixels + y * surface->w + x);
-		SDL_GetRGBA(pixel, surface->format, &r, &g, &b, &a);
-		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
-			result = ((unsigned int)b) << 24 | ((unsigned int)g)  << 16 | ((unsigned int)r)<< 8 | ((unsigned int)a);
-		else
-			result = ((unsigned int)a) << 24 | ((unsigned int)r)  << 16 | ((unsigned int)g)<< 8 | ((unsigned int)b);
-    }
-
-	return result;*/
 }
 //------------------------------------------------------------------
 
@@ -803,7 +766,7 @@ static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinf
 
 static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	SDL_Surface* tex = map->walls[slice->wall_tex].surf;
-  unsigned char* wall_tex_data = map->walls[slice->wall_tex].data;
+  unsigned int* wall_tex_data = map->walls[slice->wall_tex].data;
 
 	if(!tex)
 		return;
@@ -828,8 +791,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 
 	    	if(hit->dist <= 1024) {
 	    		p_y = (j * tex_h) / slice->screen_height;
-	    		//raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
-          raycast_pixels[pixel_index] = get_pixel_temp(wall_tex_data, tw, th, p_x, p_y);
+          raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
 	     	} else
 	    		raycast_pixels[pixel_index] = fog_color;
 	    }
@@ -845,7 +807,8 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
                 // screen row is negative, so subtract it to adjust j so we can
                 // scale to texture coordinates.
 	    		p_y = ((j - slice->screen_row) * tex_h) / slice->screen_height;
-	    		raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
+	    		//raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
+          raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
 	     	} else
 	    		raycast_pixels[pixel_index] = fog_color;
 	    }
@@ -861,7 +824,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
                 // screen row is negative, so subtract it to adjust j so we can
                 // scale to texture coordinates.
 	    		p_y = ((j - slice->screen_row) * tex_h) / slice->screen_height;
-	    		raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
+          raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
 	     	} else
 	    		raycast_pixels[pixel_index] = fog_color;
 	    }
@@ -875,7 +838,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 
 	    	if(hit->dist <= 1024) {
 	    		p_y = (j* tex_h) / slice->screen_height;
-	    		raycast_pixels[pixel_index] = get_pixel(tex, p_x, p_y);
+          raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
 	     	} else
 	    		raycast_pixels[pixel_index] = fog_color;
 	    }

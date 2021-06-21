@@ -30,7 +30,7 @@ struct walldef {
 	// Defines the texture for this wall.
 	SDL_Surface* surf;
   // Defines the texture for this wall.
-  unsigned char* data;
+  unsigned int* data;
   // Texture width and height
   unsigned int tw, th;
 };

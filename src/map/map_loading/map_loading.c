@@ -220,6 +220,40 @@ static void compute_map_layout(struct component_list* components, struct mapdef*
 
 }
 
+static unsigned int get_pixel(SDL_Surface* surface, int x, int y) {
+	if(!surface)
+		return 0;
+	if(x < 0 || x >= surface->w)
+		return 0;
+	if(y < 0 || y >= surface->h)
+		return 0;
+
+  SDL_LockSurface(surface);
+
+	unsigned int result = 0;
+	int bytes_per_pixel = surface->format->BytesPerPixel;
+
+	if(bytes_per_pixel == 3) {
+		unsigned char* channels = (unsigned char*)surface->pixels + y * surface->pitch + x * bytes_per_pixel;
+		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
+			result = 0xFF000000 | channels[0] << 16 | channels[1] << 8 | channels[2];
+		else
+			result = 0xFF000000 | channels[2] << 16 | channels[1] << 8 | channels[0];
+  } else if(bytes_per_pixel == 4) {
+		unsigned char r, g, b, a;
+		unsigned int pixel = *((unsigned int*)surface->pixels + y * surface->w + x);
+		SDL_GetRGBA(pixel, surface->format, &r, &g, &b, &a);
+		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
+			result = ((unsigned int)b) << 24 | ((unsigned int)g)  << 16 | ((unsigned int)r)<< 8 | ((unsigned int)a);
+		else
+			result = ((unsigned int)a) << 24 | ((unsigned int)r)  << 16 | ((unsigned int)g)<< 8 | ((unsigned int)b);
+  }
+
+  SDL_UnlockSurface(surface);
+
+	return result;
+}
+
 static void create_wall_textures(struct texture_list* textures, struct mapdef* result) {
 	if(!textures || !result)
 		return;
@@ -240,11 +274,16 @@ static void create_wall_textures(struct texture_list* textures, struct mapdef* r
 				printf("loading wall texture %s\n", result->walls[walldef_index].path);
 				result->walls[walldef_index].surf = SDL_LoadBMP(result->walls[walldef_index].path);
 
-        unsigned int tw, th;
-        loadbmp_decode_file(result->walls[walldef_index].path, &(result->walls[walldef_index].data), &tw, &th, LOADBMP_RGBA);
+        unsigned int tw, th, x, y;
+        tw = result->walls[walldef_index].surf->w;
+        th = result->walls[walldef_index].surf->h;
+        result->walls[walldef_index].data = (unsigned int*)malloc(sizeof(unsigned int) * tw * th);
         result->walls[walldef_index].tw = tw;
         result->walls[walldef_index].th = th;
-        printf("Texture size: w = %d h = %d\n", tw, th);
+        for(x = 0; x < tw; x++) {
+          for(y = 0; y < th; y++)
+            result->walls[walldef_index].data[y * tw + x] = get_pixel(result->walls[walldef_index].surf, x, y);
+        }
 			} else {
 				result->walls[walldef_index].path = NULL;
 				result->walls[walldef_index].surf = NULL;
