@@ -30,40 +30,6 @@ int get_dist_sqrd(int x1, int y1, int x2, int y2) {
 
 	return d_x + d_y;
 }
-
-static unsigned int get_pixel(SDL_Surface* surface, int x, int y) {
-	if(!surface)
-		return 0;
-	if(x < 0 || x >= surface->w)
-		return 0;
-	if(y < 0 || y >= surface->h)
-		return 0;
-
-  SDL_LockSurface(surface);
-
-	unsigned int result = 0;
-	int bytes_per_pixel = surface->format->BytesPerPixel;
-
-	if(bytes_per_pixel == 3) {
-		unsigned char* channels = (unsigned char*)surface->pixels + y * surface->pitch + x * bytes_per_pixel;
-		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
-			result = 0xFF000000 | channels[0] << 16 | channels[1] << 8 | channels[2];
-		else
-			result = 0xFF000000 | channels[2] << 16 | channels[1] << 8 | channels[0];
-  } else if(bytes_per_pixel == 4) {
-		unsigned char r, g, b, a;
-		unsigned int pixel = *((unsigned int*)surface->pixels + y * surface->w + x);
-		SDL_GetRGBA(pixel, surface->format, &r, &g, &b, &a);
-		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
-			result = ((unsigned int)b) << 24 | ((unsigned int)g)  << 16 | ((unsigned int)r)<< 8 | ((unsigned int)a);
-		else
-			result = ((unsigned int)a) << 24 | ((unsigned int)r)  << 16 | ((unsigned int)g)<< 8 | ((unsigned int)b);
-  }
-
-  SDL_UnlockSurface(surface);
-
-	return result;
-}
 //------------------------------------------------------------------
 
 // RAYCASTER STATE VARIABLES
