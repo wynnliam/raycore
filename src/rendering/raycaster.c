@@ -719,7 +719,8 @@ static void draw_sky_slice(const int screen_col) {
 
 	int j;
 	for(j = 0; j < PROJ_H; ++j)
-		raycast_pixels[j * PROJ_W + screen_col] = get_pixel(map->sky_surf, adj_angle_to_pixel_col, j);
+		//raycast_pixels[j * PROJ_W + screen_col] = get_pixel(map->sky_surf, adj_angle_to_pixel_col, j);
+		raycast_pixels[j * PROJ_W + screen_col] = map->sky_data[j * 640 + adj_angle_to_pixel_col];
 }
 
 static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinfo* hit, const int screen_col, struct wall_slice* slice) {

@@ -71,6 +71,8 @@ struct mapdef {
 
 	// Stores the sky texture used for the map.
 	SDL_Surface* sky_surf;
+  unsigned int* sky_data;
+  unsigned int sw, sh;
 
 	// The list of sprites in the world. We sort
 	// this every frame by distance from the player.

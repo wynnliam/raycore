@@ -15,6 +15,40 @@
 #include <stdlib.h>
 #include <string.h>
 
+static unsigned int get_pixel(SDL_Surface* surface, int x, int y) {
+	if(!surface)
+		return 0;
+	if(x < 0 || x >= surface->w)
+		return 0;
+	if(y < 0 || y >= surface->h)
+		return 0;
+
+  SDL_LockSurface(surface);
+
+	unsigned int result = 0;
+	int bytes_per_pixel = surface->format->BytesPerPixel;
+
+	if(bytes_per_pixel == 3) {
+		unsigned char* channels = (unsigned char*)surface->pixels + y * surface->pitch + x * bytes_per_pixel;
+		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
+			result = 0xFF000000 | channels[0] << 16 | channels[1] << 8 | channels[2];
+		else
+			result = 0xFF000000 | channels[2] << 16 | channels[1] << 8 | channels[0];
+  } else if(bytes_per_pixel == 4) {
+		unsigned char r, g, b, a;
+		unsigned int pixel = *((unsigned int*)surface->pixels + y * surface->w + x);
+		SDL_GetRGBA(pixel, surface->format, &r, &g, &b, &a);
+		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
+			result = ((unsigned int)b) << 24 | ((unsigned int)g)  << 16 | ((unsigned int)r)<< 8 | ((unsigned int)a);
+		else
+			result = ((unsigned int)a) << 24 | ((unsigned int)r)  << 16 | ((unsigned int)g)<< 8 | ((unsigned int)b);
+  }
+
+  SDL_UnlockSurface(surface);
+
+	return result;
+}
+
 // TODO: All these static functions should probably go into a seperate file.
 static void compute_map_properties(struct ir_map_properties* ir_properties, struct mapdef* result);
 
@@ -131,8 +165,18 @@ static void compute_map_properties(struct ir_map_properties* ir_properties, stru
 	if(!ir_properties || !result)
 		return;
 
-	if(ir_properties->sky_tex)
+	if(ir_properties->sky_tex) {
 		result->sky_surf = SDL_LoadBMP(ir_properties->sky_tex);
+    result->sw = result->sky_surf->w;
+    result->sh = result->sky_surf->h;
+    result->sky_data = (unsigned int*)malloc(sizeof(unsigned int) * result->sw * result->sh);
+    unsigned int x, y;
+    for(x = 0; x < result->sw; x++) {
+      for(y = 0; y < result->sh; y++) {
+        result->sky_data[y * result->sw + x] = get_pixel(result->sky_surf, x, y);
+      }
+    }
+  }
 	else
 		result->sky_surf = NULL;
 
@@ -218,40 +262,6 @@ static void compute_map_layout(struct component_list* components, struct mapdef*
 
 	place_single_component(components->head, result);
 
-}
-
-static unsigned int get_pixel(SDL_Surface* surface, int x, int y) {
-	if(!surface)
-		return 0;
-	if(x < 0 || x >= surface->w)
-		return 0;
-	if(y < 0 || y >= surface->h)
-		return 0;
-
-  SDL_LockSurface(surface);
-
-	unsigned int result = 0;
-	int bytes_per_pixel = surface->format->BytesPerPixel;
-
-	if(bytes_per_pixel == 3) {
-		unsigned char* channels = (unsigned char*)surface->pixels + y * surface->pitch + x * bytes_per_pixel;
-		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
-			result = 0xFF000000 | channels[0] << 16 | channels[1] << 8 | channels[2];
-		else
-			result = 0xFF000000 | channels[2] << 16 | channels[1] << 8 | channels[0];
-  } else if(bytes_per_pixel == 4) {
-		unsigned char r, g, b, a;
-		unsigned int pixel = *((unsigned int*)surface->pixels + y * surface->w + x);
-		SDL_GetRGBA(pixel, surface->format, &r, &g, &b, &a);
-		if(SDL_BYTEORDER == SDL_BIG_ENDIAN)
-			result = ((unsigned int)b) << 24 | ((unsigned int)g)  << 16 | ((unsigned int)r)<< 8 | ((unsigned int)a);
-		else
-			result = ((unsigned int)a) << 24 | ((unsigned int)r)  << 16 | ((unsigned int)g)<< 8 | ((unsigned int)b);
-  }
-
-  SDL_UnlockSurface(surface);
-
-	return result;
 }
 
 static void create_wall_textures(struct texture_list* textures, struct mapdef* result) {
