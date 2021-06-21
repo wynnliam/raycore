@@ -895,7 +895,8 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
 	// Put floor pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].floor_surf) {
 		if(pixel_dist <= 1024)
-			floor_ceiling_pixels[floor_screen_pixel] = get_pixel(map->floor_ceils[floor_ceil_pixel->texture].floor_surf, texture_x, texture_y);
+			//floor_ceiling_pixels[floor_screen_pixel] = get_pixel(map->floor_ceils[floor_ceil_pixel->texture].floor_surf, texture_x, texture_y);
+			floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].dataf[(texture_y << 6) + texture_x];
 		else
 			floor_ceiling_pixels[floor_screen_pixel] = fog_color;
 	}
@@ -903,7 +904,8 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
 	// Put ceiling pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf) {
 		if(pixel_dist <= 1024)
-			floor_ceiling_pixels[ceiling_screen_pixel] = get_pixel(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf, texture_x, texture_y);
+			//floor_ceiling_pixels[ceiling_screen_pixel] = get_pixel(map->floor_ceils[floor_ceil_pixel->texture].ceil_surf, texture_x, texture_y);
+			floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].datac[(texture_y << 6) + texture_x];
 		else
 			floor_ceiling_pixels[ceiling_screen_pixel] = fog_color;
 

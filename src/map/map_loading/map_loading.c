@@ -312,6 +312,17 @@ static void create_floor_ceil_textures(struct texture_list* textures, struct map
 				strcpy(result->floor_ceils[floorceildef_index].floor_path, curr->data->tex_0);
 
 				result->floor_ceils[floorceildef_index].floor_surf = SDL_LoadBMP(result->floor_ceils[floorceildef_index].floor_path);
+
+        unsigned int tw, th, x, y;
+        tw = result->floor_ceils[floorceildef_index].floor_surf->w;
+        th = result->floor_ceils[floorceildef_index].floor_surf->h;
+        result->floor_ceils[floorceildef_index].dataf = (unsigned int*)malloc(sizeof(unsigned int) * tw * th);
+        result->floor_ceils[floorceildef_index].ftw = tw;
+        result->floor_ceils[floorceildef_index].fth = th;
+        for(x = 0; x < tw; x++) {
+          for(y = 0; y < th; y++)
+            result->floor_ceils[floorceildef_index].dataf[y * tw + x] = get_pixel(result->floor_ceils[floorceildef_index].floor_surf, x, y);
+        }
 			} else {
 				result->floor_ceils[floorceildef_index].floor_path = NULL;
 				result->floor_ceils[floorceildef_index].floor_surf = NULL;
@@ -322,6 +333,17 @@ static void create_floor_ceil_textures(struct texture_list* textures, struct map
 				strcpy(result->floor_ceils[floorceildef_index].ceil_path, curr->data->tex_1);
 
 				result->floor_ceils[floorceildef_index].ceil_surf = SDL_LoadBMP(result->floor_ceils[floorceildef_index].ceil_path);
+
+        unsigned int tw, th, x, y;
+        tw = result->floor_ceils[floorceildef_index].ceil_surf->w;
+        th = result->floor_ceils[floorceildef_index].ceil_surf->h;
+        result->floor_ceils[floorceildef_index].datac = (unsigned int*)malloc(sizeof(unsigned int) * tw * th);
+        result->floor_ceils[floorceildef_index].ctw = tw;
+        result->floor_ceils[floorceildef_index].cth = th;
+        for(x = 0; x < tw; x++) {
+          for(y = 0; y < th; y++)
+            result->floor_ceils[floorceildef_index].datac[y * tw + x] = get_pixel(result->floor_ceils[floorceildef_index].ceil_surf, x, y);
+        }
 			} else {
 				result->floor_ceils[floorceildef_index].ceil_path = NULL;
 				result->floor_ceils[floorceildef_index].ceil_surf = NULL;

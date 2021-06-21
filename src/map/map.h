@@ -44,6 +44,15 @@ struct floorcielingdef {
 	SDL_Surface* floor_surf;
 	SDL_Surface* ceil_surf;
 
+  // Defines the texture for this floor
+  unsigned int* dataf;
+  // Texture width and height
+  unsigned int ftw, fth;
+
+  // Defines the texture for this ceiling
+  unsigned int* datac;
+  unsigned int ctw, cth;
+
 	// If not 0, then we treat this as having an invisible wall.
 	int invisible_wall;
 };

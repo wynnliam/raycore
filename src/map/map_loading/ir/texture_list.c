@@ -16,14 +16,14 @@ static int build_texture_list_from_recipe_list_node(struct recipe_list_node* hea
 struct texlist_data* construct_texlist_data(const char* tex_0, const char* tex_1, int is_floor_ceil_pair) {
 	struct texlist_data* result = (struct texlist_data*)malloc(sizeof(struct texlist_data));
 
-	if(!tex_0) {
+	if(!tex_0 || strcmp(tex_0, "0") == 0) {
 		result->tex_0 = NULL;
 	} else {
 		result->tex_0 = (char*)malloc(strlen(tex_0) + 1);
 		strcpy(result->tex_0, tex_0);
 	}
 
-	if(!tex_1) {
+	if(!tex_1 || strcmp(tex_1, "0") == 0) {
 		result->tex_1 = NULL;
 	} else {
 		result->tex_1 = (char*)malloc(strlen(tex_1) + 1);
