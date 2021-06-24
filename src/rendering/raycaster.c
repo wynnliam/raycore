@@ -747,8 +747,14 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	// Manually copies texture from source to portion of screen.
     // Case 1: Entire slice can be seen on camera
     if(slice->screen_row >= 0 && slice->screen_row + slice->screen_height < PROJ_H) {
-      if(slice->screen_height == 6) {
-        printf("6!!!!\n");
+      if(slice->screen_height == 11) {
+        sdata d;
+        d.dst = raycast_pixels;
+        d.src = wall_tex_data;
+        d.dr = slice->screen_row;
+        d.dc = slice->screen_col;
+        d.tc = slice->tex_col;
+        scale_to_11(&d); 
       } else {
 	    int j;
 	    for(j = 0; j < slice->screen_height; ++j) {
