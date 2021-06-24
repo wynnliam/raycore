@@ -435,7 +435,7 @@ static void cast_single_ray(const int screen_col) {
 		compute_wall_slice_render_data_from_hit_and_screen_col(&hit, screen_col, &wall_slice);
 
 		// Only render if we actually can see it.
-		if(wall_slice.screen_height > 0)
+		if(wall_slice.screen_height > 10)
 			draw_wall_slice(&wall_slice, &hit);
 
 		// FLOOR AND CEILING RENDERING
@@ -747,6 +747,9 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	// Manually copies texture from source to portion of screen.
     // Case 1: Entire slice can be seen on camera
     if(slice->screen_row >= 0 && slice->screen_row + slice->screen_height < PROJ_H) {
+      if(slice->screen_height == 6) {
+        printf("6!!!!\n");
+      } else {
 	    int j;
 	    for(j = 0; j < slice->screen_height; ++j) {
 	    	z_buffer_2d[slice->screen_col][j + slice->screen_row] = hit->dist;
@@ -759,6 +762,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	     	} else
 	    		raycast_pixels[pixel_index] = fog_color;
 	    }
+      }
 	} else if(slice->screen_row < 0 && slice->screen_row + slice->screen_height >= PROJ_H) {
       // Case 2: You are very close to wall, and can only see a portion of it
 	    int j;
@@ -1037,7 +1041,6 @@ static void draw_columns_of_thing(const int thing_sorted_index, const SDL_Rect* 
 			thing_column.src = &src_tex_col;
 			thing_column.screen_column = j;
 
-			//draw_column_of_thing_texture(thing_sorted_index, dest, &src_tex_col, frame_offset, j);
 			draw_column_of_thing_texture(&thing_column);
 		}
 		++m;

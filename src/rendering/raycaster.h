@@ -6,6 +6,7 @@
 */
 
 #include "../map/map.h"
+#include "./scalar.h"
 
 #ifndef RAYCASTER
 #define RAYCASTER
@@ -46,7 +47,8 @@
 // worked very well.
 #define SKYBOX_TEX_WIDTH		640
 
-#define MAX_DIST_SQRD			861184
+#define MAX_DIST  512
+#define MAX_DIST_SQRD			(MAX_DIST * MAX_DIST)
 
 void initialize_lookup_tables();
 void initialize_render_textures(SDL_Renderer* renderer);
