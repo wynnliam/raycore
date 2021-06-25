@@ -218,6 +218,8 @@ void initialize_lookup_tables() {
 
 	for(deg = 0; deg <= 360; ++deg)
 		compute_lookup_vals_for_angle(deg);
+
+  init_td_table();
 }
 
 static void compute_lookup_vals_for_angle(const int deg) {
@@ -753,6 +755,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
         d.dr = slice->screen_row;
         d.dc = slice->screen_col;
         d.tc = slice->tex_col;
+        d.td = get_texture_delta(th, slice->screen_height);
         scale_to_i(&d, slice->screen_height);
 
       /*if(slice->screen_height == 64) {

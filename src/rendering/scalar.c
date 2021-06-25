@@ -2,6 +2,11 @@
 
 #include "scalar.h"
 
+// For sampling a textures. If I want to scale texture of size
+// say 64 to 4 pixels, then starting from pixel 0 I jump 64 / 4 = 16
+// pixels to my next. This stores such deltas multiplied by 1024stores such deltas multiplied by 1024
+static int td_table[513][201];
+
 static void (*scalarf[201]) (sdata* data) = {
 0,
 &scale_to_1,
@@ -207,6 +212,26 @@ static void (*scalarf[201]) (sdata* data) = {
 
 void scale_to_i(sdata* data, const int scale_to) {
   scalarf[scale_to](data);
+}
+
+void init_td_table() {
+  // texture height and scale magnitude respectively.
+  int th, s;
+  float delta;
+  for(th = 0; th < 513; th++) {
+    for(s = 0; s < 201; s++) {
+      if(s = 0)
+        delta = 0;
+      else
+        delta = (float)th / (float)s;
+
+      td_table[th][s] = (int)(delta * 1024);
+    }
+  }
+}
+
+int get_texture_delta(const int th, const int s) {
+  return td_table[th][s];
 }
 
 void scale_to_1 (sdata* data) {

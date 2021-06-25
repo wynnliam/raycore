@@ -19,7 +19,13 @@ typedef struct {
   int tc;
   // the height of the texture
   int th;
+  // texture delta: How many pixels do we move before sampling the next
+  // texture
+  int td;
 } sdata;
+
+void init_td_table();
+int get_texture_delta(const int th, const int s);
 
 void scale_to_1(sdata* data);
 void scale_to_2(sdata* data);
