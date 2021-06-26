@@ -67,6 +67,10 @@ static int delta_v_y[361];
 static int z_buffer[PROJ_W];
 static int z_buffer_2d[PROJ_W][PROJ_H];
 
+// Lookup table for computing a floor/ceil pixel's distance from
+// the player
+static int fc_proj_dist[450][200];
+
 // What we render for the floor/ceiling
 static SDL_Texture* floor_ceiling_tex;
 // Where we store the floor and ceiling pixels before we render.
@@ -220,6 +224,18 @@ void initialize_lookup_tables() {
 		compute_lookup_vals_for_angle(deg);
 
   init_td_table();
+
+  // Computes the table needed to project the floor/ceil screen pixel into
+  // the world.
+  int i, j;
+  for(i = 0; i < 449; i++) {
+    for(j = 0; j < 200; j++) {
+      if(j == 0)
+        fc_proj_dist[i][j] = 0;
+      else
+        fc_proj_dist[i][j] = ((i + 64) * DIST_TO_PROJ) / j;
+    }
+  }
 }
 
 static void compute_lookup_vals_for_angle(const int deg) {
@@ -434,20 +450,20 @@ static void cast_single_ray(const int screen_col) {
 		hit.dist = correct_hit_dist_for_fisheye_effect(hit.dist);
 
 		// WALL CASTING
-		compute_wall_slice_render_data_from_hit_and_screen_col(&hit, screen_col, &wall_slice);
+    compute_wall_slice_render_data_from_hit_and_screen_col(&hit, screen_col, &wall_slice);
 
-		// Only render if we actually can see it.
-		if(wall_slice.screen_height > 10)
-			draw_wall_slice(&wall_slice, &hit);
+  // Only render if we actually can see it.
+    if(wall_slice.screen_height > 15)
+      draw_wall_slice(&wall_slice, &hit);
 
 		// FLOOR AND CEILING RENDERING
-		/*if(render_floors) {
+		if(render_floors) {
 			draw_column_of_floor_and_ceiling_from_wall(&wall_slice);
 			render_floors = 0;
 
 			// TODO: Make seperate call for ceiling rendering when we do variable
 			// height ceilings.
-		}*/
+		}
 
 		// After rendering, we need to move the ray curr_h and curr_v's again.
 		move_ray_pos(ray_data.curr_h, ray_data.delta_h);
