@@ -822,13 +822,14 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
 	struct floor_ceiling_pixel floor_ceil_pixel;
 
 	int bottom, pixel_dist, dist_to_point;
+  int sc = wall_slice->screen_col;
 
   bottom = wall_slice->screen_row + wall_slice->screen_height;
 
 	int j;
 	for(j = bottom; j < PROJ_H; ++j) {
 		floor_ceil_pixel.screen_row = j;
-		floor_ceil_pixel.screen_col = wall_slice->screen_col;
+		floor_ceil_pixel.screen_col = sc;
 
     dist_to_point = fc_proj_dist[j][ray_angle_relative_to_player_rot];
 
@@ -844,10 +845,27 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
 								   			 floor_ceil_pixel.world_space_coordinates[1],
 								   			 map);
 
-		if(floor_ceil_pixel.texture >= map->num_floor_ceils)
+		if(floor_ceil_pixel.texture >= map->num_floor_ceils || pixel_dist >= 1024)
 			continue;
 
-		draw_floor_and_ceiling_pixels(&floor_ceil_pixel, pixel_dist);
+  int zbv = z_buffer_2d[sc][-j+ PROJ_H];
+	int texture_x = floor_ceil_pixel.world_space_coordinates[0] % UNIT_SIZE;
+	int texture_y = floor_ceil_pixel.world_space_coordinates[1] % UNIT_SIZE;
+	int floor_screen_pixel = j * PROJ_W + sc;
+	int ceiling_screen_pixel = (-j + PROJ_H) * PROJ_W + sc;
+  unsigned int index = (texture_y << 6) + texture_x;
+
+	// Put floor pixel.
+    if(map->floor_ceils[floor_ceil_pixel.texture].dataf)
+      floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[floor_ceil_pixel.texture].dataf[index];
+
+    // Put ceiling pixel.
+    if(map->floor_ceils[floor_ceil_pixel.texture].datac) {
+      if(zbv == -1 || zbv > pixel_dist) {
+        floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[floor_ceil_pixel.texture].datac[index];
+        z_buffer_2d[sc][-j+ PROJ_H];
+      }
+    }
 	}
 }
 
