@@ -70,6 +70,7 @@ static int z_buffer_2d[PROJ_W][PROJ_H];
 // Lookup table for computing a floor/ceil pixel's distance from
 // the player
 static int fc_proj_dist[200][361];
+static int fc_proj_dist_sqrt[200][361];
 
 // What we render for the floor/ceiling
 static SDL_Texture* floor_ceiling_tex;
@@ -201,8 +202,6 @@ static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinf
 static void draw_wall_slice(struct wall_slice*, struct hitinfo* hit);
 
 static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice*);
-static int compute_row_for_bottom_of_wall_slice(struct wall_slice*);
-static void project_screen_pixel_to_world_space(struct floor_ceiling_pixel*);
 static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel*, int);
 
 static void draw_things();
@@ -236,6 +235,7 @@ void initialize_lookup_tables() {
 	    int straight_dist = (int)(DIST_TO_PROJ * HALF_UNIT_SIZE / d);
 	    int dist_to_point = (straight_dist << 7) / c;
       fc_proj_dist[i][j] = dist_to_point;
+      fc_proj_dist_sqrt[i][j] = (int)sqrt(dist_to_point);
     }
   }
 }
@@ -821,18 +821,24 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
 	// Data needed to render a floor (and corresponding ceiling pixel).
 	struct floor_ceiling_pixel floor_ceil_pixel;
 
-	int pixel_dist;
+	int bottom, pixel_dist, dist_to_point;
+
+  bottom = wall_slice->screen_row + wall_slice->screen_height;
 
 	int j;
-	for(j = compute_row_for_bottom_of_wall_slice(wall_slice); j < PROJ_H; ++j) {
+	for(j = bottom; j < PROJ_H; ++j) {
 		floor_ceil_pixel.screen_row = j;
 		floor_ceil_pixel.screen_col = wall_slice->screen_col;
-		project_screen_pixel_to_world_space(&floor_ceil_pixel);
 
-		pixel_dist = get_dist_sqrd(floor_ceil_pixel.world_space_coordinates[0],
+    dist_to_point = fc_proj_dist[j][ray_angle_relative_to_player_rot];
+
+    floor_ceil_pixel.world_space_coordinates[0] = player_x + ((dist_to_point * cos128table[adj_ray_angle]) >> 7);
+    floor_ceil_pixel. world_space_coordinates[1] = player_y - ((dist_to_point * sin128table[adj_ray_angle]) >> 7);
+
+		/*pixel_dist = get_dist_sqrd(floor_ceil_pixel.world_space_coordinates[0],
 								   floor_ceil_pixel.world_space_coordinates[1],
-								   player_x, player_y);
-		pixel_dist = correct_hit_dist_for_fisheye_effect((int)sqrt(pixel_dist));
+								   player_x, player_y);*/
+		pixel_dist = correct_hit_dist_for_fisheye_effect(fc_proj_dist_sqrt[j][ray_angle_relative_to_player_rot]);
 
 		floor_ceil_pixel.texture  = get_tile(floor_ceil_pixel.world_space_coordinates[0],
 								   			 floor_ceil_pixel.world_space_coordinates[1],
@@ -845,39 +851,23 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
 	}
 }
 
-static int compute_row_for_bottom_of_wall_slice(struct wall_slice* wall_slice) {
-	return wall_slice->screen_row + wall_slice->screen_height;
-}
-
-static void project_screen_pixel_to_world_space(struct floor_ceiling_pixel* floor_ceil_pixel) {
-	// Compute the distance from the player to the point.
-	int dist_to_point = fc_proj_dist[floor_ceil_pixel->screen_row][ray_angle_relative_to_player_rot];
-
-	floor_ceil_pixel->world_space_coordinates[0] = player_x + ((dist_to_point * cos128table[adj_ray_angle]) >> 7);
-	floor_ceil_pixel->world_space_coordinates[1] = player_y - ((dist_to_point * sin128table[adj_ray_angle]) >> 7);
-}
-
 static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil_pixel, int pixel_dist) {
 	int texture_x = floor_ceil_pixel->world_space_coordinates[0] % UNIT_SIZE;
 	int texture_y = floor_ceil_pixel->world_space_coordinates[1] % UNIT_SIZE;
 	int floor_screen_pixel = floor_ceil_pixel->screen_row * PROJ_W + floor_ceil_pixel->screen_col;
 	int ceiling_screen_pixel = ((-floor_ceil_pixel->screen_row) + PROJ_H) * PROJ_W + floor_ceil_pixel->screen_col;
-  unsigned int index = (texture_y << 6)+ texture_x;
+  unsigned int index = (texture_y << 6) + texture_x;
 
 	// Put floor pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].dataf) {
 		if(pixel_dist <= 1024)
-			floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].dataf[index];
-		else
-			floor_ceiling_pixels[floor_screen_pixel] = fog_color;
+    	floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].dataf[index];
 	}
 
 	// Put ceiling pixel.
 	if(map->floor_ceils[floor_ceil_pixel->texture].datac) {
 		if(pixel_dist <= 1024)
 			floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].datac[index];
-		else
-			floor_ceiling_pixels[ceiling_screen_pixel] = fog_color;
 
 		if(z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] == -1 || 
 		   z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] > pixel_dist) {
