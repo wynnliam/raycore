@@ -71,6 +71,7 @@ static int z_buffer_2d[PROJ_W][PROJ_H];
 // the player
 static int fc_proj_dist[200][361];
 static int fc_proj_dist_sqrt[200][361];
+static int fc_fe[200][361];
 
 // What we render for the floor/ceiling
 static SDL_Texture* floor_ceiling_tex;
@@ -236,6 +237,7 @@ void initialize_lookup_tables() {
 	    int dist_to_point = (straight_dist << 7) / c;
       fc_proj_dist[i][j] = dist_to_point;
       fc_proj_dist_sqrt[i][j] = (int)sqrt(dist_to_point);
+      fc_fe[i][j] = correct_hit_dist_for_fisheye_effect(fc_proj_dist_sqrt[i][j]);
     }
   }
 }
@@ -821,25 +823,21 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
 	// Data needed to render a floor (and corresponding ceiling pixel).
 	struct floor_ceiling_pixel floor_ceil_pixel;
 
-	int bottom, pixel_dist, dist_to_point;
+	int bottom = wall_slice->screen_row + wall_slice->screen_height;
   int sc = wall_slice->screen_col;
-
-  bottom = wall_slice->screen_row + wall_slice->screen_height;
 
 	int j;
 	for(j = bottom; j < PROJ_H; ++j) {
+    int pixel_dist, dist_to_point;
 		floor_ceil_pixel.screen_row = j;
 		floor_ceil_pixel.screen_col = sc;
 
     dist_to_point = fc_proj_dist[j][ray_angle_relative_to_player_rot];
+		pixel_dist = fc_fe[j][ray_angle_relative_to_player_rot];
 
     floor_ceil_pixel.world_space_coordinates[0] = player_x + ((dist_to_point * cos128table[adj_ray_angle]) >> 7);
-    floor_ceil_pixel. world_space_coordinates[1] = player_y - ((dist_to_point * sin128table[adj_ray_angle]) >> 7);
+    floor_ceil_pixel.world_space_coordinates[1] = player_y - ((dist_to_point * sin128table[adj_ray_angle]) >> 7);
 
-		/*pixel_dist = get_dist_sqrd(floor_ceil_pixel.world_space_coordinates[0],
-								   floor_ceil_pixel.world_space_coordinates[1],
-								   player_x, player_y);*/
-		pixel_dist = correct_hit_dist_for_fisheye_effect(fc_proj_dist_sqrt[j][ray_angle_relative_to_player_rot]);
 
 		floor_ceil_pixel.texture  = get_tile(floor_ceil_pixel.world_space_coordinates[0],
 								   			 floor_ceil_pixel.world_space_coordinates[1],
@@ -848,7 +846,7 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
 		if(floor_ceil_pixel.texture >= map->num_floor_ceils || pixel_dist >= 1024)
 			continue;
 
-  int zbv = z_buffer_2d[sc][-j+ PROJ_H];
+  int zbv = z_buffer_2d[sc][-j + PROJ_H];
 	int texture_x = floor_ceil_pixel.world_space_coordinates[0] % UNIT_SIZE;
 	int texture_y = floor_ceil_pixel.world_space_coordinates[1] % UNIT_SIZE;
 	int floor_screen_pixel = j * PROJ_W + sc;
