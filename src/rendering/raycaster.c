@@ -852,6 +852,9 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
 }
 
 static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil_pixel, int pixel_dist) {
+  int sc = floor_ceil_pixel->screen_col;
+  int sr = floor_ceil_pixel->screen_row;
+  int zbv = z_buffer_2d[sc][-sr + PROJ_H];
 	int texture_x = floor_ceil_pixel->world_space_coordinates[0] % UNIT_SIZE;
 	int texture_y = floor_ceil_pixel->world_space_coordinates[1] % UNIT_SIZE;
 	int floor_screen_pixel = floor_ceil_pixel->screen_row * PROJ_W + floor_ceil_pixel->screen_col;
@@ -859,21 +862,18 @@ static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil
   unsigned int index = (texture_y << 6) + texture_x;
 
 	// Put floor pixel.
-	if(map->floor_ceils[floor_ceil_pixel->texture].dataf) {
-		if(pixel_dist <= 1024)
-    	floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].dataf[index];
-	}
+  if(pixel_dist <= 1024) {
+    if(map->floor_ceils[floor_ceil_pixel->texture].dataf)
+      floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].dataf[index];
 
-	// Put ceiling pixel.
-	if(map->floor_ceils[floor_ceil_pixel->texture].datac) {
-		if(pixel_dist <= 1024)
-			floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].datac[index];
-
-		if(z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] == -1 || 
-		   z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] > pixel_dist) {
-			z_buffer_2d[floor_ceil_pixel->screen_col][-floor_ceil_pixel->screen_row + PROJ_H] = pixel_dist;
-		}
-	}
+    // Put ceiling pixel.
+    if(map->floor_ceils[floor_ceil_pixel->texture].datac) {
+      if(zbv == -1 || zbv > pixel_dist) {
+        floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].datac[index];
+        z_buffer_2d[sc][-sr + PROJ_H];
+      }
+    }
+  }
 }
 
 static void render_pixel_arrays_to_screen(SDL_Renderer* renderer) {
