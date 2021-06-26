@@ -823,27 +823,28 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
 	// Data needed to render a floor (and corresponding ceiling pixel).
 	struct floor_ceiling_pixel floor_ceil_pixel;
 
-	int bottom = wall_slice->screen_row + wall_slice->screen_height;
-  int sc = wall_slice->screen_col;
+	const int bottom = wall_slice->screen_row + wall_slice->screen_height;
+  const int sc = wall_slice->screen_col;
+
+  const int sv = sin128table[adj_ray_angle];
+  const int cv = cos128table[adj_ray_angle];
 
 	int j;
 	for(j = bottom; j < PROJ_H; ++j) {
-    int pixel_dist, dist_to_point;
+    int dist_to_point;
 		floor_ceil_pixel.screen_row = j;
 		floor_ceil_pixel.screen_col = sc;
 
     dist_to_point = fc_proj_dist[j][ray_angle_relative_to_player_rot];
-		pixel_dist = fc_fe[j][ray_angle_relative_to_player_rot];
 
-    floor_ceil_pixel.world_space_coordinates[0] = player_x + ((dist_to_point * cos128table[adj_ray_angle]) >> 7);
-    floor_ceil_pixel.world_space_coordinates[1] = player_y - ((dist_to_point * sin128table[adj_ray_angle]) >> 7);
-
+    floor_ceil_pixel.world_space_coordinates[0] = player_x + ((dist_to_point * cv) >> 7);
+    floor_ceil_pixel.world_space_coordinates[1] = player_y - ((dist_to_point * sv) >> 7);
 
 		floor_ceil_pixel.texture  = get_tile(floor_ceil_pixel.world_space_coordinates[0],
 								   			 floor_ceil_pixel.world_space_coordinates[1],
 								   			 map);
 
-		if(floor_ceil_pixel.texture >= map->num_floor_ceils || pixel_dist >= 1024)
+		if(floor_ceil_pixel.texture >= map->num_floor_ceils)
 			continue;
 
   int zbv = z_buffer_2d[sc][-j + PROJ_H];
@@ -859,7 +860,7 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
 
     // Put ceiling pixel.
     if(map->floor_ceils[floor_ceil_pixel.texture].datac) {
-      if(zbv == -1 || zbv > pixel_dist) {
+      if(zbv == -1 || zbv > fc_fe[j][ray_angle_relative_to_player_rot]) {
         floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[floor_ceil_pixel.texture].datac[index];
         z_buffer_2d[sc][-j+ PROJ_H];
       }
