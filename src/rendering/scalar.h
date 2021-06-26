@@ -22,6 +22,10 @@ typedef struct {
   // texture delta: How many pixels do we move before sampling the next
   // texture
   int td;
+  // offset of texture: If we want to render a part of a texture, we can
+  // specify the start of that here. If wanted to all pixels after the
+  // first 22, then I set ofst to 22.
+  int ofst;
 } sdata;
 
 void init_td_table();

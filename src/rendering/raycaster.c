@@ -339,7 +339,7 @@ void cast_rays(SDL_Renderer* renderer, struct mapdef* curr_map, int curr_player_
 	update_state_variables(curr_map, curr_player_x, curr_player_y, curr_player_rot);
 
 	clean_pixel_arrays();
-	compute_distance_to_player_for_each_thing();
+	//compute_distance_to_player_for_each_thing();
 
 	int screen_col;
 	for(screen_col = 0; screen_col < PROJ_W; ++screen_col) {
@@ -349,7 +349,7 @@ void cast_rays(SDL_Renderer* renderer, struct mapdef* curr_map, int curr_player_
 	}
 
 	// THING CASTING
-	draw_things();
+	//draw_things();
 
 	render_pixel_arrays_to_screen(renderer);
 }
@@ -411,7 +411,7 @@ static void cast_single_ray(const int screen_col) {
 	compute_ray_delta_vectors(adj_ray_angle, ray_data.delta_h, ray_data.delta_v);
 
 	// SKY CASTING
-	draw_sky_slice(screen_col);
+	////draw_sky_slice(screen_col);
 
 	int i;
 	for(i = 0; i < PROJ_H; i++)
@@ -441,13 +441,13 @@ static void cast_single_ray(const int screen_col) {
 			draw_wall_slice(&wall_slice, &hit);
 
 		// FLOOR AND CEILING RENDERING
-		if(render_floors) {
+		/*if(render_floors) {
 			draw_column_of_floor_and_ceiling_from_wall(&wall_slice);
 			render_floors = 0;
 
 			// TODO: Make seperate call for ceiling rendering when we do variable
 			// height ceilings.
-		}
+		}*/
 
 		// After rendering, we need to move the ray curr_h and curr_v's again.
 		move_ray_pos(ray_data.curr_h, ray_data.delta_h);
@@ -741,87 +741,62 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 	int pixel_index;
 	int p_x, p_y;
   int tw, th;
+  sdata d;
+
   tw = map->walls[slice->wall_tex].tw;
   th = map->walls[slice->wall_tex].th;
 
 	p_x = slice->tex_col;
 
+  d.dst = raycast_pixels;
+  d.src = wall_tex_data;
+  d.dc = slice->screen_col;
+  d.tc = slice->tex_col;
+
 	// Manually copies texture from source to portion of screen.
+  if(slice->screen_row >= 0 && slice->screen_row + slice->screen_height < PROJ_H) {
     // Case 1: Entire slice can be seen on camera
-    if(slice->screen_row >= 0 && slice->screen_row + slice->screen_height < PROJ_H) {
-        sdata d;
-        d.dst = raycast_pixels;
-        d.src = wall_tex_data;
-        d.dr = slice->screen_row;
-        d.dc = slice->screen_col;
-        d.tc = slice->tex_col;
-        d.td = get_texture_delta(th, slice->screen_height);
-        scale_to_i(&d, slice->screen_height);
-
-      /*if(slice->screen_height == 64) {
-        printf("64!\n");
-        scale_to_64(&d); 
-      } else {
-	    int j;
-	    for(j = 0; j < slice->screen_height; ++j) {
-	    	//z_buffer_2d[slice->screen_col][j + slice->screen_row] = hit->dist;
-
-	    	pixel_index = (j + slice->screen_row) * PROJ_W + slice->screen_col;
-
-	    	if(hit->dist <= 1024) {
-	    		p_y = (j * th) / slice->screen_height;
-          raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
-	     	} else
-	    		raycast_pixels[pixel_index] = fog_color;
-	    }
-      }*/
+    d.dr = slice->screen_row;
+    d.td = get_texture_delta(th, slice->screen_height);
+    d.ofst = 0;
+    scale_to_i(&d, slice->screen_height);
 	} else if(slice->screen_row < 0 && slice->screen_row + slice->screen_height >= PROJ_H) {
-      // Case 2: You are very close to wall, and can only see a portion of it
-	    int j;
-	    for(j = 0; j < PROJ_H; ++j) {
-	    	z_buffer_2d[slice->screen_col][j] = hit->dist;
-
-	    	pixel_index = j * PROJ_W + slice->screen_col;
-
-	    	if(hit->dist <= 1024) {
-                // screen row is negative, so subtract it to adjust j so we can
-                // scale to texture coordinates.
-	    		p_y = ((j - slice->screen_row) * th) / slice->screen_height;
-          raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
-	     	} else
-	    		raycast_pixels[pixel_index] = fog_color;
-	    }
-    } else if(slice->screen_row < 0 && slice->screen_row + slice->screen_height < PROJ_H) {
-      // Case 3: You cannot see the top of the wall, but can see the bottom. Typically
-	    int j;
-	    for(j = 0; j < slice->screen_row + slice->screen_height; ++j) {
-	    	z_buffer_2d[slice->screen_col][j] = hit->dist;
-
-	    	pixel_index = j * PROJ_W + slice->screen_col;
-
-	    	if(hit->dist <= 1024) {
-                // screen row is negative, so subtract it to adjust j so we can
-                // scale to texture coordinates.
-	    		p_y = ((j - slice->screen_row) * th) / slice->screen_height;
-          raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
-	     	} else
-	    		raycast_pixels[pixel_index] = fog_color;
-	    }
-    } else {
-        // Case 4: screen row >= 0 && row + height >= PROJ_H
-	    int j;
-	    for(j = 0; j < PROJ_H; ++j) {
-	    	z_buffer_2d[slice->screen_col][j] = hit->dist;
-
-	    	pixel_index = j * PROJ_W + slice->screen_col;
-
-	    	if(hit->dist <= 1024) {
-	    		p_y = (j * th) / slice->screen_height;
-          raycast_pixels[pixel_index] = wall_tex_data[p_y * tw + p_x];
-	     	} else
-	    		raycast_pixels[pixel_index] = fog_color;
-	    }
-    }
+    // Case 2: You are very close to wall, and can only see a portion of it
+    // from y = mx + b. Setting up relationship where x is slice rows
+    // and y is texture rows
+    float m = (float)th / slice->screen_height;
+    float b = -m * slice->screen_row;
+    int start = (int)b;
+    int end = (int)(PROJ_H * m + b);
+    int sz = end - start;
+    d.dr = 0;
+    d.ofst = start;
+    d.td = get_texture_delta(sz, PROJ_H);
+    scale_to_i(&d, PROJ_H);
+  } else if(slice->screen_row < 0 && slice->screen_row + slice->screen_height < PROJ_H) {
+    // Case 3: You cannot see the top of the wall, but can see the bottom. Typically
+    // what happens when dealing with variable height walls.
+    float m = (float)th / slice->screen_height;
+    float b = -m * slice->screen_row;
+    int start = (int)b;
+    int end = th;
+    int tsz = end - start;
+    int ssz = slice->screen_height + slice->screen_row;
+    d.dr = 0;
+    d.ofst = start;
+    d.td = get_texture_delta(tsz, ssz);
+    scale_to_i(&d, ssz);
+  } else {
+    int start = slice->screen_row;
+    float m = (float)th / slice->screen_height;
+    float b = -m * start;
+    int te = (int)(m * PROJ_H + b);
+    int sz = PROJ_H - start;
+    d.dr = start;
+    d.ofst = 0;
+    d.td = get_texture_delta(te, sz);
+    scale_to_i(&d, sz);
+   }
 }
 
 static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_slice) {
