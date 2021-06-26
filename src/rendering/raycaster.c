@@ -136,13 +136,6 @@ struct wall_slice {
 	int tex_col;
 };
 
-struct floor_ceiling_pixel {
-	unsigned int texture;
-	int screen_row;
-	int screen_col;
-	int world_space_coordinates[2];
-};
-
 struct thing_column_render_data {
 	int thing_sorted_index;
 	int screen_column;
@@ -820,75 +813,35 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 }
 
 static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_slice) {
-	// Data needed to render a floor (and corresponding ceiling pixel).
-	struct floor_ceiling_pixel floor_ceil_pixel;
-
 	const int bottom = wall_slice->screen_row + wall_slice->screen_height;
   const int sc = wall_slice->screen_col;
-
   const int sv = sin128table[adj_ray_angle];
   const int cv = cos128table[adj_ray_angle];
 
 	int j;
 	for(j = bottom; j < PROJ_H; ++j) {
-    int dist_to_point;
-		floor_ceil_pixel.screen_row = j;
-		floor_ceil_pixel.screen_col = sc;
+    int dist_to_point = fc_proj_dist[j][ray_angle_relative_to_player_rot];
+    int f = fc_fe[j][ray_angle_relative_to_player_rot];
+    unsigned int wx = player_x + ((dist_to_point * cv) >> 7);
+    unsigned int wy = player_y - ((dist_to_point * sv) >> 7);
+    unsigned int t = get_tile(wx, wy, map);
+    int zbv = z_buffer_2d[sc][-j + PROJ_H];
+    int tx = wx % UNIT_SIZE;
+    int ty = wy % UNIT_SIZE;
+    int floor_screen_pixel = j * PROJ_W + sc;
+    int ceiling_screen_pixel = (-j + PROJ_H) * PROJ_W + sc;
+    unsigned int index = (ty << 6) + tx;
 
-    dist_to_point = fc_proj_dist[j][ray_angle_relative_to_player_rot];
-
-    floor_ceil_pixel.world_space_coordinates[0] = player_x + ((dist_to_point * cv) >> 7);
-    floor_ceil_pixel.world_space_coordinates[1] = player_y - ((dist_to_point * sv) >> 7);
-
-		floor_ceil_pixel.texture  = get_tile(floor_ceil_pixel.world_space_coordinates[0],
-								   			 floor_ceil_pixel.world_space_coordinates[1],
-								   			 map);
-
-		if(floor_ceil_pixel.texture >= map->num_floor_ceils)
+		if(t >= map->num_floor_ceils)
 			continue;
 
-  int zbv = z_buffer_2d[sc][-j + PROJ_H];
-	int texture_x = floor_ceil_pixel.world_space_coordinates[0] % UNIT_SIZE;
-	int texture_y = floor_ceil_pixel.world_space_coordinates[1] % UNIT_SIZE;
-	int floor_screen_pixel = j * PROJ_W + sc;
-	int ceiling_screen_pixel = (-j + PROJ_H) * PROJ_W + sc;
-  unsigned int index = (texture_y << 6) + texture_x;
-
-	// Put floor pixel.
-    if(map->floor_ceils[floor_ceil_pixel.texture].dataf)
-      floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[floor_ceil_pixel.texture].dataf[index];
-
+	  // Put floor pixel.
+    if(map->floor_ceils[t].dataf)
+      floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[t].dataf[index];
     // Put ceiling pixel.
-    if(map->floor_ceils[floor_ceil_pixel.texture].datac) {
-      if(zbv == -1 || zbv > fc_fe[j][ray_angle_relative_to_player_rot]) {
-        floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[floor_ceil_pixel.texture].datac[index];
-        z_buffer_2d[sc][-j+ PROJ_H];
-      }
-    }
-	}
-}
-
-static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel* floor_ceil_pixel, int pixel_dist) {
-  int sc = floor_ceil_pixel->screen_col;
-  int sr = floor_ceil_pixel->screen_row;
-  int zbv = z_buffer_2d[sc][-sr + PROJ_H];
-	int texture_x = floor_ceil_pixel->world_space_coordinates[0] % UNIT_SIZE;
-	int texture_y = floor_ceil_pixel->world_space_coordinates[1] % UNIT_SIZE;
-	int floor_screen_pixel = floor_ceil_pixel->screen_row * PROJ_W + floor_ceil_pixel->screen_col;
-	int ceiling_screen_pixel = ((-floor_ceil_pixel->screen_row) + PROJ_H) * PROJ_W + floor_ceil_pixel->screen_col;
-  unsigned int index = (texture_y << 6) + texture_x;
-
-	// Put floor pixel.
-  if(pixel_dist <= 1024) {
-    if(map->floor_ceils[floor_ceil_pixel->texture].dataf)
-      floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].dataf[index];
-
-    // Put ceiling pixel.
-    if(map->floor_ceils[floor_ceil_pixel->texture].datac) {
-      if(zbv == -1 || zbv > pixel_dist) {
-        floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[floor_ceil_pixel->texture].datac[index];
-        z_buffer_2d[sc][-sr + PROJ_H];
-      }
+    if(map->floor_ceils[t].datac && (zbv == -1 || zbv > f)) {
+      floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[t].datac[index];
+      z_buffer_2d[sc][-j+ PROJ_H] = f;
     }
   }
 }
