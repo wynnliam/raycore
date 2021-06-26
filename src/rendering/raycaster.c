@@ -69,7 +69,7 @@ static int z_buffer_2d[PROJ_W][PROJ_H];
 
 // Lookup table for computing a floor/ceil pixel's distance from
 // the player
-static int fc_proj_dist[450][200];
+static int fc_proj_dist[200][361];
 
 // What we render for the floor/ceiling
 static SDL_Texture* floor_ceiling_tex;
@@ -228,12 +228,14 @@ void initialize_lookup_tables() {
   // Computes the table needed to project the floor/ceil screen pixel into
   // the world.
   int i, j;
-  for(i = 0; i < 449; i++) {
-    for(j = 0; j < 200; j++) {
-      if(j == 0)
-        fc_proj_dist[i][j] = 0;
-      else
-        fc_proj_dist[i][j] = ((i + 64) * DIST_TO_PROJ) / j;
+  for(i = 0; i < 200; i++) {
+    for(j = 0; j < 361; j++) {
+      int c = cos128table[j];
+      c = c == 0 ? 1 : c;
+      int d = i == HALF_PROJ_H ? 1 : i - HALF_PROJ_H;
+	    int straight_dist = (int)(DIST_TO_PROJ * HALF_UNIT_SIZE / d);
+	    int dist_to_point = (straight_dist << 7) / c;
+      fc_proj_dist[i][j] = dist_to_point;
     }
   }
 }
@@ -849,8 +851,7 @@ static int compute_row_for_bottom_of_wall_slice(struct wall_slice* wall_slice) {
 
 static void project_screen_pixel_to_world_space(struct floor_ceiling_pixel* floor_ceil_pixel) {
 	// Compute the distance from the player to the point.
-	int straight_dist = (int)(DIST_TO_PROJ * HALF_UNIT_SIZE / (floor_ceil_pixel->screen_row - HALF_PROJ_H));
-	int dist_to_point = (straight_dist << 7) / (cos128table[ray_angle_relative_to_player_rot]);
+	int dist_to_point = fc_proj_dist[floor_ceil_pixel->screen_row][ray_angle_relative_to_player_rot];
 
 	floor_ceil_pixel->world_space_coordinates[0] = player_x + ((dist_to_point * cos128table[adj_ray_angle]) >> 7);
 	floor_ceil_pixel->world_space_coordinates[1] = player_y - ((dist_to_point * sin128table[adj_ray_angle]) >> 7);
