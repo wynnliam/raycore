@@ -7,6 +7,7 @@
 
 #include "../map/map.h"
 #include "./scalar.h"
+#include "./fcscalar.h"
 
 #ifndef RAYCASTER
 #define RAYCASTER

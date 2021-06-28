@@ -1,24 +1,13 @@
 // Liam Wynn, 5/13/2018, CS410p: Full Stack Web Development
 
 #include "raycaster.h"
+#include "./util.h"
 
 #include <stdio.h>
 #include <math.h>
 
 // TODO: Move this elsewhere.
 //------------------------------------------------------------------
-int get_tile(int x, int y, struct mapdef* map) {
-	int grid_x = x >> UNIT_POWER;
-	int grid_y = y >> UNIT_POWER;
-
-	if(grid_x < 0 || grid_x > map->map_w - 1)
-		return -1;
-	if(grid_y < 0 || grid_y > map->map_h - 1)
-		return -1;
-
-	return map->layout[grid_y * map->map_w + grid_x];
-}
-
 int get_dist_sqrd(int x1, int y1, int x2, int y2) {
 	int d_x, d_y;
 
@@ -65,13 +54,13 @@ static int delta_v_y[361];
 
 // Stores the distance each ray is from the player when it hits something.
 static int z_buffer[PROJ_W];
-static int z_buffer_2d[PROJ_W][PROJ_H];
+int z_buffer_2d[PROJ_W][PROJ_H];
 
 // Lookup table for computing a floor/ceil pixel's distance from
 // the player
-static int fc_proj_dist[200][361];
+int fc_proj_dist[200][361];
 static int fc_proj_dist_sqrt[200][361];
-static int fc_fe[200][361];
+int fc_fe[200][361];
 
 // What we render for the floor/ceiling
 static SDL_Texture* floor_ceiling_tex;
@@ -196,7 +185,6 @@ static void compute_wall_slice_render_data_from_hit_and_screen_col(struct hitinf
 static void draw_wall_slice(struct wall_slice*, struct hitinfo* hit);
 
 static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice*);
-static void draw_floor_and_ceiling_pixels(struct floor_ceiling_pixel*, int);
 
 static void draw_things();
 static void project_thing_pos_onto_screen(const int[2], int[2]);
@@ -813,12 +801,22 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
 }
 
 static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_slice) {
+  fcd args;
 	const int bottom = wall_slice->screen_row + wall_slice->screen_height;
-  const int sc = wall_slice->screen_col;
-  const int sv = sin128table[adj_ray_angle];
-  const int cv = cos128table[adj_ray_angle];
 
-	int j;
+
+  args.sc = wall_slice->screen_col;
+  args.sv = sin128table[adj_ray_angle];
+  args.cv = cos128table[adj_ray_angle];
+  args.ray_angle_relative_to_player_rot = ray_angle_relative_to_player_rot;
+  args.map = map;
+  args.fcp = floor_ceiling_pixels;
+  args.player_x = player_x;
+  args.player_y = player_y;
+
+  draw_fc(bottom, &args);
+
+	/*int j;
 	for(j = bottom; j < PROJ_H; ++j) {
     int dist_to_point = fc_proj_dist[j][ray_angle_relative_to_player_rot];
     int f = fc_fe[j][ray_angle_relative_to_player_rot];
@@ -843,7 +841,7 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
       floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[t].datac[index];
       z_buffer_2d[sc][-j+ PROJ_H] = f;
     }
-  }
+  }*/
 }
 
 static void render_pixel_arrays_to_screen(SDL_Renderer* renderer) {
