@@ -753,6 +753,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
   d.src = wall_tex_data;
   d.dc = slice->screen_col;
   d.tc = slice->tex_col;
+  d.hdist = hit->dist;
 
 	// Manually copies texture from source to portion of screen.
   if(slice->screen_row >= 0 && slice->screen_row + slice->screen_height < PROJ_H) {

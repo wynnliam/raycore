@@ -26,6 +26,8 @@ typedef struct {
   // specify the start of that here. If wanted to all pixels after the
   // first 22, then I set ofst to 22.
   int ofst;
+  // The distance this wall slice is from the user
+  int hdist;
 } sdata;
 
 void init_td_table();
