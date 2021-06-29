@@ -340,7 +340,7 @@ void cast_rays(SDL_Renderer* renderer, struct mapdef* curr_map, int curr_player_
 	update_state_variables(curr_map, curr_player_x, curr_player_y, curr_player_rot);
 
 	clean_pixel_arrays();
-	//compute_distance_to_player_for_each_thing();
+	compute_distance_to_player_for_each_thing();
 
 	int screen_col;
 	for(screen_col = 0; screen_col < PROJ_W; ++screen_col) {
@@ -350,7 +350,7 @@ void cast_rays(SDL_Renderer* renderer, struct mapdef* curr_map, int curr_player_
 	}
 
 	// THING CASTING
-	//draw_things();
+	draw_things();
 
 	render_pixel_arrays_to_screen(renderer);
 }
@@ -804,7 +804,6 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
   fcd args;
 	const int bottom = wall_slice->screen_row + wall_slice->screen_height;
 
-
   args.sc = wall_slice->screen_col;
   args.sv = sin128table[adj_ray_angle];
   args.cv = cos128table[adj_ray_angle];
@@ -815,33 +814,6 @@ static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice* wall_s
   args.player_y = player_y;
 
   draw_fc(bottom, &args);
-
-	/*int j;
-	for(j = bottom; j < PROJ_H; ++j) {
-    int dist_to_point = fc_proj_dist[j][ray_angle_relative_to_player_rot];
-    int f = fc_fe[j][ray_angle_relative_to_player_rot];
-    unsigned int wx = player_x + ((dist_to_point * cv) >> 7);
-    unsigned int wy = player_y - ((dist_to_point * sv) >> 7);
-    unsigned int t = get_tile(wx, wy, map);
-    int zbv = z_buffer_2d[sc][-j + PROJ_H];
-    int tx = wx % UNIT_SIZE;
-    int ty = wy % UNIT_SIZE;
-    int floor_screen_pixel = j * PROJ_W + sc;
-    int ceiling_screen_pixel = (-j + PROJ_H) * PROJ_W + sc;
-    unsigned int index = (ty << 6) + tx;
-
-		if(t >= map->num_floor_ceils)
-			continue;
-
-	  // Put floor pixel.
-    if(map->floor_ceils[t].dataf)
-      floor_ceiling_pixels[floor_screen_pixel] = map->floor_ceils[t].dataf[index];
-    // Put ceiling pixel.
-    if(map->floor_ceils[t].datac && (zbv == -1 || zbv > f)) {
-      floor_ceiling_pixels[ceiling_screen_pixel] = map->floor_ceils[t].datac[index];
-      z_buffer_2d[sc][-j+ PROJ_H] = f;
-    }
-  }*/
 }
 
 static void render_pixel_arrays_to_screen(SDL_Renderer* renderer) {
