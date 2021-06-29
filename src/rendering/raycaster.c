@@ -774,7 +774,7 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
     d.ofst = start;
     d.td = get_texture_delta(sz, PROJ_H);
     scale_to_i(&d, PROJ_H);
-  } else if(slice->screen_row < 0 && slice->screen_row + slice->screen_height < PROJ_H) {
+  } else if(slice->screen_row < 0 && slice->screen_row + slice->screen_height >= 0 && slice->screen_row + slice->screen_height < PROJ_H) {
     // Case 3: You cannot see the top of the wall, but can see the bottom. Typically
     // what happens when dealing with variable height walls.
     float m = (float)th / slice->screen_height;
@@ -787,7 +787,8 @@ static void draw_wall_slice(struct wall_slice* slice, struct hitinfo* hit) {
     d.ofst = start;
     d.td = get_texture_delta(tsz, ssz);
     scale_to_i(&d, ssz);
-  } else {
+  } else if(slice->screen_row >= 0 && slice->screen_row + slice->screen_height >= PROJ_H) {
+    // Case 4: You can see the top of the slice, but not the bottom. This a result of some approximation issues.
     int start = slice->screen_row;
     float m = (float)th / slice->screen_height;
     float b = -m * start;
