@@ -177,7 +177,7 @@ static int tile_is_floor_ceil(const int);
 static void move_ray_pos(int[2], int[2]);
 
 static int ray_hit_wall(struct hitinfo*);
-static unsigned int correct_hit_dist_for_fisheye_effect(const int);
+unsigned int correct_hit_dist_for_fisheye_effect(const int);
 
 static void draw_sky_slice(const int);
 
@@ -209,7 +209,7 @@ void initialize_lookup_tables() {
   // Computes the table needed to project the floor/ceil screen pixel into
   // the world.
   int i, j;
-  for(i = 0; i < 200; i++) {
+  for(i = 100; i < 200; i++) {
     for(j = 0; j < 361; j++) {
       int c = cos128table[j];
       c = c == 0 ? 1 : c;
@@ -217,8 +217,12 @@ void initialize_lookup_tables() {
 	    int straight_dist = (int)(DIST_TO_PROJ * HALF_UNIT_SIZE / d);
 	    int dist_to_point = (straight_dist << 7) / c;
       fc_proj_dist[i][j] = dist_to_point;
+      fc_proj_dist[-i + 199][j] = dist_to_point;
       fc_proj_dist_sqrt[i][j] = (int)sqrt(dist_to_point);
-      fc_fe[i][j] = correct_hit_dist_for_fisheye_effect(fc_proj_dist_sqrt[i][j]);
+      fc_proj_dist_sqrt[-i + 199][j] = (int)sqrt(dist_to_point);
+      ray_angle_relative_to_player_rot = j;
+      fc_fe[i][j] = correct_hit_dist_for_fisheye_effect(dist_to_point);
+      fc_fe[-i + 199][j] = fc_fe[i][j];
     }
   }
 }
@@ -445,9 +449,6 @@ static void cast_single_ray(const int screen_col) {
 		if(render_floors) {
 			draw_column_of_floor_and_ceiling_from_wall(&wall_slice);
 			render_floors = 0;
-
-			// TODO: Make seperate call for ceiling rendering when we do variable
-			// height ceilings.
 		}
 
 		// After rendering, we need to move the ray curr_h and curr_v's again.
@@ -664,7 +665,7 @@ static int ray_hit_wall(struct hitinfo* hit) {
 	return hit->hit_pos[0] != -1 && hit->hit_pos[1] != -1;
 }
 
-static unsigned int correct_hit_dist_for_fisheye_effect(const int hit_dist) {
+unsigned int correct_hit_dist_for_fisheye_effect(const int hit_dist) {
 	unsigned int correct_dist = (hit_dist * cos128table[ray_angle_relative_to_player_rot]) >> 7;
 
 	// Make sure we don't get any issues computing the slice height.

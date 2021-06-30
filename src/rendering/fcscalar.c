@@ -7,6 +7,7 @@
 
 extern int z_buffer_2d[PROJ_W][PROJ_H];
 extern int fc_proj_dist[200][361];
+extern int fc_proj_dist_sqrt[200][361];
 extern int fc_fe[200][361];
 
 static void (*scalarf[100]) (fcd* fcd) = {
