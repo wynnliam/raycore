@@ -59,7 +59,7 @@ int z_buffer_2d[PROJ_W][PROJ_H];
 // Lookup table for computing a floor/ceil pixel's distance from
 // the player
 int fc_proj_dist[200][361];
-static int fc_proj_dist_sqrt[200][361];
+int fc_proj_dist_sqrt[200][361];
 int fc_fe[200][361];
 
 // What we render for the floor/ceiling
@@ -412,7 +412,7 @@ static void cast_single_ray(const int screen_col) {
 	compute_ray_delta_vectors(adj_ray_angle, ray_data.delta_h, ray_data.delta_v);
 
 	// SKY CASTING
-	////draw_sky_slice(screen_col);
+	draw_sky_slice(screen_col);
 
 	int i;
 	for(i = 0; i < PROJ_H; i++)
