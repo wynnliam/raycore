@@ -344,7 +344,7 @@ void cast_rays(SDL_Renderer* renderer, struct mapdef* curr_map, int curr_player_
 	update_state_variables(curr_map, curr_player_x, curr_player_y, curr_player_rot);
 
 	clean_pixel_arrays();
-	compute_distance_to_player_for_each_thing();
+	//compute_distance_to_player_for_each_thing();
 
 	int screen_col;
 	for(screen_col = 0; screen_col < PROJ_W; ++screen_col) {
@@ -841,6 +841,13 @@ static void draw_things() {
 
 	int i;
 	for(i = 0; i < map->num_things; ++i) {
+		map->things[i].dist = get_dist_sqrd(map->things[i].position[0], map->things[i].position[1],
+											player_x, player_y);
+		if(map->things[i].dist == 0)
+			map->things[i].dist = 1;
+		// Add the thing to the sorted list.
+		things_sorted[i] = &(map->things[i]);
+
 		if(!things_sorted[i]->data || things_sorted[i]->type == 0 || things_sorted[i]->active == 0 || things_sorted[i]->dist >= MAX_DIST_SQRD)
 			continue;
 
