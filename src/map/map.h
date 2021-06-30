@@ -58,6 +58,10 @@ struct mapdef {
 	// Specifies invisible walls in level. If a value is not 0,
 	// it is an invisible wall.
 	int* invisible_walls;
+  // Used by renderer: When rendering, we specify which
+  // floor-tiles are visible. Any floor tile that a ray passes
+  // is considered visible.
+  char* vis;
 
 	// Assume an upper bound of 100 wall textures.
 	struct walldef walls[WALL_DEF_COUNT];

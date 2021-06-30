@@ -27,6 +27,7 @@ static int player_rot;
 static struct mapdef* map;
 // Fog color as a single int.
 static unsigned int fog_color;
+static char vis_flag = 0;
 
 // Stores the sin value of every degree from 0 to 360 multiplied by 128.
 // This will enable us to preserve enough precision for each number as
@@ -344,7 +345,6 @@ void cast_rays(SDL_Renderer* renderer, struct mapdef* curr_map, int curr_player_
 	update_state_variables(curr_map, curr_player_x, curr_player_y, curr_player_rot);
 
 	clean_pixel_arrays();
-	//compute_distance_to_player_for_each_thing();
 
 	int screen_col;
 	for(screen_col = 0; screen_col < PROJ_W; ++screen_col) {
@@ -354,7 +354,7 @@ void cast_rays(SDL_Renderer* renderer, struct mapdef* curr_map, int curr_player_
 	}
 
 	// THING CASTING
-	draw_things();
+	//draw_things();
 
 	render_pixel_arrays_to_screen(renderer);
 }
@@ -372,6 +372,10 @@ static void update_state_variables(struct mapdef* curr_map, const int curr_playe
 	fog_color_arr[2] = (unsigned char)map->fog_r;
 	fog_color_arr[1] = (unsigned char)map->fog_g;
 	fog_color_arr[0] = (unsigned char)map->fog_b;
+
+  // Updates vis_flag to be a value between 1 and 10 inclusive
+  vis_flag++;
+  vis_flag = vis_flag > 10 ? 1 : vis_flag;
 }
 
 static void clean_pixel_arrays() {
@@ -596,6 +600,7 @@ static void compute_ray_hit_position(int curr_pos[2], int delta[2], int hit[2]) 
 
 	tile = get_tile(curr_pos[0], curr_pos[1], map);
 	while(tile_is_floor_ceil(tile)) {
+    set_vis(curr_pos[0], curr_pos[1], map, vis_flag);
 		move_ray_pos(curr_pos, delta);
 		tile = get_tile(curr_pos[0], curr_pos[1], map);
 	}
@@ -845,8 +850,6 @@ static void draw_things() {
 											player_x, player_y);
 		if(map->things[i].dist == 0)
 			map->things[i].dist = 1;
-		// Add the thing to the sorted list.
-		things_sorted[i] = &(map->things[i]);
 
 		if(!things_sorted[i]->data || things_sorted[i]->type == 0 || things_sorted[i]->active == 0 || things_sorted[i]->dist >= MAX_DIST_SQRD)
 			continue;

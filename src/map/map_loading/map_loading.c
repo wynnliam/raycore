@@ -129,6 +129,11 @@ struct mapdef* load_map_from_file(const char* path) {
 
 	compute_map_layout(intermediate_mapdef->components, result);
 
+  result->vis = (char*)malloc(map_w * map_h);
+  int i;
+  for(i = 0; i < map_w * map_h; i++)
+    result->vis[i] = 0;
+
 	result->num_tiles = WALL_DEF_COUNT + FLOOR_CEIL_COUNT;
 	create_wall_textures(intermediate_mapdef->textures, result);
 	create_floor_ceil_textures(intermediate_mapdef->textures, result);
@@ -145,7 +150,6 @@ struct mapdef* load_map_from_file(const char* path) {
 
     // Add 16 clients to the game, but disable them
     // TODO: Refactor.
-    int i;
     for(i = 0; i < MAX_CLIENTS; i++) {
       struct thingdef* next = &result->things[result->num_things];
       create_thingdef(next, "./assests/sprites/player/player.bmp", 2, 1687, 215, 72);
