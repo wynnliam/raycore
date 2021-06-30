@@ -25,3 +25,15 @@ void set_vis(int x, int y, struct mapdef* map, char vf) {
 
   map->vis[grid_y * map->map_w + grid_x] = vf;
 }
+
+char get_vis(int x, int y, struct mapdef* map) {
+	int grid_x = x >> UNIT_POWER;
+	int grid_y = y >> UNIT_POWER;
+
+	if(grid_x < 0 || grid_x > map->map_w - 1)
+		return 0;
+	if(grid_y < 0 || grid_y > map->map_h - 1)
+		return 0;
+
+  return map->vis[grid_y * map->map_w + grid_x];
+}

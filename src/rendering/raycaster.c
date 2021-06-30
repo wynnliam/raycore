@@ -354,7 +354,7 @@ void cast_rays(SDL_Renderer* renderer, struct mapdef* curr_map, int curr_player_
 	}
 
 	// THING CASTING
-	//draw_things();
+	draw_things();
 
 	render_pixel_arrays_to_screen(renderer);
 }
@@ -846,10 +846,15 @@ static void draw_things() {
 
 	int i;
 	for(i = 0; i < map->num_things; ++i) {
+    if(get_vis(map->things[i].position[0], map->things[i].position[1], map) != vis_flag)
+      continue;
+
 		map->things[i].dist = get_dist_sqrd(map->things[i].position[0], map->things[i].position[1],
 											player_x, player_y);
 		if(map->things[i].dist == 0)
 			map->things[i].dist = 1;
+
+    things_sorted[i] = &(map->things[i]);
 
 		if(!things_sorted[i]->data || things_sorted[i]->type == 0 || things_sorted[i]->active == 0 || things_sorted[i]->dist >= MAX_DIST_SQRD)
 			continue;
