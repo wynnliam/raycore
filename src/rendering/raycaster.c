@@ -854,12 +854,10 @@ static void draw_things() {
 		if(map->things[i].dist == 0)
 			map->things[i].dist = 1;
 
-    things_sorted[i] = &(map->things[i]);
-
-		if(!things_sorted[i]->data || things_sorted[i]->type == 0 || things_sorted[i]->active == 0 || things_sorted[i]->dist >= MAX_DIST_SQRD)
+		if(!map->things[i].data || map->things[i].type == 0 || map->things[i].active == 0 || map->things[i].dist >= MAX_DIST_SQRD)
 			continue;
 
-		project_thing_pos_onto_screen(things_sorted[i]->position, screen_pos);
+		project_thing_pos_onto_screen(map->things[i].position, screen_pos);
 		compute_thing_dimensions_on_screen(i, screen_pos, &thing_rect);
 		compute_frame_offset(i, frame_offset);
 		draw_columns_of_thing(i, &thing_rect, frame_offset);
@@ -907,12 +905,12 @@ static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos
 static void compute_thing_dimensions_on_screen(const int thing_sorted_index, const int screen_pos[2], SDL_Rect* thing_screen_rect) {
 	int tex_h;
 
-	if(things_sorted[thing_sorted_index]->data && things_sorted[thing_sorted_index]->anim_class == 0)
-		tex_h = things_sorted[thing_sorted_index]->th;
+	if(map->things[thing_sorted_index].data && map->things[thing_sorted_index].anim_class == 0)
+		tex_h = map->things[thing_sorted_index].th;
 	else
 		tex_h = 64;
 
-	int dist_squared = things_sorted[thing_sorted_index]->dist;
+	int dist_squared = map->things[thing_sorted_index].dist;
 	double dist = sqrt(dist_squared);
 	// How much we subtract from the thing height to render at the
 	// correct row.
@@ -936,15 +934,15 @@ static void compute_thing_dimensions_on_screen(const int thing_sorted_index, con
 }
 
 static void compute_frame_offset(const int thing_sorted_index, int frame_offset[2]) {
-	unsigned int curr_anim = things_sorted[thing_sorted_index]->curr_anim;
+	unsigned int curr_anim = map->things[thing_sorted_index].curr_anim;
 	// Take starting position and multiply by 64 to go from unit coordinates to pixel coordinates.
 	// This puts us in the correct position for the animation as a whole.
-	frame_offset[0] = (int)(things_sorted[thing_sorted_index]->anims[curr_anim].start_x) << 6;
-	frame_offset[1] = (int)(things_sorted[thing_sorted_index]->anims[curr_anim].start_y) << 6;
+	frame_offset[0] = (int)(map->things[thing_sorted_index].anims[curr_anim].start_x) << 6;
+	frame_offset[1] = (int)(map->things[thing_sorted_index].anims[curr_anim].start_y) << 6;
 	// Add the current frame to the offset so that we have the correct frame.
 	// Note that since animations progress only horizontally, we don't need to
 	// do anything to the y part of the offset.
-	frame_offset[0] += things_sorted[thing_sorted_index]->anims[curr_anim].curr_frame << 6;
+	frame_offset[0] += map->things[thing_sorted_index].anims[curr_anim].curr_frame << 6;
 }
 
 static void draw_columns_of_thing(const int thing_sorted_index, const SDL_Rect* dest, const int frame_offset[2]) {
@@ -1019,12 +1017,12 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	int tex_height;
 	int thing_dist_sqrt = 0;
 
-	if(things_sorted[thing_column_data->thing_sorted_index]->data && things_sorted[thing_column_data->thing_sorted_index]->anim_class == 0)
-		tex_height = things_sorted[thing_column_data->thing_sorted_index]->th;
+	if(map->things[thing_column_data->thing_sorted_index].data && map->things[thing_column_data->thing_sorted_index].anim_class == 0)
+		tex_height = map->things[thing_column_data->thing_sorted_index].th;
 	else
 		tex_height = 64;
 
-	thing_dist_sqrt = (int)sqrt(things_sorted[thing_column_data->thing_sorted_index]->dist);
+	thing_dist_sqrt = (int)sqrt(map->things[thing_column_data->thing_sorted_index].dist);
 
 	int k;
 	for(k = thing_column_data->start_row; k < thing_column_data->end_row; ++k) {
@@ -1035,7 +1033,7 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 		t_x = (thing_column_data->src->x) + thing_column_data->frame_offset[0];
 		t_y = (((k - thing_column_data->dest->y) * tex_height) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
 
-    t_color = things_sorted[thing_column_data->thing_sorted_index]->data[(t_y << 6) + t_x];
+    t_color = map->things[thing_column_data->thing_sorted_index].data[(t_y << 6) + t_x];
 		// Only put a pixel if it is not transparent.
 		if(thing_pixel_is_not_transparent(t_color)) {
 			if(thing_dist_sqrt <= 1024)
