@@ -848,7 +848,7 @@ static void draw_things() {
 	int i;
 	for(i = 0; i < map->num_things; ++i) {
     thing_pos_rel_player[0] = map->things[i].position[0] - player_x;
-    thing_pos_rel_player[1] = -(map->things[i].position[1] - player_y);
+    thing_pos_rel_player[1] = map->things[i].position[1] - player_y;
 		project_thing_pos_onto_screen(thing_pos_rel_player, screen_pos);
 		map->things[i].dist = screen_pos[2];
 
@@ -865,14 +865,12 @@ static void draw_things() {
 }
 
 static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos[3]) {
-  // The thing_pos but transformed by a rotation matrix of the player's rotation.
-  // The x position is the position on the screen. The y position is the straight-line distance
-  // of the thing!
-  int thing_pos_rot;
+  int c = cos128table[player_rot];
+  int s = sin128table[player_rot];
 
-  screen_pos[0] = PROJ_W + ((cos128table[player_rot] * thing_pos[0] - sin128table[player_rot] * thing_pos[1]) >> 7);
+  screen_pos[0] = ((c * thing_pos[0]) - (s * thing_pos[1])) >> 7;
 	screen_pos[1] = HALF_PROJ_H;
-  screen_pos[2] = (sin128table[player_rot] * thing_pos[0] + cos128table[player_rot] * thing_pos[1]) >> 7;
+  screen_pos[2] = (s * thing_pos[0] + c * thing_pos[1]) >> 7;
 }
 
 static void compute_thing_dimensions_on_screen(const int thing_sorted_index, const int screen_pos[3], SDL_Rect* thing_screen_rect) {
@@ -895,14 +893,18 @@ static void compute_thing_dimensions_on_screen(const int thing_sorted_index, con
 	slice_remain = slice_height - ((DIST_TO_PROJ << 6) / hit->dist);
 	*/
 
-	thing_screen_rect->w = (int)(UNIT_SIZE / dist * DIST_TO_PROJ);
+	//thing_screen_rect->w = (int)(UNIT_SIZE / dist * DIST_TO_PROJ);
+	thing_screen_rect->w = 64;
+  thing_screen_rect->h = tex_h;
+  thing_screen_rect->x = screen_pos[0];
+  thing_screen_rect->y = HALF_PROJ_H - (tex_h >> 1);
 	// Since sprites are squares, the screen width == screen height
 	//thing_screen_rect->h = thing_screen_rect->w;
-	thing_screen_rect->h = (int)(tex_h / dist * DIST_TO_PROJ);
-	height_remain = thing_screen_rect->h - ((DIST_TO_PROJ << 6) / dist);
+	//thing_screen_rect->h = (int)(tex_h / dist * DIST_TO_PROJ);
+	//height_remain = thing_screen_rect->h - ((DIST_TO_PROJ << 6) / dist);
 	// x and y are is the top-left corner of the screen.
-	thing_screen_rect->y = HALF_PROJ_H - (thing_screen_rect->h >> 1) - (height_remain >> 1);
-	thing_screen_rect->x = screen_pos[0] - (thing_screen_rect->w >> 1);
+	//thing_screen_rect->y = HALF_PROJ_H - (thing_screen_rect->h >> 1) - (height_remain >> 1);
+	//thing_screen_rect->x = screen_pos[0] - (thing_screen_rect->w >> 1);
 }
 
 static void compute_frame_offset(const int thing_sorted_index, int frame_offset[2]) {

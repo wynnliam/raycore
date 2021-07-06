@@ -167,8 +167,8 @@ component {
 #}
 thing {
 	type = "1";
-	x = "1709";
-	y = "485";
+	x = "1607";
+	y = "855";
 	rot = "0";
 
 	anim_class = "0";
