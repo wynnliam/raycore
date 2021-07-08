@@ -187,8 +187,8 @@ static void draw_wall_slice(struct wall_slice*, struct hitinfo* hit);
 static void draw_column_of_floor_and_ceiling_from_wall(struct wall_slice*);
 
 static void draw_things();
-static void project_thing_pos_onto_screen(const int[2], int[3]);
-static void compute_thing_dimensions_on_screen(const int, const int[3], SDL_Rect*);
+static void project_thing_pos_onto_screen(const int[2], int[2]);
+static void compute_thing_dimensions_on_screen(const int, const int[2], SDL_Rect*);
 static void compute_frame_offset(const int, int[2]);
 static void draw_columns_of_thing(const int, const SDL_Rect*, const int[2]);
 static int column_in_bounds_of_screen(const int);
@@ -833,7 +833,7 @@ static void render_pixel_arrays_to_screen(SDL_Renderer* renderer) {
 static void draw_things() {
   int thing_pos_rel_player[2];
 	// The position of the sprite on the screen.
-	int screen_pos[3];
+	int screen_pos[2];
 
 	// Defines the sprite's screen dimensions and position.
 	SDL_Rect thing_rect;
@@ -845,14 +845,12 @@ static void draw_things() {
     if(get_vis(map->things[i].position[0], map->things[i].position[1], map) == 0)
       continue;
 
-    thing_pos_rel_player[0] = map->things[i].position[0] - player_x;
-    thing_pos_rel_player[1] = map->things[i].position[1] - player_y;
-		project_thing_pos_onto_screen(thing_pos_rel_player, screen_pos);
-		map->things[i].dist = screen_pos[2];
+		project_thing_pos_onto_screen(map->things[i].position, screen_pos);
+		map->things[i].dist = get_dist_sqrd(map->things[i].position[0], map->things[i].position[1],
+											player_x, player_y);
 
-    if(screen_pos[0] < 0 || screen_pos[2] < 1)
+		if(map->things[i].dist == 0)
       continue;
-
 		if(!map->things[i].data || map->things[i].type == 0 || map->things[i].active == 0)
 			continue;
 
@@ -862,35 +860,44 @@ static void draw_things() {
 	}
 }
 
-static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos[3]) {
-  int rot_fixed = player_rot;
-  if(player_rot > 90 && player_rot <= 180)
-    rot_fixed -= 90;
-  else if(player_rot > 180 && player_rot <= 270)
-    rot_fixed -= 180;
-  else if(player_rot > 270)
-    rot_fixed -= 270;
+static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos[2]) {
+  int x_diff, y_diff;
+  // The angle between the player and the thing to render.
+  int theta_temp;
+  // The ray angle that corresponds to the x position of the center
+  // of the sprite/thing.
+  int thing_ray_angle;
 
-  int c = cos128table[rot_fixed];
-  int s = sin128table[rot_fixed];
+  x_diff = thing_pos[0] - player_x;
+  y_diff = thing_pos[1] - player_y;
+  theta_temp = (int)(atan2(-y_diff, x_diff) * RAD_TO_DEG);
 
-  screen_pos[0] = HALF_PROJ_W + ((c * thing_pos[0]) >> 7);
-  screen_pos[1] = HALF_PROJ_H >> 1;
-  screen_pos[2] = ((s * thing_pos[1]) >> 7);
+  // Make sure the angle is between 0 and 360.
+  if(theta_temp < 0)
+    theta_temp += 360;
 
-  /*int c = cos128table[player_rot];
-  // Have to flip since our y axis is flipped.
-  int s = -sin128table[player_rot];
+  thing_ray_angle = player_rot + FOV_HALF - theta_temp;
 
-  int c1 = s;
-  int s1 = -c;
+  // Corrects for case where player rotation is in quadrant 1,
+  // but angle between player and thing is in quadrant 4 (or vice-versa).
+  if(theta_temp > 270 && player_rot < 90)
+    thing_ray_angle += 360;
+  if(player_rot > 270 && theta_temp < 90)
+    thing_ray_angle -= 360;
 
-  screen_pos[0] = ((c1 * thing_pos[0]) + (s1 * thing_pos[1])) >> 7;
-	screen_pos[1] = HALF_PROJ_H;
-  screen_pos[2] = (-s1 * thing_pos[0] + c1 * thing_pos[1]) >> 7;*/
+  screen_pos[0] = thing_ray_angle * PROJ_W / FOV;
+
+  /*
+    We make three assumptions about sprites and the environment
+    1. Sprites are vertically centered.
+    2. Sprites are all 64 x 64 pixels -- Actually this no longer holds
+    3. The player height is 32
+    Thus, the center of every sprite is at half of the projection screen height.
+  */
+  screen_pos[1] = PROJ_H >> 1;
 }
 
-static void compute_thing_dimensions_on_screen(const int thing_sorted_index, const int screen_pos[3], SDL_Rect* thing_screen_rect) {
+static void compute_thing_dimensions_on_screen(const int thing_sorted_index, const int screen_pos[2], SDL_Rect* thing_screen_rect) {
 	int tex_h;
 
 	if(map->things[thing_sorted_index].data && map->things[thing_sorted_index].anim_class == 0)
@@ -898,7 +905,7 @@ static void compute_thing_dimensions_on_screen(const int thing_sorted_index, con
 	else
 		tex_h = 64;
 
-  double dist = (double)screen_pos[2];
+  double dist = sqrt(map->things[thing_sorted_index].dist);
 	// How much we subtract from the thing height to render at the
 	// correct row.
 	int height_remain;
@@ -1014,7 +1021,7 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	else
 		tex_height = 64;
 
-	thing_dist_sqrt = map->things[thing_column_data->thing_sorted_index].dist;
+	thing_dist_sqrt = (int)sqrt(map->things[thing_column_data->thing_sorted_index].dist);
 
 	int k;
 	for(k = thing_column_data->start_row; k < thing_column_data->end_row; ++k) {
