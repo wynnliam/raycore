@@ -831,7 +831,6 @@ static void render_pixel_arrays_to_screen(SDL_Renderer* renderer) {
 }
 
 static void draw_things() {
-  int thing_pos_rel_player[2];
 	// The position of the sprite on the screen.
 	int screen_pos[2];
 
@@ -845,15 +844,17 @@ static void draw_things() {
     if(get_vis(map->things[i].position[0], map->things[i].position[1], map) == 0)
       continue;
 
-		project_thing_pos_onto_screen(map->things[i].position, screen_pos);
+		//project_thing_pos_onto_screen(map->things[i].position, screen_pos);
 		map->things[i].dist = get_dist_sqrd(map->things[i].position[0], map->things[i].position[1],
 											player_x, player_y);
+    //map->things[i].dist = screen_pos[1] * screen_pos[1];
 
-		if(map->things[i].dist == 0)
+		if(map->things[i].dist == 0 || map->things[i].dist >= MAX_DIST_SQRD)
       continue;
 		if(!map->things[i].data || map->things[i].type == 0 || map->things[i].active == 0)
 			continue;
 
+		project_thing_pos_onto_screen(map->things[i].position, screen_pos);
 		compute_thing_dimensions_on_screen(i, screen_pos, &thing_rect);
 		compute_frame_offset(i, frame_offset);
 		draw_columns_of_thing(i, &thing_rect, frame_offset);
@@ -861,6 +862,25 @@ static void draw_things() {
 }
 
 static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos[2]) {
+  /*int x_diff = thing_pos[0] - player_x;
+  int y_diff = thing_pos[1] - player_y;
+
+  // Flip the y axes to get the correct orientation
+  y_diff = -y_diff;
+
+  // player_rot as a vector
+  int uc = cos128table[player_rot];
+  int us = sin128table[player_rot];
+
+  // player_rot cross product. Vector for the player projection plane
+  int vc = us;
+  int vs = -uc;
+
+  // Magnitude of projection of diff vector onto v
+  screen_pos[0] = (vc * x_diff + vs * y_diff) >> 7;
+  screen_pos[0] += HALF_PROJ_W;
+  screen_pos[1] = (uc * x_diff + us * y_diff) >> 7;*/
+
   int x_diff, y_diff;
   // The angle between the player and the thing to render.
   int theta_temp;
@@ -887,13 +907,11 @@ static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos
 
   screen_pos[0] = thing_ray_angle * PROJ_W / FOV;
 
-  /*
-    We make three assumptions about sprites and the environment
-    1. Sprites are vertically centered.
-    2. Sprites are all 64 x 64 pixels -- Actually this no longer holds
-    3. The player height is 32
-    Thus, the center of every sprite is at half of the projection screen height.
-  */
+    //We make three assumptions about sprites and the environment
+    //1. Sprites are vertically centered.
+    //2. Sprites are all 64 x 64 pixels -- Actually this no longer holds
+    //3. The player height is 32
+    //Thus, the center of every sprite is at half of the projection screen height.
   screen_pos[1] = PROJ_H >> 1;
 }
 
