@@ -585,27 +585,6 @@ component {
 #	tex_1 = "0";
 #}
 
-entity {
-	type = "entity_level_transition";
-	id = "1";
-	x = "0";
-	y = "0";
-
-	goto_level = "7";
-	spawn_id = "2";
-
-	thing {
-		id = "1";
-
-		x = "1120";
-		y = "1760";
-		rot = "72";
-
-		anim_class = "0";
-		sprite_sheet = "./assests/sprites/hud/alert.bmp";
-	}
-}
-
 # Entering Hastah's Pass
 entity {
 	type = "entity_player_spawn";

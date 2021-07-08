@@ -878,6 +878,9 @@ static void project_thing_pos_onto_screen(const int thing_pos[2], int screen_pos
   screen_pos[1] = HALF_PROJ_H >> 1;
   screen_pos[2] = ((s * thing_pos[1]) >> 7);
 
+  if(thing_pos[0] < 0 && thing_pos[1] < 0) // Quadrant 1
+    screen_pos[0] = -screen_pos[0]
+
   /*int c = cos128table[player_rot];
   // Have to flip since our y axis is flipped.
   int s = -sin128table[player_rot];
