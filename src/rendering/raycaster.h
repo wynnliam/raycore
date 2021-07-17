@@ -50,6 +50,7 @@
 
 #define MAX_DIST  512
 #define MAX_DIST_SQRD			(MAX_DIST * MAX_DIST)
+#define STLEN   2048
 
 void initialize_lookup_tables();
 void initialize_render_textures(SDL_Renderer* renderer);

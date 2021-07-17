@@ -45,6 +45,9 @@ static int tan1table[361];
 // Stores the value of 1/sin(t) * 128 for every degree between 0 and 360.
 static int sin1table[361];
 
+// Precomputes all sqrts between 0 and STLEN
+static int sqrt_table[STLEN];
+
 // Stores the delta values for horizontal and vertical increments for each
 // angle.
 static int delta_h_x[361];
@@ -225,6 +228,9 @@ void initialize_lookup_tables() {
       fc_fe[-i + 199][j] = fc_fe[i][j];
     }
   }
+
+  for(i = 0; i < STLEN; i++)
+    sqrt_table[i] = (int)sqrt(i);
 }
 
 static void compute_lookup_vals_for_angle(const int deg) {
@@ -644,7 +650,8 @@ static void set_hit(struct hitinfo* to_set, int hit_pos[2], const int is_horiz) 
 	to_set->hit_pos[0] = hit_pos[0];
 	to_set->hit_pos[1] = hit_pos[1];
 	to_set->is_horiz = is_horiz;
-	to_set->dist = sqrt(get_dist_sqrd(player_x, player_y, hit_pos[0], hit_pos[1]));
+  int dist = get_dist_sqrd(player_x, player_y, hit_pos[0], hit_pos[1]);
+  to_set->dist = dist < STLEN ? sqrt_table[dist] : sqrt(dist);
 }
 
 static void choose_ray_pos_according_to_shortest_dist(struct hitinfo* hit, int hit_h[2], int hit_v[2]) {
@@ -923,7 +930,8 @@ static void compute_thing_dimensions_on_screen(const int thing_sorted_index, con
 	else
 		tex_h = 64;
 
-  double dist = sqrt(map->things[thing_sorted_index].dist);
+  int distsqrd = map->things[thing_sorted_index].dist;
+  double dist = distsqrd < STLEN ? sqrt_table[distsqrd] : sqrt(distsqrd);
 	// How much we subtract from the thing height to render at the
 	// correct row.
 	int height_remain;
@@ -1032,6 +1040,7 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	unsigned int t_color;
 
 	int tex_height;
+	int thing_dist = map->things[thing_column_data->thing_sorted_index].dist;
 	int thing_dist_sqrt = 0;
 
 	if(map->things[thing_column_data->thing_sorted_index].data && map->things[thing_column_data->thing_sorted_index].anim_class == 0)
@@ -1039,7 +1048,7 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	else
 		tex_height = 64;
 
-	thing_dist_sqrt = (int)sqrt(map->things[thing_column_data->thing_sorted_index].dist);
+	thing_dist_sqrt = thing_dist < STLEN ? sqrt_table[thing_dist] : (int)sqrt(thing_dist);
 
 	int k;
 	for(k = thing_column_data->start_row; k < thing_column_data->end_row; ++k) {
