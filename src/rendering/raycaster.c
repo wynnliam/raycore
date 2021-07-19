@@ -988,13 +988,8 @@ static void draw_columns_of_thing(const int thing_sorted_index, const SDL_Rect* 
     int start_row, end_row;
 
     if(thing_col_y >= 0 && q < PROJ_H) {
-      if(thing_col_y + thing_col_h < PROJ_H) {
         start_row = thing_col_y;
         end_row = q;
-      } else {
-        start_row = thing_col_y;
-        end_row = PROJ_H;
-      }
     } else {
       if(q  < PROJ_H) {
         start_row = 0;
