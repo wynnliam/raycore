@@ -1035,17 +1035,6 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	// RGB value of the sprite texture.
 	unsigned int t_color;
 
-	/*int tex_height;
-	int thing_dist = map->things[thing_column_data->thing_sorted_index].dist;
-	int thing_dist_sqrt = 0;
-
-	if(map->things[thing_column_data->thing_sorted_index].data && map->things[thing_column_data->thing_sorted_index].anim_class == 0)
-		tex_height = map->things[thing_column_data->thing_sorted_index].th;
-	else
-		tex_height = 64;
-
-	thing_dist_sqrt = thing_dist < STLEN ? sqrt_table[thing_dist] : (int)sqrt(thing_dist);*/
-
 	int tex_height = thing_column_data->tex_height;
 	int thing_dist_sqrt = thing_column_data->thing_dist_sqrt;
 
