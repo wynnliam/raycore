@@ -137,6 +137,9 @@ struct thing_column_render_data {
 
     // For rendering
     int start_row, end_row;
+  // Used when rendering each col, and calculated once per thing.
+  int tex_height;
+  int thing_dist_sqrt;
 };
 
 static void compute_lookup_vals_for_angle(const int);
@@ -987,21 +990,19 @@ static void draw_columns_of_thing(const int thing_sorted_index, const SDL_Rect* 
     int q = thing_col_y + thing_col_h;
     int start_row, end_row;
 
-    if(thing_col_y >= 0 && q < PROJ_H) {
-        start_row = thing_col_y;
-        end_row = q;
-    } else {
-      if(q  < PROJ_H) {
-        start_row = 0;
-        end_row = q;
-      } else {
-        start_row = 0;
-        end_row = PROJ_H;
-      }
-    }
+    start_row = thing_col_y >= 0 ? thing_col_y : 0;
+    end_row = q < PROJ_H ? q : PROJ_H;
 
 	thing_column.start_row = start_row;
 	thing_column.end_row = end_row;
+
+	if(map->things[thing_sorted_index].data && map->things[thing_sorted_index].anim_class == 0)
+		thing_column.tex_height = map->things[thing_sorted_index].th;
+	else
+		thing_column.tex_height = 64;
+
+	int thing_dist = map->things[thing_sorted_index].dist;
+	thing_column.thing_dist_sqrt = thing_dist < STLEN ? sqrt_table[thing_dist] : (int)sqrt(thing_dist);
 
 	int j;
 	for(j = dest->x; j < dest->x + dest->w; ++j) {
@@ -1034,7 +1035,7 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	// RGB value of the sprite texture.
 	unsigned int t_color;
 
-	int tex_height;
+	/*int tex_height;
 	int thing_dist = map->things[thing_column_data->thing_sorted_index].dist;
 	int thing_dist_sqrt = 0;
 
@@ -1043,10 +1044,15 @@ static void draw_column_of_thing_texture(struct thing_column_render_data* thing_
 	else
 		tex_height = 64;
 
-	thing_dist_sqrt = thing_dist < STLEN ? sqrt_table[thing_dist] : (int)sqrt(thing_dist);
+	thing_dist_sqrt = thing_dist < STLEN ? sqrt_table[thing_dist] : (int)sqrt(thing_dist);*/
+
+	int tex_height = thing_column_data->tex_height;
+	int thing_dist_sqrt = thing_column_data->thing_dist_sqrt;
 
 	int k;
-	for(k = thing_column_data->start_row; k < thing_column_data->end_row; ++k) {
+  int j;
+	for(j = 0; j < thing_column_data->end_row - thing_column_data->start_row; ++j) {
+    k = j + thing_column_data->start_row;
 		if(z_buffer_2d[thing_column_data->screen_column][k] != -1 &&
 		   thing_dist_sqrt > z_buffer_2d[thing_column_data->screen_column][k])
 			continue;
