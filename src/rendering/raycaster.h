@@ -8,6 +8,7 @@
 #include "../map/map.h"
 #include "./scalar.h"
 #include "./fcscalar.h"
+#include "./thing_col_render.h"
 
 #ifndef RAYCASTER
 #define RAYCASTER

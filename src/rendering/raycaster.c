@@ -78,7 +78,7 @@ static unsigned int raycast_pixels[64000];
 // What we render for the things.
 static SDL_Texture* thing_texture;
 // Where we store thing pixels before we render.
-static unsigned int thing_pixels[64000];
+unsigned int thing_pixels[64000];
 // Stores the things in a sorted order.
 static struct thingdef* things_sorted[1000];
 
@@ -126,20 +126,6 @@ struct wall_slice {
 	int wall_tex;
 	// The column of pixels we want to render.
 	int tex_col;
-};
-
-struct thing_column_render_data {
-	int thing_sorted_index;
-	int screen_column;
-	SDL_Rect* src;
-	const SDL_Rect* dest;
-	const int* frame_offset;
-
-    // For rendering
-    int start_row, end_row;
-  // Used when rendering each col, and calculated once per thing.
-  int tex_height;
-  int thing_dist_sqrt;
 };
 
 static void compute_lookup_vals_for_angle(const int);
