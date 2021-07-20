@@ -990,6 +990,8 @@ static void draw_columns_of_thing(const int thing_sorted_index, const SDL_Rect* 
 	int thing_dist = map->things[thing_sorted_index].dist;
 	thing_column.thing_dist_sqrt = thing_dist < STLEN ? sqrt_table[thing_dist] : (int)sqrt(thing_dist);
 
+  thing_column.map = map;
+
 	int j;
 	for(j = dest->x; j < dest->x + dest->w; ++j) {
 		if(column_in_bounds_of_screen(j)) {
@@ -1016,39 +1018,7 @@ static void compute_column_of_thing_texture(const int scaled_column, const SDL_R
 }
 
 static void draw_column_of_thing_texture(struct thing_column_render_data* thing_column_data) {
-	// The texture point.
-	int t_x, t_y;
-	// RGB value of the sprite texture.
-	unsigned int t_color;
-
-	int tex_height = thing_column_data->tex_height;
-	int thing_dist_sqrt = thing_column_data->thing_dist_sqrt;
-
-	int k;
-  int j;
-	for(j = 0; j < thing_column_data->end_row - thing_column_data->start_row; ++j) {
-    k = j + thing_column_data->start_row;
-		if(z_buffer_2d[thing_column_data->screen_column][k] != -1 &&
-		   thing_dist_sqrt > z_buffer_2d[thing_column_data->screen_column][k])
-			continue;
-
-		t_x = (thing_column_data->src->x) + thing_column_data->frame_offset[0];
-		t_y = (((k - thing_column_data->dest->y) * tex_height) / thing_column_data->dest->h) + thing_column_data->frame_offset[1];
-
-    t_color = map->things[thing_column_data->thing_sorted_index].data[(t_y << 6) + t_x];
-		// Only put a pixel if it is not transparent.
-		if(thing_pixel_is_not_transparent(t_color)) {
-			if(thing_dist_sqrt <= 1024)
-				thing_pixels[k * PROJ_W + thing_column_data->screen_column] = t_color;
-			else
-				thing_pixels[k * PROJ_W + thing_column_data->screen_column] = fog_color;
-
-			z_buffer_2d[thing_column_data->screen_column][k] = thing_dist_sqrt;
-		}
-	}
-}
-
-static int thing_pixel_is_not_transparent(const unsigned int t_color) {
-	return ((unsigned char*)&t_color)[3] > 0;
+  int len = thing_column_data->end_row - thing_column_data->start_row;
+  thing_col(len, thing_column_data);
 }
 
