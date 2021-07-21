@@ -166,15 +166,6 @@ component {
 #	#sprite_sheet = "./assests/sprites/foliage/grass/type_1/grass_00.bmp";
 #	sprite_sheet = "./assests/sprites/friendo.bmp";
 #}
-thing {
-	type = "1";
-	x = "1709";
-	y = "485";
-	rot = "0";
-
-	anim_class = "0";
-	sprite_sheet = "./assests/sprites/friendo.bmp";
-}
 
 thing {
 	type = "1";
