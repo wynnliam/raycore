@@ -1212,6 +1212,6 @@ static void compute_column_of_thing_texture(const int scaled_column, const SDL_R
 
 static void draw_column_of_thing_texture(struct thing_column_render_data* thing_column_data) {
   int len = thing_column_data->end_row - thing_column_data->start_row;
-  thing_col(len, thing_column_data);
+  thing_col(thing_column_data->dest->h, thing_column_data);
 }
 
