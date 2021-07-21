@@ -56,7 +56,7 @@ static int delta_v_x[361];
 static int delta_v_y[361];
 
 // Stores the distance each ray is from the player when it hits something.
-static int z_buffer[PROJ_W];
+int z_buffer[PROJ_W];
 int z_buffer_2d[PROJ_W][PROJ_H];
 
 // Lookup table for computing a floor/ceil pixel's distance from
