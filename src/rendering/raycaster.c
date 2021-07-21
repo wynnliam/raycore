@@ -81,6 +81,7 @@ static SDL_Texture* thing_texture;
 unsigned int thing_pixels[64000];
 // Stores the things in a sorted order.
 static struct thingdef* things_sorted[1000];
+static int thing_sorted_index[THING_COUNT + MAX_CLIENTS];
 
 // Stores the precise angle of our current ray.
 static float curr_ray_angle;
@@ -337,6 +338,7 @@ void initialize_render_textures(SDL_Renderer* renderer) {
 
 void cast_rays(SDL_Renderer* renderer, struct mapdef* curr_map, int curr_player_x, int curr_player_y, int curr_player_rot) {
 	update_state_variables(curr_map, curr_player_x, curr_player_y, curr_player_rot);
+  compute_distance_to_player_for_each_thing();
   memset(map->vis, 0, map->map_w * map->map_h);
 	clean_pixel_arrays();
 
@@ -390,6 +392,7 @@ static void compute_distance_to_player_for_each_thing() {
 
 		// Add the thing to the sorted list.
 		things_sorted[i] = &(map->things[i]);
+    thing_sorted_index[i] = i;
 	}
 }
 
@@ -1022,6 +1025,21 @@ static void render_pixel_arrays_to_screen(SDL_Renderer* renderer) {
 	SDL_RenderCopy(renderer, thing_texture, NULL, NULL);
 }
 
+static void sort_thing_indexes() {
+  int n = map->num_things;
+  int i, j, c;
+  for(i = 0; i < n; i++) {
+    for(j = i + 1; j < n; j++) {
+      if(map->things[thing_sorted_index[i]].dist <
+         map->things[thing_sorted_index[j]].dist) {
+        c = thing_sorted_index[i];
+        thing_sorted_index[i] = thing_sorted_index[j];
+        thing_sorted_index[j] = c;
+      }
+    }
+  }
+}
+
 static void draw_things() {
 	// The position of the sprite on the screen.
 	int screen_pos[2];
@@ -1031,25 +1049,24 @@ static void draw_things() {
 	// How much we add to t_x, t_y to get the correct animation frame.
 	int frame_offset[2];
 
+  sort_thing_indexes();
+
 	int i;
+  int ind;
 	for(i = 0; i < map->num_things; ++i) {
-    if(get_vis(map->things[i].position[0], map->things[i].position[1], map) == 0)
+    ind = thing_sorted_index[i];
+    if(get_vis(map->things[ind].position[0], map->things[ind].position[1], map) == 0)
       continue;
 
-		//project_thing_pos_onto_screen(map->things[i].position, screen_pos);
-		map->things[i].dist = get_dist_sqrd(map->things[i].position[0], map->things[i].position[1],
-											player_x, player_y);
-    //map->things[i].dist = screen_pos[1] * screen_pos[1];
-
-		if(map->things[i].dist == 0 || map->things[i].dist >= MAX_DIST_SQRD)
+		if(map->things[ind].dist == 0 || map->things[ind].dist >= MAX_DIST_SQRD)
       continue;
-		if(!map->things[i].data || map->things[i].type == 0 || map->things[i].active == 0)
+		if(!map->things[ind].data || map->things[ind].type == 0 || map->things[ind].active == 0)
 			continue;
 
-		project_thing_pos_onto_screen(map->things[i].position, screen_pos);
-		compute_thing_dimensions_on_screen(i, screen_pos, &thing_rect);
-		compute_frame_offset(i, frame_offset);
-		draw_columns_of_thing(i, &thing_rect, frame_offset);
+		project_thing_pos_onto_screen(map->things[ind].position, screen_pos);
+		compute_thing_dimensions_on_screen(ind, screen_pos, &thing_rect);
+		compute_frame_offset(ind, frame_offset);
+		draw_columns_of_thing(ind, &thing_rect, frame_offset);
 	}
 }
 
