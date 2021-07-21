@@ -1178,10 +1178,11 @@ static void draw_columns_of_thing(const int thing_sorted_index, const SDL_Rect* 
 	thing_column.start_row = start_row;
 	thing_column.end_row = end_row;
 
-	if(map->things[thing_sorted_index].data && map->things[thing_sorted_index].anim_class == 0)
+	/*if(map->things[thing_sorted_index].data && map->things[thing_sorted_index].anim_class == 0)
 		thing_column.tex_height = map->things[thing_sorted_index].th;
 	else
-		thing_column.tex_height = 64;
+		thing_column.tex_height = 64;*/
+  thing_column.tex_height = 64;
 
 	int thing_dist = map->things[thing_sorted_index].dist;
 	thing_column.thing_dist_sqrt = thing_dist < STLEN ? sqrt_table[thing_dist] : (int)sqrt(thing_dist);
